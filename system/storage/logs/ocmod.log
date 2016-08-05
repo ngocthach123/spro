@@ -1,0 +1,637 @@
+2016-07-21 8:55:32 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 34
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+LINE: 92
+LINE: 104
+LINE: 142
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 35
+LINE: 41
+LINE: 47
+FILE: system/library/template/basic.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+----------------------------------------------------------------
+2016-07-21 8:59:07 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 34
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+LINE: 92
+LINE: 104
+LINE: 142
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 35
+LINE: 41
+LINE: 47
+FILE: system/library/template/basic.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+----------------------------------------------------------------
+2016-07-22 11:25:13 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 34
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+LINE: 92
+LINE: 104
+LINE: 142
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 35
+LINE: 41
+LINE: 47
+FILE: system/library/template/basic.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+----------------------------------------------------------------
+2016-08-05 3:57:05 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 34
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 41
+LINE: 92
+LINE: 104
+LINE: 142
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 35
+LINE: 41
+LINE: 47
+FILE: system/library/template/basic.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 18
+----------------------------------------------------------------
+MOD: Add unlimited positions to OpenCart 2 for free
+FILE: catalog/controller/account/account.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 91
+FILE: catalog/controller/account/address.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 252
+LINE: 474
+FILE: catalog/controller/account/download.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 105
+FILE: catalog/controller/account/edit.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 174
+FILE: catalog/controller/account/forgotten.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 111
+FILE: catalog/controller/account/login.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 176
+FILE: catalog/controller/account/logout.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 55
+FILE: catalog/controller/account/newsletter.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 60
+FILE: catalog/controller/account/order.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 95
+LINE: 374
+LINE: 416
+FILE: catalog/controller/account/password.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 94
+FILE: catalog/controller/account/recurring.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 94
+LINE: 209
+LINE: 251
+FILE: catalog/controller/account/register.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 346
+FILE: catalog/controller/account/reset.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 100
+FILE: catalog/controller/account/return.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 92
+LINE: 212
+LINE: 260
+LINE: 538
+LINE: 628
+FILE: catalog/controller/account/reward.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 90
+FILE: catalog/controller/account/success.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 48
+FILE: catalog/controller/account/transaction.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 88
+FILE: catalog/controller/account/voucher.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 167
+LINE: 203
+FILE: catalog/controller/account/wishlist.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 124
+FILE: catalog/controller/affiliate/account.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 54
+FILE: catalog/controller/affiliate/edit.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 255
+FILE: catalog/controller/affiliate/forgotten.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 104
+FILE: catalog/controller/affiliate/login.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 110
+FILE: catalog/controller/affiliate/logout.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 42
+FILE: catalog/controller/affiliate/password.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 94
+FILE: catalog/controller/affiliate/payment.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 156
+FILE: catalog/controller/affiliate/register.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 348
+FILE: catalog/controller/affiliate/success.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 40
+FILE: catalog/controller/affiliate/tracking.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 50
+FILE: catalog/controller/affiliate/transaction.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 88
+FILE: catalog/controller/analytics/google_analytics.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/api/cart.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/api/coupon.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/api/currency.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/api/customer.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/api/login.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/api/order.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/api/payment.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/api/reward.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/api/shipping.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/api/voucher.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/captcha/basic_captcha.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/captcha/google_captcha.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/checkout/cart.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 260
+LINE: 280
+FILE: catalog/controller/checkout/checkout.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 92
+FILE: catalog/controller/checkout/confirm.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/checkout/failure.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 41
+FILE: catalog/controller/checkout/guest.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/checkout/guest_shipping.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/checkout/login.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/checkout/payment_address.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/checkout/payment_method.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/checkout/register.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/checkout/shipping_address.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/checkout/shipping_method.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/checkout/success.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 82
+FILE: catalog/controller/common/cart.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/common/column_left.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/common/column_right.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/common/content_bottom.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/common/content_top.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/common/currency.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/common/footer.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/common/header.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/common/home.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 15
+FILE: catalog/controller/common/language.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/common/maintenance.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/common/positions.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/common/search.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/credit_card/sagepay_direct.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 89
+LINE: 215
+FILE: catalog/controller/credit_card/sagepay_server.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 90
+FILE: catalog/controller/ebay/openbay.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/error/not_found.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 47
+FILE: catalog/controller/event/debug.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/event/theme.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/feed/google_base.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/feed/google_sitemap.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/information/contact.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 154
+LINE: 215
+FILE: catalog/controller/information/information.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 44
+LINE: 71
+FILE: catalog/controller/information/sitemap.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 99
+FILE: catalog/controller/module/account.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/affiliate.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/amazon_login.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/amazon_pay.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/banner.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/bestseller.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/carousel.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/category.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/ebay_listing.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/featured.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/filter.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/google_hangouts.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/html.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/information.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/latest.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/laybuy_layout.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/pp_button.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/pp_login.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/sagepay_direct_cards.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/sagepay_server_cards.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/slideshow.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/special.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/store.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/module/storereview.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/openbay/amazon.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/openbay/amazonus.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/openbay/ebay.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/openbay/etsy.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/openbay/fba.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/amazon_login_pay.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 51
+LINE: 99
+LINE: 492
+LINE: 618
+FILE: catalog/controller/payment/authorizenet_aim.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/authorizenet_sim.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/bank_transfer.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/bluepay_hosted.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/bluepay_redirect.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/cardinity.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/cheque.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/cod.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/eway.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/firstdata.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/firstdata_remote.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/free_checkout.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/g2apay.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/globalpay.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/globalpay_remote.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/klarna_account.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/klarna_invoice.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/laybuy.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/liqpay.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/nochex.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/paymate.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 100
+FILE: catalog/controller/payment/paypoint.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 145
+LINE: 157
+FILE: catalog/controller/payment/payza.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/perpetual_payments.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/pp_express.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 737
+LINE: 1570
+FILE: catalog/controller/payment/pp_payflow.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/pp_payflow_iframe.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/pp_pro.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/pp_pro_iframe.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/pp_standard.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/realex.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/realex_remote.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/sagepay_direct.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/sagepay_server.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/sagepay_us.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/securetrading_pp.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/securetrading_ws.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/skrill.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/twocheckout.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/web_payment_software.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/payment/worldpay.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/product/category.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 373
+LINE: 426
+FILE: catalog/controller/product/compare.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 152
+FILE: catalog/controller/product/manufacturer.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 57
+LINE: 359
+LINE: 410
+FILE: catalog/controller/product/product.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 475
+LINE: 552
+FILE: catalog/controller/product/search.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 459
+FILE: catalog/controller/product/special.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 280
+FILE: catalog/controller/recurring/pp_express.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/review/store_review.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+LINE: 76
+FILE: catalog/controller/startup/error.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/startup/event.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/startup/maintenance.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/startup/router.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/startup/seo_url.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/startup/session.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/startup/startup.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/tool/upload.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/total/coupon.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/total/reward.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/total/shipping.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: catalog/controller/total/voucher.php
+CODE: $data['content_bottom'] = $this->load->controller('common/content_bottom');
+NOT FOUND!
+FILE: admin/view/template/design/layout_form.tpl
+CODE: <?php if ($layout_module['position'] == 'column_right') { ?>
+LINE: 122
+CODE: html += '    <option value="column_right"><?php echo $text_column_right; ?></option>';
+LINE: 187
+CODE: if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/footer.tpl')) {
+NOT FOUND!
+CODE: if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {
+NOT FOUND!
+CODE: if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/maintenance.tpl')) {
+NOT FOUND!
+----------------------------------------------------------------

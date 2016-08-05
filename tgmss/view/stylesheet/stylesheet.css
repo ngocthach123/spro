@@ -273,6 +273,16 @@ span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
 	margin-right: 10px;
 	transition: margin ease 0.5s;
 }
+
+#menu li li li a:before {
+	content: "\f22d";
+	font-size: 14px;
+	font-family: FontAwesome;
+	margin-left: 10px;
+	margin-right: 10px;
+	transition: margin ease 0.5s;
+}
+
 #menu li li a:hover:before {
 	margin-right: 20px;
 }
@@ -870,12 +880,22 @@ table.tableproduct-home thead tr td {
 	display: none;
 }
 
+.nav-block> .ul-lv2{
+	border: 1px solid #cccccc;
+	margin-bottom: 0px;
+}
+
 .nav-block a{
 	border-radius: 0!important;
 	border-bottom: none;
+	color: #000000;
 }
 
-.nav-block:last-child a{
+.nav-block a:hover{
+	color: #00afee;
+}
+
+.nav-block:last-child>a{
 	border-bottom: 1px solid #cccccc;
 }
 
@@ -884,10 +904,40 @@ table.tableproduct-home thead tr td {
 	margin-left: -15px;
 }
 
+.li-parent .nav-plus{
+	padding-right: 5px;
+	margin-left: -28px;
+}
+
 .nav-block ul li{
 	padding: 3px 0px;
 }
 
 .child-active{
-	color: #002a80;
+	color: #1e91cf!important;
+}
+
+.li-parent{
+	list-style: none;
+}
+
+.li-parent a{
+	border: none!important;
+}
+
+.fileUpload {
+	position: relative;
+	overflow: hidden;
+	margin: 10px;
+}
+.fileUpload input.upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
 }

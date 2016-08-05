@@ -158,19 +158,19 @@
 
 }));
 
-$(document).ready(function() {
-    var c2_directory_url = decodeURIComponent($.cookie('c2_directory'));
-    var c2_cur_url = decodeURIComponent('<?php echo $directory; ?>');
-
-    //debugger;
-
-    if (c2_cur_url.length === 0) c2_cur_url = '/';
-    if (c2_directory_url === "undefined") c2_directory_url = c2_cur_url;
-
-    if (c2_cur_url.indexOf(c2_directory_url) === -1 && c2_directory_url.length !== 0 ) {
-        $('#modal-image').load(''.concat('index.php?route=common/filemanager&token=<?php echo $token; ?>&directory=', encodeURIComponent(c2_directory_url), '&target=<?php echo $target; ?>&thumb=<?php echo $thumb; ?>'));
-    }
-});
+//$(document).ready(function() {
+//    var c2_directory_url = decodeURIComponent($.cookie('c2_directory'));
+//    var c2_cur_url = decodeURIComponent('<?php echo $directory; ?>');
+//
+//    //debugger;
+//
+//    if (c2_cur_url.length === 0) c2_cur_url = '/';
+//    if (c2_directory_url === "undefined") c2_directory_url = c2_cur_url;
+//
+//    if (c2_cur_url.indexOf(c2_directory_url) === -1 && c2_directory_url.length !== 0 ) {
+//        $('#modal-image').load(''.concat('index.php?route=common/filemanager&token=<?php echo $token; ?>&directory=', encodeURIComponent(c2_directory_url), '&target=<?php echo $target; ?>&thumb=<?php echo $thumb; ?>'));
+//    }
+//});
 
 // Move image to Imagw folder
 $('#button-moveimage').on('click', function(e) {
@@ -210,22 +210,41 @@ $('a.thumbnail').on('click', function(e) {
 
 	$('#<?php echo $target; ?>').attr('value', $(this).parent().find('input').attr('value'));
 
+	//ocm_CKeditorIsBack_start
+	<?php if ($ckedialog) { ?>
+		dialog = CKEDITOR.dialog.getCurrent();
+			var targetElement = '<?php echo $ckedialog; ?>' || null;
+    var target = targetElement.split( ':' );
+    dialog.setValueOf( target[ 0 ], target[ 1 ], this.getAttribute('href') );
+	<?php } ?>
+//ocm_CKeditorIsBack_end
+
 	$('#modal-image').modal('hide');
 });
-<?php } ?>
+    <?php } elseif ($ckedialog) { ?>
+        $('a.thumbnail').on('click', function(e) {
+            e.preventDefault();
+            dialog = CKEDITOR.dialog.getCurrent();
+            var targetElement = '<?php echo $ckedialog; ?>' || null;
+            var target = targetElement.split( ':' );
+            dialog.setValueOf( target[ 0 ], target[ 1 ], this.getAttribute('href') );
+            $('#modal-image').modal('hide');
+        });
+//ocm_CKeditorIsBack_end
+        <?php } ?>
 
 $('a.directory').on('click', function(e) {
     e.preventDefault();
 
-    var c2_url = $(this).attr('href');
-    var c2_find_start  = c2_url.indexOf('&directory=');
-    var c2_find_finish = c2_url.indexOf('&target=');
-
-    if ( c2_find_start !== -1 ) {
-        c2_find_start = parseInt(c2_find_start)+11;
-        c2_find_finish = parseInt(c2_find_finish);
-        $.cookie('c2_directory', ''.concat(c2_url.substring(c2_find_start,c2_find_finish)) , { expires: 1} );
-    }
+//    var c2_url = $(this).attr('href');
+//    var c2_find_start  = c2_url.indexOf('&directory=');
+//    var c2_find_finish = c2_url.indexOf('&target=');
+//
+//    if ( c2_find_start !== -1 ) {
+//        c2_find_start = parseInt(c2_find_start)+11;
+//        c2_find_finish = parseInt(c2_find_finish);
+//        $.cookie('c2_directory', ''.concat(c2_url.substring(c2_find_start,c2_find_finish)) , { expires: 1} );
+//    }
 
 	$('#modal-image').load($(this).attr('href'));
 });
@@ -283,6 +302,12 @@ $('#button-search').on('click', function(e) {
 	<?php if ($target) { ?>
 	url += '&target=' + '<?php echo $target; ?>';
 	<?php } ?>
+
+    //ocm_CKeditorIsBack_start
+    <?php if ($ckedialog) { ?>
+        url += '&ckedialog=' + '<?php echo $ckedialog; ?>';
+        <?php } ?>
+    //ocm_CKeditorIsBack_end
 
 	$('#modal-image').load(url);
 });

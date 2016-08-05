@@ -58,6 +58,18 @@ class ControllerCatalogProduct extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
+			if (isset($this->request->get['cat'])) {
+				$url .= '&cat=' . $this->request->get['cat'];
+			}
+
+			if (isset($this->request->get['child'])) {
+				$url .= '&child=' . $this->request->get['child'];
+			}
+
+			if (isset($this->request->get['child2'])) {
+				$url .= '&child2=' . $this->request->get['child2'];
+			}
+
 			$this->response->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, true));
 		}
 
@@ -108,6 +120,18 @@ class ControllerCatalogProduct extends Controller {
 
 			if (isset($this->request->get['page'])) {
 				$url .= '&page=' . $this->request->get['page'];
+			}
+
+			if (isset($this->request->get['cat'])) {
+				$url .= '&cat=' . $this->request->get['cat'];
+			}
+
+			if (isset($this->request->get['child'])) {
+				$url .= '&child=' . $this->request->get['child'];
+			}
+
+			if (isset($this->request->get['child2'])) {
+				$url .= '&child2=' . $this->request->get['child2'];
 			}
 
 			$this->response->redirect($this->url->link('catalog/product', 'token=' . $this->session->data['token'] . $url, true));
@@ -315,6 +339,10 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&child=' . $this->request->get['child'];
 		}
 
+		if (isset($this->request->get['child2'])) {
+			$url .= '&child2=' . $this->request->get['child2'];
+		}
+
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
@@ -331,6 +359,8 @@ class ControllerCatalogProduct extends Controller {
 		$data['copy'] = $this->url->link('catalog/product/copy', 'token=' . $this->session->data['token'] . $url, true);
 		$data['delete'] = $this->url->link('catalog/product/delete', 'token=' . $this->session->data['token'] . $url, true);
 
+		$data['list_action'] = $this->url->link('catalog/product/updateByExcel', 'token=' . $this->session->data['token'] . $url, true);
+
 		//-----------------------------------------------------------------
 		$this->load->model('catalog/category');
 
@@ -342,12 +372,28 @@ class ControllerCatalogProduct extends Controller {
 			$children_data = array();
 			$children = $this->model_catalog_category->getCategories0($category['category_id']);
 			foreach($children as $child) {
+
+				//--cap 3
+				$children_data_2 = array();
+				$children_2 = $this->model_catalog_category->getCategories0($child['category_id']);
+
+				foreach($children_2 as $child_2) {
+					$filter_data = array('cat_id' => $child['category_id'], 'child_id' => $child_2['category_id']);
+					$children_data_2[] = array(
+						'category_id' => $child_2['category_id'],
+						'name' => $child_2['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+						'href' => $this->url->link('catalog/product', 'token=' . $this->session->data['token']. '&cat='. $category['category_id']. '&child='. $child['category_id']. '&child2='. $child_2['category_id'], 'SSL'),
+					);
+				}
+				//--cap 3
+
 				$filter_data = array('cat_id' => $category['category_id'], 'child_id' => $child['category_id']);
 
 				$children_data[] = array(
 					'category_id' => $child['category_id'],
 					'name' => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
 					'href' => $this->url->link('catalog/product', 'token=' . $this->session->data['token']. '&cat='. $category['category_id']. '&child='. $child['category_id'], 'SSL'),
+					'children'    => $children_data_2,
 				);
 			}
 
@@ -377,8 +423,14 @@ class ControllerCatalogProduct extends Controller {
 
 		if(isset($this->request->get['child'])){
 			$data['child_id'] = $this->request->get['child'];
+			$data['child_id_class'] = $this->request->get['child'];
 		} else{
 			$data['child_id'] = 0;
+			$data['child_id_class'] = 0;
+		}
+
+		if(isset($this->request->get['child2'])){
+			$data['child_id'] = $this->request->get['child2'];
 		}
 		//-----------------------------------------------------
 
@@ -563,6 +615,10 @@ class ControllerCatalogProduct extends Controller {
 			$url .= '&child=' . $this->request->get['child'];
 		}
 
+		if (isset($this->request->get['child2'])){
+			$data['child_id'] = $this->request->get['child2'];
+		}
+
 		$pagination = new Pagination();
 		$pagination->total = $product_total;
 		$pagination->page = $page;
@@ -627,6 +683,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_quantity'] = $this->language->get('entry_quantity');
 		$data['entry_stock_status'] = $this->language->get('entry_stock_status');
 		$data['entry_price'] = $this->language->get('entry_price');
+		$data['entry_cost'] = $this->language->get('entry_cost');
 		$data['entry_tax_class'] = $this->language->get('entry_tax_class');
 		$data['entry_points'] = $this->language->get('entry_points');
 		$data['entry_option_points'] = $this->language->get('entry_option_points');
@@ -646,6 +703,8 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_category'] = $this->language->get('entry_category');
 		$data['entry_filter'] = $this->language->get('entry_filter');
 		$data['entry_related'] = $this->language->get('entry_related');
+		$data['entry_access'] = $this->language->get('entry_access');
+		$data['entry_access_group'] = $this->language->get('entry_access_group');
 		$data['entry_attribute'] = $this->language->get('entry_attribute');
 		$data['entry_text'] = $this->language->get('entry_text');
 		$data['entry_option'] = $this->language->get('entry_option');
@@ -765,6 +824,18 @@ class ControllerCatalogProduct extends Controller {
 
 		if (isset($this->request->get['page'])) {
 			$url .= '&page=' . $this->request->get['page'];
+		}
+
+		if (isset($this->request->get['cat'])) {
+			$url .= '&cat=' . $this->request->get['cat'];
+		}
+
+		if (isset($this->request->get['child'])) {
+			$url .= '&child=' . $this->request->get['child'];
+		}
+
+		if (isset($this->request->get['child2'])) {
+			$url .= '&child2=' . $this->request->get['child2'];
 		}
 
 		$data['breadcrumbs'] = array();
@@ -903,6 +974,14 @@ class ControllerCatalogProduct extends Controller {
 			$data['price'] = $product_info['price'];
 		} else {
 			$data['price'] = '';
+		}
+
+		if (isset($this->request->post['cost'])) {
+			$data['cost'] = $this->request->post['cost'];
+		} elseif (!empty($product_info)) {
+			$data['cost'] = $product_info['cost'];
+		} else {
+			$data['cost'] = '';
 		}
 
 		$this->load->model('catalog/recurring');
@@ -1077,10 +1156,16 @@ class ControllerCatalogProduct extends Controller {
 		} elseif (isset($this->request->get['product_id'])) {
 			$categories = $this->model_catalog_product->getProductCategories($this->request->get['product_id']);
 		}  else if(isset($this->request->get['cat'])){
+
 			$categories[] =$this->request->get['cat'];
 			if(isset($this->request->get['child'])){
 				$categories[] = $this->request->get['child'];
 			}
+
+			if(isset($this->request->get['child2'])){
+				$categories[] = $this->request->get['child2'];
+			}
+
 		} else {
 			$categories = array();
 		}
@@ -1339,6 +1424,81 @@ class ControllerCatalogProduct extends Controller {
 			}
 		}
 
+		//nhom phu kien
+		$this->load->model('catalog/access_group');
+		$access_groups = $this->model_catalog_access_group->getAccessGroups(array());
+
+		$data['access_groups'] =array();
+		$i = 0;
+		foreach($access_groups as $access_group){
+
+			$products_access = $this->model_catalog_access_group->getProductAccess($access_group['group_id']);
+
+			$str = '';
+
+			foreach ($products_access as $product_id) {
+
+				$access_info = $this->model_catalog_product->getProduct($product_id);
+
+				if ($access_info) {
+					$str .= $access_info['name'].', ';
+				}
+			}
+
+			$data['access_groups'][$i]['group_id'] = $access_group['group_id'];
+			$data['access_groups'][$i]['name'] = $access_group['name'] .' (';
+			$data['access_groups'][$i]['name'] .= substr($str,0,strlen($str)-2);
+			$data['access_groups'][$i]['name'] .= ')';
+			$i++;
+		}
+
+		if (isset($this->request->post['access_group_id'])) {
+			$data['access_group_id'] = $this->request->post['access_group'];
+		} elseif (!empty($product_info)) {
+			$data['access_group_id'] = $product_info['access_group'];
+		} else {
+			$data['access_group_id'] = 0;
+		}
+
+
+//		$products_access =array();
+//
+//		if($data['access_group_id']){
+//			$products_access = $this->model_catalog_access_group->getProductAccess($data['access_group_id']);
+//
+//			foreach ($products_access as $product_id) {
+//				$access_info = $this->model_catalog_product->getProduct($product_id);
+//
+//				if ($access_info) {
+//					$data['products_access'][] = array(
+//						'product_id' => $access_info['product_id'],
+//						'name'       => $access_info['name']
+//					);
+//				}
+//			}
+//		}
+
+		//phu kien
+		if (isset($this->request->post['product_access'])) {
+			$products_access = $this->request->post['product_access'];
+		} elseif (isset($this->request->get['product_id'])) {
+			$products_access = $this->model_catalog_product->getProductAccess($this->request->get['product_id']);
+		} else {
+			$products_access = array();
+		}
+
+		$data['products_access'] = array();
+		foreach ($products_access as $product_id) {
+			$access_info = $this->model_catalog_product->getProduct($product_id);
+
+			if ($access_info) {
+				$data['products_access'][] = array(
+					'product_id' => $access_info['product_id'],
+					'name'       => $access_info['name']
+				);
+			}
+		}
+
 		if (isset($this->request->post['points'])) {
 			$data['points'] = $this->request->post['points'];
 		} elseif (!empty($product_info)) {
@@ -1513,5 +1673,91 @@ class ControllerCatalogProduct extends Controller {
 
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
+	}
+
+	public function updateByExcel() {
+		$this->load->language('catalog/product');
+
+		$this->document->setTitle($this->language->get('heading_title'));
+
+		$this->load->model('catalog/product');
+
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateFormExcel()) {
+
+			//excel
+			require_once 'phpexcel/PHPExcel.php';
+
+			if (($_FILES['file_ton_kho']['tmp_name'])) {
+				$upload_path = DIR_EXCEL;
+				//  return $upload_path;die;
+				move_uploaded_file($_FILES['file_ton_kho']['tmp_name'], $upload_path . $_FILES['file_ton_kho']['name']);
+
+				$filename = DIR_EXCEL.$_FILES['file_ton_kho']['name'];
+				$inputFileType = PHPExcel_IOFactory::identify($filename);
+				$objReader = PHPExcel_IOFactory::createReader($inputFileType);
+
+				$objReader->setReadDataOnly(true);
+
+				/**  Load $inputFileName to a PHPExcel Object  **/
+				$objPHPExcel = $objReader->load("$filename");
+
+				$total_sheets = $objPHPExcel->getSheetCount();
+
+				$allSheetName = $objPHPExcel->getSheetNames();
+				$objWorksheet = $objPHPExcel->setActiveSheetIndex(0);
+				$highestRow = $objWorksheet->getHighestRow();
+				$highestColumn = $objWorksheet->getHighestColumn();
+				$highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
+				$arraydata = array();
+				$col_name = array('model','name','quantity');
+				for ($row = 2; $row <= $highestRow; ++$row) {
+					for ($col = 0; $col < $highestColumnIndex; ++$col) {
+						$value = $objWorksheet->getCellByColumnAndRow($col, $row)->getValue();
+						$arraydata[$row - 2][$col_name[$col]] = $value;
+					}
+				}
+
+				$num_product = 0;
+				foreach($arraydata as $product) {
+					if($product['model'] != null && $product['model'] != '') {
+
+						$num_product  += $this->model_catalog_product->editQuantity($product['model'], $product['quantity']);
+
+					}
+				}
+
+				unlink($upload_path . $_FILES['file_ton_kho']['name']); // xoa file
+
+				$this->session->data['success'] = sprintf($this->language->get('text_list_success'),$num_product);
+			}
+		}
+
+
+		$this->getList();
+	}
+
+	protected function validateFormExcel() {
+		if (!$this->user->hasPermission('modify', "catalog/product")) {
+			$this->error['warning'] = $this->language->get('error_permission');
+		}
+
+		if ($this->error && !isset($this->error['warning'])) {
+			$this->error['warning'] = $this->language->get('error_warning');
+		}
+
+		if (isset($_FILES['file_ton_kho']['tmp_name'])) {
+
+			$allowed = array('xlsx', 'xls');
+			$filename = $_FILES['file_ton_kho']['name'];
+
+			$ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+			if (!in_array($ext, $allowed)) { //check file extension
+
+				$this->error['warning'] = $this->language->get('error_file');
+			}
+		}
+
+		return !$this->error;
 	}
 }

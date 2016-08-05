@@ -1,5 +1,6 @@
 <?php echo $header; ?><?php echo $column_left; ?>
 <div id="content">
+	<script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script>
   <div class="page-header">
     <div class="container-fluid">
       <div class="pull-right">
@@ -49,16 +50,25 @@
                   <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-name<?php echo $language['language_id']; ?>"><?php echo $entry_name; ?></label>
                     <div class="col-sm-10">
-                      <input type="text" name="product_description[<?php echo $language['language_id']; ?>][name]" onblur="locdau();" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['name'] : ''; ?>" placeholder="<?php echo $entry_name; ?>" id="input-name<?php echo $language['language_id']; ?>" class="form-control" />
+                      <input type="text" name="product_description[<?php echo $language['language_id']; ?>][name]" onkeyup="locdau();" value="<?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['name'] : ''; ?>" placeholder="<?php echo $entry_name; ?>" id="input-name<?php echo $language['language_id']; ?>" class="form-control" />
                       <?php if (isset($error_name[$language['language_id']])) { ?>
                       <div class="text-danger"><?php echo $error_name[$language['language_id']]; ?></div>
                       <?php } ?>
                     </div>
                   </div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="input-keyword"><span data-toggle="tooltip" title="<?php echo $help_keyword; ?>"><?php echo $entry_keyword; ?></span></label>
+						<div class="col-sm-10">
+							<input type="text" name="keyword" ondblclick="locdau();" value="<?php echo $keyword; ?>" placeholder="<?php echo $entry_keyword; ?>" id="input-keyword" class="form-control" />
+							<?php if ($error_keyword) { ?>
+							<div class="text-danger"><?php echo $error_keyword; ?></div>
+							<?php } ?>
+						</div>
+					</div>
                   <div class="form-group">
                     <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>"><?php echo $entry_description; ?></label>
                     <div class="col-sm-10">
-                      <textarea name="product_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>" class="form-control summernote"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['description'] : ''; ?></textarea>
+                      <textarea name="product_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['description'] : ''; ?></textarea>
                     </div>
                   </div>
                   <div class="form-group hidden">
@@ -203,11 +213,45 @@
 					  </div>
 					</div>
 				  </div>
+				  <div class="form-group">
+					  <label class="col-sm-2 control-label" for="access_group_id"><?php echo $entry_access_group; ?></label>
+					  <div class="col-sm-10">
+						  <select name="access_group_id" id="access_group_id" class="form-control">
+							  <option value="0"><?php echo $text_none; ?></option>
+							  <?php foreach ($access_groups as $access_group) { ?>
+							  <?php if ($access_group['group_id'] == $access_group_id) { ?>
+							  <option value="<?php echo $access_group['group_id']; ?>" selected="selected"><?php echo $access_group['name']; ?></option>
+							  <?php } else { ?>
+							  <option value="<?php echo $access_group['group_id']; ?>"><?php echo $access_group['name']; ?></option>
+							  <?php } ?>
+							  <?php } ?>
+						  </select>
+					  </div>
+				  </div>
+				  <div class="form-group">
+					  <label class="col-sm-2 control-label" for="input-access"><?php echo $entry_access; ?></label>
+					  <div class="col-sm-10">
+						  <input type="text" name="access" value="" placeholder="<?php echo $entry_access; ?>" id="input-access" class="form-control" />
+						  <div id="product-access" class="well well-sm" style="height: 150px; overflow: auto;">
+							  <?php foreach ($products_access as $product_access) { ?>
+							  <div id="product-access<?php echo $product_access['product_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_access['name']; ?>
+								  <input type="hidden" name="product_access[]" value="<?php echo $product_access['product_id']; ?>" />
+							  </div>
+							  <?php } ?>
+						  </div>
+					  </div>
+				  </div>
 				  <div class="form-group hidden">
 					<label class="col-sm-2 control-label" for="input-location"><?php echo $entry_location; ?></label>
 					<div class="col-sm-10">
 					  <input type="text" name="location" value="<?php echo $location; ?>" placeholder="<?php echo $entry_location; ?>" id="input-location" class="form-control" />
 					</div>
+				  </div>
+				  <div class="form-group">
+					  <label class="col-sm-2 control-label" for="input-cost"><?php echo $entry_cost; ?></label>
+					  <div class="col-sm-10">
+						  <input type="text" name="cost" value="<?php echo $cost; ?>" placeholder="<?php echo $entry_cost; ?>" id="input-cost" class="form-control" />
+					  </div>
 				  </div>
 				  <div class="form-group">
 					<label class="col-sm-2 control-label" for="input-price"><?php echo $entry_price; ?></label>
@@ -301,15 +345,6 @@
 					</div>
 				  </div>
 				  <div class="form-group">
-					<label class="col-sm-2 control-label" for="input-keyword"><span data-toggle="tooltip" title="<?php echo $help_keyword; ?>"><?php echo $entry_keyword; ?></span></label>
-					<div class="col-sm-10">
-					  <input type="text" name="keyword" ondblclick="locdau();" value="<?php echo $keyword; ?>" placeholder="<?php echo $entry_keyword; ?>" id="input-keyword" class="form-control" />
-					  <?php if ($error_keyword) { ?>
-					  <div class="text-danger"><?php echo $error_keyword; ?></div>
-					  <?php } ?>
-					</div>
-				  </div>
-				  <div class="form-group">
 					<label class="col-sm-2 control-label" for="input-date-available"><?php echo $entry_date_available; ?></label>
 					<div class="col-sm-3">
 					  <div class="input-group date">
@@ -319,42 +354,7 @@
 						</span></div>
 					</div>
 				  </div>
-				  <div class="form-group">
-					<label class="col-sm-2 control-label" for="input-length"><?php echo $entry_dimension; ?></label>
-					<div class="col-sm-10">
-					  <div class="row">
-						<div class="col-sm-4">
-						  <input type="text" name="length" value="<?php echo $length; ?>" placeholder="<?php echo $entry_length; ?>" id="input-length" class="form-control" />
-						</div>
-						<div class="col-sm-4">
-						  <input type="text" name="width" value="<?php echo $width; ?>" placeholder="<?php echo $entry_width; ?>" id="input-width" class="form-control" />
-						</div>
-						<div class="col-sm-4">
-						  <input type="text" name="height" value="<?php echo $height; ?>" placeholder="<?php echo $entry_height; ?>" id="input-height" class="form-control" />
-						</div>
-					  </div>
-					</div>
-				  </div>
-				  <div class="form-group hidden">
-					<label class="col-sm-2 control-label" for="input-length-class"><?php echo $entry_length_class; ?></label>
-					<div class="col-sm-10">
-					  <select name="length_class_id" id="input-length-class" class="form-control">
-						<?php foreach ($length_classes as $length_class) { ?>
-						<?php if ($length_class['length_class_id'] == $length_class_id) { ?>
-						<option value="<?php echo $length_class['length_class_id']; ?>" selected="selected"><?php echo $length_class['title']; ?></option>
-						<?php } else { ?>
-						<option value="<?php echo $length_class['length_class_id']; ?>"><?php echo $length_class['title']; ?></option>
-						<?php } ?>
-						<?php } ?>
-					  </select>
-					</div>
-				  </div>
-				  <div class="form-group">
-					<label class="col-sm-2 control-label" for="input-weight"><?php echo $entry_weight; ?></label>
-					<div class="col-sm-10">
-					  <input type="text" name="weight" value="<?php echo $weight; ?>" placeholder="<?php echo $entry_weight; ?>" id="input-weight" class="form-control" />
-					</div>
-				  </div>
+
 				  <div class="form-group hidden">
 					<label class="col-sm-2 control-label" for="input-weight-class"><?php echo $entry_weight_class; ?></label>
 					<div class="col-sm-10">
@@ -490,6 +490,44 @@
 			  <div class="form-group">
                 <h3><label class="col-sm-12 control-label controllabel-product">Thông tin tùy chọn của sản phẩm</label></h3>
               </div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="input-length"><?php echo $entry_dimension; ?></label>
+					<div class="col-sm-10">
+						<div class="row">
+							<div class="col-sm-4">
+								<input type="text" name="length" value="<?php echo $length; ?>" placeholder="<?php echo $entry_length; ?>" id="input-length" class="form-control" />
+							</div>
+							<div class="col-sm-4">
+								<input type="text" name="width" value="<?php echo $width; ?>" placeholder="<?php echo $entry_width; ?>" id="input-width" class="form-control" />
+							</div>
+							<div class="col-sm-4">
+								<input type="text" name="height" value="<?php echo $height; ?>" placeholder="<?php echo $entry_height; ?>" id="input-height" class="form-control" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group hidden">
+					<label class="col-sm-2 control-label" for="input-length-class"><?php echo $entry_length_class; ?></label>
+					<div class="col-sm-10">
+						<select name="length_class_id" id="input-length-class" class="form-control">
+							<?php foreach ($length_classes as $length_class) { ?>
+							<?php if ($length_class['length_class_id'] == $length_class_id) { ?>
+							<option value="<?php echo $length_class['length_class_id']; ?>" selected="selected"><?php echo $length_class['title']; ?></option>
+							<?php } else { ?>
+							<option value="<?php echo $length_class['length_class_id']; ?>"><?php echo $length_class['title']; ?></option>
+							<?php } ?>
+							<?php } ?>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="input-weight"><?php echo $entry_weight; ?></label>
+					<div class="col-sm-10">
+						<input type="text" name="weight" value="<?php echo $weight; ?>" placeholder="<?php echo $entry_weight; ?>" id="input-weight" class="form-control" />
+					</div>
+				</div>
+
               <div class="row mgrow-product">
                 <div class="col-sm-2">
                   <ul class="nav nav-pills nav-stacked" id="option">
@@ -919,6 +957,47 @@
       </div>
     </div>
   </div>
+	<script>
+		<?php foreach ($languages as $language): ?>
+
+		CKEDITOR.replace('input-description<?php echo $language['language_id']; ?>', {
+			filebrowserBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
+			filebrowserImageBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
+			filebrowserFlashBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
+		});
+
+		CKEDITOR.on('dialogDefinition', function (event)
+		{
+			var editor = event.editor;
+			var dialogDefinition = event.data.definition;
+			var dialogName = event.data.name;
+
+			var tabCount = dialogDefinition.contents.length;
+			for (var i = 0; i < tabCount; i++) {
+				var browseButton = dialogDefinition.contents[i].get('browse');
+
+				if (browseButton !== null) {
+					browseButton.hidden = false;
+					browseButton.onClick = function() {
+						$('#modal-image').remove();
+						$.ajax({
+							url: 'index.php?route=common/filemanager&token=<?php echo $token; ?>&ckedialog='+this.filebrowser.target,
+							dataType: 'html',
+							success: function(html) {
+								$('body').append('<div id="modal-image" style="z-index: 10020;" class="modal">' + html + '</div>');
+								$('#modal-image').modal('show');
+							}
+						});
+					}
+				}
+			}
+		});
+
+		<?php endforeach;?>
+
+
+	</script>
+
 <script type='text/javascript'>
   function locdau() {
   var str = (document.getElementById("input-name2").value);// lấy chuỗi dữ liệu nhập vào từ form có tên title
@@ -1078,7 +1157,36 @@ $('input[name=\'related\']').autocomplete({
 	}
 });
 
-$('#product-related').delegate('.fa-minus-circle', 'click', function() {
+	$('#product-related').delegate('.fa-minus-circle', 'click', function() {
+		$(this).parent().remove();
+	});
+
+	// Accessories
+	$('input[name=\'access\']').autocomplete({
+		'source': function(request, response) {
+			$.ajax({
+				url: 'index.php?route=catalog/product/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+				dataType: 'json',
+				success: function(json) {
+					response($.map(json, function(item) {
+						return {
+							label: item['name'],
+							value: item['product_id']
+						}
+					}));
+				}
+			});
+		},
+		'select': function(item) {
+			$('input[name=\'access\']').val('');
+
+			$('#product-access' + item['value']).remove();
+
+			$('#product-access').append('<div id="product-access' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_access[]" value="' + item['value'] + '" /></div>');
+		}
+	});
+
+	$('#product-access').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
 });
 //--></script>

@@ -3,7 +3,8 @@
 $_['heading_title']          = 'Sản phẩm'; 
 
 // Text  
-$_['text_success']      = 'Thành công: Sản phẩm đã được thay đổi!';
+$_['text_success']      = 'Thành công:Sản phẩm đã được thay đổi!';
+$_['text_list_success']      = 'Thành công: %d Sản phẩm đã được thay đổi!';
 $_['text_list']              = 'Danh sách sản phẩm';
 $_['text_add']               = 'Thêm sản phẩm';
 $_['text_edit']              = 'Chỉnh sửa sản phẩm';
@@ -46,7 +47,8 @@ $_['entry_date_available']   = 'Ngày cập nhật:';
 $_['entry_quantity']         = 'Số lượng:';
 $_['entry_minimum']          = 'Số lượng tối thiểu: ';
 $_['entry_stock_status']     = 'Hết hàng: ';
-$_['entry_price']            = 'Giá:';
+$_['entry_price']            = 'Giá thị trường:';
+$_['entry_cost']            = 'Giá nhập hàng:';
 $_['entry_tax_class']        = 'Loại Thuế:';
 $_['entry_points']           = 'Điểm: ';
 $_['entry_option_points']    = 'Điểm:';
@@ -76,6 +78,8 @@ $_['entry_category']         = 'Danh mục sản phẩm:';
 $_['entry_filter']           = 'Bộ lọc: ';
 $_['entry_download']         = 'Tải về:';
 $_['entry_related']          = 'Sản phẩm liên quan:';
+$_['entry_access']          = 'Phụ kiện sản phẩm:';
+$_['entry_access_group']          = 'Nhóm phụ kiện:';
 $_['entry_tag']              = 'Tags:';
 $_['entry_reward']           = 'Điểm thưởng:';
 $_['entry_layout']           = 'Bố cục:';
@@ -106,3 +110,4 @@ $_['error_name']             = 'Tên sản phẩm phải lớn hơn 3 và nhỏ 
 $_['error_meta_title']       = 'Meta Title phải lớn hơn 3 và nhỏ hơn 255 ký tự!';
 $_['error_model']            = 'Mã sản phẩm sản phẩm phải lớn hơn 3 và nhỏ hơn 64 ký tự!';
 $_['error_keyword']          = 'Liên kết này đã được dùng!';
+$_['error_file']  = 'Định dạng file không đúng';

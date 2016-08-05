@@ -191,12 +191,19 @@ class ControllerCatalogCategory extends Controller {
 		$results = $this->model_catalog_category->getCategories($filter_data);
 
 		foreach ($results as $result) {
-			$data['categories'][] = array(
+			if($result['parent_id'] == 0){
+				$link_product = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&cat=' . $result['category_id'] . $url, true);
+			}else{
+				$link_product = $this->url->link('catalog/product', 'token=' . $this->session->data['token'] . '&cat=' . $result['parent_id']. '&child=' . $result['category_id'] . $url, true);
+			}
+
+				$data['categories'][] = array(
 				'category_id' => $result['category_id'],
 				'name'        => $result['name'],
 				'sort_order'  => $result['sort_order'],
 				'edit'        => $this->url->link('catalog/category/edit', 'token=' . $this->session->data['token'] . '&category_id=' . $result['category_id'] . $url, true),
-				'delete'      => $this->url->link('catalog/category/delete', 'token=' . $this->session->data['token'] . '&category_id=' . $result['category_id'] . $url, true)
+				'delete'      => $this->url->link('catalog/category/delete', 'token=' . $this->session->data['token'] . '&category_id=' . $result['category_id'] . $url, true),
+				'link_product'  => $link_product,
 			);
 		}
 

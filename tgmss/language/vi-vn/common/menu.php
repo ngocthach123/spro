@@ -5,6 +5,7 @@ $_['text_affiliate']                   = 'Liên kết thành viên';
 $_['text_api']                         = 'Mã API';
 $_['text_attribute']                   = 'Thuộc tính';
 $_['text_attribute_group']             = 'Nhóm thuộc tính';
+$_['text_access_group']             = 'Nhóm phụ kiện';
 $_['text_backup']                      = 'Sao lưu / Phục hồi';
 $_['text_export_import']               = 'Xuất / Nhập file';
 $_['text_banner']                      = 'Banners';

@@ -20,6 +20,7 @@ define('DIR_LOGS', 'E:\Work2\spro/system/storage/logs/');
 define('DIR_MODIFICATION', 'E:\Work2\spro/system/storage/modification/');
 define('DIR_UPLOAD', 'E:\Work2\spro/system/storage/upload/');
 define('DIR_CATALOG', 'E:\Work2\spro/catalog/');
+define('DIR_EXCEL', 'E:\Work2\spro/tgmss/excel/');
 
 // DB
 define('DB_DRIVER', 'mysqli');
@@ -29,3 +30,22 @@ define('DB_PASSWORD', '');
 define('DB_DATABASE', 'spro');
 define('DB_PORT', '3306');
 define('DB_PREFIX', 'tgm_');
+
+define('positions', serialize(array(
+    'tab_1' => array(
+        'label' => 'Tab 1',
+        'template' => false //you can use the same template file for several positions if you want
+    ),
+    'tab_2' => array(
+        'label' => 'Tab 2',
+        'template' => false //you can use the same template file for several positions if you want
+    ),
+    'tab_3' => array(
+        'label' => 'Tab 3',
+        'template' => false //you can use the same template file for several positions if you want
+    ),
+    'footer_top' => array(
+        'label' => 'Footer top',
+        'template' => false //you can use the same template file for several positions if you want
+    )
+)));

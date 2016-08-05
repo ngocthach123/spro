@@ -172,15 +172,11 @@
           <li><a class="parent"><?php echo $text_tax; ?></a>
             <ul class="collapse">
               <li><a href="<?php echo $tax_class; ?>"><?php echo $text_tax_class; ?></a></li>
-			  <!--
               <li><a href="<?php echo $tax_rate; ?>"><?php echo $text_tax_rate; ?></a></li>
-			  -->
             </ul>
           </li>
-		  <!--
           <li><a href="<?php echo $length_class; ?>"><?php echo $text_length_class; ?></a></li>
           <li><a href="<?php echo $weight_class; ?>"><?php echo $text_weight_class; ?></a></li>
-		  -->
         </ul>
       </li>
       <li><a class="parent"><?php echo $text_tools; ?></a>

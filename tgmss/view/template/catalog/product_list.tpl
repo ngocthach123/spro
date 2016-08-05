@@ -30,6 +30,20 @@
         <h3 class="panel-title"><i class="fa fa-list"></i> <?php echo $text_list; ?></h3>
       </div>
       <div class="panel-body">
+          <div class="row">
+              <div class="well">
+                  <form action="<?php echo $list_action;?>" method="post" id="form-excel" enctype="multipart/form-data">
+                  <div class="form-group">
+                      <div class="btn btn-primary fileUpload">
+                          <span>Nhập số lượng tồn</span>
+                          <input type="file" name="file_ton_kho" class="upload"/>
+                      </div>
+                  </div>
+                      <button class="btn btn-default pull-right" style="margin-right: 45px" type="submit">Lưu</button>
+                      <div style="clear: both"></div>
+                  </form>
+              </div>
+          </div>
       	<div class="row">
 	        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 	        	<div class="input-group">
@@ -94,7 +108,23 @@
                   <?php if ($category['children']): ?>
                   <ul class="ul-lv2" style="<?php if ($category['category_id'] == $category_id) echo 'display: block'?>">
                       <?php foreach ($category['children'] as $child):?>
-                      <li><a href="<?php echo $child['href']; ?>" class="<?php if ($child['category_id'] == $child_id) echo 'child-active'?>"><?php echo $child['name']; ?></a></li>
+                      <li class=" <?php if ($child['children']) echo 'li-parent' ?>">
+                          <a href="<?php echo $child['href']; ?>" class="<?php if ($child['category_id'] == $child_id_class) echo 'child-active'?> ">
+                              <?php if ($child['children']): ?> <span class="nav-plus"><i class="fa fa-plus" aria-hidden="true"></i></span> <?php endif?>
+                              <?php echo $child['name']; ?>
+                          </a>
+
+                          <?php if ($child['children']): ?>
+                          <ul class="ul-lv2"  style="<?php if ($child['category_id'] == $child_id_class) echo 'display: block'?>">
+                              <?php foreach ($child['children'] as $child_2):?>
+                              <li>
+                                  <a href="<?php echo $child_2['href']; ?>" class="<?php if ($child_2['category_id'] == $child_id) echo 'child-active'?>"><?php echo $child_2['name']; ?></a>
+                              </li>
+                              <?php endforeach;?>
+                          </ul>
+                          <?php endif;?>
+
+                      </li>
                       <?php endforeach;?>
                   </ul>
                   <?php endif;?>

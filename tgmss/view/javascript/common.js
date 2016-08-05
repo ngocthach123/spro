@@ -47,6 +47,10 @@ $(document).ready(function() {
 	} else {
 		// Sets active and open to selected page in the left column menu.
 		$('#menu a[href=\'' + sessionStorage.getItem('menu') + '\']').parents('li').addClass('active open');
+
+		// Slide Down Menu
+		$('#menu li.active').has('ul').children('ul').addClass('collapse in');
+		$('#menu li').not('.active').has('ul').children('ul').addClass('collapse');
 	}
 
 	if (localStorage.getItem('column-left') == 'active') {

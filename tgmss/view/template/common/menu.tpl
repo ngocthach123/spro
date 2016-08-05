@@ -7,6 +7,7 @@
       <li><a href="<?php echo $category; ?>"><?php echo $text_category; ?></a></li>
       <li><a href="<?php echo $product; ?>"><?php echo $text_product; ?></a></li>
       <li><a href="<?php echo $option; ?>"><?php echo $text_option; ?></a></li>
+      <li><a href="<?php echo $access_group; ?>"><?php echo $text_access_group; ?></a></li>
       <li><a href="<?php echo $manufacturer; ?>"><?php echo $text_manufacturer; ?></a></li>
       <li><a class="parent"><span><?php echo $text_review; ?></span></a>
         <ul>
@@ -20,6 +21,8 @@
   </li>
   <li id="extension"><a class="parent"><i class="fa fa-puzzle-piece fa-fw"></i> <span><?php echo $text_extension; ?></span></a>
     <ul class="collapse">
+      <li><a href="<?php echo $installer; ?>"><?php echo $text_installer; ?></a></li>
+      <li><a href="<?php echo $modification; ?>"><?php echo $text_modification; ?></a></li>
       <li><a href="<?php echo $module; ?>"><?php echo $text_module; ?></a></li>
       <li><a href="<?php echo $theme; ?>"><?php echo $text_theme; ?></a></li>
       <li><a href="<?php echo $payment; ?>"><?php echo $text_payment; ?></a></li>
@@ -119,6 +122,7 @@
           <li><a class="parent"><?php echo $text_tax; ?></a>
             <ul class="collapse">
               <li><a href="<?php echo $tax_class; ?>"><?php echo $text_tax_class; ?></a></li>
+              <li><a href="<?php echo $tax_rate; ?>"><?php echo $text_tax_rate; ?></a></li>
             </ul>
           </li>
         </ul>
@@ -152,3 +156,36 @@
     </ul>
   </li>
 </ul>
+
+<script>
+//  $('a').click(function(e){
+//    if($(this).attr("href") && !$(this).attr("target")) {
+//      e.preventDefault();
+//      var url = $(this).attr('href');
+
+//      $(this).parent().addClass('active');
+//      $(this).parent().sibling().removeClass('active');
+
+//      $.ajax({
+//        url : url,
+//        type : "post", // chọn phương thức gửi là post
+//        dateType:"text", // dữ liệu trả về dạng text
+//        data : { // Danh sách các thuộc tính sẽ gửi đi
+//          ajax : 1
+//        },
+//        success : function (result){
+//          $('#content').html(result);
+//          $('#column-left').html($('#content').find("#column-left").html());
+//          $('#content').html($('#content').find("#content").html());
+//        }
+//      });
+//url = 'spro.gg';
+      //to change the browser URL to the given link location
+     // if(url!=window.location){
+     //   window.history.pushState({path:url},'',url);
+     //}
+//stop refreshing to the page given in
+//      return false;
+//    }
+//  });
+</script>

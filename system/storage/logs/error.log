@@ -1,0 +1,180 @@
+2016-07-27 5:05:32 - PHP Notice:  Undefined index: product_id in E:\Work2\spro\tgmss\controller\common\filemanager.php on line 308
+2016-07-27 5:12:03 - PHP Notice:  Undefined index: id in E:\Work2\spro\tgmss\controller\common\filemanager.php on line 309
+2016-07-27 5:15:57 - PHP Notice:  Undefined index: id in E:\Work2\spro\tgmss\controller\common\filemanager.php on line 309
+2016-07-27 5:16:20 - PHP Notice:  Undefined index: id in E:\Work2\spro\tgmss\controller\common\filemanager.php on line 309
+2016-07-30 3:24:40 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 100
+2016-07-30 3:24:40 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 100
+2016-07-30 3:24:40 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 100
+2016-07-30 3:26:01 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 100
+2016-07-30 3:26:01 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 100
+2016-07-30 3:26:01 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 100
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 104
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 104
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 104
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:28:25 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 104
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 104
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 104
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-07-30 3:29:19 - PHP Notice:  Undefined variable: child_id_class in E:\Work2\spro\tgmss\view\template\catalog\product_list.tpl on line 98
+2016-08-03 7:12:25 - PHP Notice:  Undefined variable: order in E:\Work2\spro\tgmss\controller\catalog\access_group.php on line 232
+2016-08-03 10:19:23 - PHP Notice:  Undefined variable: language in E:\Work2\spro\tgmss\view\template\catalog\access_form.tpl on line 31
+2016-08-03 10:19:23 - PHP Notice:  Undefined variable: language in E:\Work2\spro\tgmss\view\template\catalog\access_form.tpl on line 31
+2016-08-03 10:19:23 - PHP Notice:  Undefined variable: language in E:\Work2\spro\tgmss\view\template\catalog\access_form.tpl on line 31
+2016-08-03 10:19:23 - PHP Notice:  Undefined variable: language in E:\Work2\spro\tgmss\view\template\catalog\access_form.tpl on line 32
+2016-08-03 10:19:23 - PHP Notice:  Undefined variable: language in E:\Work2\spro\tgmss\view\template\catalog\access_form.tpl on line 32
+2016-08-03 10:19:23 - PHP Notice:  Array to string conversion in E:\Work2\spro\tgmss\view\template\catalog\access_form.tpl on line 35
+2016-08-03 10:37:01 - PHP Notice:  Array to string conversion in E:\Work2\spro\tgmss\view\template\catalog\access_form.tpl on line 35
+2016-08-03 10:39:46 - PHP Notice:  Undefined variable: token in E:\Work2\spro\tgmss\view\template\catalog\access_form.tpl on line 63
+2016-08-03 10:45:30 - PHP Notice:  Undefined index: attribute_group_id in E:\Work2\spro\tgmss\controller\catalog\attribute.php on line 377
+2016-08-03 10:45:30 - PHP Notice:  Undefined index: attribute_description in E:\Work2\spro\tgmss\controller\catalog\attribute.php on line 381
+2016-08-03 10:45:30 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\tgmss\controller\catalog\attribute.php on line 381
+2016-08-03 10:48:11 - PHP Notice:  Undefined index: attribute_group_id in E:\Work2\spro\tgmss\controller\catalog\attribute.php on line 377
+2016-08-03 10:48:11 - PHP Notice:  Undefined index: attribute_description in E:\Work2\spro\tgmss\controller\catalog\attribute.php on line 381
+2016-08-03 10:48:11 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\tgmss\controller\catalog\attribute.php on line 381
+2016-08-03 10:51:14 - PHP Notice:  Undefined index: name in E:\Work2\spro\tgmss\model\catalog\access_group.php on line 4
+2016-08-03 10:52:54 - PHP Notice:  Undefined index: product_access in E:\Work2\spro\tgmss\model\catalog\access_group.php on line 8
+2016-08-03 10:52:54 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\tgmss\model\catalog\access_group.php on line 8
+2016-08-03 10:53:43 - PHP Notice:  Undefined index: product_access in E:\Work2\spro\tgmss\model\catalog\access_group.php on line 8
+2016-08-03 10:53:43 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\tgmss\model\catalog\access_group.php on line 8
+2016-08-03 10:58:32 - PHP Notice:  Undefined index: group_name in E:\Work2\spro\tgmss\controller\catalog\access_group.php on line 327
+2016-08-03 10:58:49 - PHP Notice:  Undefined index: name in E:\Work2\spro\tgmss\controller\catalog\access_group.php on line 327
+2016-08-03 11:07:27 - PHP Notice:  Undefined index: product_access in E:\Work2\spro\tgmss\model\catalog\access_group.php on line 20
+2016-08-03 11:07:27 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\tgmss\model\catalog\access_group.php on line 20
+2016-08-03 11:36:07 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1418
+2016-08-03 12:05:00 - PHP Notice:  Undefined index: name in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 223
+2016-08-03 12:05:00 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 222
+2016-08-03 12:05:00 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:06:17 - PHP Notice:  Undefined index: name in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 223
+2016-08-03 12:06:17 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 222
+2016-08-03 12:06:17 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:07:01 - PHP Notice:  Undefined index: name in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 223
+2016-08-03 12:07:01 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 222
+2016-08-03 12:07:01 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:08:32 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 222
+2016-08-03 12:08:32 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:08:32 - PHP Notice:  Undefined index: name in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:09:16 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 222
+2016-08-03 12:09:16 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:09:16 - PHP Notice:  Undefined index: name in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:09:16 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 222
+2016-08-03 12:09:16 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:09:16 - PHP Notice:  Undefined index: name in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:09:53 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 222
+2016-08-03 12:09:53 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:09:53 - PHP Notice:  Undefined index: name in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:09:53 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 222
+2016-08-03 12:09:53 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:09:53 - PHP Notice:  Undefined index: name in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:10:06 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 222
+2016-08-03 12:10:06 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:10:06 - PHP Notice:  Undefined index: name in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:10:06 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 222
+2016-08-03 12:10:06 - PHP Notice:  Undefined index: group_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:10:06 - PHP Notice:  Undefined index: name in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:10:28 - PHP Warning:  Illegal string offset 'group_id' in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 222
+2016-08-03 12:10:28 - PHP Warning:  Illegal string offset 'group_id' in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 223
+2016-08-03 12:10:28 - PHP Warning:  Illegal string offset 'name' in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 223
+2016-08-03 12:10:28 - PHP Warning:  Illegal string offset 'group_id' in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 222
+2016-08-03 12:10:28 - PHP Warning:  Illegal string offset 'group_id' in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-03 12:10:28 - PHP Warning:  Illegal string offset 'name' in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 225
+2016-08-04 5:44:38 - PHP Notice:  Undefined variable: tax_rates in E:\Work2\spro\system\library\cart\tax.php on line 57
+2016-08-04 5:44:38 - PHP Notice:  Undefined variable: tax_rates in E:\Work2\spro\system\library\cart\tax.php on line 57
+2016-08-04 5:44:38 - PHP Notice:  Undefined variable: tax_rates in E:\Work2\spro\system\library\cart\tax.php on line 57
+2016-08-04 5:44:38 - PHP Notice:  Undefined variable: tax_rates in E:\Work2\spro\system\library\cart\tax.php on line 57
+2016-08-04 5:44:39 - PHP Notice:  Undefined variable: tax_rates in E:\Work2\spro\system\library\cart\tax.php on line 57
+2016-08-04 8:54:37 - PHP Notice:  Undefined variable: hotline in E:\Work2\spro\catalog\view\theme\default\template\common\header.tpl on line 51
+2016-08-04 8:54:38 - PHP Notice:  Undefined variable: hotline in E:\Work2\spro\catalog\view\theme\default\template\common\header.tpl on line 51
+2016-08-04 8:54:38 - PHP Notice:  Undefined variable: hotline in E:\Work2\spro\catalog\view\theme\default\template\common\header.tpl on line 51
+2016-08-04 8:54:38 - PHP Notice:  Undefined variable: hotline in E:\Work2\spro\catalog\view\theme\default\template\common\header.tpl on line 51
+2016-08-04 8:54:39 - PHP Notice:  Undefined variable: hotline in E:\Work2\spro\catalog\view\theme\default\template\common\header.tpl on line 51
+2016-08-04 8:54:39 - PHP Notice:  Undefined variable: hotline in E:\Work2\spro\catalog\view\theme\default\template\common\header.tpl on line 51
+2016-08-04 8:54:39 - PHP Notice:  Undefined variable: hotline in E:\Work2\spro\catalog\view\theme\default\template\common\header.tpl on line 51
+2016-08-04 10:08:41 - PHP Notice:  Undefined index: file_ton_kho in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1693
+2016-08-04 10:08:41 - PHP Notice:  Undefined index: supporter in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1706
+2016-08-04 10:09:16 - PHP Notice:  Undefined index: file_ton_kho in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1693
+2016-08-04 10:09:16 - PHP Notice:  Undefined index: supporter in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1706
+2016-08-04 10:09:27 - PHP Notice:  Undefined index: file_ton_kho in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1693
+2016-08-04 10:09:27 - PHP Notice:  Undefined index: supporter in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1706
+2016-08-04 10:10:21 - PHP Notice:  Undefined index: file_ton_kho in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1693
+2016-08-04 10:10:21 - PHP Notice:  Undefined index: supporter in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1706
+2016-08-04 10:10:50 - PHP Notice:  Undefined index: file_ton_kho in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1693
+2016-08-04 10:10:50 - PHP Notice:  Undefined index: supporter in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1706
+2016-08-04 10:11:43 - PHP Notice:  Undefined index: supporter in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1706
+2016-08-04 10:12:05 - PHP Notice:  Undefined index: supporter in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1707
+2016-08-04 10:12:06 - PHP Notice:  Undefined index: supporter in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1707
+2016-08-04 10:13:35 - PHP Notice:  Undefined index: supporter in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1707
+2016-08-04 10:13:36 - PHP Notice:  Undefined index: supporter in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1707
+2016-08-04 10:14:49 - PHP Notice:  Undefined index: file_ton_kho in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1693
+2016-08-04 10:14:49 - PHP Notice:  Undefined index: supporter in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1707
+2016-08-04 10:14:54 - PHP Notice:  Undefined index: supporter in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1707
+2016-08-04 10:17:44 - PHP Notice:  Undefined index: supporter in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1708
+2016-08-04 10:18:30 - PHP Notice:  Undefined index: supporter in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1714
+2016-08-04 10:19:31 - PHP Notice:  Undefined index: supporter in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1714
+2016-08-05 3:57:24 - PHP Notice:  Use of undefined constant positions - assumed 'positions' in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 187
+2016-08-05 3:57:24 - PHP Notice:  unserialize(): Error at offset 0 of 9 bytes in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 187
+2016-08-05 3:57:24 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 187
+2016-08-05 3:59:17 - PHP Notice:  Use of undefined constant positions - assumed 'positions' in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 122
+2016-08-05 3:59:17 - PHP Notice:  unserialize(): Error at offset 0 of 9 bytes in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 122
+2016-08-05 3:59:17 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 122
+2016-08-05 3:59:17 - PHP Notice:  Use of undefined constant positions - assumed 'positions' in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 122
+2016-08-05 3:59:17 - PHP Notice:  unserialize(): Error at offset 0 of 9 bytes in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 122
+2016-08-05 3:59:17 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 122
+2016-08-05 3:59:17 - PHP Notice:  Use of undefined constant positions - assumed 'positions' in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 122
+2016-08-05 3:59:17 - PHP Notice:  unserialize(): Error at offset 0 of 9 bytes in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 122
+2016-08-05 3:59:17 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 122
+2016-08-05 3:59:17 - PHP Notice:  Use of undefined constant positions - assumed 'positions' in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 187
+2016-08-05 3:59:17 - PHP Notice:  unserialize(): Error at offset 0 of 9 bytes in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 187
+2016-08-05 3:59:17 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 187
+2016-08-05 4:15:27 - PHP Notice:  Error: Could not load template E:\Work2\spro/catalog/view/theme/default/template/default/template/positions/positions.tpl! in E:\Work2\spro\system\storage\modification\system\library\template\basic.php on line 26

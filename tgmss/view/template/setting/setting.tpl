@@ -146,6 +146,24 @@
                 </div>
               </div>
               <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-hotline"><?php echo $entry_hotline; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="config_hotline" value="<?php echo $config_hotline; ?>" placeholder="<?php echo $config_hotline; ?>" id="input-hotline" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-facebook"><?php echo $entry_facebook; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="config_facebook" value="<?php echo $config_facebook; ?>" placeholder="<?php echo $config_facebook; ?>" id="input-facebook" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-google"><?php echo $entry_google; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="config_google" value="<?php echo $config_google; ?>" placeholder="<?php echo $entry_google; ?>" id="input-google" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-fax"><?php echo $entry_fax; ?></label>
                 <div class="col-sm-10">
                   <input type="text" name="config_fax" value="<?php echo $config_fax; ?>" placeholder="<?php echo $entry_fax; ?>" id="input-fax" class="form-control" />

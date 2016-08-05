@@ -58,6 +58,9 @@ class ControllerSettingSetting extends Controller {
 		$data['entry_geocode'] = $this->language->get('entry_geocode');
 		$data['entry_email'] = $this->language->get('entry_email');
 		$data['entry_telephone'] = $this->language->get('entry_telephone');
+		$data['entry_hotline'] = $this->language->get('entry_hotline');
+		$data['entry_facebook'] = $this->language->get('entry_facebook');
+		$data['entry_google'] = $this->language->get('entry_google');
 		$data['entry_fax'] = $this->language->get('entry_fax');
 		$data['entry_image'] = $this->language->get('entry_image');
 		$data['entry_open'] = $this->language->get('entry_open');
@@ -256,6 +259,24 @@ class ControllerSettingSetting extends Controller {
 			$data['error_telephone'] = $this->error['telephone'];
 		} else {
 			$data['error_telephone'] = '';
+		}
+
+		if (isset($this->error['hotline'])) {
+			$data['error_hotline'] = $this->error['hotline'];
+		} else {
+			$data['error_hotline'] = '';
+		}
+
+		if (isset($this->error['facebook'])) {
+			$data['error_facebook'] = $this->error['facebook'];
+		} else {
+			$data['error_facebook'] = '';
+		}
+
+		if (isset($this->error['google'])) {
+			$data['error_google'] = $this->error['google'];
+		} else {
+			$data['error_google'] = '';
 		}
 
 		if (isset($this->error['meta_title'])) {
@@ -474,6 +495,24 @@ class ControllerSettingSetting extends Controller {
 			$data['config_telephone'] = $this->request->post['config_telephone'];
 		} else {
 			$data['config_telephone'] = $this->config->get('config_telephone');
+		}
+
+		if (isset($this->request->post['config_hotline'])) {
+			$data['config_hotline'] = $this->request->post['config_hotline'];
+		} else {
+			$data['config_hotline'] = $this->config->get('config_hotline');
+		}
+
+		if (isset($this->request->post['config_facebook'])) {
+			$data['config_facebook'] = $this->request->post['config_facebook'];
+		} else {
+			$data['config_facebook'] = $this->config->get('config_facebook');
+		}
+
+		if (isset($this->request->post['config_google'])) {
+			$data['config_google'] = $this->request->post['config_google'];
+		} else {
+			$data['config_google'] = $this->config->get('config_google');
 		}
 
 		if (isset($this->request->post['config_fax'])) {

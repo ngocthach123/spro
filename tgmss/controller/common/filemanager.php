@@ -45,6 +45,8 @@ class ControllerCommonFileManager extends Controller {
 			$directories = array();
 		}
 
+		usort($directories, create_function('$a,$b', 'return filemtime($b) - filemtime($a);')); //sort by date
+
 		// Get files
 		$files = glob($directory . '/' . $filter_name . '*.{jpg,jpeg,png,gif,JPG,JPEG,PNG,GIF}', GLOB_BRACE);
 
@@ -74,6 +76,12 @@ class ControllerCommonFileManager extends Controller {
 				if (isset($this->request->get['thumb'])) {
 					$url .= '&thumb=' . $this->request->get['thumb'];
 				}
+
+				//ocm_CKeditorIsBack_start
+				if (isset($this->request->get['ckedialog'])) {
+					$url .= '&ckedialog=' . $this->request->get['ckedialog'];
+				}
+//ocm_CKeditorIsBack_end
 
 				if (isset($this->request->get['product_name'])) {
 					$url .= '&product_name=' . $this->request->get['product_name'];
@@ -151,6 +159,14 @@ class ControllerCommonFileManager extends Controller {
 			$data['thumb'] = '';
 		}
 
+		//ocm_CKeditorIsBack_start
+		if (isset($this->request->get['ckedialog'])) {
+			$data['ckedialog'] = $this->request->get['ckedialog'];
+		} else {
+			$data['ckedialog'] = '';
+		}
+//ocm_CKeditorIsBack_end
+
 		// Parent
 		$url = '';
 
@@ -169,6 +185,12 @@ class ControllerCommonFileManager extends Controller {
 		if (isset($this->request->get['thumb'])) {
 			$url .= '&thumb=' . $this->request->get['thumb'];
 		}
+
+		//ocm_CKeditorIsBack_start
+		if (isset($this->request->get['ckedialog'])) {
+			$url .= '&ckedialog=' . $this->request->get['ckedialog'];
+		}
+//ocm_CKeditorIsBack_end
 
 		if (isset($this->request->get['product_name'])) {
 			$url .= '&product_name=' . $this->request->get['product_name'];
@@ -194,6 +216,12 @@ class ControllerCommonFileManager extends Controller {
 		if (isset($this->request->get['thumb'])) {
 			$url .= '&thumb=' . $this->request->get['thumb'];
 		}
+
+		//ocm_CKeditorIsBack_start
+		if (isset($this->request->get['ckedialog'])) {
+			$url .= '&ckedialog=' . $this->request->get['ckedialog'];
+		}
+//ocm_CKeditorIsBack_end
 
 		if (isset($this->request->get['product_name'])) {
 			$url .= '&product_name=' . $this->request->get['product_name'];
@@ -222,6 +250,12 @@ class ControllerCommonFileManager extends Controller {
 		if (isset($this->request->get['thumb'])) {
 			$url .= '&thumb=' . $this->request->get['thumb'];
 		}
+
+		//ocm_CKeditorIsBack_start
+		if (isset($this->request->get['ckedialog'])) {
+			$url .= '&ckedialog=' . $this->request->get['ckedialog'];
+		}
+//ocm_CKeditorIsBack_end
 
 		if (isset($this->request->get['product_name'])) {
 			$url .= '&product_name=' . $this->request->get['product_name'];
@@ -337,23 +371,29 @@ class ControllerCommonFileManager extends Controller {
 
         if (!$json) {
             if ( !empty($file_ary) ) {
+
+				$flag = true;
                 foreach($file_ary as $cur_file) {
 
-					if(isset($this->request->get['product_name']) && $this->request->get['product_name'] !='0' && (!isset($this->request->get['id'] ) || $this->request->get['id'] == 0)) {
-						//auto create folder for product
-						$product_name = str_replace('-','_', $this->request->get['product_name']);
-						//check length
-						if(strlen($product_name) >128){
-							$product_name = substr($product_name,0,128);
-						}
+					if($flag) { //run one time
+						if (isset($this->request->get['product_name']) && $this->request->get['product_name'] != '0' && $this->request->get['product_name'] != 'undefined' && (!isset($this->request->get['id']) || $this->request->get['id'] == 0)) {
+							//auto create folder for product
+							$product_name = str_replace('-', '_', $this->request->get['product_name']);
+							//check length
+							if (strlen($product_name) > 128) {
+								$product_name = substr($product_name, 0, 128);
+							}
 
-						$folder = $product_name;
-						// Check if directory already exists or not
-						if (!is_dir($directory . '/' . $folder)) {
-							mkdir($directory . '/' . $folder, 0777);
-							chmod($directory . '/' . $folder, 0777);
+							$folder = $product_name;
+							// Check if directory already exists or not
+							if (!is_dir($directory . '/' . $folder)) {
+								mkdir($directory . '/' . $folder, 0777);
+								chmod($directory . '/' . $folder, 0777);
+							}
+							$directory .= '/' . $folder;
+
+							$flag =false;
 						}
-						$directory .= '/' . $folder;
 					}
 
                     $filename = basename(html_entity_decode($cur_file['name'], ENT_QUOTES, 'UTF-8'));

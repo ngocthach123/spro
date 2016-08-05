@@ -8,6 +8,7 @@ class ControllerCommonMenu extends Controller {
 		$data['text_api'] = $this->language->get('text_api');
 		$data['text_attribute'] = $this->language->get('text_attribute');
 		$data['text_attribute_group'] = $this->language->get('text_attribute_group');
+		$data['text_access_group'] = $this->language->get('text_access_group');
 		$data['text_backup'] = $this->language->get('text_backup');
 		$data['text_export_import'] = $this->language->get('text_export_import');
 		$data['text_banner'] = $this->language->get('text_banner');
@@ -115,6 +116,7 @@ class ControllerCommonMenu extends Controller {
 		$data['api'] = $this->url->link('user/api', 'token=' . $this->session->data['token'], true);
 		$data['attribute'] = $this->url->link('catalog/attribute', 'token=' . $this->session->data['token'], true);
 		$data['attribute_group'] = $this->url->link('catalog/attribute_group', 'token=' . $this->session->data['token'], true);
+		$data['access_group'] = $this->url->link('catalog/access_group', 'token=' . $this->session->data['token'], true);
 		$data['backup'] = $this->url->link('tool/backup', 'token=' . $this->session->data['token'], true);
 		$data['export_import'] = $this->url->link('tool/export_import', 'token=' . $this->session->data['token'], (version_compare(PHP_VERSION, '2.2.0.0') >= 0) ? true : 'SSL');
 		$data['banner'] = $this->url->link('design/banner', 'token=' . $this->session->data['token'], true);
