@@ -4,8 +4,8 @@
     <?php foreach ($products as $product): ?>
       <div class="item wrapbox-product">
       <div class="contentbox-product">
-        <div class="boxnew-product">
-          New
+        <div class="boxhot-product">
+          Hot
         </div>
         <div class="boximage-product">
           <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>"/></a>
@@ -16,15 +16,23 @@
         <div class="boxname-product">
           <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
         </div>
-        <div class="boxprice-product">
-          <div class="productprice">
-            <span class="productsell">2.100.000đ</span>
-            <span class="productsale">2.600.000đ</span>
+        <?php if ($product['price']): ?>
+          <div class="boxprice-product">
+            <?php if (!$product['special']): ?>
+              <div class="productprice">
+                <span class="productsell"><?php echo $product['price']; ?></span>
+              </div>
+            <?php else:?>
+              <div class="productprice">
+                <span class="productsell"><?php echo $product['special'];?></span>
+                <span class="productsale"><?php echo $product['price']; ?></span>
+              </div>
+              <div class="percentsale">
+                <span class="percentdiscount">-<?php echo $product['specialper']; ?>%</span>
+              </div>
+            <?php endif;?>
           </div>
-          <div class="percentsale">
-            <span class="percentdiscount">-20%</span>
-          </div>
-        </div>
+        <?php endif;?>
         <div class="boxreview-product">
           ( 19 nhận xét )
         </div>

@@ -84,6 +84,7 @@ class ControllerCatalogProduct extends Controller {
 		$this->load->model('catalog/product');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+
 			$this->model_catalog_product->editProduct($this->request->get['product_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -1453,7 +1454,7 @@ class ControllerCatalogProduct extends Controller {
 		}
 
 		if (isset($this->request->post['access_group_id'])) {
-			$data['access_group_id'] = $this->request->post['access_group'];
+			$data['access_group_id'] = $this->request->post['access_group_id'];
 		} elseif (!empty($product_info)) {
 			$data['access_group_id'] = $product_info['access_group'];
 		} else {
@@ -1535,6 +1536,7 @@ class ControllerCatalogProduct extends Controller {
 	}
 
 	protected function validateForm() {
+
 		if (!$this->user->hasPermission('modify', 'catalog/product')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}

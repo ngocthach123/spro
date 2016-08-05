@@ -130,6 +130,10 @@ class ControllerCommonHeader extends Controller {
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
 		$data['search'] = $this->load->controller('common/search');
+		$data['live_search_ajax_status'] = $this->config->get('live_search_ajax_status');
+		$data['live_search_show_image'] = $this->config->get('live_search_show_image');
+		$data['live_search_show_price'] = $this->config->get('live_search_show_price');
+		$data['live_search_show_description'] = $this->config->get('live_search_show_description');
 		$data['cart'] = $this->load->controller('common/cart');
 
 		// For page specific css

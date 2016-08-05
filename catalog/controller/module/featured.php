@@ -35,15 +35,23 @@ class ControllerModuleFeatured extends Controller {
 					}
 
 					if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
-						$price = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+						$price_cal = $this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax'));
+						$price = $this->currency->format($price_cal, $this->session->data['currency']);
 					} else {
 						$price = false;
 					}
 
 					if ((float)$product_info['special']) {
-						$special = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+						$special_cal = $this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax'));
+						$special = $this->currency->format($special_cal, $this->session->data['currency']);
+
+						if($price) {$specialper = (($price_cal - $special_cal)/$price_cal) * 100;
+							$specialper = ceil($specialper);
+						}
+
 					} else {
 						$special = false;
+						$specialper = false;
 					}
 
 					if ($this->config->get('config_tax')) {
@@ -65,6 +73,7 @@ class ControllerModuleFeatured extends Controller {
 						'description' => utf8_substr(strip_tags(html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
 						'price'       => $price,
 						'special'     => $special,
+						'specialper'     => $specialper,
 						'tax'         => $tax,
 						'rating'      => $rating,
 						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])

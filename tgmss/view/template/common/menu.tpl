@@ -119,6 +119,7 @@
       </li>
       <li><a class="parent"><?php echo $text_localisation; ?></a>
         <ul class="collapse">
+          <li><a href="<?php echo $currency; ?>"><?php echo $text_currency; ?></a></li>
           <li><a class="parent"><?php echo $text_tax; ?></a>
             <ul class="collapse">
               <li><a href="<?php echo $tax_class; ?>"><?php echo $text_tax_class; ?></a></li>

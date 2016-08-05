@@ -178,3 +178,13 @@
 2016-08-05 3:59:17 - PHP Notice:  unserialize(): Error at offset 0 of 9 bytes in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 187
 2016-08-05 3:59:17 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\system\storage\modification\admin\view\template\design\layout_form.tpl on line 187
 2016-08-05 4:15:27 - PHP Notice:  Error: Could not load template E:\Work2\spro/catalog/view/theme/default/template/default/template/positions/positions.tpl! in E:\Work2\spro\system\storage\modification\system\library\template\basic.php on line 26
+2016-08-05 5:05:56 - PHP Notice:  Undefined index: specialper in E:\Work2\spro\catalog\view\theme\default\template\module\featured.tpl on line 31
+2016-08-05 5:05:56 - PHP Notice:  Undefined index: specialper in E:\Work2\spro\catalog\view\theme\default\template\module\featured.tpl on line 31
+2016-08-05 5:17:05 - PHP Notice:  Undefined index: access_group in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1456
+2016-08-05 5:17:33 - PHP Notice:  Undefined index: access_group in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1456
+2016-08-05 5:21:02 - PHP Notice:  Undefined index: access_group in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1456
+2016-08-05 5:23:04 - PHP Notice:  Undefined index: access_group in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1456
+2016-08-05 5:23:51 - PHP Notice:  Undefined index: access_group in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1456
+2016-08-05 5:24:35 - PHP Notice:  Undefined index: access_group in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1457
+2016-08-05 5:25:52 - PHP Notice:  Undefined index: access_group in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1457
+2016-08-05 5:29:16 - PHP Notice:  Undefined index: access_group in E:\Work2\spro\tgmss\controller\catalog\product.php on line 1457

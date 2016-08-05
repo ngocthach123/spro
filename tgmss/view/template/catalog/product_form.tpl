@@ -33,7 +33,7 @@
             <li><a href="#tab-option" data-toggle="tab">Thuộc tính sản phẩm</a></li>
             <li class="hidden"><a href="#tab-recurring" data-toggle="tab"><?php echo $tab_recurring; ?></a></li>
             <li class="hidden"><a href="#tab-discount" data-toggle="tab"><?php echo $tab_discount; ?></a></li>
-            <li class="hidden"><a href="#tab-special" data-toggle="tab"><?php echo $tab_special; ?></a></li>
+            <li class=""><a href="#tab-special" data-toggle="tab"><?php echo $tab_special; ?></a></li>
             <li class="hidden"><a href="#tab-reward" data-toggle="tab"><?php echo $tab_reward; ?></a></li>
             <li class="hidden"><a href="#tab-design" data-toggle="tab"><?php echo $tab_design; ?></a></li>
           </ul>
@@ -832,7 +832,7 @@
                 </table>
               </div>
             </div>
-            <div class="tab-pane hidden" id="tab-special">
+            <div class="tab-pane" id="tab-special">
               <div class="table-responsive">
                 <table id="special" class="table table-striped table-bordered table-hover">
                   <thead>
