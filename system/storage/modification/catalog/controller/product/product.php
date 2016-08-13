@@ -158,6 +158,12 @@ class ControllerProductProduct extends Controller {
 
 		$product_info = $this->model_catalog_product->getProduct($product_id);
 
+		if($product_info['virtual'] && $product_info['virtual_id']){
+			$this->request->get['product_id'] = $product_info['virtual_id'];
+
+			$product_info = $this->model_catalog_product->getProduct($product_info['virtual_id']);
+		}
+
 		if ($product_info) {
 			$url = '';
 
@@ -305,20 +311,20 @@ class ControllerProductProduct extends Controller {
 			}
 
 			if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
-				$data['price'] = $this->currency->format((float)$product_info['special'] ? $product_info['special'] : $product_info['price'], $this->session->data['currency']);
+				$data['price'] = $this->currency->format($product_info['price'], $this->session->data['currency']);
 
 			} else {
 				$data['price'] = false;
 			}
 
 			if ((float)$product_info['special']) {
-				$data['special'] = $this->currency->format($this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+				$data['special'] = $this->currency->format($product_info['special'], $this->session->data['currency']);
 			} else {
 				$data['special'] = false;
 			}
 
 			if ($this->config->get('config_tax')) {
-				$data['tax'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+				$data['tax'] = $this->currency->format($this->tax->calculate($product_info['special'] ? $product_info['special'] : $product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 			} else {
 				$data['tax'] = false;
 			}
@@ -332,6 +338,46 @@ class ControllerProductProduct extends Controller {
 					'quantity' => $discount['quantity'],
 					'price'    => $this->currency->format($this->tax->calculate($discount['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency'])
 				);
+			}
+
+			$data['accessories'] = array(); //phu kien
+
+			$products_access = $this->model_catalog_product->getProductAccess($this->request->get['product_id']);
+
+			foreach ($products_access as $product_id) {
+				$access_info = $this->model_catalog_product->getProduct($product_id);
+//				var_dump($access_info); exit();
+				if ($access_info) {
+					$data['accessories'][] = array(
+						'product_id' => $access_info['product_id'],
+						'name'       => $access_info['name'],
+						'price'       => $this->currency->format($this->tax->calculate($access_info['special'] ? $access_info['special'] : $access_info['price'], $access_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']),
+						'price_origin' =>  $this->tax->calculate($access_info['price'], $access_info['tax_class_id'], $this->config->get('config_tax')),
+						'special' => $this->currency->format($access_info['special'], $this->session->data['currency']),
+						'special_origin' => $this->currency->format($access_info['special'], $this->session->data['currency']),
+						'image'       =>$this->model_tool_image->resize($access_info['image'], 50, 50),
+					);
+				}
+			}
+// nhom phu kien
+			if($product_info['access_group']){
+				$products_access_group = $this->model_catalog_product->getProductAccessByGroup($product_info['access_group']);
+
+				foreach ($products_access_group as $product_id) {
+					$access_info = $this->model_catalog_product->getProduct($product_id);
+
+					if ($access_info) {
+						$data['accessories'][] = array(
+							'product_id' => $access_info['product_id'],
+							'name'       => $access_info['name'],
+							'price'       => $this->currency->format($this->tax->calculate($access_info['special'] ? $access_info['special'] : $access_info['price'], $access_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']),
+							'price_origin' =>  $this->tax->calculate($access_info['price'], $access_info['tax_class_id'], $this->config->get('config_tax')),
+							'special' => $this->currency->format($access_info['special'], $this->session->data['currency']),
+							'special_origin' => $this->currency->format($access_info['special'], $this->session->data['currency']),
+							'image'       =>$this->model_tool_image->resize($access_info['image'], 50, 50),
+						);
+					}
+				}
 			}
 
 			$data['options'] = array();

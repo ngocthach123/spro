@@ -941,3 +941,36 @@ table.tableproduct-home thead tr td {
 	opacity: 0;
 	filter: alpha(opacity=0);
 }
+
+.small-input{
+	max-width: 30px;
+}
+
+#form-shipping-cost span.pull-right{
+	margin-right: 10px;
+	margin-left: 3px;
+	min-height: 23px;
+	line-height: 23px;
+}
+
+#form-shipping-cost select{
+	min-height: 25px;
+	min-width: 139px;
+}
+
+#form-shipping-cost .form-group>span:first-child{
+	width: 34%;
+	display: inline-block;
+}
+
+#table-cost thead td{
+	border-top: none;
+}
+
+#table-cost{
+	border: 1px solid #cccccc;
+}
+
+#form-product .btn-default{
+	margin-top: 0px;
+}

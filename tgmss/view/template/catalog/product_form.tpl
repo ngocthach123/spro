@@ -345,6 +345,25 @@
 					</div>
 				  </div>
 				  <div class="form-group">
+					  <label class="col-sm-2 control-label"><?php echo $entry_virtual; ?></label>
+					  <div class="col-sm-1">
+						  <label class="radio-inline">
+							  <?php if ($virtual) { ?>
+							  <input type="checkbox" name="virtual" value="1" checked="checked" />
+							  <?php } else { ?>
+							  <input type="checkbox" name="virtual" value="1" />
+							  <?php } ?>
+						  </label>
+					  </div>
+					  <span id="virtualproduct" style="display: none">
+						  <label class="col-sm-2 control-label"><?php echo $entry_virtual_product; ?></label>
+						  <div class="col-sm-5">
+							  <input type="text" name="virtual_name" value="<?php echo $virtual_name;?>" placeholder="<?php echo $entry_virtual_product; ?>" id="input-virtual" class="form-control" />
+							  <input type="hidden" id="virtual_id" name="virtual_id" value="<?php echo $virtual_id;?>">
+						  </div>
+					  </span>
+				  </div>
+				  <div class="form-group">
 					<label class="col-sm-2 control-label" for="input-date-available"><?php echo $entry_date_available; ?></label>
 					<div class="col-sm-3">
 					  <div class="input-group date">
@@ -1188,7 +1207,44 @@ $('input[name=\'related\']').autocomplete({
 
 	$('#product-access').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
-});
+	});
+
+	// Virtual
+	if($("input[name='virtual']").prop('checked')){
+		$("#virtualproduct").show();
+	}
+
+	if($("input[name='virtual']").click(function(){
+		if($(this).prop('checked')){
+			$("#virtualproduct").show();
+		}else{
+			$("#virtualproduct").hide();
+		}
+	}));
+
+	$('input[name=\'virtual_name\']').autocomplete({
+		'source': function(request, response) {
+			$.ajax({
+				url: 'index.php?route=catalog/product/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+				dataType: 'json',
+				success: function(json) {
+					response($.map(json, function(item) {
+						return {
+							label: item['name'],
+							value: item['product_id']
+						}
+					}));
+				}
+			});
+		},
+		'select': function(item) {
+			$('input[name=\'virtual_id\']').val(item['value']);
+
+			$('input[name=\'virtual_name\']').val(item['label']);
+
+		}
+	});
+
 //--></script>
   <script type="text/javascript"><!--
 var attribute_row = <?php echo $attribute_row; ?>;

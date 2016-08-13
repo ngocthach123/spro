@@ -396,6 +396,7 @@ class ControllerSaleOrder extends Controller {
 		$data['column_price'] = $this->language->get('column_price');
 		$data['column_total'] = $this->language->get('column_total');
 		$data['column_action'] = $this->language->get('column_action');
+		$data['column_access'] = $this->language->get('column_access');
 
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
@@ -520,6 +521,8 @@ class ControllerSaleOrder extends Controller {
 			$data['shipping_method'] = $order_info['shipping_method'];
 			$data['shipping_code'] = $order_info['shipping_code'];
 
+			$data['accessories'] = array(); //phu kien
+
 			// Products
 			$data['order_products'] = array();
 
@@ -531,6 +534,7 @@ class ControllerSaleOrder extends Controller {
 					'name'       => $product['name'],
 					'model'      => $product['model'],
 					'option'     => $this->model_sale_order->getOrderOptions($this->request->get['order_id'], $product['order_product_id']),
+					'accessories'     => $this->model_sale_order->getOrderAccessories($this->request->get['order_id'], $product['order_product_id']),
 					'quantity'   => $product['quantity'],
 					'price'      => $product['price'],
 					'total'      => $product['total'],
@@ -764,6 +768,7 @@ class ControllerSaleOrder extends Controller {
 			$data['column_quantity'] = $this->language->get('column_quantity');
 			$data['column_price'] = $this->language->get('column_price');
 			$data['column_total'] = $this->language->get('column_total');
+			$data['column_access'] = $this->language->get('column_access');
 
 			$data['entry_order_status'] = $this->language->get('entry_order_status');
 			$data['entry_notify'] = $this->language->get('entry_notify');
@@ -985,12 +990,31 @@ class ControllerSaleOrder extends Controller {
 					}
 				}
 
+				//Phu kien
+				$products_access = $this->model_sale_order->getOrderAccessories($this->request->get['order_id'], $product['order_product_id']);
+
+				$access_total =0;
+				$accessories = array();
+				foreach ($products_access as $pro_access) {
+					$accessories[] = array(
+						'access_id' => $pro_access['product_access_id'],
+						'name'       => $pro_access['name'],
+						'price'       => $pro_access['price'],
+					);
+
+					$access_total+=$pro_access['price_origin'];
+				}
+
+				$product['total']+=$access_total* $product['quantity'];
+
 				$data['products'][] = array(
 					'order_product_id' => $product['order_product_id'],
 					'product_id'       => $product['product_id'],
 					'name'    	 	   => $product['name'],
 					'model'    		   => $product['model'],
 					'option'   		   => $option_data,
+					'accessories'	=> $accessories,
+					'access_total' => $access_total,
 					'quantity'		   => $product['quantity'],
 					'price'    		   => $this->currency->format($product['price'] + ($this->config->get('config_tax') ? $product['tax'] : 0), $order_info['currency_code'], $order_info['currency_value']),
 					'total'    		   => $this->currency->format($product['total'] + ($this->config->get('config_tax') ? ($product['tax'] * $product['quantity']) : 0), $order_info['currency_code'], $order_info['currency_value']),

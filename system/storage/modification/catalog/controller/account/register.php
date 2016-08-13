@@ -102,11 +102,11 @@ class ControllerAccountRegister extends Controller {
 			$data['error_firstname'] = '';
 		}
 
-		if (isset($this->error['lastname'])) {
-			$data['error_lastname'] = $this->error['lastname'];
-		} else {
-			$data['error_lastname'] = '';
-		}
+//		if (isset($this->error['lastname'])) {
+//			$data['error_lastname'] = $this->error['lastname'];
+//		} else {
+//			$data['error_lastname'] = '';
+//		}
 
 		if (isset($this->error['email'])) {
 			$data['error_email'] = $this->error['email'];
@@ -124,12 +124,6 @@ class ControllerAccountRegister extends Controller {
 			$data['error_address_1'] = $this->error['address_1'];
 		} else {
 			$data['error_address_1'] = '';
-		}
-
-		if (isset($this->error['city'])) {
-			$data['error_city'] = $this->error['city'];
-		} else {
-			$data['error_city'] = '';
 		}
 
 		if (isset($this->error['postcode'])) {
@@ -356,10 +350,6 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 			$this->error['firstname'] = $this->language->get('error_firstname');
 		}
 
-		if ((utf8_strlen(trim($this->request->post['lastname'])) < 1) || (utf8_strlen(trim($this->request->post['lastname'])) > 32)) {
-			$this->error['lastname'] = $this->language->get('error_lastname');
-		}
-
 		if ((utf8_strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
 			$this->error['email'] = $this->language->get('error_email');
 		}
@@ -374,10 +364,6 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 
 		if ((utf8_strlen(trim($this->request->post['address_1'])) < 3) || (utf8_strlen(trim($this->request->post['address_1'])) > 128)) {
 			$this->error['address_1'] = $this->language->get('error_address_1');
-		}
-
-		if ((utf8_strlen(trim($this->request->post['city'])) < 2) || (utf8_strlen(trim($this->request->post['city'])) > 128)) {
-			$this->error['city'] = $this->language->get('error_city');
 		}
 
 		$this->load->model('localisation/country');

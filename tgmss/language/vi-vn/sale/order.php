@@ -70,6 +70,7 @@ $_['column_product']        = 'Sản phẩm';
 $_['column_model']          = 'Model';
 $_['column_quantity']       = 'Số lượng';
 $_['column_price']          = 'Đơn giá';
+$_['column_access'] =        'Phụ kiện';
 $_['column_comment']        = 'Chú thích';
 $_['column_notify']         = 'Thông báo khách hàng';
 $_['column_location']                         = 'Vị trí';

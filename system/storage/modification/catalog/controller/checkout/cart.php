@@ -151,12 +151,33 @@ class ControllerCheckoutCart extends Controller {
 					}
 				}
 
+				$products_access = array(); //phu kien
+
+				foreach ($product['accessories'] as $access_info) {
+
+					$products_access[] = array(
+						'product_id' => $access_info['product_id'],
+						'name'       => $access_info['name'],
+						'price'       => $this->currency->format($access_info['price'], $this->session->data['currency']),
+						'image'       =>$this->model_tool_image->resize($access_info['image'], 50, 50),
+					);
+
+					//plus price and total
+					if($price){
+						$price += $access_info['price'];
+					}
+					if($total){
+						$total += $access_info['price'] * $product['quantity'];
+					}
+				}
+
 				$data['products'][] = array(
 					'cart_id'   => $product['cart_id'],
 					'thumb'     => $image,
 					'name'      => $product['name'],
 					'model'     => $product['model'],
 					'option'    => $option_data,
+					'accessories' => $products_access,
 					'recurring' => $recurring,
 					'quantity'  => $product['quantity'],
 					'stock'     => $product['stock'] ? true : !(!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning')),
@@ -210,7 +231,7 @@ class ControllerCheckoutCart extends Controller {
 				foreach ($results as $result) {
 					if ($this->config->get($result['code'] . '_status')) {
 						$this->load->model('total/' . $result['code']);
-						
+
 						// We have to put the totals in an array so that they pass by reference.
 						$this->{'model_total_' . $result['code']}->getTotal($total_data);
 					}
@@ -314,6 +335,14 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 				$option = array();
 			}
 
+			if (isset($this->request->post['access'])) {
+				$accessories = array_filter($this->request->post['access']);
+			} else {
+				$accessories = array();
+			}
+
+			$product_options = $this->model_catalog_product->getProductOptions($this->request->post['product_id']);
+
 			$product_options = $this->model_catalog_product->getProductOptions($this->request->post['product_id']);
 
 			foreach ($product_options as $product_option) {
@@ -343,7 +372,7 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 			}
 
 			if (!$json) {
-				$this->cart->add($this->request->post['product_id'], $quantity, $option, $recurring_id);
+				$this->cart->add($this->request->post['product_id'], $quantity, $option, $recurring_id, $accessories);
 
 				$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('checkout/cart'));
 
@@ -398,6 +427,7 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 				}
 
 				$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+				$json['total_origin'] = $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0);
 			} else {
 				$json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
 			}

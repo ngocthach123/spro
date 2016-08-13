@@ -244,6 +244,7 @@
                       <td class="text-left"><?php echo $column_product; ?></td>
                       <td class="text-left"><?php echo $column_model; ?></td>
                       <td class="text-right"><?php echo $column_quantity; ?></td>
+                      <td class="text-right"><?php echo $column_access; ?></td>
                       <td class="text-right"><?php echo $column_price; ?></td>
                       <td class="text-right"><?php echo $column_total; ?></td>
                       <td><?php echo $column_action; ?></td>
@@ -256,6 +257,13 @@
                     <tr>
                       <td class="text-left"><?php echo $order_product['name']; ?><br />
                         <input type="hidden" name="product[<?php echo $product_row; ?>][product_id]" value="<?php echo $order_product['product_id']; ?>" />
+
+                        <?php foreach ($order_product['accessories'] as $access) { ?>
+                        <br />
+                        &nbsp;<small> <?php echo $access['name']; ?>: <?php echo $access['price']; ?></small>
+                          <input type="hidden" name="product[<?php echo $product_row; ?>][accessories][<?php echo $access['product_access_id']; ?>]" value="<?php echo $access['product_access_id']; ?>">
+                        <?php } ?>
+
                         <?php foreach ($order_product['option'] as $option) { ?>
                         - <small><?php echo $option['name']; ?>: <?php echo $option['value']; ?></small><br />
                         <?php if ($option['type'] == 'select' || $option['type'] == 'radio' || $option['type'] == 'image') { ?>
@@ -829,6 +837,7 @@
                       <td class="text-left"><?php echo $column_product; ?></td>
                       <td class="text-left"><?php echo $column_model; ?></td>
                       <td class="text-right"><?php echo $column_quantity; ?></td>
+                      <td class="text-right"><?php echo $column_access; ?></td>
                       <td class="text-right"><?php echo $column_price; ?></td>
                       <td class="text-right"><?php echo $column_total; ?></td>
                     </tr>
@@ -1103,9 +1112,19 @@ $('#button-refresh').on('click', function() {
 						}
 					}
 
+                  if (product['accessories']) {
+                    for (j = 0; j < product['accessories'].length; j++) {
+                      access = product['accessories'][j];
+
+                      html += '  - <small>' + access['name'] + ': ' + access['price'] + '</small><br />';
+                      html += '<input type="hidden" name="product[' + i + '][accessories][' + access['product_access_id'] + ']" value="' + access['value'] + '" />';
+                    }
+                  }
+
 					html += '</td>';
 					html += '  <td class="text-left">' + product['model'] + '</td>';
 					html += '  <td class="text-right"><div class="input-group btn-block" style="max-width: 200px;"><input type="text" name="product[' + i + '][quantity]" value="' + product['quantity'] + '" class="form-control" /><span class="input-group-btn"><button type="button" data-toggle="tooltip" title="<?php echo $button_refresh; ?>" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><i class="fa fa-refresh"></i></button></span></div></td>';
+                  html += '  <td class="text-right">' + product['access_total'] + '</td>';
                     html += '  <td class="text-right">' + product['price'] + '</td>';
 					html += '  <td class="text-right">' + product['total'] + '</td>';
 					html += '  <td class="text-center" style="width: 3px;"><button type="button" value="' + product['cart_id'] + '" data-toggle="tooltip" title="<?php echo $button_remove; ?>" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
@@ -1180,6 +1199,7 @@ $('#button-refresh').on('click', function() {
 					html += '  </td>';
 					html += '  <td class="text-left">' + product['model'] + '</td>';
 					html += '  <td class="text-right">' + product['quantity'] + '</td>';
+                    html += '  <td class="text-right">' + product['access_total'] + '</td>';
 					html += '  <td class="text-right">' + product['price'] + '</td>';
 					html += '  <td class="text-right">' + product['total'] + '</td>';
 					html += '</tr>';

@@ -162,7 +162,7 @@
     </div>
     <div id="top-links" class="nav pull-right">
       <ul class="list-inline">
-        <li class="dropdown top-account"><span class="top-iconuser"><i class="fa fa-user"></i></span> <a href="#" title="Tài khoản" class="dropdown-toggle" data-toggle="dropdown"><span class="hidden-xs hidden-sm hidden-md">Đăng nhập tài khoản</span> <span class="caret"></span></a>
+        <li class="dropdown top-account"><span class="top-iconuser"><i class="fa fa-user"></i></span> <a href="#" title="Tài khoản" class="dropdown-toggle" data-toggle="dropdown"><span class="hidden-xs hidden-sm hidden-md"><?php echo $logged ? $customer_name : 'Đăng nhập tài khoản' ?></span> <span class="caret"></span></a>
           <ul class="dropdown-menu dropdown-menu-right">
             <?php if ($logged) { ?>
               <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>

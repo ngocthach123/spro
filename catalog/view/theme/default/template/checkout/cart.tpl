@@ -63,6 +63,14 @@
                   <small><?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
                   <?php } ?>
                   <?php } ?>
+
+                  <?php if ($product['accessories']) { ?>
+                  <?php foreach ($product['accessories'] as $access) { ?>
+                  <br />
+                  <small><?php echo $access['name']; ?>: <?php echo $access['price']; ?></small>
+                  <?php } ?>
+                  <?php } ?>
+
                   <?php if ($product['reward']) { ?>
                   <br />
                   <small><?php echo $product['reward']; ?></small>

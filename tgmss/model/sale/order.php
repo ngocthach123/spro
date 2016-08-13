@@ -243,6 +243,12 @@ class ModelSaleOrder extends Model {
 		return $query->rows;
 	}
 
+	public function getOrderAccessories($order_id, $order_product_id) {
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_accessories WHERE order_id = '" . (int)$order_id . "' AND order_product_id = '" . (int)$order_product_id . "'");
+
+		return $query->rows;
+	}
+
 	public function getOrderVouchers($order_id) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_voucher WHERE order_id = '" . (int)$order_id . "'");
 

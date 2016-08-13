@@ -221,11 +221,24 @@ class ControllerCheckoutConfirm extends Controller {
 					);
 				}
 
+				$access_data = array(); //phu kien
+
+				foreach ($product['accessories'] as $access_info) {
+
+					$access_data[] = array(
+						'product_access_id' => $access_info['product_id'],
+						'name' => $access_info['name'],
+						'price' => $this->currency->format($access_info['price'], $this->session->data['currency']),
+						'price_origin' => $access_info['price'],
+					);
+				}
+
 				$order_data['products'][] = array(
 					'product_id' => $product['product_id'],
 					'name'       => $product['name'],
 					'model'      => $product['model'],
 					'option'     => $option_data,
+					'accessories' => $access_data,
 					'download'   => $product['download'],
 					'quantity'   => $product['quantity'],
 					'subtract'   => $product['subtract'],
@@ -380,6 +393,7 @@ class ControllerCheckoutConfirm extends Controller {
 					}
 				}
 
+				$access_total = $product['access_price'] * $product['quantity'];
 				$data['products'][] = array(
 					'cart_id'    => $product['cart_id'],
 					'product_id' => $product['product_id'],
@@ -390,7 +404,8 @@ class ControllerCheckoutConfirm extends Controller {
 					'quantity'   => $product['quantity'],
 					'subtract'   => $product['subtract'],
 					'price'      => $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']),
-					'total'      => $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')) * $product['quantity'], $this->session->data['currency']),
+					'access_price'      => $this->currency->format($product['access_price'], $this->session->data['currency']),
+					'total'      => $this->currency->format(($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')) * $product['quantity']) + $access_total, $this->session->data['currency']),
 					'href'       => $this->url->link('product/product', 'product_id=' . $product['product_id'])
 				);
 			}

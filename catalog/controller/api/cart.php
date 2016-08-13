@@ -18,7 +18,13 @@ class ControllerApiCart extends Controller {
 						$option = array();
 					}
 
-					$this->cart->add($product['product_id'], $product['quantity'], $option);
+					if (isset($product['accessories'])) {
+						$accessories = $product['accessories'];
+					} else {
+						$accessories = array();
+					}
+
+					$this->cart->add($product['product_id'], $product['quantity'], $option,0,$accessories);
 				}
 
 				$json['success'] = $this->language->get('text_success');
@@ -176,6 +182,25 @@ class ControllerApiCart extends Controller {
 					$json['error']['minimum'][] = sprintf($this->language->get('error_minimum'), $product['name'], $product['minimum']);
 				}
 
+				$products_access = array(); //phu kien
+
+				$access_total = 0;
+				foreach ($product['accessories'] as $access_info) {
+
+					$products_access[] = array(
+						'product_access_id' => $access_info['product_id'],
+						'name'       => $access_info['name'],
+						'price'       => $this->currency->format($access_info['price'], $this->session->data['currency']),
+					);
+
+					$access_total += $access_info['price'];
+
+					//plus price and total
+					if($product['price']){
+						$product['price'] += $access_info['price'];
+					}
+				}
+
 				$option_data = array();
 
 				foreach ($product['option'] as $option) {
@@ -194,6 +219,8 @@ class ControllerApiCart extends Controller {
 					'name'       => $product['name'],
 					'model'      => $product['model'],
 					'option'     => $option_data,
+					'accessories' => $products_access,
+					'access_total' => $this->currency->format($access_total, $this->session->data['currency']),
 					'quantity'   => $product['quantity'],
 					'stock'      => $product['stock'] ? true : !(!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning')),
 					'shipping'   => $product['shipping'],

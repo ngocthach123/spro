@@ -807,6 +807,7 @@ span.top-iconuser .fa-user {
 	border: 1px solid #ddd;
 	width: 262px;
 	z-index: 999;
+	display: none;
 }
 #mainmenucate-top ul {
 	margin: 0;

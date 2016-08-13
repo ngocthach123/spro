@@ -150,6 +150,7 @@
               <td class="text-left"><?php echo $column_product; ?></td>
               <td class="text-left"><?php echo $column_model; ?></td>
               <td class="text-right"><?php echo $column_quantity; ?></td>
+                <td class="text-right"><?php echo $column_access; ?></td>
               <td class="text-right"><?php echo $column_price; ?></td>
               <td class="text-right"><?php echo $column_total; ?></td>
             </tr>
@@ -158,6 +159,12 @@
             <?php foreach ($products as $product) { ?>
             <tr>
               <td class="text-left"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+
+                  <?php foreach ($product['accessories'] as $access) { ?>
+                  <br />
+                  &nbsp;<small> <?php echo $access['name']; ?>: <?php echo $access['price']; ?></small>
+                  <?php } ?>
+
                 <?php foreach ($product['option'] as $option) { ?>
                 <br />
                 <?php if ($option['type'] != 'file') { ?>
@@ -168,6 +175,7 @@
                 <?php } ?></td>
               <td class="text-left"><?php echo $product['model']; ?></td>
               <td class="text-right"><?php echo $product['quantity']; ?></td>
+                <td class="text-right"><?php echo $product['access_total']; ?></td>
               <td class="text-right"><?php echo $product['price']; ?></td>
               <td class="text-right"><?php echo $product['total']; ?></td>
             </tr>

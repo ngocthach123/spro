@@ -162,7 +162,28 @@
             <?php } ?>
           </ul>
           <?php } ?>
+
           <div id="product">
+
+            <?php if($accessories):?>
+            <div class="form-group">
+              <?php foreach($accessories as $access): ?>
+              <div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" name="access[]" value="<?php echo $access['product_id']; ?>" price="<?php echo $access['special'] ?  $access['special'] :$access['price']; ?>"/>
+                    <img src="<?php echo $access['image']; ?>" alt="<?php echo $access['name']; ?>" class="img-thumbnail" />
+                    <?php echo $access['name']; ?>
+                    <?php if ($access['price']) { ?>
+                    (+<?php echo $access['price']; ?>)
+                    <?php } ?>
+                  </label>
+                </div>
+              </div>
+              <?php endforeach;?>
+            </div>
+            <?php endif;?>
+
             <?php if ($options) { ?>
             <hr>
             <h3><?php echo $text_option; ?></h3>
@@ -408,6 +429,18 @@
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>
+
+<script>
+  $("input[name='access[]']").change(function(){
+    if($(this).prop('checked')){
+      alert('check');
+    }else {
+      alert('no');
+    }
+
+  });
+</script>
+
 <script type="text/javascript"><!--
 $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 	$.ajax({
@@ -469,7 +502,7 @@ $('#button-cart').on('click', function() {
 			if (json['success']) {
 				$('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
-				$('#cart > button').html('<i class="fa fa-shopping-cart"></i> ' + json['total']);
+				$('#shoppingcart span.top-quantity').html(json['total_origin']);
 
 				$('html, body').animate({ scrollTop: 0 }, 'slow');
 

@@ -312,6 +312,12 @@ class ControllerCheckoutCart extends Controller {
 				$option = array();
 			}
 
+			if (isset($this->request->post['access'])) {
+				$accessories = array_filter($this->request->post['access']);
+			} else {
+				$accessories = array();
+			}
+
 			$product_options = $this->model_catalog_product->getProductOptions($this->request->post['product_id']);
 
 			foreach ($product_options as $product_option) {
@@ -341,7 +347,7 @@ class ControllerCheckoutCart extends Controller {
 			}
 
 			if (!$json) {
-				$this->cart->add($this->request->post['product_id'], $quantity, $option, $recurring_id);
+				$this->cart->add($this->request->post['product_id'], $quantity, $option, $recurring_id, $accessories);
 
 				$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('checkout/cart'));
 
@@ -357,8 +363,8 @@ class ControllerCheckoutCart extends Controller {
 				$totals = array();
 				$taxes = $this->cart->getTaxes();
 				$total = 0;
-		
-				// Because __call can not keep var references so we put them into an array. 			
+
+				// Because __call can not keep var references so we put them into an array.
 				$total_data = array(
 					'totals' => &$totals,
 					'taxes'  => &$taxes,
@@ -396,6 +402,7 @@ class ControllerCheckoutCart extends Controller {
 				}
 
 				$json['total'] = sprintf($this->language->get('text_items'), $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0), $this->currency->format($total, $this->session->data['currency']));
+				$json['total_origin'] = $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0);
 			} else {
 				$json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
 			}

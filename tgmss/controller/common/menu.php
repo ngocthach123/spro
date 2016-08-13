@@ -37,6 +37,9 @@ class ControllerCommonMenu extends Controller {
 		$data['text_geo_zone'] = $this->language->get('text_geo_zone');
 		$data['text_dashboard'] = $this->language->get('text_dashboard');
 		$data['text_help'] = $this->language->get('text_help');
+		$data['text_catnews'] = $this->language->get('text_catnews');
+		$data['text_cat'] = $this->language->get('text_cat');
+		$data['text_news'] = $this->language->get('text_news');
 		$data['text_information'] = $this->language->get('text_information');
 		$data['text_installer'] = $this->language->get('text_installer');
 		$data['text_language'] = $this->language->get('text_language');
@@ -109,6 +112,8 @@ class ControllerCommonMenu extends Controller {
 		$data['text_openbay_links'] = $this->language->get('text_openbay_links');
 		$data['text_openbay_report_price'] = $this->language->get('text_openbay_report_price');
 		$data['text_openbay_order_import'] = $this->language->get('text_openbay_order_import');
+		$data['text_transport'] = $this->language->get('text_transport');
+
 
 		$data['analytics'] = $this->url->link('extension/analytics', 'token=' . $this->session->data['token'], true);
 		$data['home'] = $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true);
@@ -137,6 +142,8 @@ class ControllerCommonMenu extends Controller {
 		$data['fraud'] = $this->url->link('extension/fraud', 'token=' . $this->session->data['token'], true);
 		$data['geo_zone'] = $this->url->link('localisation/geo_zone', 'token=' . $this->session->data['token'], true);
 		$data['information'] = $this->url->link('catalog/information', 'token=' . $this->session->data['token'], true);
+		$data['cat'] = $this->url->link('content/cat', 'token=' . $this->session->data['token'], true);
+		$data['news'] = $this->url->link('content/news', 'token=' . $this->session->data['token'], true);
 		$data['installer'] = $this->url->link('extension/installer', 'token=' . $this->session->data['token'], true);
 		$data['language'] = $this->url->link('localisation/language', 'token=' . $this->session->data['token'], true);
 		$data['layout'] = $this->url->link('design/layout', 'token=' . $this->session->data['token'], true);
@@ -188,6 +195,7 @@ class ControllerCommonMenu extends Controller {
 		$data['zone'] = $this->url->link('localisation/zone', 'token=' . $this->session->data['token'], true);
 		$data['recurring'] = $this->url->link('catalog/recurring', 'token=' . $this->session->data['token'], true);
 		$data['order_recurring'] = $this->url->link('sale/recurring', 'token=' . $this->session->data['token'], true);
+		$data['transport'] = $this->url->link('transport/cost', 'token=' . $this->session->data['token'], true);
 
 		$data['openbay_show_menu'] = $this->config->get('openbaypro_menu');
 		$data['openbay_link_extension'] = $this->url->link('extension/openbay', 'token=' . $this->session->data['token'], true);

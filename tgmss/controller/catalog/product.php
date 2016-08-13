@@ -680,6 +680,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_location'] = $this->language->get('entry_location');
 		$data['entry_minimum'] = $this->language->get('entry_minimum');
 		$data['entry_shipping'] = $this->language->get('entry_shipping');
+		$data['entry_virtual'] = $this->language->get('entry_virtual');
 		$data['entry_date_available'] = $this->language->get('entry_date_available');
 		$data['entry_quantity'] = $this->language->get('entry_quantity');
 		$data['entry_stock_status'] = $this->language->get('entry_stock_status');
@@ -721,6 +722,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_reward'] = $this->language->get('entry_reward');
 		$data['entry_layout'] = $this->language->get('entry_layout');
 		$data['entry_recurring'] = $this->language->get('entry_recurring');
+		$data['entry_virtual_product'] = $this->language->get('entry_virtual_product');
 
 		$data['help_keyword'] = $this->language->get('help_keyword');
 		$data['help_sku'] = $this->language->get('help_sku');
@@ -967,6 +969,41 @@ class ControllerCatalogProduct extends Controller {
 			$data['shipping'] = $product_info['shipping'];
 		} else {
 			$data['shipping'] = 0;
+		}
+
+		if (isset($this->request->post['virtual'])) {
+			$data['virtual'] = $this->request->post['virtual'];
+
+			$data['virtual_name'] = $this->model_catalog_product->getProductDescriptions($data['virtual_id']);
+
+			if($data['virtual_name']) {
+				foreach($data['virtual_name'] as $product_name) {
+					$data['virtual_name'] = $product_name['name'];
+				}
+			}else{
+				$data['virtual_name'] = '';
+			}
+
+		} elseif (!empty($product_info)) {
+			$data['virtual'] = $product_info['virtual'];
+
+			if($product_info['virtual']){
+				$data['virtual_name'] = $this->model_catalog_product->getProductDescriptions($product_info['virtual_id']);
+
+				if($data['virtual_name']) {
+					foreach($data['virtual_name'] as $product_name) {
+						$data['virtual_name'] = $product_name['name'];
+					}
+				}else{
+					$data['virtual_name'] = '';
+				}
+			}else{
+				$data['virtual_name'] = '';
+			}
+
+		} else {
+			$data['virtual'] = 0;
+			$data['virtual_name'] = '';
 		}
 
 		if (isset($this->request->post['price'])) {
