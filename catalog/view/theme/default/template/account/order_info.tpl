@@ -72,6 +72,7 @@
               <td class="text-left"><?php echo $column_name; ?></td>
               <td class="text-left"><?php echo $column_model; ?></td>
               <td class="text-right"><?php echo $column_quantity; ?></td>
+              <td class="text-right"><?php echo $column_access; ?></td>
               <td class="text-right"><?php echo $column_price; ?></td>
               <td class="text-right"><?php echo $column_total; ?></td>
               <?php if ($products) { ?>
@@ -83,12 +84,19 @@
             <?php foreach ($products as $product) { ?>
             <tr>
               <td class="text-left"><?php echo $product['name']; ?>
+
+                <?php foreach ($product['accessories'] as $access) { ?>
+                <br />
+                &nbsp;<small> <?php echo $access['name']; ?>: <?php echo $access['price']; ?></small>
+                <?php } ?>
+
                 <?php foreach ($product['option'] as $option) { ?>
                 <br />
                 &nbsp;<small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
                 <?php } ?></td>
               <td class="text-left"><?php echo $product['model']; ?></td>
               <td class="text-right"><?php echo $product['quantity']; ?></td>
+              <td class="text-right"><?php echo $product['access_total']; ?></td>
               <td class="text-right"><?php echo $product['price']; ?></td>
               <td class="text-right"><?php echo $product['total']; ?></td>
               <td class="text-right" style="white-space: nowrap;"><?php if ($product['reorder']) { ?>

@@ -168,6 +168,7 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 			$data['column_model'] = $this->language->get('column_model');
 			$data['column_quantity'] = $this->language->get('column_quantity');
 			$data['column_price'] = $this->language->get('column_price');
+			$data['column_access'] = $this->language->get('column_access');
 			$data['column_total'] = $this->language->get('column_total');
 			$data['column_action'] = $this->language->get('column_action');
 			$data['column_date_added'] = $this->language->get('column_date_added');
@@ -307,6 +308,23 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 					);
 				}
 
+				//Phu kien
+				$products_access = $this->model_account_order->getOrderAccessories($this->request->get['order_id'], $product['order_product_id']);
+
+				$access_total =0;
+				$accessories = array();
+				foreach ($products_access as $pro_access) {
+					$accessories[] = array(
+						'access_id' => $pro_access['product_access_id'],
+						'name'       => $pro_access['name'],
+						'price'       => $pro_access['price'],
+					);
+
+					$access_total+=$pro_access['price_origin'];
+				}
+
+				$product['total']+=$access_total* $product['quantity'];
+
 				$product_info = $this->model_catalog_product->getProduct($product['product_id']);
 
 				if ($product_info) {
@@ -319,6 +337,8 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 					'name'     => $product['name'],
 					'model'    => $product['model'],
 					'option'   => $option_data,
+					'accessories'	=> $accessories,
+					'access_total' => $access_total,
 					'quantity' => $product['quantity'],
 					'price'    => $this->currency->format($product['price'] + ($this->config->get('config_tax') ? $product['tax'] : 0), $order_info['currency_code'], $order_info['currency_value']),
 					'total'    => $this->currency->format($product['total'] + ($this->config->get('config_tax') ? ($product['tax'] * $product['quantity']) : 0), $order_info['currency_code'], $order_info['currency_value']),

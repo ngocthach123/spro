@@ -14,18 +14,18 @@ $_['text_agree']           = 'Tôi đã đọc và đồng ý với điều kho�
 
 // Entry
 $_['entry_customer_group'] = 'Nhóm khách hàng';
-$_['entry_firstname']           = 'Tên:';
+$_['entry_firstname']           = 'Họ và Tên:';
 $_['entry_lastname']            = 'Họ và tên lót:';
 $_['entry_email']               = 'Địa chỉ E-Mail:';
 $_['entry_telephone']           = 'Điện Thoại:';
 $_['entry_fax']                 = 'Số Fax:';
 $_['entry_company']             = 'Công ty:';
-$_['entry_address_1']           = 'Địa chỉ dòng 1:';
+$_['entry_address_1']           = 'Địa chỉ:';
 $_['entry_address_2']           = 'Địa chỉ dòng 2:';
 $_['entry_postcode']            = 'Mã Bưu Điện:';
 $_['entry_city']                = 'Thành Phố:';
 $_['entry_country']             = 'Quốc Gia:';
-$_['entry_zone']                = 'Vùng / Tiểu Bang:';
+$_['entry_zone']                = 'Tỉnh / Thành phố:';
 $_['entry_newsletter']     		= 'Đăng kí thông báo:';
 $_['entry_password']            = 'Mật Khẩu:';
 $_['entry_confirm']             = 'Nhập lại Mật Khẩu:';

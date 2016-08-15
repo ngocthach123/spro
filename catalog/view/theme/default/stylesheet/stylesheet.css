@@ -1533,3 +1533,14 @@ div.itemimage + div {
 	opacity: 1;
 }
 /* end back to top */
+
+/*module banner ads*/
+.ads{
+	position: fixed;
+	z-index: 999;
+}
+.bottom-right{
+	right: 0;
+	left: 0;
+	bottom: 0;
+}

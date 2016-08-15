@@ -32,6 +32,7 @@ $_['column_action']         = 'Thao tác';
 $_['column_date_added']     = 'Ngày tạo';
 $_['column_status']         = 'Tình trạng';
 $_['column_comment']        = 'Ghi chú';
+$_['column_access'] = 'Phụ kiện';
 
 // Error
 $_['error_reorder']         = '%s is not currently available to be reordered.';
