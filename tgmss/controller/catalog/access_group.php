@@ -210,7 +210,7 @@ class ControllerCatalogAccessGroup extends Controller
         $pagination->total = $attribute_total;
         $pagination->page = $page;
         $pagination->limit = $this->config->get('config_limit_admin');
-        $pagination->url = $this->url->link('catalog/attribute', 'token=' . $this->session->data['token'] . $url . '&page={page}', true);
+        $pagination->url = $this->url->link('catalog/access_group', 'token=' . $this->session->data['token'] . $url . '&page={page}', true);
 
         $data['pagination'] = $pagination->render();
 
@@ -228,7 +228,7 @@ class ControllerCatalogAccessGroup extends Controller
     protected function getForm() {
         $data['heading_title'] = $this->language->get('heading_title');
 
-        $data['text_form'] = !isset($this->request->get['attribute_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
+        $data['text_form'] = !isset($this->request->get['group_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
 
         $data['entry_name'] = $this->language->get('entry_name');
         $data['entry_access'] = $this->language->get('entry_access');

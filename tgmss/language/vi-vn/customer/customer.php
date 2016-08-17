@@ -4,6 +4,7 @@ $_['heading_title']             = 'Khách hàng';
 
 // Text
 $_['text_success']              = 'Thành công: khách hàng đã được thay đổi!';
+$_['text_list_success']              = 'Thành công: %d khách hàng đã được thêm!';
 $_['text_list']             = 'Danh sách khách hàng';
 $_['text_add']              = 'Thêm mới';
 $_['text_edit']             = 'Sửa';

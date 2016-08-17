@@ -105,3 +105,7 @@ $_['text_paypal_search']               = 'Tìm kiếm';
 $_['text_product_review']                = 'Phản hồi sản phẩm';
 $_['text_store_review']                  = 'Liên hệ phản hồi';
 $_['text_transport']                  = 'Giá vận chuyển';
+
+$_['text_virtual_product'] = 'Sản phẩm ảo';
+$_['text_product_sale'] = 'Sản phẩm khuyến mãi';
+$_['text_price_report'] = 'Báo giá';

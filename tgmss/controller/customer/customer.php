@@ -322,6 +322,136 @@ class ControllerCustomerCustomer extends Controller {
 		$this->getList();
 	}
 
+	public function import(){
+		$this->load->model('customer/customer');
+		$this->load->language('customer/customer');
+
+		if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
+
+			if (($_FILES['file_customer']['tmp_name'])) {
+
+				//excel
+				require_once 'phpexcel/PHPExcel.php';
+
+				$upload_path = DIR_EXCEL;
+				//  return $upload_path;die;
+				move_uploaded_file($_FILES['file_customer']['tmp_name'], $upload_path . $_FILES['file_customer']['name']);
+
+				$filename = DIR_EXCEL.$_FILES['file_customer']['name'];
+				$inputFileType = PHPExcel_IOFactory::identify($filename);
+				$objReader = PHPExcel_IOFactory::createReader($inputFileType);
+
+				$objReader->setReadDataOnly(true);
+
+				/**  Load $inputFileName to a PHPExcel Object  **/
+				$objPHPExcel = $objReader->load("$filename");
+
+				$total_sheets = $objPHPExcel->getSheetCount();
+
+				$allSheetName = $objPHPExcel->getSheetNames();
+				$objWorksheet = $objPHPExcel->setActiveSheetIndex(0);
+				$highestRow = $objWorksheet->getHighestRow();
+				$highestColumn = $objWorksheet->getHighestColumn();
+				$highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
+				$arraydata = array();
+				$col_name = array('firstname','email','telephone', 'address_1', 'note');
+				for ($row = 2; $row <= $highestRow; ++$row) {
+					for ($col = 0; $col < $highestColumnIndex; ++$col) {
+						$value = $objWorksheet->getCellByColumnAndRow($col, $row)->getValue();
+						$arraydata[$row - 2][$col_name[$col]] = $value;
+					}
+				}
+
+				foreach($arraydata as $customer) {
+					$customer['customer_group_id'] = $this->config->get('config_customer_group_id');
+					$customer['lastname'] = '';
+					$customer['fax'] = '';
+					$customer['password'] = '';
+					$customer['newsletter'] = '';
+					$customer['status'] = 1;
+					$customer['approved'] = 1;
+					$customer['safe'] = 0;
+
+					$this->model_customer_customer->addCustomer($customer);
+				}
+
+				unlink($upload_path . $_FILES['file_customer']['name']); // xoa file
+
+				$this->session->data['success'] = $this->language->get('text_success');
+
+				$this->response->redirect($this->url->link('customer/customer', 'token=' . $this->session->data['token'], true));
+			}
+		}
+
+		$this->getList();
+	}
+
+	public function export(){
+		require_once 'phpexcel/PHPExcel.php';
+
+		$this->load->model('customer/customer');
+		$lists = $this->model_customer_customer->getCustomers($filter_data = array());
+
+		$objPHPExcel = new PHPExcel();
+
+		$objPHPExcel->getActiveSheet()->getStyle('A1:E1')->getFont()->setBold(true);
+
+		foreach(range('A','E') as $columnID) { //chinh do rong column
+			$objPHPExcel->getActiveSheet()->getColumnDimension($columnID)
+				->setAutoSize(true);
+		}
+
+		$objPHPExcel->getActiveSheet()->getRowDimension('1')->setRowHeight(40);
+		$objPHPExcel->getActiveSheet()->getStyle('A1:E1')->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+
+		$objPHPExcel->setActiveSheetIndex(0)
+			->setCellValue('A1', 'Họ tên')
+			->setCellValue('B1', 'Email')
+			->setCellValue('C1', 'Điện thoại')
+			->setCellValue('D1', 'Địa chỉ')
+			->setCellValue('E1', 'Ghi chú');
+
+
+		//set gia tri cho cac cot du lieu
+		$i = 2;
+		foreach ($lists as $row) {
+			if($row['address_id']){
+				$add = $this->model_customer_customer->getAddress($row['address_id']);
+				$address = $add['address_1'];
+			}else{
+				$address = '';
+			}
+
+			$objPHPExcel->setActiveSheetIndex(0)->getStyle('C' . $i)
+				->getNumberFormat()
+				->setFormatCode(
+					PHPExcel_Style_NumberFormat::FORMAT_TEXT
+				);
+
+			$objPHPExcel->setActiveSheetIndex(0)
+				->setCellValue('A' . $i, $row['firstname'])
+				->setCellValue('B' . $i, $row['email'])
+				->setCellValue('D' . $i, $address)
+				->setCellValue('E' . $i, $row['note']);
+
+			$objPHPExcel->getActiveSheet()->setCellValueExplicit('C' . $i, $row['telephone'], PHPExcel_Cell_DataType::TYPE_STRING);
+
+			$i++;
+		}
+
+		//ghi du lieu vao file,định dạng file excel 2007
+		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+		//		$full_path = 'data.xlsx';//duong dan file
+		//		$objWriter->save($full_path);
+		// We'll be outputting an excel file
+		header('Content-type: application/vnd.ms-excel');
+		// It will be called file.xls
+		header('Content-Disposition: attachment; filename="Customer.xlsx"');
+		// Write file to the browser
+		$objWriter->save('php://output');
+
+	}
+
 	protected function getList() {
 		if (isset($this->request->get['filter_name'])) {
 			$filter_name = $this->request->get['filter_name'];
@@ -440,6 +570,9 @@ class ControllerCustomerCustomer extends Controller {
 		$data['add'] = $this->url->link('customer/customer/add', 'token=' . $this->session->data['token'] . $url, true);
 		$data['delete'] = $this->url->link('customer/customer/delete', 'token=' . $this->session->data['token'] . $url, true);
 
+		$data['import'] = $this->url->link('customer/customer/import', 'token=' . $this->session->data['token'] . $url, true);
+		$data['export'] = $this->url->link('customer/customer/export', 'token=' . $this->session->data['token'] . $url, true);
+
 		$data['customers'] = array();
 
 		$filter_data = array(
@@ -477,7 +610,7 @@ class ControllerCustomerCustomer extends Controller {
 
 			$data['customers'][] = array(
 				'customer_id'    => $result['customer_id'],
-				'name'           => $result['name'],
+				'name'           => $result['firstname'],
 				'email'          => $result['email'],
 				'customer_group' => $result['customer_group'],
 				'status'         => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
@@ -1018,9 +1151,9 @@ class ControllerCustomerCustomer extends Controller {
 			$this->error['firstname'] = $this->language->get('error_firstname');
 		}
 
-		if ((utf8_strlen($this->request->post['lastname']) < 1) || (utf8_strlen(trim($this->request->post['lastname'])) > 32)) {
-			$this->error['lastname'] = $this->language->get('error_lastname');
-		}
+//		if ((utf8_strlen($this->request->post['lastname']) < 1) || (utf8_strlen(trim($this->request->post['lastname'])) > 32)) {
+//			$this->error['lastname'] = $this->language->get('error_lastname');
+//		}
 
 		if ((utf8_strlen($this->request->post['email']) > 96) || !filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
 			$this->error['email'] = $this->language->get('error_email');

@@ -293,6 +293,22 @@ class ModelCatalogProduct extends Model {
 		$this->cache->delete('product');
 	}
 
+	public function editSpecial($data){
+		$this->db->query("UPDATE " . DB_PREFIX . "product_special SET customer_group_id = '" . (int)$data['customer_group_id'] . "', price = '" . (float)$data['price'] . "', date_start = '" . $this->db->escape($data['date_start']) . "', date_end = '" . $this->db->escape($data['date_end']) . "' WHERE product_special_id =".(int)$data['product_special_id']);
+
+		return $this->db->countAffected();
+	}
+
+	public function addSpecial($data){
+		$this->db->query("INSERT INTO " . DB_PREFIX . "product_special SET product_id = '" . (int)$data['product_id'] . "', customer_group_id = '" . (int)$data['customer_group_id'] . "', price = '" . (float)$data['price'] . "', date_start = '" . $this->db->escape($data['date_start']) . "', date_end = '" . $this->db->escape($data['date_end']) . "'");
+
+		return $this->db->countAffected();
+	}
+
+	public function deleteSpecial($product_special_id){
+		$this->db->query("DELETE FROM " . DB_PREFIX . "product_special WHERE product_special_id = '" . (int)$product_special_id . "'");
+	}
+
 	public function editQuantity($model, $quantity){
 		$sql = "UPDATE " . DB_PREFIX . "product SET quantity = '".(int)$quantity."' WHERE model ='".$model."'";
 		$this->db->query($sql);
@@ -373,7 +389,7 @@ class ModelCatalogProduct extends Model {
 			}
 
 		}else {
-			$sql = "SELECT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+			$sql = "SELECT *,(SELECT price FROM " . DB_PREFIX . "product_special ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 		}
 
 		if (!empty($data['filter_name'])) {
@@ -394,6 +410,13 @@ class ModelCatalogProduct extends Model {
 
 		if (isset($data['filter_status']) && !is_null($data['filter_status'])) {
 			$sql .= " AND p.status = '" . (int)$data['filter_status'] . "'";
+		}
+
+		if (isset($data['filter_type']) && !is_null($data['filter_type'])) {
+
+			if($data['filter_type'] == 'virtual'){
+				$sql .= " AND p.virtual = '1'";
+			}
 		}
 
 		$sql .= " GROUP BY p.product_id";
@@ -438,6 +461,32 @@ class ModelCatalogProduct extends Model {
 
 	public function getProductsByCategoryId($category_id) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) LEFT JOIN " . DB_PREFIX . "product_to_category p2c ON (p.product_id = p2c.product_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p2c.category_id = '" . (int)$category_id . "' ORDER BY pd.name ASC");
+
+		return $query->rows;
+	}
+
+	public function getProductsBySpecial($data) {
+		$sql = "SELECT DISTINCT ps.*, pd.name, p.image, p.price as price_origin FROM " . DB_PREFIX . "product p INNER JOIN " . DB_PREFIX . "product_special ps ON (p.product_id = ps.product_id)INNER JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE 1";
+
+		if (!empty($data['filter_name'])) {
+			$sql .= " AND pd.name LIKE '" . $this->db->escape($data['filter_name']) . "%'";
+		}
+
+		$sql .="  ORDER BY pd.name ASC";
+
+		if (isset($data['start']) || isset($data['limit'])) {
+			if ($data['start'] < 0) {
+				$data['start'] = 0;
+			}
+
+			if ($data['limit'] < 1) {
+				$data['limit'] = 20;
+			}
+
+			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
+		}
+
+		$query = $this->db->query($sql);
 
 		return $query->rows;
 	}
@@ -681,6 +730,13 @@ class ModelCatalogProduct extends Model {
 				$sql .= " AND p.status = '" . (int)$data['filter_status'] . "'";
 			}
 
+			if (isset($data['filter_type']) && !is_null($data['filter_type'])) {
+
+				if($data['filter_type'] == 'virtual'){
+					$sql .= " AND p.virtual = '1'";
+				}
+			}
+
 			$query = $this->db->query($sql);
 
 			return $query->row['total'];
@@ -709,6 +765,13 @@ class ModelCatalogProduct extends Model {
 
 			if (isset($data['filter_status']) && !is_null($data['filter_status'])) {
 				$sql .= " AND p.status = '" . (int)$data['filter_status'] . "'";
+			}
+
+			if (isset($data['filter_type']) && !is_null($data['filter_type'])) {
+
+				if($data['filter_type'] == 'virtual'){
+					$sql .= " AND p.virtual = '1'";
+				}
 			}
 
 			$query = $this->db->query($sql);
@@ -773,6 +836,12 @@ class ModelCatalogProduct extends Model {
 
 	public function getTotalProductsByLayoutId($layout_id) {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "product_to_layout WHERE layout_id = '" . (int)$layout_id . "'");
+
+		return $query->row['total'];
+	}
+
+	public function getTotalProductsBySpecial() {
+		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "product_special");
 
 		return $query->row['total'];
 	}

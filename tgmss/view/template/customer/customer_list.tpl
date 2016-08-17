@@ -103,8 +103,19 @@
                   <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                   </span></div>
               </div>
-              <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-search"></i> <?php echo $button_filter; ?></button>
             </div>
+              <div class="col-sm-4 col-sm-offset-8">
+                  <div class="form-group">
+                      <form action="<?php echo $import;?>" method="post" id="form-excel" enctype="multipart/form-data">
+                      <button type="button" id="button-filter" class="btn btn-primary"><i class="fa fa-search"></i> <?php echo $button_filter; ?></button>
+                        <span class="btn btn-primary fileUpload">
+                            <span>Import</span>
+                            <input type="file" name="file_customer" class="upload"/>
+                        </span>
+                      <a href="<?php echo $export;?>" class="btn btn-default">Export</a>
+                      </form>
+                  </div>
+              </div>
           </div>
         </div>
         <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-customer">
@@ -199,6 +210,17 @@
       </div>
     </div>
   </div>
+
+    <script type="text/javascript">
+        $(function() {
+            $("input:file").change(function (){
+                if($(this).val() !=''){
+                    $("#form-excel").submit();
+                }
+            });
+        });
+    </script>
+
   <script type="text/javascript"><!--
 $('#button-filter').on('click', function() {
 	url = 'index.php?route=customer/customer&token=<?php echo $token; ?>';

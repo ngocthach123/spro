@@ -22,6 +22,7 @@ $_['entry_confirm']     = 'Xác nhận mật khẩu:';
 $_['entry_firstname']   = 'Họ:';
 $_['entry_lastname']    = 'Tên:';
 $_['entry_email']       = 'E-Mail:';
+$_['entry_phone']       = 'Điện thoại:';
 $_['entry_image']      	= 'Hình';
 $_['entry_status']      = 'Trạng thái:';
 

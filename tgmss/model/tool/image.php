@@ -1,6 +1,6 @@
 <?php
 class ModelToolImage extends Model {
-	public function resize($filename, $width, $height) {
+	public function resize($filename, $width, $height, $dir_image = 0) {
 		if (!is_file(DIR_IMAGE . $filename)) {
 			return;
 		}
@@ -36,7 +36,10 @@ class ModelToolImage extends Model {
 
 		if ($this->request->server['HTTPS']) {
 			return HTTPS_CATALOG . 'image/' . $new_image;
-		} else {
+		} else if($dir_image) {
+			return DIR_IMAGE . $new_image;
+		}
+		else{
 			return HTTP_CATALOG . 'image/' . $new_image;
 		}
 	}

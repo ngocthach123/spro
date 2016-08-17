@@ -5,9 +5,12 @@
   <li id="catalog"><a class="parent"><i class="fa fa-pie-chart fa-fw"></i> <span><?php echo $text_catalog; ?></span></a>
     <ul class="collapse">
       <li><a href="<?php echo $category; ?>"><?php echo $text_category; ?></a></li>
-      <li><a href="<?php echo $product; ?>"><?php echo $text_product; ?></a></li>
+      <li><a  href="<?php echo $product; ?>"><?php echo $text_product; ?></a></li>
+      <li><a href="<?php echo $product_sale; ?>"><?php echo $text_product_sale; ?></a></li>
+      <li><a href="<?php echo $virtual_product; ?>"><?php echo $text_virtual_product; ?></a></li>
       <li><a href="<?php echo $option; ?>"><?php echo $text_option; ?></a></li>
       <li><a href="<?php echo $access_group; ?>"><?php echo $text_access_group; ?></a></li>
+      <li><a href="<?php echo $price_report; ?>"><?php echo $text_price_report; ?></a></li>
       <li><a href="<?php echo $manufacturer; ?>"><?php echo $text_manufacturer; ?></a></li>
       <li><a class="parent"><span><?php echo $text_review; ?></span></a>
         <ul>

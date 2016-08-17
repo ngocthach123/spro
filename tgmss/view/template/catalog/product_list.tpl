@@ -215,7 +215,6 @@
       </div>
     </div>
   </div>
-
     <script>
         $(".nav-plus").click(function(e){
             e.preventDefault();

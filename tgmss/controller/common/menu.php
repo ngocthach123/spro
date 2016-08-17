@@ -114,6 +114,13 @@ class ControllerCommonMenu extends Controller {
 		$data['text_openbay_order_import'] = $this->language->get('text_openbay_order_import');
 		$data['text_transport'] = $this->language->get('text_transport');
 
+		$data['text_virtual_product'] = $this->language->get('text_virtual_product');
+		$data['text_product_sale'] = $this->language->get('text_product_sale');
+		$data['text_price_report'] = $this->language->get('text_price_report');
+
+		$data['product_sale'] = $this->url->link('catalog/product/special', 'token=' . $this->session->data['token'], true);
+		$data['virtual_product'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'].'&type=virtual', true);
+		$data['price_report'] = $this->url->link('catalog/bao_gia', 'token=' . $this->session->data['token'], true);
 
 		$data['analytics'] = $this->url->link('extension/analytics', 'token=' . $this->session->data['token'], true);
 		$data['home'] = $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true);

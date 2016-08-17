@@ -716,7 +716,7 @@ input[type="checkbox"]:checked::after, .checkbox input[type="checkbox"]:checked:
 }
 /* Menu Fix For System -> Layout -> Banner */
 .btn-primary, .btn-default, .btn-danger, .btn-warning, .btn-info {
-	margin-top: 2px;
+	/*margin-top: 2px;*/
 }
 .navbar-brand {
     height: auto;

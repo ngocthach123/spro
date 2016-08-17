@@ -26,6 +26,8 @@
             <h2><?php echo $text_new_customer; ?></h2>
             <p><strong><?php echo $text_register; ?></strong></p>
             <p><?php echo $text_register_account; ?></p>
+            <a href="Javascript:newPopup('<?php echo $fb_login;?>')">Login with facebook</a><br/>
+            <a href="Javascript:newPopup('<?php echo $gg_login;?>')">Login with google</a>
             <a href="<?php echo $register; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
         </div>
         <div class="col-sm-6">
@@ -52,4 +54,13 @@
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>
+<script type="text/javascript">
+  // Popup window code
+  function newPopup(url) {
+    popupWindow = window.open(
+            url,'popUpWindow','height=420,width=500,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+  }
+</script>
+
+
 <?php echo $footer; ?>

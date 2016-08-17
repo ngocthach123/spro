@@ -1,6 +1,7 @@
 <?php
 // Heading
-$_['heading_title']          = 'Sản phẩm'; 
+$_['heading_title']          = 'Sản phẩm';
+$_['heading_title_special']          = 'Sản phẩm khuyến mãi';
 
 // Text  
 $_['text_success']      = 'Thành công:Sản phẩm đã được thay đổi!';
@@ -21,9 +22,12 @@ $_['column_name']            = 'Tên sản phẩm';
 $_['column_model']           = 'Mã sản phẩm:';
 $_['column_image']           = 'Hình ảnh';
 $_['column_price']           = 'Giá';
+$_['column_price_sale']           = 'Giá khuyến mãi';
 $_['column_quantity']        = 'Số lượng';
 $_['column_status']          = 'Trạng thái';
 $_['column_action']          = 'Thao tác';
+
+$_['button_update']          = 'Cập nhật';
 
 // Entry
 $_['entry_name']             = 'Tên sản phẩm:';
@@ -50,6 +54,7 @@ $_['entry_quantity']         = 'Số lượng:';
 $_['entry_minimum']          = 'Số lượng tối thiểu: ';
 $_['entry_stock_status']     = 'Hết hàng: ';
 $_['entry_price']            = 'Giá thị trường:';
+$_['entry_price_special']            = 'Giá khuyến mãi';
 $_['entry_cost']            = 'Giá nhập hàng:';
 $_['entry_tax_class']        = 'Loại Thuế:';
 $_['entry_points']           = 'Điểm: ';
