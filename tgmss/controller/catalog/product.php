@@ -1004,6 +1004,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_layout'] = $this->language->get('entry_layout');
 		$data['entry_recurring'] = $this->language->get('entry_recurring');
 		$data['entry_virtual_product'] = $this->language->get('entry_virtual_product');
+		$data['entry_type'] = $this->language->get('entry_type');
 
 		$data['help_keyword'] = $this->language->get('help_keyword');
 		$data['help_sku'] = $this->language->get('help_sku');
@@ -1285,6 +1286,14 @@ class ControllerCatalogProduct extends Controller {
 		} else {
 			$data['virtual'] = 0;
 			$data['virtual_name'] = '';
+		}
+
+		if (isset($this->request->post['type'])) {
+			$data['type'] = $this->request->post['type'];
+		} elseif (!empty($product_info)) {
+			$data['type'] = $product_info['type'];
+		} else {
+			$data['type'] = '';
 		}
 
 		if (isset($this->request->post['price'])) {

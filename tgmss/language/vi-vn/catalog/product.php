@@ -1,7 +1,7 @@
 <?php
 // Heading
 $_['heading_title']          = 'Sản phẩm';
-$_['heading_title_special']          = 'Sản phẩm khuyến mãi';
+$_['heading_title_special']  = 'Sản phẩm khuyến mãi';
 
 // Text  
 $_['text_success']      = 'Thành công:Sản phẩm đã được thay đổi!';
@@ -91,6 +91,7 @@ $_['entry_tag']              = 'Tags:';
 $_['entry_reward']           = 'Điểm thưởng:';
 $_['entry_layout']           = 'Bố cục:';
 $_['entry_recurring']          = 'Hồ sơ recurring:';
+$_['entry_type']          = 'Loại sản phẩm';
 
 // Help
 $_['help_keyword']           = 'Không để khoảng trống, bạn có thể dùng ký tự - để thay thế khoảng trắng.';

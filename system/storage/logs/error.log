@@ -2637,3 +2637,29 @@
 2016-08-17 5:55:53 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
 2016-08-17 6:02:31 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 362
 2016-08-17 6:15:31 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 362
+2016-08-17 6:39:14 - PHP Notice:  Undefined index: company in E:\Work2\spro\catalog\model\account\address.php on line 4
+2016-08-17 6:39:14 - PHP Notice:  Undefined index: address_2 in E:\Work2\spro\catalog\model\account\address.php on line 4
+2016-08-17 6:40:27 - PHP Notice:  Undefined index: company in E:\Work2\spro\catalog\model\account\address.php on line 4
+2016-08-17 6:58:37 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
+2016-08-17 9:40:16 - PHP Notice:  Undefined index: motobike in E:\Work2\spro\catalog\controller\checkout\shipping_method.php on line 119
+2016-08-17 9:42:55 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
+2016-08-17 11:29:57 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
+2016-08-17 11:58:36 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 362
+2016-08-17 12:16:16 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 372
+2016-08-17 12:16:33 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 372
+2016-08-17 12:16:56 - PHP Notice:  Undefined index: virtual in E:\Work2\spro\tgmss\model\catalog\product.php on line 137
+2016-08-17 12:16:59 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 372
+2016-08-17 12:17:28 - PHP Notice:  Undefined index: virtual in E:\Work2\spro\tgmss\model\catalog\product.php on line 137
+2016-08-18 4:31:30 - PHP Notice:  Undefined index: distance in E:\Work2\spro\catalog\controller\checkout\shipping_method.php on line 12
+2016-08-18 4:48:00 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 372
+2016-08-18 5:06:23 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 372
+2016-08-18 5:11:18 - PHP Notice:  Undefined index: virtual in E:\Work2\spro\tgmss\model\catalog\product.php on line 137
+2016-08-18 5:21:07 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 372
+2016-08-18 5:27:43 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
+2016-08-18 6:47:22 - PHP Notice:  Undefined index: address_2 in E:\Work2\spro\catalog\model\account\address.php on line 16
+2016-08-18 6:51:47 - PHP Notice:  Undefined variable: order in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 103
+2016-08-18 6:51:47 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-18 6:51:47 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-18 6:51:47 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-18 6:51:47 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-18 6:51:47 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144

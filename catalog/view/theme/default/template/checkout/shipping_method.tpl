@@ -23,6 +23,8 @@
 <?php } ?>
 <?php } ?>
 <?php } ?>
+<div id="dvDistance"><?php echo $distance;?></div>
+
 <p><strong><?php echo $text_comments; ?></strong></p>
 <p>
   <textarea name="comment" rows="8" class="form-control"><?php echo $comment; ?></textarea>
@@ -32,3 +34,7 @@
     <input type="button" value="<?php echo $button_continue; ?>" id="button-shipping-method" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary" />
   </div>
 </div>
+
+<script>
+
+</script>

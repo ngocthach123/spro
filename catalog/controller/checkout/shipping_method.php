@@ -4,6 +4,43 @@ class ControllerCheckoutShippingMethod extends Controller {
 		$this->load->language('checkout/checkout');
 
 		if (isset($this->session->data['shipping_address'])) {
+			//distance
+
+			$bike_cost = 0;
+			$car_cost = 0;
+			$bus_cost = 0; //chanh xe
+
+			if (isset($this->request->get['distance'])){
+				$this->load->model('transport/cost');
+
+				$data['distance'] = $this->request->get['distance'];
+
+				if($data['distance'] != 0){
+					$products = $this->cart->getProducts();
+
+					foreach ($products as $product) {
+						$transports = $this->model_transport_cost->getCost($product);
+
+						foreach($transports as $transport){
+							if($transport['van_chuyen'] == 1){//xe may
+								$bike_cost += $transport['gia_van_chuyen']*$data['distance'];
+							}
+
+							if($transport['van_chuyen'] == 2){//oto
+								$car_cost += $transport['gia_van_chuyen']*$data['distance'];
+							}
+
+							if($transport['van_chuyen'] == 3){//chanh xe
+								$bus_cost += $transport['gia_van_chuyen']*$data['distance'];
+							}
+						}
+					}
+				}
+			}else{
+				$data['distance'] = 'Không xác định';
+			}
+			//******* end cal price by distance
+
 			// Shipping Methods
 			$method_data = array();
 
@@ -12,10 +49,38 @@ class ControllerCheckoutShippingMethod extends Controller {
 			$results = $this->model_extension_extension->getExtensions('shipping');
 
 			foreach ($results as $result) {
+
 				if ($this->config->get($result['code'] . '_status')) {
 					$this->load->model('shipping/' . $result['code']);
 
 					$quote = $this->{'model_shipping_' . $result['code']}->getQuote($this->session->data['shipping_address']);
+
+					if($quote['code'] == 'motobike'){
+						if($bike_cost) {
+							$quote['quote']['motobike']['cost'] = $bike_cost;
+							$quote['quote']['motobike']['text'] = $this->currency->format($bike_cost, $this->session->data['currency']);
+						}else{
+							$quote['quote']['motobike']['text'] = 'Liên hệ';
+						}
+					}
+
+					if($quote['code'] == 'oto'){
+						if($car_cost) {
+							$quote['quote']['oto']['cost'] = $car_cost;
+							$quote['quote']['oto']['text'] = $this->currency->format($car_cost, $this->session->data['currency']);
+						}else{
+							$quote['quote']['oto']['text'] = 'Liên hệ';
+						}
+					}
+
+					if($quote['code'] == 'chanhxe'){
+						if($bus_cost) {
+							$quote['quote']['chanhxe']['cost'] = $bus_cost;
+							$quote['quote']['chanhxe']['text'] = $this->currency->format($bus_cost, $this->session->data['currency']);
+						}else{
+							$quote['quote']['chanhxe']['text'] = 'Liên hệ';
+						}
+					}
 
 					if ($quote) {
 						$method_data[$result['code']] = array(

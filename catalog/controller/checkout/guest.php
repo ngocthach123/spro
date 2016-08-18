@@ -26,6 +26,8 @@ class ControllerCheckoutGuest extends Controller {
 		$data['button_continue'] = $this->language->get('button_continue');
 		$data['button_upload'] = $this->language->get('button_upload');
 
+		$data['store_address'] = $this->config->get('config_address');
+
 		$data['customer_groups'] = array();
 
 		if (is_array($this->config->get('config_customer_group_display'))) {

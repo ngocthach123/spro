@@ -244,7 +244,7 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 
 			$customer_group_info = $this->model_account_customer_group->getCustomerGroup($customer_group_id);
 
-			$this->db->query("INSERT INTO " . DB_PREFIX . "customer SET customer_group_id = '" . (int)$customer_group_id . "', store_id = '" . (int)$this->config->get('config_store_id') . "', firstname = '" . $this->db->escape($user['name']) . "', lastname = '" . $this->db->escape($user['last_name']) . "', email = '" . $this->db->escape($user['email']) . "', newsletter = '" . (isset($user['newsletter']) ? (int)$user['newsletter'] : 0) . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "', status = '1', approved = '" . (int)!$customer_group_info['approval'] . "', date_added = NOW()");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "customer SET customer_group_id = '" . (int)$customer_group_id . "', store_id = '" . (int)$this->config->get('config_store_id') . "', firstname = '" . $this->db->escape($user['name']) . "', email = '" . $this->db->escape($user['email']) . "', newsletter = '" . (isset($user['newsletter']) ? (int)$user['newsletter'] : 0) . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "', status = '1', approved = '" . (int)!$customer_group_info['approval'] . "', date_added = NOW()");
 		}
 
 		$flag = $this->customer->socialLogin($customer_query);
@@ -343,7 +343,7 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 
 				$customer_group_info = $this->model_account_customer_group->getCustomerGroup($customer_group_id);
 
-				$this->db->query("INSERT INTO " . DB_PREFIX . "customer SET customer_group_id = '" . (int)$customer_group_id . "', store_id = '" . (int)$this->config->get('config_store_id') . "', firstname = '" . $this->db->escape($user['name']) . "', lastname = '" . $this->db->escape($user['last_name']) . "', email = '" . $this->db->escape($user['email']) . "', picture = '" . $this->db->escape($user['picture']) . "', newsletter = '" . (isset($user['newsletter']) ? (int)$user['newsletter'] : 0) . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "', status = '1', approved = '" . (int)!$customer_group_info['approval'] . "', date_added = NOW()");
+				$this->db->query("INSERT INTO " . DB_PREFIX . "customer SET customer_group_id = '" . (int)$customer_group_id . "', store_id = '" . (int)$this->config->get('config_store_id') . "', firstname = '" . $this->db->escape($user['name']) . "', email = '" . $this->db->escape($user['email']) . "', picture = '" . $this->db->escape($user['picture']) . "', newsletter = '" . (isset($user['newsletter']) ? (int)$user['newsletter'] : 0) . "', ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "', status = '1', approved = '" . (int)!$customer_group_info['approval'] . "', date_added = NOW()");
 			}
 
 			$flag = $this->customer->socialLogin($customer_query);

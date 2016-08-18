@@ -180,6 +180,9 @@
         <select name="zone_id" id="input-payment-zone" class="form-control">
         </select>
       </div>
+
+        <input type="hidden" value="<?php echo $store_address;?>" id="source">
+
       <?php foreach ($custom_fields as $custom_field) { ?>
       <?php if ($custom_field['location'] == 'address') { ?>
       <?php if ($custom_field['type'] == 'select') { ?>
