@@ -156,6 +156,11 @@ class ControllerCommonHeader extends Controller {
 			$data['class'] = 'common-home';
 		}
 
+		$old_route =  isset($this->request->get['route']) ? $this->request->get['route'] : false;
+		$this->request->get['route'] = 'common/header';
+		foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load->controller('common/positions', $key);}
+		$this->request->get['route'] = $old_route;
+
 		return $this->load->view('common/header', $data);
 	}
 }

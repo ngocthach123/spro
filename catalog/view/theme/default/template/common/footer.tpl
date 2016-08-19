@@ -5,58 +5,55 @@
       <div class="col-md-3 col-sm-3 col-xs-12">
         <h5>Thông tin liên hệ</h5>
         <ul class="list-unstyled inforfooter">
-          <li><a href="#"><span class="boxiconfooter"><i class="fa fa-home"></i></span> &nbsp;143 Bình Lợi (Nơ Trang Long nối dài, P.13, Q.Bình Thạnh, TP.Hồ Chí Minh</a></li>
-          <li><a href="#"><span class="boxiconfooter"><i class="fa fa-phone"></i></span> &nbsp;08 - 35 534 298</a></li>
-          <li><a href="#"><span class="boxiconfooter"><i class="fa fa-envelope"></i></span> &nbsp;hotrospro@gmail.com</a></li>
+          <li><a href="#"><span class="boxiconfooter"><i class="fa fa-home"></i></span> &nbsp;<?php echo $address;?></a></li>
+          <li><a href="#"><span class="boxiconfooter"><i class="fa fa-phone"></i></span> &nbsp;<?php echo $phone;?></a></li>
+          <li><a href="#"><span class="boxiconfooter"><i class="fa fa-envelope"></i></span> &nbsp;<?php echo $email;?></a></li>
         </ul>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12">
         <div class="col-md-4 col-sm-4 col-xs-12">
           <h5>Tài khoản của bạn</h5>
           <ul class="list-unstyled inforfooterother">
-            <li><a href="#">Wishlist</a></li>
-            <li><a href="#">Your cart</a></li>
-            <li><a href="#">Checkout</a></li>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Site map</a></li>
+            <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
+            <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
+            <li><a href="<?php echo $wishlist; ?>"><?php echo $text_wishlist; ?></a></li>
+            <li><a href="<?php echo $newsletter; ?>"><?php echo $text_newsletter; ?></a></li>
           </ul>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
           <h5>Thông tin chung</h5>
           <ul class="list-unstyled inforfooterother">
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Our Location</a></li>
-            <li><a href="#">Contact us</a></li>
-            <li><a href="#">Archive template</a></li>
-            <li><a href="#">Our company</a></li>
+            <?php foreach ($informations as $information) { ?>
+            <li><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
+            <?php } ?>
           </ul>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
           <h5>Hợp tác và liên kết</h5>
           <ul class="list-unstyled inforfooterother">
-            <li><a href="#">Our company</a></li>
-            <li><a href="#">Site map</a></li>
+            <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
+            <li><a href="<?php echo $sitemap; ?>"><?php echo $text_sitemap; ?></a></li>
           </ul>
         </div>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-12">
         <h5>Chứng nhận</h5>
-        <div class="col-md-6 col-sm-6 col-xs-6"><img src="images/dathongbao.png"></div><div class="col-md-6 col-sm-6 col-xs-6"><img src="images/norton.png"/></div>
+        <div class="col-md-6 col-sm-6 col-xs-6"><img src="image/dathongbao.png"></div><div class="col-md-6 col-sm-6 col-xs-6"><img src="image/norton.png"/></div>
         <h5>Dịch vụ giao hàng</h5>
-        <img src="images/shippingfooter.jpg"/>
+        <img src="image/shippingfooter.jpg"/>
       </div>
     </div>
     <div class="row">
       <div class="col-md-3 col-sm-3 col-xs-12 socialfooter">
-        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="<?php echo $link_facebook;?>"><i class="fa fa-facebook"></i></a>
         <a href="#"><i class="fa fa-twitter"></i></a>
         <a href="#"><i class="fa fa-dribbble"></i></a>
-        <a href="#"><i class="fa fa-google-plus"></i></a>
+        <a href="<?php echo $link_google;?>"><i class="fa fa-google-plus"></i></a>
         <a href="#"><i class="fa fa-skype"></i></a>
         <a href="#"><i class="fa fa-youtube"></i></a>
       </div>
       <div class="col-md-9 col-sm-9 col-xs-12">
-        Điện thoại: 08 - 35 534 298 &nbsp; Fax: 08 - 35 534 310 &nbsp; Email: hotrospro@gmail.com
+
       </div>
     </div>
   </div>
@@ -66,7 +63,7 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <p class="txthottag">Hot Tags</p>
-          <p><a href="#">Abbout Hoa Kỳ</a> | <a href="#">Similar Mom</a> | <a href="#">Ensure Gold</a> | <a href="#">Abbout Hoa Kỳ</a> | <a href="#">Similar Mom</a> | <a href="#">Ensure Gold</a> | <a href="#">Abbout Hoa Kỳ</a> | <a href="#">Similar Mom</a> | <a href="#">Ensure Gold</a> | <a href="#">Abbout Hoa Kỳ</a> | <a href="#">Similar Mom</a> | <a href="#">Ensure Gold</a><p>
+          <p><?php echo $footer_top;?><p>
         </div>
       </div>
     </div>
@@ -77,11 +74,11 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-sm-8 col-xs-12">
-          Copyright &copy; 2016 Công ty TNHH Công Nghiệp và Thương Mại Nam Việt<br>
+          Copyright &copy; 2016 <?php echo $owner;?><br>
           Developed By TGMSS.COM
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
-          <img src="images/paymentcompany.png"/>
+          <img src="image/paymentcompany.png"/>
         </div>
       </div>
     </div>

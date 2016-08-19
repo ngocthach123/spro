@@ -807,7 +807,6 @@ span.top-iconuser .fa-user {
 	border: 1px solid #ddd;
 	width: 262px;
 	z-index: 999;
-	display: none;
 }
 #mainmenucate-top ul {
 	margin: 0;
@@ -1539,6 +1538,21 @@ div.itemimage + div {
 	position: fixed;
 	z-index: 999;
 }
+
+.ads .banner-close{
+	position: absolute;
+	top:0;
+	right: 1px;
+	cursor: pointer;
+	background-color: #2b2b2b;
+	padding: 0px 3px;
+}
+
+.ads .banner-close i{
+	color: #f5f5f5;
+	font-size: 13px;
+}
+
 .bottom-right{
 	right: 0;
 	left: 0;

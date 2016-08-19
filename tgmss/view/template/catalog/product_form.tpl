@@ -71,6 +71,12 @@
                       <textarea name="product_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['description'] : ''; ?></textarea>
                     </div>
                   </div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="input-specs<?php echo $language['language_id']; ?>"><?php echo $entry_specs; ?></label>
+						<div class="col-sm-10">
+							<textarea name="product_description[<?php echo $language['language_id']; ?>][specs]" placeholder="<?php echo $entry_specs; ?>" id="input-specs<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['specs'] : ''; ?></textarea>
+						</div>
+					</div>
                   <div class="form-group hidden">
 					<script type="text/javascript">
 						$('#input-name<?php echo $language['language_id']; ?>').on('blur',function() {
@@ -993,6 +999,13 @@
 			filebrowserBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
 			filebrowserImageBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
 			filebrowserFlashBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
+		});
+
+		CKEDITOR.replace('input-specs<?php echo $language['language_id']; ?>', {
+			filebrowserBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
+			filebrowserImageBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
+			filebrowserFlashBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
+			height: 150,
 		});
 
 		CKEDITOR.on('dialogDefinition', function (event)

@@ -29,7 +29,7 @@ $_['text_upload']                      = 'Tải lên';
 $_['text_error']                       = 'Xử lý lỗi';
 
 // Entry
-$_['entry_meta_title']                 = 'Tên gian hàng';
+$_['entry_meta_title']                 = 'Tiêu đề cửa hàng';
 $_['entry_meta_description']    = 'Mô tả từ khóa:';
 $_['entry_meta_keyword']               = 'Các từ khóa';
 $_['entry_layout']              = 'Giao diện sử dụng:';

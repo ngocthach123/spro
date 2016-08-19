@@ -2,7 +2,7 @@
 class ControllerCommonFooter extends Controller {
 	public function index() {
 		$this->load->language('common/footer');
-
+		$this->load->controller('common/position');
 		$data['scripts'] = $this->document->getScripts('footer');
 
 		$data['text_information'] = $this->language->get('text_information');
@@ -51,6 +51,15 @@ class ControllerCommonFooter extends Controller {
 		$data['wishlist'] = $this->url->link('account/wishlist', '', true);
 		$data['newsletter'] = $this->url->link('account/newsletter', '', true);
 
+		$data['owner']=$this->config->get('config_owner');
+		$data['name']=$this->config->get('config_name');
+		$data['address'] = $this->config->get('config_address');
+		$data['phone'] = $this->config->get('config_telephone');
+		$data['email'] = $this->config->get('config_email');
+		$data['fax'] = $this->config->get('config_fax');
+		$data['link_facebook'] = $this->config->get('config_facebook');
+		$data['link_google'] = $this->config->get('config_google');
+
 		$data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
 
 		// Whos Online
@@ -77,6 +86,11 @@ class ControllerCommonFooter extends Controller {
 
 			$this->model_tool_online->addOnline($ip, $this->customer->getId(), $url, $referer);
 		}
+
+		$old_route =  isset($this->request->get['route']) ? $this->request->get['route'] : false;
+		$this->request->get['route'] = 'common/footer';
+		foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load->controller('common/positions', $key);}
+		$this->request->get['route'] = $old_route;
 
 		return $this->load->view('common/footer', $data);
 	}

@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']       = 'Bnaner quảng cáo';
+$_['heading_title']       = 'Banner quảng cáo';
 
 // Text
 $_['text_module']         = 'Mô-đun';

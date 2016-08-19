@@ -52,6 +52,7 @@ class ControllerDesignLayout extends Controller {
 		$this->load->model('design/layout');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+
 			$this->model_design_layout->editLayout($this->request->get['layout_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');

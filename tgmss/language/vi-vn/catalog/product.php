@@ -32,6 +32,7 @@ $_['button_update']          = 'Cập nhật';
 // Entry
 $_['entry_name']             = 'Tên sản phẩm:';
 $_['entry_description']      = 'Mô tả sản phẩm:';
+$_['entry_specs']      = 'Thông số kỹ thuật:';
 $_['entry_meta_title'] 	     = 'Tiêu đề mở rộng';
 $_['entry_meta_keyword']     = 'Từ khóa:';
 $_['entry_meta_description'] = 'Mô tả từ khóa:';

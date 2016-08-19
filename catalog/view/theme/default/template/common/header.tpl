@@ -217,62 +217,7 @@
       <div class="col-md-3 col-sm-3 col-xs-12">
         <div id="menucategory-top">
           <div class="txtmenucategory-top"><i class="fa fa-bars"></i>&nbsp; Tất cả danh mục</div>
-          <div id="mainmenucate-top">
-            <ul>
-              <!-- menu cấp 1 -->
-              <li>
-                <a href="#">
-                  <i class="fa fa-bullseye"></i>&nbsp; Máy nén khí <i class="fa fa-chevron-right"></i>
-                </a>
-                <ul>
-                  <!-- menu cấp 2 -->
-                  <li><a href="#"><i class="fa fa-bullseye"></i>&nbsp; Máy nén khí con 1</a>
-                    <ul>
-                      <!-- menu cấp 3 -->
-                      <li><a href="#"><i class="fa fa-bullseye"></i>&nbsp; Máy nén khí 1</a></li>
-                      <li><a href="#"><i class="fa fa-bullseye"></i>&nbsp; Máy nén khí 2</a></li>
-                      <li><a href="#"><i class="fa fa-bullseye"></i>&nbsp; Máy nén khí 3</a></li>
-                      <li><a href="#"><i class="fa fa-bullseye"></i>&nbsp; Máy nén khí 4</a></li>
-                      <li><a href="#"><i class="fa fa-bullseye"></i>&nbsp; Máy nén khí 5</a></li>
-                      <!-- menu cấp 3 -->
-                    </ul>
-                  </li>
-                  <li><a href="#"><i class="fa fa-bullseye"></i>&nbsp; Máy nén khí con 2</a></li>
-                  <!-- end menu cấp 2 -->
-                </ul>
-              </li>
-              <!-- menu cấp 1 -->
-              <li>
-                <a href="#">
-                  <i class="fa fa-bullseye"></i>&nbsp; Máy xịt rửa áp lực cao <i class="fa fa-chevron-right"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-bullseye"></i>&nbsp; Thiết bị sửa chửa ô tô <i class="fa fa-chevron-right"></i></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-bullseye"></i>&nbsp; Thiết bị sửa chửa xe máy <i class="fa fa-chevron-right"></i></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-bullseye"></i>&nbsp; Thiết bị chăm sóc ô tô <i class="fa fa-chevron-right"></i></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-bullseye"></i>&nbsp; Máy vệ sinh công nghiệp <i class="fa fa-chevron-right"></i></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-bullseye"></i>&nbsp; Thiết bị sửa chửa vỏ <i class="fa fa-chevron-right"></i></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-bullseye"></i>&nbsp; Thiết bị điện cầm tay <i class="fa fa-chevron-right"></i></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-bullseye"></i>&nbsp; Thiết bị xây dựng công nghiệp <i class="fa fa-chevron-right"></i></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-bullseye"></i>&nbsp; Dụng cụ khí nén <i class="fa fa-chevron-right"></i></a>
-              </li>
-            </ul>
-          </div>
+           <?php echo $header_top;?>
         </div>
       </div>
       <div class="col-md-9 col-sm-9 col-xs-12">
