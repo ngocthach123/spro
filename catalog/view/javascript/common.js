@@ -196,11 +196,15 @@ var cart = {
 			}
 		});
 	},
-	'remove': function(key) {
+	'remove': function(key,product_id) {
+		product_id = typeof product_id !== 'undefined' ? product_id : 0; //set default
 		$.ajax({
 			url: 'index.php?route=checkout/cart/remove',
 			type: 'post',
-			data: 'key=' + key,
+			data: {
+				key:key,
+				product_id:product_id
+			},
 			dataType: 'json',
 			beforeSend: function() {
 				$('#cart > button').button('loading');

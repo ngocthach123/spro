@@ -251,10 +251,11 @@ class ModelCatalogProduct extends Model {
 		}
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "product_accessories WHERE product_id = '" . (int)$product_id . "'");
-		if (isset($data['product_access'])) {
+		if (isset($data['product_access'])) { $i=0;
 			foreach ($data['product_access'] as $access_id) {
 				$this->db->query("DELETE FROM " . DB_PREFIX . "product_accessories WHERE product_id = '" . (int)$product_id . "' AND access_id = '" . (int)$access_id . "'");
-				$this->db->query("INSERT INTO " . DB_PREFIX . "product_accessories SET product_id = '" . (int)$product_id . "', access_id = '" . (int)$access_id . "'");
+				$this->db->query("INSERT INTO " . DB_PREFIX . "product_accessories SET product_id = '" . (int)$product_id . "', access_id = '" . (int)$access_id. "', price_sale = '" . (int)$data['access_price'][$i]  . "'");
+				$i++;
 			}
 		}
 
@@ -686,10 +687,12 @@ class ModelCatalogProduct extends Model {
 
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_accessories WHERE product_id = '" . (int)$product_id . "'");
 
+		$i = 0;
 		foreach ($query->rows as $result) {
-			$product_access_data[] = $result['access_id'];
+			$product_access_data[$i]['access_id'] = $result['access_id'];
+			$product_access_data[$i]['access_price'] = $result['price_sale'];
+			$i++;
 		}
-
 		return $product_access_data;
 	}
 

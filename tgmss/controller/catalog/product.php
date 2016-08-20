@@ -944,6 +944,13 @@ class ControllerCatalogProduct extends Controller {
 		$data['text_select'] = $this->language->get('text_select');
 		$data['text_percent'] = $this->language->get('text_percent');
 		$data['text_amount'] = $this->language->get('text_amount');
+		$data['text_no_results'] = $this->language->get('text_no_results');
+
+		$data['column_price_sale'] = $this->language->get('column_price_sale');
+		$data['column_product'] = $this->language->get('column_name');
+		$data['column_price'] = $this->language->get('column_price');
+		$data['column_image'] = $this->language->get('column_image');
+		$data['entry_price_sale'] = $this->language->get('column_price_sale');
 
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_description'] = $this->language->get('entry_description');
@@ -1818,12 +1825,14 @@ class ControllerCatalogProduct extends Controller {
 
 		$data['products_access'] = array();
 		foreach ($products_access as $product_id) {
-			$access_info = $this->model_catalog_product->getProduct($product_id);
-
+			$access_info = $this->model_catalog_product->getProduct($product_id['access_id']);
 			if ($access_info) {
 				$data['products_access'][] = array(
 					'product_id' => $access_info['product_id'],
-					'name'       => $access_info['name']
+					'name'       => $access_info['name'],
+					'price'       =>$this->currency->format($access_info['special'] ? $access_info['special'] : $access_info['price'], $this->session->data['currency']),
+					'price_sale' => $product_id['access_price'],
+					'image'     =>  $this->model_tool_image->resize($access_info['image'], 40, 40),
 				);
 			}
 		}

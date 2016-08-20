@@ -31,6 +31,7 @@
             <li class="hidden"><a href="#tab-links" data-toggle="tab"><?php echo $tab_links; ?></a></li>
             <li class="hidden"><a href="#tab-attribute" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
             <li><a href="#tab-option" data-toggle="tab">Thuộc tính sản phẩm</a></li>
+			<li><a href="#tab-access" data-toggle="tab">Phụ kiện</a></li>
             <li class="hidden"><a href="#tab-recurring" data-toggle="tab"><?php echo $tab_recurring; ?></a></li>
             <li class="hidden"><a href="#tab-discount" data-toggle="tab"><?php echo $tab_discount; ?></a></li>
             <li class=""><a href="#tab-special" data-toggle="tab"><?php echo $tab_special; ?></a></li>
@@ -234,19 +235,7 @@
 						  </select>
 					  </div>
 				  </div>
-				  <div class="form-group">
-					  <label class="col-sm-2 control-label" for="input-access"><?php echo $entry_access; ?></label>
-					  <div class="col-sm-10">
-						  <input type="text" name="access" value="" placeholder="<?php echo $entry_access; ?>" id="input-access" class="form-control" />
-						  <div id="product-access" class="well well-sm" style="height: 150px; overflow: auto;">
-							  <?php foreach ($products_access as $product_access) { ?>
-							  <div id="product-access<?php echo $product_access['product_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $product_access['name']; ?>
-								  <input type="hidden" name="product_access[]" value="<?php echo $product_access['product_id']; ?>" />
-							  </div>
-							  <?php } ?>
-						  </div>
-					  </div>
-				  </div>
+
 				  <div class="form-group hidden">
 					<label class="col-sm-2 control-label" for="input-location"><?php echo $entry_location; ?></label>
 					<div class="col-sm-10">
@@ -766,6 +755,84 @@
                 </div>
               </div>
 			</div>
+			<div class="tab-pane" id="tab-access">
+				  <div class="row">
+					  <div class="well">
+						  <div class="form-group" style="width: 70%; margin-left: 20px">
+							  <input type="text" name="add_name" class="form-control" placeholder="Nhập tên sản phẩm" autocomplete="off"/>
+							  <input type="hidden" name="access_id" id="access_id" value="">
+							  <input type="hidden" name="tax_id" id="tax_id" value="">
+						  </div>
+
+						  <div class="form-group" style="width: 70%; margin-left: 20px">
+							  <table class="table">
+								  <thead>
+								  <tr>
+									  <td class="text-left"><?php echo $column_product; ?></a></td>
+									  <td class="text-left"><?php echo $column_price; ?></a></td>
+									  <td class="text-left"><?php echo $column_price_sale; ?></a></td>
+								  </tr>
+								  </thead>
+								  <tbody>
+								  <tr>
+									  <td class="text-left" id="name_product"></td>
+									  <td class="text-left" id="price_product"></td>
+									  <td class="text-left"><input type="text" name="price_sale" id="product_price_sale" class="form-control"></td>
+								  </tr>
+								  </tbody>
+							  </table>
+							  <button class="btn btn-primary pull-right" style="margin-right: 15px" id="btn-add-product">Thêm</button>
+						  </div>
+						  <div style="clear: both"></div>
+					  </div>
+				  </div>
+
+				  <div class="row">
+					  <div class="table-responsive">
+						  <table class="table table-hover">
+							  <thead>
+							  <tr>
+								  <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
+								  <td class="text-center"><?php echo $column_image; ?></td>
+								  <td class="text-left"><?php echo $column_product; ?></a></td>
+								  <td class="text-center"><?php echo $column_price; ?></td>
+								  <td class="text-left" width="200"><?php echo $entry_price_sale; ?></td>
+								  <td class="text-center"></td>
+							  </tr>
+							  </thead>
+							  <tbody id="rp_product">
+							  <?php if($products_access) { ?>
+							  <?php foreach ($products_access as $product) { ?>
+							  <tr>
+								  <input type="hidden" value="<?php echo $product['product_id'];?>" name="product_access[]"/>
+
+								  <td class="text-center">
+									  <input type="checkbox" name="selected[]" value="<?php echo $product['product_id']; ?>" />
+								  </td>
+								  <td class="text-center"><?php if ($product['image']) { ?>
+									  <img src="<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>" class="img-thumbnail" />
+									  <?php } else { ?>
+									  <span class="img-thumbnail list"><i class="fa fa-camera fa-2x"></i></span>
+									  <?php } ?></td>
+								  <td class="text-left"><?php echo $product['name']; ?></td>
+
+								  <td class="text-center"><?php echo $product['price']; ?></td>
+
+								  <td class="text-left"><input type="text" name="access_price[]" value="<?php echo $product['price_sale']; ?>" placeholder="<?php echo $entry_price_sale; ?>" class="form-control" /></td>
+
+								  <td class="text-center"><a data-toggle="tooltip" title="Xóa" class="btn btn-danger delete-product"><i class="fa fa-trash-o"></i></a></td>
+							  </tr>
+							  <?php } ?>
+							  <?php } else { ?>
+							  <tr id="no-result">
+								  <td class="text-center" colspan="8"><?php echo $text_no_results; ?></td>
+							  </tr>
+							  <?php } ?>
+							  </tbody>
+						  </table>
+					  </div>
+				  </div>
+			  </div>
             <div class="tab-pane hidden" id="tab-recurring">
               <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover">
@@ -1203,31 +1270,6 @@ $('input[name=\'related\']').autocomplete({
 		$(this).parent().remove();
 	});
 
-	// Accessories
-	$('input[name=\'access\']').autocomplete({
-		'source': function(request, response) {
-			$.ajax({
-				url: 'index.php?route=catalog/product/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
-				dataType: 'json',
-				success: function(json) {
-					response($.map(json, function(item) {
-						return {
-							label: item['name'],
-							value: item['product_id']
-						}
-					}));
-				}
-			});
-		},
-		'select': function(item) {
-			$('input[name=\'access\']').val('');
-
-			$('#product-access' + item['value']).remove();
-
-			$('#product-access').append('<div id="product-access' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="product_access[]" value="' + item['value'] + '" /></div>');
-		}
-	});
-
 	$('#product-access').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
 	});
@@ -1594,6 +1636,77 @@ function addRecurring() {
 	$('#tab-recurring table tbody').append(html);
 }
 //--></script>
+
+
+	<script>
+		$('input[name=\'add_name\']').autocomplete({
+			'source': function(request, response) {
+				$.ajax({
+					url: 'index.php?route=catalog/product/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+					dataType: 'json',
+					success: function(json) {
+						response($.map(json, function(item) {
+							return {
+								label: item['name'],
+								value: item['product_id'],
+								price: item['price'],
+								special: item['special'],
+								tax_class_id: item['tax_class_id'],
+								description: item['description'],
+							}
+						}));
+					}
+				});
+			},
+			'select': function(item) {
+				$('input[name=\'add_name\']').val('');
+				$("#name_product").html(item['label']);
+				$("#price_product").html(item['price']);
+				$("#access_id").val(item['value']);
+				$("#tax_id").val(item['tax_class_id']);
+
+				if(item['special'] != '' && item['special'] != null){
+					$("#price_product").html(item['special']);
+				}
+			}
+		});
+
+		$("#btn-add-product").click(function(e){
+			e.preventDefault();
+			var id =  $("#access_id").val();
+			var name = $("#name_product").html();
+			var price = $("#price_product").html();
+			var price_sale = $("#product_price_sale").val();
+			var tax_id = $("#tax_id").val();
+
+			if(id!='') {
+				html = " <tr><input type='hidden' value='" + id + "' name='product_access[]'/>";
+				html += "<td class='text-center'><input type='checkbox' name='selected[]' value='" + id + "' /></td>";
+				html += "<td class='text-center'></td>";
+				html += "<td class='text-left'>" + name + "</td>";
+				html += "<td class='text-center'>" + price + "</td>";
+				html += "<td class='text-left'><input type='text' name='access_price[]' value='" + price_sale + "' placeholder='Giá khuyến mãi' class='form-control' /></td>";
+				html += "<td class='text-center'><a data-toggle='tooltip' title='Xóa' class='btn btn-danger delete-product'><i class='fa fa-trash-o'></i></a></td>";
+				html += "<tr/>";
+
+				$("#no-result").hide();
+				$("#rp_product").prepend(html);
+
+				$(".delete-product").click(function(){
+					$(this).parent().parent().remove();
+				});
+
+			}
+
+		});
+
+		$(".delete-product").click(function(){
+			$(this).parent().parent().remove();
+		});
+	</script>
+
+
+
   <script type="text/javascript"><!--
 $('.date').datetimepicker({
 	pickTime: false

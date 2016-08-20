@@ -33,7 +33,7 @@
 </div>
 
 <script>
-  if($("body").hasClass('common-home')){
+  if($("body").hasClass('common-home') || $("body").attr('class') == ''){
     $("#mainmenucate-top").removeClass('hidden');
   }
 </script>

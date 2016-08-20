@@ -345,17 +345,19 @@ class ControllerProductProduct extends Controller {
 			$products_access = $this->model_catalog_product->getProductAccess($this->request->get['product_id']);
 
 			foreach ($products_access as $product_id) {
-				$access_info = $this->model_catalog_product->getProduct($product_id);
+				$access_info = $this->model_catalog_product->getProduct($product_id['access_id']);
 //				var_dump($access_info); exit();
 				if ($access_info) {
 					$data['accessories'][] = array(
 						'product_id' => $access_info['product_id'],
 						'name'       => $access_info['name'],
-						'price'       => $this->currency->format($this->tax->calculate($access_info['special'] ? $access_info['special'] : $access_info['price'], $access_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']),
+						'price'       => $this->currency->format($this->tax->calculate($product_id['access_price']? $product_id['access_price']: ($access_info['special'] ? $access_info['special'] : $access_info['price']), $access_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']),
 						'price_origin' =>  $this->tax->calculate($access_info['price'], $access_info['tax_class_id'], $this->config->get('config_tax')),
 						'special' => $this->currency->format($access_info['special'], $this->session->data['currency']),
 						'special_origin' => $this->currency->format($access_info['special'], $this->session->data['currency']),
 						'image'       =>$this->model_tool_image->resize($access_info['image'], 50, 50),
+						'hasSale' => $product_id['access_price'],
+						'href'        => $this->url->link('product/product', 'product_id=' . $access_info['product_id'])
 					);
 				}
 			}

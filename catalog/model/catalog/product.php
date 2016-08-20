@@ -8,9 +8,11 @@ class ModelCatalogProduct extends Model {
 		$product_access_data = array();
 
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_accessories WHERE product_id = '" . (int)$product_id . "'");
-
+		$i = 0;
 		foreach ($query->rows as $result) {
-			$product_access_data[] = $result['access_id'];
+			$product_access_data[$i]['access_id'] = $result['access_id'];
+			$product_access_data[$i]['access_price'] = $result['price_sale'];
+			$i++;
 		}
 
 		return $product_access_data;

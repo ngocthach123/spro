@@ -173,6 +173,7 @@ class ControllerCheckoutCart extends Controller {
 
 				$data['products'][] = array(
 					'cart_id'   => $product['cart_id'],
+					'product_id'   => $product['product_id'],
 					'thumb'     => $image,
 					'name'      => $product['name'],
 					'model'     => $product['model'],
@@ -341,7 +342,25 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 				$accessories = array();
 			}
 
-			$product_options = $this->model_catalog_product->getProductOptions($this->request->post['product_id']);
+			if (isset($this->request->post['hasSale']) && isset($this->request->post['parent_id'])) {
+				if($this->request->post['hasSale']){
+					$hasSale = 1;
+					$parent_id = $this->request->post['parent_id'];
+				}else{
+					$hasSale = 0;
+					$parent_id = 0;
+				}
+
+			} else {
+				$hasSale = 0;
+				$parent_id = 0;
+			}
+
+			if (isset($this->request->post['buy_with_access'])){
+				$buy_with_access = 1;
+			}else{
+				$buy_with_access = 0;
+			}
 
 			$product_options = $this->model_catalog_product->getProductOptions($this->request->post['product_id']);
 
@@ -372,7 +391,7 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 			}
 
 			if (!$json) {
-				$this->cart->add($this->request->post['product_id'], $quantity, $option, $recurring_id, $accessories);
+				$this->cart->add($this->request->post['product_id'], $quantity, $option, $recurring_id, $accessories,$hasSale,$parent_id,$buy_with_access);
 
 				$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('checkout/cart'));
 
@@ -468,7 +487,12 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 
 		// Remove
 		if (isset($this->request->post['key'])) {
-			$this->cart->remove($this->request->post['key']);
+
+			if (isset($this->request->post['product_id']) && $this->request->post['product_id'] !=0) {
+				$this->cart->remove($this->request->post['key'],$this->request->post['product_id']);
+			}else{
+				$this->cart->remove($this->request->post['key']);
+			}
 
 			unset($this->session->data['vouchers'][$this->request->post['key']]);
 

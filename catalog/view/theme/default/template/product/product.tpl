@@ -171,12 +171,13 @@
               <div>
                 <div class="checkbox">
                   <label>
-                    <input type="checkbox" name="access[]" value="<?php echo $access['product_id']; ?>" price="<?php echo $access['special'] ?  $access['special'] :$access['price']; ?>"/>
+
                     <img src="<?php echo $access['image']; ?>" alt="<?php echo $access['name']; ?>" class="img-thumbnail" />
-                    <?php echo $access['name']; ?>
+                    <a href="<?php echo $access['href'];?>"><?php echo $access['name']; ?></a>
                     <?php if ($access['price']) { ?>
-                    (+<?php echo $access['price']; ?>)
+                    (<?php echo $access['price']; ?>)
                     <?php } ?>
+                    <button type="button" class="button-cart-access" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block" access-id="<?php echo $access['product_id'];?>" has-Sale="<?php echo $access['hasSale'];?>"><?php echo $button_cart; ?></button>
                   </label>
                 </div>
               </div>
@@ -430,17 +431,6 @@
     <?php echo $column_right; ?></div>
 </div>
 
-<script>
-  $("input[name='access[]']").change(function(){
-    if($(this).prop('checked')){
-      alert('check');
-    }else {
-      alert('no');
-    }
-
-  });
-</script>
-
 <script type="text/javascript"><!--
 $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 	$.ajax({
@@ -514,6 +504,76 @@ $('#button-cart').on('click', function() {
         }
 	});
 });
+
+  $('.button-cart-access').on('click', function() {
+    if( $(this).attr('has-Sale')!=0){ //mua kem sp
+      $.ajax({
+        url: 'index.php?route=checkout/cart/add',
+        type: 'post',
+        data: {
+          product_id: $("input[name='product_id']").val(),
+          quantity: 1,
+          buy_with_access: 1
+        },
+        dataType: 'json',
+        success: function(json) {
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+      });
+    }
+
+    $.ajax({
+      url: 'index.php?route=checkout/cart/add',
+      type: 'post',
+      data: {
+        product_id: $(this).attr('access-id'),
+        hasSale: $(this).attr('has-Sale'),
+        quantity: 1,
+        parent_id: $("input[name='product_id']").val()
+      },
+      dataType: 'json',
+      success: function(json) {
+        $('.alert, .text-danger').remove();
+        $('.form-group').removeClass('has-error');
+
+        if (json['error']) {
+          if (json['error']['option']) {
+            for (i in json['error']['option']) {
+              var element = $('#input-option' + i.replace('_', '-'));
+
+              if (element.parent().hasClass('input-group')) {
+                element.parent().after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+              } else {
+                element.after('<div class="text-danger">' + json['error']['option'][i] + '</div>');
+              }
+            }
+          }
+
+          if (json['error']['recurring']) {
+            $('select[name=\'recurring_id\']').after('<div class="text-danger">' + json['error']['recurring'] + '</div>');
+          }
+
+          // Highlight any found errors
+          $('.text-danger').parent().addClass('has-error');
+        }
+
+        if (json['success']) {
+          $('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+          $('#shoppingcart span.top-quantity').html(json['total_origin']);
+
+          $('html, body').animate({ scrollTop: 0 }, 'slow');
+
+          $('#cart > ul').load('index.php?route=common/cart/info ul li');
+        }
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+      }
+    });
+  });
 //--></script>
 <script type="text/javascript"><!--
 $('.date').datetimepicker({
