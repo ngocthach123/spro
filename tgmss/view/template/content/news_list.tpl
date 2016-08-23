@@ -35,7 +35,7 @@
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<div class="input-group">
 							<span class="input-group-addon" id="sizing-addon1">Tìm kiếm</span>
-							<input type="text" name="filter_name" value="<?php echo $filter_name; ?>" class="form-control" placeholder="Nhập tên sản phẩm cần tìm kiếm...">
+							<input type="text" name="filter_name" value="<?php echo $filter_name; ?>" class="form-control" placeholder="Nhập tên tin tức cần tìm kiếm...">
 							<span class="input-group-btn">
 								<button type="button" id="button-filter" class="btn btn-filter mtbuttonn"><i class="fa fa-search"></i> <?php echo $button_filter; ?></button>
 							</span>

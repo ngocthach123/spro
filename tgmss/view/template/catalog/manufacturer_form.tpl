@@ -75,6 +75,19 @@
             </div>
           </div>
           <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-category"><?php echo $entry_category; ?></label>
+            <div class="col-sm-10">
+              <input type="text" name="category" value="" placeholder="<?php echo $entry_category; ?>" id="input-category" class="form-control" />
+              <div id="manufacturer-category" class="well well-sm" style="height: 150px; overflow: auto;">
+                <?php foreach ($manufacturer_categories as $manufacturer_category) { ?>
+                <div id="manufacturer-category<?php echo $manufacturer_category['category_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $manufacturer_category['name']; ?>
+                  <input type="hidden" name="manufacturer_category[]" value="<?php echo $manufacturer_category['category_id']; ?>" />
+                </div>
+                <?php } ?>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
             <label class="col-sm-2 control-label" for="input-image"><?php echo $entry_image; ?></label>
             <div class="col-sm-10"> <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img src="<?php echo $thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
               <input type="hidden" name="image" value="<?php echo $image; ?>" id="input-image" />
@@ -91,4 +104,35 @@
     </div>
   </div>
 </div>
+
+<script>
+  // Category
+  $('input[name=\'category\']').autocomplete({
+    'source': function(request, response) {
+      $.ajax({
+        url: 'index.php?route=catalog/category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+        dataType: 'json',
+        success: function(json) {
+          response($.map(json, function(item) {
+            return {
+              label: item['name'],
+              value: item['category_id']
+            }
+          }));
+        }
+      });
+    },
+    'select': function(item) {
+      $('input[name=\'category\']').val('');
+
+      $('#manufacturer-category' + item['value']).remove();
+
+      $('#manufacturer-category').append('<div id="manufacturer-category' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="manufacturer_category[]" value="' + item['value'] + '" /></div>');
+    }
+  });
+
+  $('#manufacturer-category').delegate('.fa-minus-circle', 'click', function() {
+    $(this).parent().remove();
+  });
+</script>
 <?php echo $footer; ?>

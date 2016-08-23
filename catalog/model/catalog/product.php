@@ -173,6 +173,13 @@ class ModelCatalogProduct extends Model {
 			$sql .= " AND p.manufacturer_id = '" . (int)$data['filter_manufacturer_id'] . "'";
 		}
 
+		if(isset($data['min'])){
+			$sql .= " AND p.price > " . (int)$data['min'];
+		}
+		if(isset($data['max']) && $data['max']){
+			$sql .= " AND p.price < " . (int)$data['max'];
+		}
+
 		$sql .= " GROUP BY p.product_id";
 
 		$sort_data = array(
@@ -514,6 +521,13 @@ class ModelCatalogProduct extends Model {
 
 		if (!empty($data['filter_manufacturer_id'])) {
 			$sql .= " AND p.manufacturer_id = '" . (int)$data['filter_manufacturer_id'] . "'";
+		}
+
+		if(isset($data['min'])){
+			$sql .= " AND p.price > " . (int)$data['min'];
+		}
+		if(isset($data['max']) && $data['max']){
+			$sql .= " AND p.price < " . (int)$data['max'];
 		}
 
 		$query = $this->db->query($sql);

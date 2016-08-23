@@ -8,6 +8,8 @@ class ControllerModuleBanner extends Controller {
 
 		$data['banners'] = array();
 
+		$data['banner_name'] = $setting['name'];
+
 		$results = $this->model_design_banner->getBanner($setting['banner_id']);
 
 		foreach ($results as $result) {
@@ -15,7 +17,7 @@ class ControllerModuleBanner extends Controller {
 				$data['banners'][] = array(
 					'title' => $result['title'],
 					'link'  => $result['link'],
-					'image' => $this->model_tool_image->resize($result['image'], $setting['width'], $setting['height'])
+					'image' => ($setting['height'] && $setting['width']) ? $this->model_tool_image->resize($result['image'], $setting['width'], $setting['height']) : 'image/'.$result['image'],
 				);
 			}
 		}

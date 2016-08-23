@@ -273,6 +273,7 @@ class ControllerCatalogManufacturer extends Controller {
 		$data['entry_store'] = $this->language->get('entry_store');
 		$data['entry_keyword'] = $this->language->get('entry_keyword');
 		$data['entry_image'] = $this->language->get('entry_image');
+		$data['entry_category'] = $this->language->get('entry_category');
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$data['entry_customer_group'] = $this->language->get('entry_customer_group');
 
@@ -365,6 +366,30 @@ class ControllerCatalogManufacturer extends Controller {
 			$data['keyword'] = $manufacturer_info['keyword'];
 		} else {
 			$data['keyword'] = '';
+		}
+
+		// Categories
+		$this->load->model('catalog/category');
+
+		if (isset($this->request->post['manufacturer_category'])) {
+			$categories = $this->request->post['manufacturer_category'];
+		} elseif (isset($this->request->get['manufacturer_id'])) {
+			$categories = $this->model_catalog_manufacturer->getProductCategories($this->request->get['manufacturer_id']);
+		} else {
+			$categories = array();
+		}
+
+		$data['manufacturer_categories'] = array();
+
+		foreach ($categories as $category_id) {
+			$category_info = $this->model_catalog_category->getCategory($category_id);
+
+			if ($category_info) {
+				$data['manufacturer_categories'][] = array(
+					'category_id' => $category_info['category_id'],
+					'name' => ($category_info['path']) ? $category_info['path'] . ' &gt; ' . $category_info['name'] : $category_info['name']
+				);
+			}
 		}
 
 		if (isset($this->request->post['image'])) {

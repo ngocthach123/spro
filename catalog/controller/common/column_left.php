@@ -49,6 +49,13 @@ class ControllerCommonColumnLeft extends Controller {
 			$part = explode('.', $module['code']);
 
 			if (isset($part[0]) && $this->config->get($part[0] . '_status')) {
+				if($part[0] == 'category'){
+					$module_data = $this->load->controller('module/' . $part[0], $layout_id);
+
+					if ($module_data) {
+						$data['modules'][] = $module_data;
+					}
+				}
 				$module_data = $this->load->controller('module/' . $part[0]);
 
 				if ($module_data) {

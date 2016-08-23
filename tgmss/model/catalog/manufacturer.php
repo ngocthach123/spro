@@ -19,6 +19,12 @@ class ModelCatalogManufacturer extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'manufacturer_id=" . (int)$manufacturer_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
 		}
 
+		if (isset($data['manufacturer_category'])) {
+			foreach ($data['manufacturer_category'] as $category_id) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "manufacturer_to_category SET manufacturer_id = '" . (int)$manufacturer_id . "', category_id = '" . (int)$category_id . "'");
+			}
+		}
+
 		$this->cache->delete('manufacturer');
 
 		return $manufacturer_id;
@@ -45,6 +51,14 @@ class ModelCatalogManufacturer extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'manufacturer_id=" . (int)$manufacturer_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
 		}
 
+		$this->db->query("DELETE FROM " . DB_PREFIX . "manufacturer_to_category WHERE manufacturer_id = '" . (int)$manufacturer_id . "'");
+
+		if (isset($data['manufacturer_category'])) {
+			foreach ($data['manufacturer_category'] as $category_id) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "manufacturer_to_category SET manufacturer_id = '" . (int)$manufacturer_id . "', category_id = '" . (int)$category_id . "'");
+			}
+		}
+
 		$this->cache->delete('manufacturer');
 	}
 
@@ -54,6 +68,18 @@ class ModelCatalogManufacturer extends Model {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "url_alias WHERE query = 'manufacturer_id=" . (int)$manufacturer_id . "'");
 
 		$this->cache->delete('manufacturer');
+	}
+
+	public function getProductCategories($manufacturer_id) {
+		$product_category_data = array();
+
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "manufacturer_to_category WHERE manufacturer_id = '" . (int)$manufacturer_id . "'");
+
+		foreach ($query->rows as $result) {
+			$product_category_data[] = $result['category_id'];
+		}
+
+		return $product_category_data;
 	}
 
 	public function getManufacturer($manufacturer_id) {

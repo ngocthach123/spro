@@ -156,13 +156,13 @@ class ControllerModuleBanner extends Controller {
 			$this->error['name'] = $this->language->get('error_name');
 		}
 
-		if (!$this->request->post['width']) {
-			$this->error['width'] = $this->language->get('error_width');
-		}
-
-		if (!$this->request->post['height']) {
-			$this->error['height'] = $this->language->get('error_height');
-		}
+//		if (!$this->request->post['width']) {
+//			$this->error['width'] = $this->language->get('error_width');
+//		}
+//
+//		if (!$this->request->post['height']) {
+//			$this->error['height'] = $this->language->get('error_height');
+//		}
 
 		return !$this->error;
 	}

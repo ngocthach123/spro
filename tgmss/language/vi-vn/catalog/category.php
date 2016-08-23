@@ -16,7 +16,7 @@ $_['column_action']          = 'Thao tác';
 
 // Entry
 $_['entry_name']             = 'Tên Danh mục:';
-$_['entry_description']      = 'Mô tả từ khóa';
+$_['entry_description']      = 'Mô tả danh mục';
 $_['entry_meta_title'] 	     = 'Tiêu đề Meta Tag';
 $_['entry_meta_keyword']     = 'Từ khóa:';
 $_['entry_meta_description'] = 'Mô tả từ khóa:';
@@ -30,6 +30,7 @@ $_['entry_column']           = 'Cột:';
 $_['entry_sort_order']       = 'Thứ tự:';
 $_['entry_status']           = 'Trạng thái:';
 $_['entry_layout']           = 'Bố cục:';
+
 
 // Help
 $_['help_filter']            = '(Tự động điền vào, bạn chỉ cần gõ các ký tự của danh mục, sẽ hiện các danh mục phía dưới để bạn chọn)';

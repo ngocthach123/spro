@@ -5,9 +5,9 @@
       <div class="col-md-3 col-sm-3 col-xs-12">
         <h5>Thông tin liên hệ</h5>
         <ul class="list-unstyled inforfooter">
-          <li><a href="#"><span class="boxiconfooter"><i class="fa fa-home"></i></span> &nbsp;<?php echo $address;?></a></li>
-          <li><a href="#"><span class="boxiconfooter"><i class="fa fa-phone"></i></span> &nbsp;<?php echo $phone;?></a></li>
-          <li><a href="#"><span class="boxiconfooter"><i class="fa fa-envelope"></i></span> &nbsp;<?php echo $email;?></a></li>
+          <li><a><span class="boxiconfooter"><i class="fa fa-home"></i></span> &nbsp;<?php echo $address;?></a></li>
+          <li><a><span class="boxiconfooter"><i class="fa fa-phone"></i></span> &nbsp;<?php echo $phone;?></a></li>
+          <li><a><span class="boxiconfooter"><i class="fa fa-envelope"></i></span> &nbsp;<?php echo $email;?></a></li>
         </ul>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-12">

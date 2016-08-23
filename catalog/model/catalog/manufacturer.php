@@ -6,6 +6,18 @@ class ModelCatalogManufacturer extends Model {
 		return $query->row;
 	}
 
+	public function getCategoryManufacturer($category_id) {
+		$manufacturer_data = array();
+
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "manufacturer_to_category WHERE category_id = '" . (int)$category_id . "'");
+
+		foreach ($query->rows as $result) {
+			$manufacturer_data[] = $result['manufacturer_id'];
+		}
+
+		return $manufacturer_data;
+	}
+
 	public function getManufacturers($data = array()) {
 		if ($data) {
 			$sql = "SELECT * FROM " . DB_PREFIX . "manufacturer m LEFT JOIN " . DB_PREFIX . "manufacturer_to_store m2s ON (m.manufacturer_id = m2s.manufacturer_id) WHERE m2s.store_id = '" . (int)$this->config->get('config_store_id') . "'";

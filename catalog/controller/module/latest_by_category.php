@@ -52,7 +52,7 @@ class ControllerModuleLatestByCategory extends Controller {
 					$special_cal = $this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax'));
 					$special = $this->currency->format($special_cal, $this->session->data['currency']);
 
-					if($price) {$specialper = (($price_cal - $special_cal)/$price_cal) * 100;
+					if($price_cal) {$specialper = (($price_cal - $special_cal)/$price_cal) * 100;
 						$specialper = ceil($specialper);
 					}
 

@@ -1,5 +1,76 @@
+<?php if($layout_id == 3):?>
+  <div class="boxcol-left">
+    <div class="boxcol-heading">
+      <?php echo $category['name']; ?>
+    </div>
+    <div class="boxcol-content">
+      <ul class="boxcategory">
+        <?php foreach ($category['children'] as $child): ?>
+        <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a>
+            <?php if ($child['children']): ?>
+            <ul>
+              <?php foreach ($child['children'] as $child_2): ?>
+               <li><a href="<?php echo $child_2['href']; ?>"><?php echo $child_2['name']; ?></a></li>
+              <?php endforeach;?>
+            </ul>
+            <?php endif;?>
+          </li>
+        <?php endforeach;?>
+      </ul>
+    </div>
+  </div>
+  <!-- boxcol-left -->
+  <div class="boxcol-left">
+    <div class="boxcol-heading">
+      Tìm theo
+    </div>
+    <div class="boxcol-content">
+      <!-- filtersearch -->
+      <div class="filtersearch-page">
+        <form method="get" action="<?php echo $action_search;?>" id="search-category">
+          <input type="text" name="filter_name" placeholder="Tìm theo tên, mã sản phẩm" value="<?php echo $filter_name;?>"/>
+          <div class="button-filter" onclick="document.getElementById('search-category').submit()"><i class="fa fa-search"></i></div>
+        </form>
+      </div>
+      <!-- filtermanufacturer -->
+      <?php if($manufacturers): ?>
+      <div class="filtertypes-page">
+        <div class="txtfiltertypes">
+          <a data-toggle="collapse" href="#filtermanufacturer">Hãng sản xuất</a>
+        </div>
+        <div class="itemfiltertypes">
+          <div id="filtermanufacturer" class="collapse in">
+            <?php foreach($manufacturers as $manufacturer): ?>
+              <label><input type="checkbox" name="" value="<?php echo $manufacturer['href'];?>" onclick="location = this.value;" <?php echo $manufacturer['checked'] ? 'checked' : '';?> >
+                <?php echo $manufacturer['name'];?> <span></span>
+              </label>
+           <?php endforeach;?>
+          </div>
+        </div>
+      </div>
+      <?php endif;?>
+      <!-- filterprice -->
+      <div class="filtertypes-page">
+        <div class="txtfiltertypes">
+          <a data-toggle="collapse" href="#filterprice">Tìm theo giá</a>
+        </div>
+        <div class="itemfiltertypes">
+          <div id="filterprice" class="collapse in">
+            <?php foreach ($money as $money):?>
+              <label><input type="checkbox" name="" value="<?php echo $money['href'];?>" onclick="location = this.value;" <?php echo $money['checked'] ? 'checked' : '';?>>
+                <?php echo $money['text'];?> <span></span>
+              </label>
+            <?php endforeach;?>
+          </div>
+        </div>
+      </div>
+      <!-- end filterprice -->
+    </div>
+  </div><!-- end boxcol-left -->
 
-<div id="mainmenucate-top" class="hidden">
+<?php else:?>
+
+<div id="mainmenucate-top">
   <ul>
     <!-- menu cấp 1 -->
     <?php foreach ($categories as $category): ?>
@@ -34,6 +105,8 @@
 
 <script>
   if($("body").hasClass('common-home') || $("body").attr('class') == ''){
-    $("#mainmenucate-top").removeClass('hidden');
+    $("#mainmenucate-top").css({"opacity":"1","visibility": "visible", "top": "100%"});
   }
 </script>
+
+<?php endif;?>

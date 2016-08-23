@@ -23,6 +23,7 @@ $_['entry_keyword']      = 'Liên kết thân thiện:';
 $_['entry_image']        = 'Hình ảnh:';
 $_['entry_sort_order']   = 'Thứ tự:';
 $_['entry_type']         = 'Loại:';
+$_['entry_category']         = 'Thuộc danh mục: ';
 
 // Help
 $_['help_keyword']       = 'Không để khoảng trống, bạn có thể dùng ký tự - để thay thế khoảng trắng và xác định liên kết này là duy nhất.';

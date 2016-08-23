@@ -15,6 +15,12 @@ class ControllerProductCategory extends Controller {
 			$filter = '';
 		}
 
+		if (isset($this->request->get['filter_name'])) {
+			$filter_name = $this->request->get['filter_name'];
+		} else {
+			$filter_name = '';
+		}
+
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
@@ -37,6 +43,24 @@ class ControllerProductCategory extends Controller {
 			$limit = (int)$this->request->get['limit'];
 		} else {
 			$limit = $this->config->get($this->config->get('config_theme') . '_product_limit');
+		}
+
+		if (isset($this->request->get['manu'])) {
+			$manu = (int)$this->request->get['manu'];
+		} else {
+			$manu = 0;
+		}
+
+		if (isset($this->request->get['min'])) {
+			$min = (int)$this->request->get['min'];
+		} else {
+			$min = 0;
+		}
+
+		if (isset($this->request->get['max'])) {
+			$max = (int)$this->request->get['max'];
+		} else {
+			$max = 0;
 		}
 
 		$data['breadcrumbs'] = array();
@@ -172,7 +196,11 @@ class ControllerProductCategory extends Controller {
 				'sort'               => $sort,
 				'order'              => $order,
 				'start'              => ($page - 1) * $limit,
-				'limit'              => $limit
+				'limit'              => $limit,
+				'filter_manufacturer_id' => $manu,
+				'filter_name' 		=> $filter_name,
+				'min'	=> $min,
+				'max'	=>$max
 			);
 
 			$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
@@ -187,16 +215,25 @@ class ControllerProductCategory extends Controller {
 				}
 
 				if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
+					$price_cal = $this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax'));
 					$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 				} else {
 					$price = false;
 				}
 
 				if ((float)$result['special']) {
+					$special_cal = $this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax'));
 					$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+
+					if($price_cal) {$specialper = (($price_cal - $special_cal)/$price_cal) * 100;
+						$specialper = ceil($specialper);
+					}
+
 				} else {
 					$special = false;
+					$specialper =false;
 				}
+
 
 				if ($this->config->get('config_tax')) {
 					$tax = $this->currency->format((float)$result['special'] ? $result['special'] : $result['price'], $this->session->data['currency']);
@@ -217,6 +254,7 @@ class ControllerProductCategory extends Controller {
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,
+					'specialper'     => $specialper,
 					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $result['rating'],
@@ -232,6 +270,18 @@ class ControllerProductCategory extends Controller {
 
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
+			}
+
+			if (isset($this->request->get['manu'])) {
+				$url .= '&manu=' . $this->request->get['manu'];
+			}
+
+			if (isset($this->request->get['filter_name'])) {
+				$url .= '&filter_name=' . $this->request->get['filter_name'];
+			}
+
+			if (isset($this->request->get['min']) && isset($this->request->get['max'])) {
+				$url .= '&min=' . $this->request->get['min'].'&max='.$this->request->get['max'];
 			}
 
 			$data['sorts'] = array();
@@ -306,6 +356,18 @@ class ControllerProductCategory extends Controller {
 				$url .= '&order=' . $this->request->get['order'];
 			}
 
+			if (isset($this->request->get['manu'])) {
+				$url .= '&manu=' . $this->request->get['manu'];
+			}
+
+			if (isset($this->request->get['filter_name'])) {
+				$url .= '&filter_name=' . $this->request->get['filter_name'];
+			}
+
+			if (isset($this->request->get['min']) && isset($this->request->get['max'])) {
+				$url .= '&min=' . $this->request->get['min'].'&max='.$this->request->get['max'];
+			}
+
 			$data['limits'] = array();
 
 			$limits = array_unique(array($this->config->get($this->config->get('config_theme') . '_product_limit'), 25, 50, 75, 100));
@@ -336,6 +398,18 @@ class ControllerProductCategory extends Controller {
 
 			if (isset($this->request->get['limit'])) {
 				$url .= '&limit=' . $this->request->get['limit'];
+			}
+
+			if (isset($this->request->get['manu'])) {
+				$url .= '&manu=' . $this->request->get['manu'];
+			}
+
+			if (isset($this->request->get['filter_name'])) {
+				$url .= '&filter_name=' . $this->request->get['filter_name'];
+			}
+
+			if (isset($this->request->get['min']) && isset($this->request->get['max'])) {
+				$url .= '&min=' . $this->request->get['min'].'&max='.$this->request->get['max'];
 			}
 
 			$pagination = new Pagination();

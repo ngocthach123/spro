@@ -5,147 +5,161 @@
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
   </ul>
-  <div class="row"><?php echo $column_left; ?>
-    <?php if ($column_left && $column_right) { ?>
-    <?php $class = 'col-sm-6'; ?>
-    <?php } elseif ($column_left || $column_right) { ?>
-    <?php $class = 'col-sm-9'; ?>
-    <?php } else { ?>
-    <?php $class = 'col-sm-12'; ?>
-    <?php } ?>
-    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h2><?php echo $heading_title; ?></h2>
-      <?php if ($thumb || $description) { ?>
-      <div class="row">
-        <?php if ($thumb) { ?>
-        <div class="col-sm-2"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" /></div>
-        <?php } ?>
-        <?php if ($description) { ?>
-        <div class="col-sm-10"><?php echo $description; ?></div>
-        <?php } ?>
-      </div>
-      <hr>
-      <?php } ?>
-      <?php if ($categories) { ?>
-      <h3><?php echo $text_refine; ?></h3>
-      <?php if (count($categories) <= 5) { ?>
-      <div class="row">
-        <div class="col-sm-3">
-          <ul>
-            <?php foreach ($categories as $category) { ?>
-            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-            <?php } ?>
-          </ul>
-        </div>
-      </div>
-      <?php } else { ?>
-      <div class="row">
-        <?php foreach (array_chunk($categories, ceil(count($categories) / 4)) as $categories) { ?>
-        <div class="col-sm-3">
-          <ul>
-            <?php foreach ($categories as $category) { ?>
-            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-            <?php } ?>
-          </ul>
-        </div>
-        <?php } ?>
-      </div>
-      <?php } ?>
-      <?php } ?>
-      <?php if ($products) { ?>
-      <p><a href="<?php echo $compare; ?>" id="compare-total"><?php echo $text_compare; ?></a></p>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="btn-group hidden-xs">
-            <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title="<?php echo $button_list; ?>"><i class="fa fa-th-list"></i></button>
-            <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip" title="<?php echo $button_grid; ?>"><i class="fa fa-th"></i></button>
+
+    <!-- boxcol-left -->
+  <?php echo $column_left;?>
+
+  <!-- contentpage -->
+  <div id="contentpage">
+    <!-- slidecategory -->
+    <?php echo $content_top;?>
+
+    <!-- wrapbox-category -->
+    <div class="wrapbox-category">
+      <!-- boxfilter-category -->
+      <div class="boxfilter-category">
+        <div class="sortanddisplay">
+          <div class="sortprice">
+            Sắp xếp theo:
+            <select id="input-sort" onchange="location = this.value;">
+              <?php foreach ($sorts as $sorts) { ?>
+              <?php if ($sorts['value'] == $sort . '-' . $order) { ?>
+              <option value="<?php echo $sorts['href']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>
+              <?php } else { ?>
+              <option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>
+              <?php } ?>
+              <?php } ?>
+            </select>
+          </div>
+          <div class="displayproduct">
+            Hiển thị:
+            <select id="input-limit" onchange="location = this.value;">
+              <?php foreach ($limits as $limits) { ?>
+              <?php if ($limits['value'] == $limit) { ?>
+              <option value="<?php echo $limits['href']; ?>" selected="selected"><?php echo $limits['text']; ?></option>
+              <?php } else { ?>
+              <option value="<?php echo $limits['href']; ?>"><?php echo $limits['text']; ?></option>
+              <?php } ?>
+              <?php } ?>
+            </select>
           </div>
         </div>
-        <div class="col-md-2 text-right">
-          <label class="control-label" for="input-sort"><?php echo $text_sort; ?></label>
-        </div>
-        <div class="col-md-3 text-right">
-          <select id="input-sort" class="form-control" onchange="location = this.value;">
-            <?php foreach ($sorts as $sorts) { ?>
-            <?php if ($sorts['value'] == $sort . '-' . $order) { ?>
-            <option value="<?php echo $sorts['href']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>
-            <?php } else { ?>
-            <option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>
-            <?php } ?>
-            <?php } ?>
-          </select>
-        </div>
-        <div class="col-md-1 text-right">
-          <label class="control-label" for="input-limit"><?php echo $text_limit; ?></label>
-        </div>
-        <div class="col-md-2 text-right">
-          <select id="input-limit" class="form-control" onchange="location = this.value;">
-            <?php foreach ($limits as $limits) { ?>
-            <?php if ($limits['value'] == $limit) { ?>
-            <option value="<?php echo $limits['href']; ?>" selected="selected"><?php echo $limits['text']; ?></option>
-            <?php } else { ?>
-            <option value="<?php echo $limits['href']; ?>"><?php echo $limits['text']; ?></option>
-            <?php } ?>
-            <?php } ?>
-          </select>
+        <div class="pagination-category">
+          <?php echo $pagination; ?>
         </div>
       </div>
-      <br />
-      <div class="row">
-        <?php foreach ($products as $product) { ?>
-        <div class="product-layout product-list col-xs-12">
-          <div class="product-thumb">
-            <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
-            <div>
-              <div class="caption">
-                <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
-                <p><?php echo $product['description']; ?></p>
-                <?php if ($product['rating']) { ?>
-                <div class="rating">
-                  <?php for ($i = 1; $i <= 5; $i++) { ?>
-                  <?php if ($product['rating'] < $i) { ?>
-                  <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                  <?php } else { ?>
-                  <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-                  <?php } ?>
-                  <?php } ?>
+      <!-- products-category -->
+      <div class="products-category">
+        <!-- 1 -->
+        <?php if($products): ?>
+          <?php foreach ($products as $product): ?>
+          <div class="colitemproduct">
+              <div class="itemproduct">
+              <div class="wrapbox-product">
+                <div class="contentbox-product">
+                  <div class="boxsale-product">
+                    Sale
+                  </div>
+                  <div class="boximage-product">
+                    <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>"></a>
+                    <div class="txtboximage">
+                      <a href="<?php echo $product['href']; ?>" class="btn btn-boximage">Xem chi tiết</a>
+                    </div>
+                  </div>
+                  <div class="boxname-product">
+                    <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+                  </div>
+                  <div class="boxprice-product">
+                    <?php if ($product['special']) { ?>
+                      <div class="productprice wbp">
+                        <span class="productsell"><?php echo $product['special']; ?></span>
+                        <span class="productsale"><?php echo $product['price']; ?></span>
+                      </div>
+                      <div class="percentsale wps">
+                        <span class="percentdiscount">-<?php echo $product['specialper']; ?>%</span>
+                      </div>
+                    <?php } else { ?>
+                      <div class="productprice wbp">
+                        <span class="productsell"><?php echo $product['price']; ?></span>
+                        <span class="productsale">&nbsp;</span>
+                      </div>
+                    <?php } ?>
+                  </div>
+                  <div class="boxreview-product">
+                    ( 19 nhận xét )
+                  </div>
                 </div>
-                <?php } ?>
-                <?php if ($product['price']) { ?>
-                <p class="price">
-                  <?php if (!$product['special']) { ?>
-                  <?php echo $product['price']; ?>
-                  <?php } else { ?>
-                  <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
-                  <?php } ?>
-                  <?php if ($product['tax']) { ?>
-                  <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
-                  <?php } ?>
-                </p>
-                <?php } ?>
-              </div>
-              <div class="button-group">
-                <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
-                <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
-                <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
               </div>
             </div>
           </div>
+          <?php endforeach;?>
+        <?php else: ?>
+          <p>Không có sản phẩm trong danh mục này.</p>
+        <?php endif;?>
+      </div>
+      <!-- paginationbottom-category -->
+      <div class="paginationbottom-category">
+        <?php echo $pagination; ?>
+      </div>
+    </div>
+    <!-- descriptioncategory -->
+    <div class="descriptioncategory">
+      <?php echo $description;?>
+    </div>
+    <!-- inforcategory -->
+    <div class="inforcategory">
+      <h4>Máy nén khí dùng phun sơn cần những loại nào?</h4>
+      <ul>
+        <li><a href="#">Máy nén khí phun sơn loại di động</a></li>
+        <li><a href="#">Máy nén khí dùng phun pu, xưởng gỗ, cửa sắt</a></li>
+      </ul>
+      <p>
+      <h4>Hướng dẫn sử dụng máy nén khí piston</h4>
+      <ul>
+        <li><a href="#">Sử dụng máy nén khí piston Jaguar 2hp</a></li>
+        <li><a href="#">Cách sử dụng máy nén khí mini có dầu</a></li>
+        <li><a href="#">Sử dụng máy nén khí đúng cách</a></li>
+        <li><a href="#">Dùng máy nén khí có dòng điện 1 pha</a></li>
+      </ul>
+    </div>
+    <!-- newsrelated-category -->
+    <div class="newsrelated-category">
+      <h3>Tin tức liên quan</h3>
+      <div class="itemnews">
+        <div class="namenews">
+          <a href="#">Hướng dẫn các bước bảo dưỡng máy rửa xe cao áp cơ bản</a>
         </div>
-        <?php } ?>
+        <div class="datednews">
+          Hôm nay, 9:30 am
+        </div>
+        <div class="contentnews">
+          Bảo dưỡng định kỳ cho máy rửa xe là việc hết sức cần thiết, bảo dưỡng thay dầu máy giúp máy hoạt động tốt hơn và tăng tuổi thọ cho máy
+        </div>
       </div>
-      <div class="row">
-        <div class="col-sm-6 text-left"><?php echo $pagination; ?></div>
-        <div class="col-sm-6 text-right"><?php echo $results; ?></div>
+      <div class="itemnews">
+        <div class="namenews">
+          <a href="#">Hướng dẫn các bước bảo dưỡng máy rửa xe cao áp cơ bản</a>
+        </div>
+        <div class="datednews">
+          Hôm nay, 9:30 am
+        </div>
+        <div class="contentnews">
+          Bảo dưỡng định kỳ cho máy rửa xe là việc hết sức cần thiết, bảo dưỡng thay dầu máy giúp máy hoạt động tốt hơn và tăng tuổi thọ cho máy
+        </div>
       </div>
-      <?php } ?>
-      <?php if (!$categories && !$products) { ?>
-      <p><?php echo $text_empty; ?></p>
-      <div class="buttons">
-        <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
+      <div class="itemnews">
+        <div class="namenews">
+          <a href="#">Hướng dẫn các bước bảo dưỡng máy rửa xe cao áp cơ bản</a>
+        </div>
+        <div class="datednews">
+          Hôm nay, 9:30 am
+        </div>
+        <div class="contentnews">
+          Bảo dưỡng định kỳ cho máy rửa xe là việc hết sức cần thiết, bảo dưỡng thay dầu máy giúp máy hoạt động tốt hơn và tăng tuổi thọ cho máy
+        </div>
       </div>
-      <?php } ?>
-      <?php echo $content_bottom; ?></div>
-    <?php echo $column_right; ?></div>
+    </div>
+    <!-- end newsrelated-category -->
+  </div>
 </div>
 <?php echo $footer; ?>
