@@ -48,6 +48,16 @@ class ControllerCommonDashboard extends Controller {
 		$data['detailsproduct'] = $this->load->controller('dashboard/details_product');
 		$data['footer'] = $this->load->controller('common/footer');
 
+		$this->load->model('news/review');
+
+		$news_review = $this->model_news_review->getTotalReviewsAwaitingApproval();
+
+		if ($news_review != 0) {
+			$data['warning_news_review'] = "Warning: " . $news_review . " news review need approval. <a href=\"index.php?route=news/review&token=" . $this->session->data['token'] . "\"> Click here</a> to approval";
+		} else {
+			$data['warning_news_review'] = '';
+		}
+
 		// Run currency update
 		if ($this->config->get('config_currency_auto')) {
 			$this->load->model('localisation/currency');

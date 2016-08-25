@@ -72,6 +72,7 @@
                 <h2><?php echo $text_write; ?></h2>
                 <?php if ($review_guest) { ?>
                 <div class="form-group required">
+                <div class="form-group required">
                   <div class="col-sm-12">
                     <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
                     <input type="text" name="name" value="<?php echo $customer_name; ?>" id="input-name" class="form-control" />

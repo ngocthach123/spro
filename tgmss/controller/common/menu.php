@@ -118,6 +118,17 @@ class ControllerCommonMenu extends Controller {
 		$data['text_product_sale'] = $this->language->get('text_product_sale');
 		$data['text_price_report'] = $this->language->get('text_price_report');
 
+		$this->load->language('news/category');
+		$data['category_heading_title'] = $this->language->get('heading_title');
+		$this->load->language('news/article');
+		$data['article_heading_title'] = $this->language->get('heading_title');
+		$this->load->language('news/review');
+		$data['review_heading_title'] = $this->language->get('heading_title');
+		$this->load->language('news/setting');
+		$data['setting_heading_title'] = $this->language->get('heading_title');
+		$this->load->language('news/set');
+		$data['set_title'] = $this->language->get('heading_title');
+
 		$data['product_sale'] = $this->url->link('catalog/product/special', 'token=' . $this->session->data['token'], true);
 		$data['virtual_product'] = $this->url->link('catalog/product', 'token=' . $this->session->data['token'].'&type=virtual', true);
 		$data['price_report'] = $this->url->link('catalog/bao_gia', 'token=' . $this->session->data['token'], true);
@@ -227,6 +238,17 @@ class ControllerCommonMenu extends Controller {
 			'amazonus' => $this->config->get('openbay_amazonus_status'),
 			'etsy' => $this->config->get('etsy_status'),
 		);
+
+		$data['article'] = $this->url->link('news/article', 'token=' . $this->session->data['token'], 'SSL');
+		$data['news_category'] = $this->url->link('news/category', 'token=' . $this->session->data['token'], 'SSL');
+		$data['news_review'] = $this->url->link('news/review', 'token=' . $this->session->data['token'], 'SSL');
+		$data['news_setting'] = $this->url->link('news/setting', 'token=' . $this->session->data['token'], 'SSL');
+
+		$data['news_by_category'] = $this->url->link('module/news_by_category', 'token=' . $this->session->data['token'], 'SSL');
+		$data['news_article_category'] = $this->url->link('module/news_category', 'token=' . $this->session->data['token'], 'SSL');
+		$data['news_carousel'] = $this->url->link('module/news_carousel', 'token=' . $this->session->data['token'], 'SSL');
+
+		$data['news_pro'] = $this->url->link('news/pro', 'token=' . $this->session->data['token'], 'SSL');
 
 		$data['stores'] = array();
 

@@ -1084,7 +1084,7 @@ $('#button-refresh').on('click', function() {
 						for (j = 0; j < product['option'].length; j++) {
 							option = product['option'][j];
 
-							html += '  - <small>' + option['name'] + ': ' + option['value'] + '</small><br />';
+							html += '  - <small>' + option['name'] + ': ' + option['text'] + '</small><br />';
 
 							if (option['type'] == 'select' || option['type'] == 'radio' || option['type'] == 'image') {
 								html += '<input type="hidden" name="product[' + i + '][option][' + option['product_option_id'] + ']" value="' + option['product_option_value_id'] + '" />';
@@ -1180,7 +1180,7 @@ $('#button-refresh').on('click', function() {
 						for (j = 0; j < product['option'].length; j++) {
 							option = product['option'][j];
 
-							html += '  - <small>' + option['name'] + ': ' + option['value'] + '</small><br />';
+							html += '  - <small>' + option['name'] + ': ' + option['text'] + '</small><br />';
 						}
 					}
 
@@ -1991,7 +1991,8 @@ $('#button-payment-address').on('click', function() {
     				if ($('select[name=\'shipping_method\']').prop('disabled')) {
     					$('a[href=\'#tab-total\']').tab('show');
     				} else {
-    					$('a[href=\'#tab-shipping\']').tab('show');
+    					//$('a[href=\'#tab-shipping\']').tab('show');
+                      $('a[href=\'#tab-total\']').tab('show');
     				}
                 });
 			}

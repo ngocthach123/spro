@@ -168,7 +168,7 @@
                 <?php foreach ($product['option'] as $option) { ?>
                 <br />
                 <?php if ($option['type'] != 'file') { ?>
-                &nbsp;<small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+                &nbsp;<small> - <?php echo $option['name']; ?>: <?php echo $option['text']; ?></small>
                 <?php } else { ?>
                 &nbsp;<small> - <?php echo $option['name']; ?>: <a href="<?php echo $option['href']; ?>"><?php echo $option['value']; ?></a></small>
                 <?php } ?>

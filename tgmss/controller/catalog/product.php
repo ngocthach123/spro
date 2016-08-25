@@ -955,6 +955,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_description'] = $this->language->get('entry_description');
 		$data['entry_specs'] = $this->language->get('entry_specs');
+		$data['entry_bonus'] = $this->language->get('entry_bonus');
 		$data['entry_meta_title'] = $this->language->get('entry_meta_title');
 		$data['entry_meta_description'] = $this->language->get('entry_meta_description');
 		$data['entry_meta_keyword'] = $this->language->get('entry_meta_keyword');
@@ -972,6 +973,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_virtual'] = $this->language->get('entry_virtual');
 		$data['entry_date_available'] = $this->language->get('entry_date_available');
 		$data['entry_quantity'] = $this->language->get('entry_quantity');
+		$data['entry_text'] = $this->language->get('entry_text');
 		$data['entry_stock_status'] = $this->language->get('entry_stock_status');
 		$data['entry_price'] = $this->language->get('entry_price');
 		$data['entry_cost'] = $this->language->get('entry_cost');
@@ -1574,9 +1576,9 @@ class ControllerCatalogProduct extends Controller {
 		if (isset($this->request->post['product_option'])) {
 			$product_options = $this->request->post['product_option'];
 		} elseif (isset($this->request->get['product_id'])) {
-			$product_options = $this->model_catalog_product->getProductOptions($this->request->get['product_id']);
+			$product_options = $this->model_catalog_product->getProductOptions($this->request->get['product_id'], 1);
 		} else {
-			$product_options = array();
+			$product_options = $this->model_catalog_product->getProductOptions(0, 1);
 		}
 
 		$data['product_options'] = array();
@@ -1590,6 +1592,7 @@ class ControllerCatalogProduct extends Controller {
 						'product_option_value_id' => $product_option_value['product_option_value_id'],
 						'option_value_id'         => $product_option_value['option_value_id'],
 						'quantity'                => $product_option_value['quantity'],
+						'text'                => $product_option_value['text'],
 						'subtract'                => $product_option_value['subtract'],
 						'price'                   => $product_option_value['price'],
 						'price_prefix'            => $product_option_value['price_prefix'],

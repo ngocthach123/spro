@@ -60,7 +60,7 @@
                   <?php if ($product['option']) { ?>
                   <?php foreach ($product['option'] as $option) { ?>
                   <br />
-                  <small><?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+                  <small><?php echo $option['name']; ?>: <?php echo $option['text']; ?></small>
                   <?php } ?>
                   <?php } ?>
 

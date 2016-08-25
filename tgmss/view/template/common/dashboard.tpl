@@ -11,6 +11,13 @@
     </div>
   </div>
   <div class="container-fluid">
+
+    <?php if ($warning_news_review) { ?>
+        <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $warning_news_review; ?>
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+        </div>
+      <?php } ?>
+
     <?php if ($error_install) { ?>
     <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_install; ?>
       <button type="button" class="close" data-dismiss="alert">&times;</button>

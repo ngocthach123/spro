@@ -66,18 +66,39 @@
 							<?php } ?>
 						</div>
 					</div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>"><?php echo $entry_description; ?></label>
-                    <div class="col-sm-10">
-                      <textarea name="product_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['description'] : ''; ?></textarea>
-                    </div>
-                  </div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label" for="input-model"><?php echo $entry_model; ?></label>
+						<div class="col-sm-10">
+							<input type="text" name="model" value="<?php echo $model; ?>" placeholder="<?php echo $entry_model; ?>" id="input-model" class="form-control" />
+							<?php if ($error_model) { ?>
+							<div class="text-danger"><?php echo $error_model; ?></div>
+							<?php } ?>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="input-meta-description<?php echo $language['language_id']; ?>"><?php echo $entry_meta_description; ?></label>
+						<div class="col-sm-10">
+							<textarea contenteditable="false" name="product_description[<?php echo $language['language_id']; ?>][meta_description]" rows="4" placeholder="<?php echo $entry_meta_description; ?>" id="input-meta-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_description'] : ''; ?></textarea>
+						</div>
+					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label" for="input-specs<?php echo $language['language_id']; ?>"><?php echo $entry_specs; ?></label>
 						<div class="col-sm-10">
 							<textarea name="product_description[<?php echo $language['language_id']; ?>][specs]" placeholder="<?php echo $entry_specs; ?>" id="input-specs<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['specs'] : ''; ?></textarea>
 						</div>
 					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label" for="input-bonus<?php echo $language['language_id']; ?>"><?php echo $entry_bonus; ?></label>
+						<div class="col-sm-10">
+							<textarea name="product_description[<?php echo $language['language_id']; ?>][bonus]" placeholder="<?php echo $entry_bonus; ?>" id="input-bonus<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['bonus'] : ''; ?></textarea>
+						</div>
+					</div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label" for="input-description<?php echo $language['language_id']; ?>"><?php echo $entry_description; ?></label>
+                    <div class="col-sm-10">
+                      <textarea name="product_description[<?php echo $language['language_id']; ?>][description]" placeholder="<?php echo $entry_description; ?>" id="input-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['description'] : ''; ?></textarea>
+                    </div>
+                  </div>
                   <div class="form-group hidden">
 					<script type="text/javascript">
 						$('#input-name<?php echo $language['language_id']; ?>').on('blur',function() {
@@ -90,12 +111,6 @@
                       <?php if (isset($error_meta_title[$language['language_id']])) { ?>
                       <div class="text-danger"><?php echo $error_meta_title[$language['language_id']]; ?></div>
                       <?php } ?>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label" for="input-meta-description<?php echo $language['language_id']; ?>"><?php echo $entry_meta_description; ?></label>
-                    <div class="col-sm-10">
-                      <textarea name="product_description[<?php echo $language['language_id']; ?>][meta_description]" rows="1" placeholder="<?php echo $entry_meta_description; ?>" id="input-meta-description<?php echo $language['language_id']; ?>" class="form-control"><?php echo isset($product_description[$language['language_id']]) ? $product_description[$language['language_id']]['meta_description'] : ''; ?></textarea>
                     </div>
                   </div>
                   <div class="form-group">
@@ -115,15 +130,7 @@
               </div>
 			  <!-- tab data -->
 			  <div class="tab-content">
-				  <div class="form-group required">
-					<label class="col-sm-2 control-label" for="input-model"><?php echo $entry_model; ?></label>
-					<div class="col-sm-10">
-					  <input type="text" name="model" value="<?php echo $model; ?>" placeholder="<?php echo $entry_model; ?>" id="input-model" class="form-control" />
-					  <?php if ($error_model) { ?>
-					  <div class="text-danger"><?php echo $error_model; ?></div>
-					  <?php } ?>
-					</div>
-				  </div>
+
 				  <div class="form-group hidden">
 					<label class="col-sm-2 control-label" for="input-sku"><span data-toggle="tooltip" title="<?php echo $help_sku; ?>"><?php echo $entry_sku; ?></span></label>
 					<div class="col-sm-10">
@@ -654,19 +661,20 @@
                         <table id="option-value<?php echo $option_row; ?>" class="table table-striped table-bordered table-hover">
                           <thead>
                             <tr>
-                              <td class="text-left"><?php echo $entry_option_value; ?></td>
+                              <td class="text-left hidden"><?php echo $entry_option_value; ?></td>
+								<td class="text-right"><?php echo $entry_text; ?></td>
                               <td class="text-right"><?php echo $entry_quantity; ?></td>
-                              <td class="text-left"><?php echo $entry_subtract; ?></td>
-                              <td class="text-right"><?php echo $entry_price; ?></td>
-                              <td class="text-right"><?php echo $entry_option_points; ?></td>
-                              <td class="text-right"><?php echo $entry_weight; ?></td>
+                              <td class="text-left hidden"><?php echo $entry_subtract; ?></td>
+                              <td class="text-right hidden"><?php echo $entry_price; ?></td>
+                              <td class="text-right hidden"><?php echo $entry_option_points; ?></td>
+                              <td class="text-right hidden"><?php echo $entry_weight; ?></td>
                               <td></td>
                             </tr>
                           </thead>
                           <tbody>
                             <?php foreach ($product_option['product_option_value'] as $product_option_value) { ?>
-                            <tr id="option-value-row<?php echo $option_value_row; ?>">
-                              <td class="text-left"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][option_value_id]" class="form-control">
+                            <tr id="option-value-row<?php echo $option_value_row; ?>" ">
+                              <td class="text-left <?php echo $option_row ? '' : 'hidden'; ?>"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][option_value_id]" class="form-control">
                                   <?php if (isset($option_values[$product_option['option_id']])) { ?>
                                   <?php foreach ($option_values[$product_option['option_id']] as $option_value) { ?>
                                   <?php if ($option_value['option_value_id'] == $product_option_value['option_value_id']) { ?>
@@ -678,8 +686,9 @@
                                   <?php } ?>
                                 </select>
                                 <input type="hidden" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][product_option_value_id]" value="<?php echo $product_option_value['product_option_value_id']; ?>" /></td>
+								<td class="text-right"><input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][text]" value="<?php echo $product_option_value['text']; ?>" placeholder="<?php echo $entry_text; ?>" class="form-control" /></td>
                               <td class="text-right"><input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][quantity]" value="<?php echo $product_option_value['quantity']; ?>" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>
-                              <td class="text-left"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" class="form-control">
+                              <td class="text-left  <?php echo $option_row ? '' : 'hidden'; ?>"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][subtract]" class="form-control">
                                   <?php if ($product_option_value['subtract']) { ?>
                                   <option value="1" selected="selected"><?php echo $text_yes; ?></option>
                                   <option value="0"><?php echo $text_no; ?></option>
@@ -688,7 +697,7 @@
                                   <option value="0" selected="selected"><?php echo $text_no; ?></option>
                                   <?php } ?>
                                 </select></td>
-                              <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price_prefix]" class="form-control">
+                              <td class="text-right  <?php echo $option_row ? '' : 'hidden'; ?>"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price_prefix]" class="form-control">
                                   <?php if ($product_option_value['price_prefix'] == '+') { ?>
                                   <option value="+" selected="selected">+</option>
                                   <?php } else { ?>
@@ -701,7 +710,7 @@
                                   <?php } ?>
                                 </select>
                                 <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][price]" value="<?php echo $product_option_value['price']; ?>" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>
-                              <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][points_prefix]" class="form-control">
+                              <td class="text-right  <?php echo $option_row ? '' : 'hidden'; ?>"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][points_prefix]" class="form-control">
                                   <?php if ($product_option_value['points_prefix'] == '+') { ?>
                                   <option value="+" selected="selected">+</option>
                                   <?php } else { ?>
@@ -714,7 +723,7 @@
                                   <?php } ?>
                                 </select>
                                 <input type="text" name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][points]" value="<?php echo $product_option_value['points']; ?>" placeholder="<?php echo $entry_points; ?>" class="form-control" /></td>
-                              <td class="text-right"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][weight_prefix]" class="form-control">
+                              <td class="text-right  <?php echo $option_row ? '' : 'hidden'; ?>"><select name="product_option[<?php echo $option_row; ?>][product_option_value][<?php echo $option_value_row; ?>][weight_prefix]" class="form-control">
                                   <?php if ($product_option_value['weight_prefix'] == '+') { ?>
                                   <option value="+" selected="selected">+</option>
                                   <?php } else { ?>
@@ -734,7 +743,7 @@
                           </tbody>
                           <tfoot>
                             <tr>
-                              <td colspan="6"></td>
+                              <td colspan="2"></td>
                               <td class="text-left"><button type="button" onclick="addOptionValue('<?php echo $option_row; ?>');" data-toggle="tooltip" title="<?php echo $button_option_value_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
                             </tr>
                           </tfoot>
@@ -1059,6 +1068,22 @@
       </div>
     </div>
   </div>
+
+	<script type="text/javascript"><!--
+		<?php foreach ($languages as $language) { ?>
+			CKEDITOR.replace( 'input-meta-description<?php echo $language['language_id']; ?>', {
+				height: 100,
+				toolbar :
+						[
+							{ name: 'basicstyles', items : [ 'Bold','Italic','Underline' ] },
+							{ name: 'paragraph', items : [ 'NumberedList','BulletedList' ] },
+							{ name: 'tools', items : [ 'Maximize','-' ] },
+							{ name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
+						]
+			} );
+			<?php } ?>
+		//--></script>
+
 	<script>
 		<?php foreach ($languages as $language): ?>
 
@@ -1073,6 +1098,27 @@
 			filebrowserImageBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
 			filebrowserFlashBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
 			height: 150,
+			toolbar :
+					[
+						{ name: 'basicstyles', items : [ 'Bold','Italic','Underline' ] },
+						{ name: 'paragraph', items : [ 'NumberedList','BulletedList' ] },
+						{ name: 'tools', items : [ 'Maximize','-' ] },
+						{ name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
+					]
+		});
+
+		CKEDITOR.replace('input-bonus<?php echo $language['language_id']; ?>', {
+			filebrowserBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
+			filebrowserImageBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
+			filebrowserFlashBrowseUrl: 'index.php?route=common/filemanager&token=<?php echo $token; ?>',
+			height: 150,
+			toolbar :
+					[
+						{ name: 'basicstyles', items : [ 'Bold','Italic','Underline' ] },
+						{ name: 'paragraph', items : [ 'NumberedList','BulletedList' ] },
+						{ name: 'tools', items : [ 'Maximize','-' ] },
+						{ name: 'styles', items : [ 'Styles','Format','Font','FontSize' ] },
+					]
 		});
 
 		CKEDITOR.on('dialogDefinition', function (event)
@@ -1506,25 +1552,26 @@ var option_value_row = <?php echo $option_value_row; ?>;
 
 function addOptionValue(option_row) {
 	html  = '<tr id="option-value-row' + option_value_row + '">';
-	html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][option_value_id]" class="form-control">';
+	html += '  <td class="text-left hidden"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][option_value_id]" class="form-control">';
 	html += $('#option-values' + option_row).html();
 	html += '  </select><input type="hidden" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][product_option_value_id]" value="" /></td>';
+	html += '  <td class="text-right"><input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][text]" value="" placeholder="<?php echo $entry_text; ?>" class="form-control" /></td>';
 	html += '  <td class="text-right"><input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][quantity]" value="" placeholder="<?php echo $entry_quantity; ?>" class="form-control" /></td>';
-	html += '  <td class="text-left"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][subtract]" class="form-control">';
-	html += '    <option value="1"><?php echo $text_yes; ?></option>';
+	html += '  <td class="text-left hidden"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][subtract]" class="form-control">';
 	html += '    <option value="0"><?php echo $text_no; ?></option>';
+	html += '    <option value="1"><?php echo $text_yes; ?></option>';
 	html += '  </select></td>';
-	html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price_prefix]" class="form-control">';
+	html += '  <td class="text-right hidden"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price_prefix]" class="form-control">';
 	html += '    <option value="+">+</option>';
 	html += '    <option value="-">-</option>';
 	html += '  </select>';
 	html += '  <input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][price]" value="" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>';
-	html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][points_prefix]" class="form-control">';
+	html += '  <td class="text-right hidden"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][points_prefix]" class="form-control">';
 	html += '    <option value="+">+</option>';
 	html += '    <option value="-">-</option>';
 	html += '  </select>';
 	html += '  <input type="text" name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][points]" value="" placeholder="<?php echo $entry_points; ?>" class="form-control" /></td>';
-	html += '  <td class="text-right"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][weight_prefix]" class="form-control">';
+	html += '  <td class="text-right hidden"><select name="product_option[' + option_row + '][product_option_value][' + option_value_row + '][weight_prefix]" class="form-control">';
 	html += '    <option value="+">+</option>';
 	html += '    <option value="-">-</option>';
 	html += '  </select>';

@@ -269,6 +269,10 @@ class ControllerProductProduct extends Controller {
 			$data['tab_attribute'] = $this->language->get('tab_attribute');
 			$data['tab_review'] = sprintf($this->language->get('tab_review'), $product_info['reviews']);
 
+			$data['hd_mua_hang'] = $this->url->link('information/information', 'information_id=' . '7');
+			$data['cach_thuc_tt'] = $this->url->link('information/information', 'information_id=' . '8');
+			$data['cs_van_chuyen'] = $this->url->link('information/information', 'information_id=' . '6');
+
 			$data['product_id'] = (int)$this->request->get['product_id'];
 			$data['manufacturer'] = $product_info['manufacturer'];
 			$data['manufacturers'] = $this->url->link('product/manufacturer/info', 'manufacturer_id=' . $product_info['manufacturer_id']);
@@ -276,9 +280,25 @@ class ControllerProductProduct extends Controller {
 			$data['reward'] = $product_info['reward'];
 			$data['points'] = $product_info['points'];
 			$data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+			$data['short_description'] = html_entity_decode($product_info['meta_description'], ENT_QUOTES, 'UTF-8');
+			$data['specs_description'] = html_entity_decode($product_info['specs'], ENT_QUOTES, 'UTF-8');
+			$data['bonus_description'] = html_entity_decode($product_info['bonus'], ENT_QUOTES, 'UTF-8');
+			$data['count_reviews'] = $product_info['reviews'];
+			$data['ratings'] = array();
 
+			foreach($product_info['rating_detail'] as $detail_rating){
+				$data['ratings'][] = array(
+					'rating' => $detail_rating['rating'],
+					'num_rate' => $detail_rating['num_rate'],
+					'percent' => ($detail_rating['num_rate']/$product_info['reviews'])*100
+
+				);
+			}
+
+			$data['soldout'] = false;
 			if ($product_info['quantity'] <= 0) {
 				$data['stock'] = $product_info['stock_status'];
+				$data['soldout'] = true;
 			} elseif ($this->config->get('config_stock_display')) {
 				$data['stock'] = $product_info['quantity'];
 			} else {
@@ -294,7 +314,7 @@ class ControllerProductProduct extends Controller {
 			}
 
 			if ($product_info['image']) {
-				$data['thumb'] = $this->model_tool_image->resize($product_info['image'], $this->config->get($this->config->get('config_theme') . '_image_thumb_width'), $this->config->get($this->config->get('config_theme') . '_image_thumb_height'));
+				$data['thumb'] = $this->model_tool_image->resize($product_info['image'], $this->config->get($this->config->get('config_theme') . '_image_additional_width'), $this->config->get($this->config->get('config_theme') . '_image_additional_height'));
 			} else {
 				$data['thumb'] = '';
 			}
@@ -311,16 +331,29 @@ class ControllerProductProduct extends Controller {
 			}
 
 			if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
-				$data['price'] = $this->currency->format($product_info['price'], $this->session->data['currency']);
+				$price_cal = $this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax'));
+				$data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 
 			} else {
 				$data['price'] = false;
 			}
 
 			if ((float)$product_info['special']) {
+				$special_cal = $this->tax->calculate($product_info['special'], $product_info['tax_class_id'], $this->config->get('config_tax'));
 				$data['special'] = $this->currency->format($product_info['special'], $this->session->data['currency']);
+
+				if($price_cal) {
+					$price_down = $price_cal - $special_cal;
+
+					$specialper = ($price_down/$price_cal) * 100;
+					$data['specialper'] = ceil($specialper);
+
+					$data['price_down'] =  $this->currency->format(round($price_down), $this->session->data['currency']);
+				}
+
 			} else {
 				$data['special'] = false;
+				$data['specialper']  =false;
 			}
 
 			if ($this->config->get('config_tax')) {
@@ -346,16 +379,31 @@ class ControllerProductProduct extends Controller {
 
 			foreach ($products_access as $product_id) {
 				$access_info = $this->model_catalog_product->getProduct($product_id['access_id']);
-//				var_dump($access_info); exit();
+
+				$access_price = $this->tax->calculate($product_id['access_price'] ? ($access_info['special'] ? $access_info['special'] : $access_info['price']) :$access_info['price'] , $access_info['tax_class_id'], $this->config->get('config_tax'));
+
+				if($access_info['special'] || $product_id['access_price']){
+					$access_special_cal = $this->tax->calculate($product_id['access_price'] ? $product_id['access_price']: $access_info['special'], $access_info['tax_class_id'], $this->config->get('config_tax'));
+					$access_special = $this->currency->format($this->tax->calculate($product_id['access_price'] ? $product_id['access_price']: $access_info['special'], $access_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+
+					$access_price_down = $access_price-$access_special_cal;
+					$access_specialper = $access_price_down/$access_price *100;
+				}else{
+					$access_special = false;
+					$access_specialper =false;
+					$access_price_down = 0;
+				}
+
 				if ($access_info) {
 					$data['accessories'][] = array(
 						'product_id' => $access_info['product_id'],
 						'name'       => $access_info['name'],
-						'price'       => $this->currency->format($this->tax->calculate($product_id['access_price']? $product_id['access_price']: ($access_info['special'] ? $access_info['special'] : $access_info['price']), $access_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']),
-						'price_origin' =>  $this->tax->calculate($access_info['price'], $access_info['tax_class_id'], $this->config->get('config_tax')),
-						'special' => $this->currency->format($access_info['special'], $this->session->data['currency']),
-						'special_origin' => $this->currency->format($access_info['special'], $this->session->data['currency']),
-						'image'       =>$this->model_tool_image->resize($access_info['image'], 50, 50),
+						'price'       => $this->currency->format($this->tax->calculate(($product_id['access_price'] ? ($access_info['special'] ? $access_info['special'] : $access_info['price']) : $access_info['price']), $access_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']),
+						'price_origin' =>  $access_price,
+						'special' => $access_special,
+						'specialper' => ceil($access_specialper),
+						'price_down' => $this->currency->format($access_price_down, $this->session->data['currency']),
+						'image'       =>$this->model_tool_image->resize($access_info['image'], 75, 75),
 						'hasSale' => $product_id['access_price'],
 						'href'        => $this->url->link('product/product', 'product_id=' . $access_info['product_id'])
 					);
@@ -384,7 +432,7 @@ class ControllerProductProduct extends Controller {
 
 			$data['options'] = array();
 
-			foreach ($this->model_catalog_product->getProductOptions($this->request->get['product_id']) as $option) {
+			foreach ($this->model_catalog_product->getProductOptions($this->request->get['product_id'], 1) as $option) {
 				$product_option_value_data = array();
 
 				foreach ($option['product_option_value'] as $option_value) {
@@ -399,6 +447,7 @@ class ControllerProductProduct extends Controller {
 							'product_option_value_id' => $option_value['product_option_value_id'],
 							'option_value_id'         => $option_value['option_value_id'],
 							'name'                    => $option_value['name'],
+							'text'                    => $option_value['text'],
 							'image'                   => $this->model_tool_image->resize($option_value['image'], 50, 50),
 							'price'                   => $price,
 							'price_prefix'            => $option_value['price_prefix']
@@ -440,6 +489,7 @@ class ControllerProductProduct extends Controller {
 			$data['reviews'] = sprintf($this->language->get('text_reviews'), (int)$product_info['reviews']);
 			$data['rating'] = (int)$product_info['rating'];
 
+
 			// Captcha
 			if ($this->config->get($this->config->get('config_captcha') . '_status') && in_array('review', (array)$this->config->get('config_captcha_page'))) {
 				$data['captcha'] = $this->load->controller('captcha/' . $this->config->get('config_captcha'));
@@ -463,15 +513,23 @@ class ControllerProductProduct extends Controller {
 				}
 
 				if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
+					$price_cal = $this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax'));
 					$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 				} else {
 					$price = false;
 				}
 
 				if ((float)$result['special']) {
+					$special_cal = $this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax'));
 					$special = $this->currency->format($this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+
+					if($price_cal) {$specialper = (($price_cal - $special_cal)/$price_cal) * 100;
+						$specialper = ceil($specialper);
+					}
+
 				} else {
 					$special = false;
+					$specialper =false;
 				}
 
 				if ($this->config->get('config_tax')) {
@@ -493,6 +551,7 @@ class ControllerProductProduct extends Controller {
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get($this->config->get('config_theme') . '_product_description_length')) . '..',
 					'price'       => $price,
 					'special'     => $special,
+					'specialper'     => $specialper,
 					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $rating,
@@ -634,6 +693,19 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 			);
 		}
 
+		$results_rating = $this->model_catalog_review->getReviewsByProductId($this->request->get['product_id'], ($page - 1) * 5, 5, 1);
+
+		$data['reviews_rating'] = array();
+
+		foreach ($results_rating as $result) {
+			$data['reviews_rating'][] = array(
+				'author'     => $result['author'],
+				'text'       => nl2br($result['text']),
+				'rating'     => (int)$result['rating'],
+				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
+			);
+		}
+
 		$pagination = new Pagination();
 		$pagination->total = $review_total;
 		$pagination->page = $page;
@@ -657,7 +729,7 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 				$json['error'] = $this->language->get('error_name');
 			}
 
-			if ((utf8_strlen($this->request->post['text']) < 25) || (utf8_strlen($this->request->post['text']) > 1000)) {
+			if ((utf8_strlen($this->request->post['text']) < 3) || (utf8_strlen($this->request->post['text']) > 1000)) {
 				$json['error'] = $this->language->get('error_text');
 			}
 

@@ -584,6 +584,19 @@ class ControllerProductProduct extends Controller {
 			);
 		}
 
+		$results_rating = $this->model_catalog_review->getReviewsByProductId($this->request->get['product_id'], ($page - 1) * 5, 5, 1);
+
+		$data['reviews_rating'] = array();
+
+		foreach ($results_rating as $result) {
+			$data['reviews_rating'][] = array(
+				'author'     => $result['author'],
+				'text'       => nl2br($result['text']),
+				'rating'     => (int)$result['rating'],
+				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
+			);
+		}
+
 		$pagination = new Pagination();
 		$pagination->total = $review_total;
 		$pagination->page = $page;

@@ -23,10 +23,19 @@
     </ul>
   </li>
 
-  <li id="blog"><a class="parent"><i class="fa fa-newspaper-o fa-fw"></i> <span><?php echo $text_catnews; ?></span></a>
-    <ul class="collapse">
-      <li><a href="<?php echo $cat; ?>"><?php echo $text_cat; ?></a></li>
-      <li><a href="<?php echo $news; ?>"><?php echo $text_news; ?></a></li>
+  <li id="news"><a class="parent"><i class="fa fa-pencil fa-fw"></i> <span>News</span></a>
+    <ul>
+      <li><a href="<?php echo $news_category; ?>"><?php echo $category_heading_title; ?></a></li>
+      <li><a href="<?php echo $article; ?>"><?php echo $article_heading_title; ?></a></li>
+      <li><a href="<?php echo $news_review; ?>"><?php echo $review_heading_title; ?></a></li>
+      <li><a class="parent">Module</a>
+        <ul>
+          <li><a href="<?php echo $news_by_category; ?>">Article by category</a></li>
+          <li><a href="<?php echo $news_article_category; ?>">Category</a></li>
+          <li><a href="<?php echo $news_carousel; ?>">News Carousel By Category</a></li>
+        </ul>
+      </li>
+      <li><a href="<?php echo $news_setting; ?>"><?php echo $setting_heading_title; ?></a></li>
     </ul>
   </li>
 

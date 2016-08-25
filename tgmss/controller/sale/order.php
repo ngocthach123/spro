@@ -973,6 +973,7 @@ class ControllerSaleOrder extends Controller {
 					if ($option['type'] != 'file') {
 						$option_data[] = array(
 							'name'  => $option['name'],
+							'text'  => $option['text'],
 							'value' => $option['value'],
 							'type'  => $option['type']
 						);

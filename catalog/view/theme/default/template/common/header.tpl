@@ -226,19 +226,10 @@
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
-            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Trang chủ</a>
-              <div class="dropdown-menu">
-                <div class="dropdown-inner">
-                  <ul class="list-unstyled">
-                    <li><a href="#">child</a></li>
-                  </ul>
-                </div>
-                <a href="#" class="see-all">text_all category['name']</a>
-              </div>
-            </li>
+            <li class="dropdown"><a href="<?php echo $home; ?>" class="dropdown-toggle" data-toggle="dropdown">Trang chủ</a></li>
             <li><a href="#">Khuyến mãi</a></li>
             <li><a href="#">Hàng thanh lý</a></li>
-            <li><a href="#">Liên hệ</a></li>
+            <li><a href="<?php echo $contact;?>">Liên hệ</a></li>
           </ul>
         </div>
       </div>

@@ -24,6 +24,12 @@ class ControllerCommonHeader extends Controller {
 			$this->document->addLink($server . 'image/' . $this->config->get('config_icon'), 'icon');
 		}
 
+		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/stylesheet/news_stylesheet.css')) {
+			$this->document->addStyle('catalog/view/theme/'.$this->config->get('config_template') . '/stylesheet/news_stylesheet.css');
+		} else {
+			$this->document->addStyle('catalog/view/theme/default/stylesheet/news_stylesheet.css');
+		}
+
 		$data['title'] = $this->document->getTitle();
 
 		$data['base'] = $server;

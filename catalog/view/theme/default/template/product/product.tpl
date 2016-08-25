@@ -14,422 +14,626 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <div class="row">
-        <?php if ($column_left || $column_right) { ?>
-        <?php $class = 'col-sm-6'; ?>
-        <?php } else { ?>
-        <?php $class = 'col-sm-8'; ?>
-        <?php } ?>
-        <div class="<?php echo $class; ?>">
-          <?php if ($thumb || $images) { ?>
-          <ul class="thumbnails">
-            <?php if ($thumb) { ?>
-            <li><a class="thumbnail" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
-            <?php } ?>
-            <?php if ($images) { ?>
-            <?php foreach ($images as $image) { ?>
-            <li class="image-additional"><a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
-            <?php } ?>
-            <?php } ?>
-          </ul>
-          <?php } ?>
-          <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab-description" data-toggle="tab"><?php echo $tab_description; ?></a></li>
-            <?php if ($attribute_groups) { ?>
-            <li><a href="#tab-specification" data-toggle="tab"><?php echo $tab_attribute; ?></a></li>
-            <?php } ?>
-            <?php if ($review_status) { ?>
-            <li><a href="#tab-review" data-toggle="tab"><?php echo $tab_review; ?></a></li>
-            <?php } ?>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane active" id="tab-description"><?php echo $description; ?></div>
-            <?php if ($attribute_groups) { ?>
-            <div class="tab-pane" id="tab-specification">
-              <table class="table table-bordered">
-                <?php foreach ($attribute_groups as $attribute_group) { ?>
-                <thead>
-                  <tr>
-                    <td colspan="2"><strong><?php echo $attribute_group['name']; ?></strong></td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php foreach ($attribute_group['attribute'] as $attribute) { ?>
-                  <tr>
-                    <td><?php echo $attribute['name']; ?></td>
-                    <td><?php echo $attribute['text']; ?></td>
-                  </tr>
-                  <?php } ?>
-                </tbody>
-                <?php } ?>
-              </table>
-            </div>
-            <?php } ?>
-            <?php if ($review_status) { ?>
-            <div class="tab-pane" id="tab-review">
-              <form class="form-horizontal" id="form-review">
-                <div id="review"></div>
-                <h2><?php echo $text_write; ?></h2>
-                <?php if ($review_guest) { ?>
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
-                    <input type="text" name="name" value="<?php echo $customer_name; ?>" id="input-name" class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="input-review"><?php echo $entry_review; ?></label>
-                    <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-                    <div class="help-block"><?php echo $text_note; ?></div>
-                  </div>
-                </div>
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label"><?php echo $entry_rating; ?></label>
-                    &nbsp;&nbsp;&nbsp; <?php echo $entry_bad; ?>&nbsp;
-                    <input type="radio" name="rating" value="1" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="2" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="3" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="4" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="5" />
-                    &nbsp;<?php echo $entry_good; ?></div>
-                </div>
-                <?php echo $captcha; ?>
-                <div class="buttons clearfix">
-                  <div class="pull-right">
-                    <button type="button" id="button-review" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><?php echo $button_continue; ?></button>
-                  </div>
-                </div>
-                <?php } else { ?>
-                <?php echo $text_login; ?>
-                <?php } ?>
-              </form>
-            </div>
-            <?php } ?>
-          </div>
-        </div>
-        <?php if ($column_left || $column_right) { ?>
-        <?php $class = 'col-sm-6'; ?>
-        <?php } else { ?>
-        <?php $class = 'col-sm-4'; ?>
-        <?php } ?>
-        <div class="<?php echo $class; ?>">
-          <div class="btn-group">
-            <button type="button" data-toggle="tooltip" class="btn btn-default" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product_id; ?>');"><i class="fa fa-heart"></i></button>
-            <button type="button" data-toggle="tooltip" class="btn btn-default" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product_id; ?>');"><i class="fa fa-exchange"></i></button>
-          </div>
-          <h1><?php echo $heading_title; ?></h1>
-          <ul class="list-unstyled">
-            <?php if ($manufacturer) { ?>
-            <li><?php echo $text_manufacturer; ?> <a href="<?php echo $manufacturers; ?>"><?php echo $manufacturer; ?></a></li>
-            <?php } ?>
-            <li><?php echo $text_model; ?> <?php echo $model; ?></li>
-            <?php if ($reward) { ?>
-            <li><?php echo $text_reward; ?> <?php echo $reward; ?></li>
-            <?php } ?>
-            <li><?php echo $text_stock; ?> <?php echo $stock; ?></li>
-          </ul>
-          <?php if ($price) { ?>
-          <ul class="list-unstyled">
-            <?php if (!$special) { ?>
-            <li>
-              <h2><?php echo $price; ?></h2>
-            </li>
-            <?php } else { ?>
-            <li><span style="text-decoration: line-through;"><?php echo $price; ?></span></li>
-            <li>
-              <h2><?php echo $special; ?></h2>
-            </li>
-            <?php } ?>
-            <?php if ($tax) { ?>
-            <li><?php echo $text_tax; ?> <?php echo $tax; ?></li>
-            <?php } ?>
-            <?php if ($points) { ?>
-            <li><?php echo $text_points; ?> <?php echo $points; ?></li>
-            <?php } ?>
-            <?php if ($discounts) { ?>
-            <li>
-              <hr>
-            </li>
-            <?php foreach ($discounts as $discount) { ?>
-            <li><?php echo $discount['quantity']; ?><?php echo $text_discount; ?><?php echo $discount['price']; ?></li>
-            <?php } ?>
-            <?php } ?>
-          </ul>
-          <?php } ?>
+      <!-- add scrtipt -->
+      <script src="catalog/view/javascript/js/jquery.bxslider.js" type="text/javascript"></script>
+      <script src="catalog/view/javascript/js/jquery.ba-throttle-debounce.js" type="text/javascript"></script>
+      <script src="catalog/view/javascript/js/jquery.bridget.js" type="text/javascript"></script>
+      <script src="catalog/view/javascript/js/magnificent.js" type="text/javascript"></script>
+      <script src="catalog/view/javascript/js/jquery.magnific-popup.min.js" type="text/javascript"></script>
+      <script src="catalog/view/javascript/js/jquery.fancybox.js" type="text/javascript"></script>
+      <link href="catalog/view/javascript/js/jquery.bxslider.css" rel="stylesheet">
+      <link href="catalog/view/javascript/js/magnificent.css" rel="stylesheet">
+      <link href="catalog/view/javascript/js/magnific-popup.css" rel="stylesheet">
+      <link href="catalog/view/javascript/js/jquery.fancybox.css" rel="stylesheet">
+      <script type="text/javascript">
+        $(document).ready(function () {
+          var o = $('#image-additional');
+          o.find('li:first-child a').addClass('active');
 
-          <div id="product">
+          $('#productimage').bind("click", function (e) {
+            var imgArr = [];
+            o.find('a').each(function () {
+              img_src = $(this).data("image");
 
-            <?php if($accessories):?>
-            <div class="form-group">
-              <?php foreach($accessories as $access): ?>
-              <div>
-                <div class="checkbox">
-                  <label>
+              //put the current image at the start
+              if (img_src == $('#productimage').find('img').attr('src')) {
+                imgArr.unshift({
+                  href: '' + img_src + '',
+                  title: $(this).find('img').attr("title")
+                });
+              }
+              else {
+                imgArr.push({
+                  href: '' + img_src + '',
+                  title: $(this).find('img').attr("title")
+                });
+              }
+            });
+            $.fancybox(imgArr);
+            return false;
+          });
 
-                    <img src="<?php echo $access['image']; ?>" alt="<?php echo $access['name']; ?>" class="img-thumbnail" />
-                    <a href="<?php echo $access['href'];?>"><?php echo $access['name']; ?></a>
-                    <?php if ($access['price']) { ?>
-                    (<?php echo $access['price']; ?>)
-                    <?php } ?>
-                    <button type="button" class="button-cart-access" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block" access-id="<?php echo $access['product_id'];?>" has-Sale="<?php echo $access['hasSale'];?>"><?php echo $button_cart; ?></button>
-                  </label>
+          o.find('[data-image]').click(function (e) {
+            e.preventDefault();
+            o.find('.active').removeClass('active');
+            var img = $(this).data('image');
+            $(this).addClass('active');
+            $('#productimage').find('.inner img').each(function () {
+              $(this).attr('src', img);
+            });
+          });
+        });
+
+        $(document).ready(function () {
+          var o = $('#image-additional');
+
+          $('#image-additional').bxSlider({
+            mode: 'horizontal',
+            pager: false,
+            controls: true,
+            slideMargin: 13,
+            minSlides: 3,
+            maxSlides: 3,
+            slideWidth: 125,
+            nextText: '<i class="fa fa-angle-right"></i>',
+            prevText: '<i class="fa fa-angle-left"></i>',
+            infiniteLoop: false,
+            adaptiveHeight: true,
+            moveSlides: 1
+          });
+        });
+      </script>
+      <script class="source">
+        $(function () {
+          $('#productimage [data-magnificent]').magnificent();
+        });
+      </script>
+      <!-- end add script -->
+      <!-- contenthead-product -->
+      <div class="contenthead-product"  id="product">
+        <div class="detailspd-product">
+          <!-- imagespd-product -->
+          <div class="imagespd-product">
+          <?php if ($thumb || $images): ?>
+            <!-- productimage -->
+            <div id="productimage" class="productimage">
+              <div class="magnificent-wrap">
+                <div class="magnificent" data-magnificent="productimage">
+                  <div class="polaroid">
+                    <div class="inner">
+                      <img src="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" />
+                    </div>
+                  </div>
                 </div>
               </div>
-              <?php endforeach;?>
+              <div class="magnificent-viewport-wrap">
+                <div data-magnificent-viewport="productimage">
+                  <div class="inner">
+                    <img src="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" />
+                  </div>
+                </div>
+              </div>
             </div>
+            <!-- productimages -->
+            <div id="productimages">
+              <?php if ($images): ?>
+                <ul id="image-additional">
+                  <li>
+                    <a data-image="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
+                  </li>
+                  <?php foreach ($images as $image): ?>
+                    <li>
+                      <a data-image="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a>
+                    </li>
+                  <?php endforeach;?>
+                </ul>
+              <?php endif;?>
+            </div><!-- end productimages -->
             <?php endif;?>
+          </div><!-- end imagespd-product -->
+          <!-- infodetailpd-product -->
+          <div class="infodetailpd-product">
+            <h3><?php echo $heading_title; ?></h3>
+            <div class="headreview">
+              <img src="image/rating_star.png"/>
+              (<?php echo $count_reviews;?> nhận xét) <a  id="datcauhoi" href=".nhanxetvesanpham" ><img src="image/fillter.png"/> <span class="datcauhoi">Viết nhận xét</span></a>
+            </div>
+            <div class="ifdetails">
+              <?php if ($price): ?>
+                <?php if ($special):?>
+                  <span class="txtprice">Giá cũ:</span> &nbsp;<span class="tlineprice"><?php echo $price; ?></span><br>
+                  <span class="txtprice">Giá mới:</span> &nbsp;<span class="bredprice"><?php echo $tax; ?></span> (Đã có VAT)<br>
+                  <span class="txtprice">Tiết kiệm:</span> &nbsp;<span class="brsmallprice"><?php echo $price_down; ?> (<?php echo $specialper; ?>%)</span><br>
+                <?php else: ?>
+                  <span class="txtprice">Giá:</span> &nbsp;<span class="bredprice"><?php echo $tax; ?></span> (Đã có VAT)<br>
+                <?php endif;?>
+              <?php else: ?>
+                <span class="txtprice">Giá:</span> &nbsp;<span class="brsmallprice">Liên hệ</span><br>
+              <?php endif;?>
+              <span>
+                <?php if($soldout):?>
+                   <span class="txtprice">Tình trạng: </span>
+                <?php else: ?>
+                 <i class="fa fa-check-square-o"></i>
+                <?php endif;?>
+                <?php echo $stock; ?>
+              </span><br>
+              Thời gian giao hàng: 48h (không kể ngày nghỉ).<br>
+              Vui lòng đọc kỹ chính sách vận chuyển <a class="actpr" href="<?php echo $cs_van_chuyen;?>"><span>tại đây</span></a><br>
+              <span class="txtprice">Mã sản phẩm:</span> <b><?php echo $model;?></b><br>
+              <span class="txtprice">Hãng sản xuất:</span> <b><?php echo $manufacturer;?></b><br>
 
-            <?php if ($options) { ?>
-            <hr>
-            <h3><?php echo $text_option; ?></h3>
-            <?php foreach ($options as $option) { ?>
-            <?php if ($option['type'] == 'select') { ?>
-            <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
-              <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
-              <select name="option[<?php echo $option['product_option_id']; ?>]" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control">
-                <option value=""><?php echo $text_select; ?></option>
-                <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                <option value="<?php echo $option_value['product_option_value_id']; ?>"><?php echo $option_value['name']; ?>
-                <?php if ($option_value['price']) { ?>
-                (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
-                <?php } ?>
-                </option>
-                <?php } ?>
-              </select>
-            </div>
-            <?php } ?>
-            <?php if ($option['type'] == 'radio') { ?>
-            <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
-              <label class="control-label"><?php echo $option['name']; ?></label>
-              <div id="input-option<?php echo $option['product_option_id']; ?>">
-                <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" />
-                    <?php echo $option_value['name']; ?>
-                    <?php if ($option_value['price']) { ?>
-                    (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
-                    <?php } ?>
-                  </label>
-                </div>
-                <?php } ?>
+              <?php echo $short_description;?>
+                <br/>
+              <i class="fa fa-angle-right"></i> <a id="link-detail" href="#detail-product" class="actpr">Xem chi tiết</a>
+
+              <?php if ($options[0]['product_option_value'] || $bonus_description): ?>
+                <div class="dichvukhuyenmai">
+                  <p class="txtdvkm">Dịch vụ và Khuyến mãi</p>
+                  <div class="detailkhuyenmai">
+                    <div class="imgdetailkhuyenmai">
+                      <img src="image/gift.jpg"/>
+                    </div>
+                    <div class="freegift">
+                      <span>Quà tặng miễn phí</span>
+                       <?php echo $bonus_description;?>
+                    </div>
+                  </div>
+                  <div class="itemkhuyenmai">
+                    <?php foreach ($options as $option): ?>
+                      <?php if ($option['type'] == 'radio'):?>
+                      <?php foreach ($option['product_option_value'] as $option_value) { ?>
+                          <div class="radio">
+                            <label>
+                              <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" id="optionsRadios1" value="<?php echo $option_value['product_option_value_id']; ?>">
+                              <span> <?php echo $option_value['text']; ?></span>
+                            </label>
+                          </div>
+                      <?php }?>
+                      <?php endif;?>
+                    <?php endforeach;?>
+                  </div><!-- end itemkhuyenmai -->
+                </div><!-- dichvukhuyenmai -->
+              <?php endif;?>
+
+            </div><!-- ifdetails -->
+          </div><!-- infodetailpd-product -->
+
+          <!-- shippingpd-product -->
+          <div class="shippingpd-product">
+            <div class="calshipping">
+              <div class="selectaddress">
+                <h4>Tùy chọn giao hàng</h4>
+                Tỉnh/Thành
+                <select>
+                  <option>Chọn Tỉnh/Thành phố</option>
+                  <option>Hồ Chí Minh</option>
+                  <option>Hà Nội</option>
+                  <option>Đà Nẵng</option>
+                  <option>...</option>
+                </select>
+                Quận/Huyện
+                <select>
+                  <option>Chọn Quận/Huyện</option>
+                  <option>Quận 1</option>
+                  <option>Quận 2</option>
+                  <option>Quận 3</option>
+                  <option>...</option>
+                </select>
               </div>
-            </div>
-            <?php } ?>
-            <?php if ($option['type'] == 'checkbox') { ?>
-            <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
-              <label class="control-label"><?php echo $option['name']; ?></label>
-              <div id="input-option<?php echo $option['product_option_id']; ?>">
-                <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" name="option[<?php echo $option['product_option_id']; ?>][]" value="<?php echo $option_value['product_option_value_id']; ?>" />
-                    <?php if ($option_value['image']) { ?>
-                    <img src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" class="img-thumbnail" /> 
-                    <?php } ?>
-                    <?php echo $option_value['name']; ?>
-                    <?php if ($option_value['price']) { ?>
-                    (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
-                    <?php } ?>
-                  </label>
+              <div class="ghtieuchuanfree">
+                <div class="cbphivanchuyen">
+                  <input type="checkbox"/>
                 </div>
-                <?php } ?>
-              </div>
-            </div>
-            <?php } ?>
-            <?php if ($option['type'] == 'image') { ?>
-            <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
-              <label class="control-label"><?php echo $option['name']; ?></label>
-              <div id="input-option<?php echo $option['product_option_id']; ?>">
-                <?php foreach ($option['product_option_value'] as $option_value) { ?>
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option_value['product_option_value_id']; ?>" />
-                    <img src="<?php echo $option_value['image']; ?>" alt="<?php echo $option_value['name'] . ($option_value['price'] ? ' ' . $option_value['price_prefix'] . $option_value['price'] : ''); ?>" class="img-thumbnail" /> <?php echo $option_value['name']; ?>
-                    <?php if ($option_value['price']) { ?>
-                    (<?php echo $option_value['price_prefix']; ?><?php echo $option_value['price']; ?>)
-                    <?php } ?>
-                  </label>
+                <div class="txtphivanchuyen">
+                  G.hàng tiêu chuẩn: Miễn phí<br>
+                  <span>Giao hàng 10 - 12 Aug 16</span>
                 </div>
-                <?php } ?>
+                <button type="button" class="tooltipshipping" data-toggle="tooltip" data-placement="bottom" title="Giao hàng tiêu chuẩn là hình thức giao hàng phổ biến nhất tại Lazada với mức phí thấp và thời gian giao hàng nhanh chóng. Bạn có thể tìm thêm thông tin tại đây."></button>
               </div>
+              <div class="ghnhanh">
+                <div class="cbphivanchuyen">
+                  <input type="checkbox"/>
+                </div>
+                <div class="txtphivanchuyen">
+                  G.hàng nhanh: 30.000 VNĐ<br>
+                  <span>Giao hàng 3 - 6h</span>
+                </div>
+                <button type="button" class="tooltipshipping" data-toggle="tooltip" data-placement="bottom" title="Giao hàng tiêu chuẩn là hình thức giao hàng phổ biến nhất tại Lazada với mức phí thấp và thời gian giao hàng nhanh chóng. Bạn có thể tìm thêm thông tin tại đây."></button>
+              </div>
+              <div class="ghnhanhfree">
+                <div class="cbphivanchuyen">
+                  <input type="checkbox"/>
+                </div>
+                <div class="txtphivanchuyen">
+                  G.hàng nhanh: Miễn phí<br>
+                  <span>Giao hàng 6 - 12h</span>
+                </div>
+                <button type="button" class="tooltipshipping" data-toggle="tooltip" data-placement="bottom" title="Giao hàng tiêu chuẩn là hình thức giao hàng phổ biến nhất tại Lazada với mức phí thấp và thời gian giao hàng nhanh chóng. Bạn có thể tìm thêm thông tin tại đây."></button>
+              </div>
+              <div class="thanhtoankhinhan">
+                <div class="imgphivanchuyen">
+                  <img src="image/icondollarbill.png"/>
+                </div>
+                <div class="textphivanchuyen">
+                  Quý khách có thể "Thanh toán khi nhận hàng"
+                </div>
+              </div>
+              <div class="boxbuyproduct">
+                <div class="quantity">
+                  <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity"/>
+                  <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
+
+                  <a type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btnbuy"><?php echo $button_cart; ?></a>
+                </div>
+                <div class="spyeuthich">
+                  <a onclick="wishlist.add('<?php echo $product_id; ?>');"><i class="fa fa-heart-o"></i> Tôi thích sản phẩm này</a>
+                </div>
+              </div>
+            </div><!-- end calshipping -->
+            <!-- baogiakh -->
+            <div class="baogiakh">
+              <a href="#" class="bgckh" data-toggle="modal" data-target="#myModalbaogia">Yêu cầu báo giá ngay</a>
+              <!-- test -->
+              <div id="myModalbaogia" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content ctmodalbaogia">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Yêu cầu báo giá</h4>
+                    </div>
+                    <div class="modal-body bdmodalbaogia">
+                      <div class="bdmodalbaogia-left">
+                        Thông tin đơn hàng: <span>*</span><br>
+                        <textarea rows="4" placeholder="Thông tin chi tiết về sản phẩm, số lượng từng loại"></textarea><br>
+                        File đính kèm:<br>
+                        <input type="file"/>
+                      </div>
+                      <div class="bdmodalbaogia-right">
+                        Tên: <span>*</span><br>
+                        <input type="text"/><br>
+                        Số điện thoại: <span>*</span><br>
+                        <input type="text"/><br>
+                        Email: <span>*</span><br>
+                        <input type="text"/><br>
+                        <label><input type="checkbox"/> <span>Tôi đồng ý</span> Điều khoản sử dụng của SPRO.VN</label><br>
+                        <button type="button" class="btnguibaogian">Gửi yêu cầu báo giá ngay</button>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end test -->
             </div>
-            <?php } ?>
-            <?php if ($option['type'] == 'text') { ?>
-            <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
-              <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
-              <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" placeholder="<?php echo $option['name']; ?>" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
-            </div>
-            <?php } ?>
-            <?php if ($option['type'] == 'textarea') { ?>
-            <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
-              <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
-              <textarea name="option[<?php echo $option['product_option_id']; ?>]" rows="5" placeholder="<?php echo $option['name']; ?>" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control"><?php echo $option['value']; ?></textarea>
-            </div>
-            <?php } ?>
-            <?php if ($option['type'] == 'file') { ?>
-            <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
-              <label class="control-label"><?php echo $option['name']; ?></label>
-              <button type="button" id="button-upload<?php echo $option['product_option_id']; ?>" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-default btn-block"><i class="fa fa-upload"></i> <?php echo $button_upload; ?></button>
-              <input type="hidden" name="option[<?php echo $option['product_option_id']; ?>]" value="" id="input-option<?php echo $option['product_option_id']; ?>" />
-            </div>
-            <?php } ?>
-            <?php if ($option['type'] == 'date') { ?>
-            <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
-              <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
-              <div class="input-group date">
-                <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" data-date-format="YYYY-MM-DD" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
-                <span class="input-group-btn">
-                <button class="btn btn-default" type="button"><i class="fa fa-calendar"></i></button>
-                </span></div>
-            </div>
-            <?php } ?>
-            <?php if ($option['type'] == 'datetime') { ?>
-            <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
-              <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
-              <div class="input-group datetime">
-                <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" data-date-format="YYYY-MM-DD HH:mm" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
-                <span class="input-group-btn">
-                <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
-                </span></div>
-            </div>
-            <?php } ?>
-            <?php if ($option['type'] == 'time') { ?>
-            <div class="form-group<?php echo ($option['required'] ? ' required' : ''); ?>">
-              <label class="control-label" for="input-option<?php echo $option['product_option_id']; ?>"><?php echo $option['name']; ?></label>
-              <div class="input-group time">
-                <input type="text" name="option[<?php echo $option['product_option_id']; ?>]" value="<?php echo $option['value']; ?>" data-date-format="HH:mm" id="input-option<?php echo $option['product_option_id']; ?>" class="form-control" />
-                <span class="input-group-btn">
-                <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
-                </span></div>
-            </div>
-            <?php } ?>
-            <?php } ?>
-            <?php } ?>
-            <?php if ($recurrings) { ?>
-            <hr>
-            <h3><?php echo $text_payment_recurring ?></h3>
-            <div class="form-group required">
-              <select name="recurring_id" class="form-control">
-                <option value=""><?php echo $text_select; ?></option>
-                <?php foreach ($recurrings as $recurring) { ?>
-                <option value="<?php echo $recurring['recurring_id'] ?>"><?php echo $recurring['name'] ?></option>
-                <?php } ?>
-              </select>
-              <div class="help-block" id="recurring-description"></div>
-            </div>
-            <?php } ?>
-            <div class="form-group">
-              <label class="control-label" for="input-quantity"><?php echo $entry_qty; ?></label>
-              <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity" class="form-control" />
-              <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
-              <br />
-              <button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>
-            </div>
-            <?php if ($minimum > 1) { ?>
-            <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $text_minimum; ?></div>
-            <?php } ?>
-          </div>
-          <?php if ($review_status) { ?>
-          <div class="rating">
-            <p>
-              <?php for ($i = 1; $i <= 5; $i++) { ?>
-              <?php if ($rating < $i) { ?>
-              <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-              <?php } else { ?>
-              <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-              <?php } ?>
-              <?php } ?>
-              <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $reviews; ?></a> / <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;"><?php echo $text_write; ?></a></p>
-            <hr>
-            <!-- AddThis Button BEGIN -->
-            <div class="addthis_toolbox addthis_default_style" data-url="<?php echo $share; ?>"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a></div>
-            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script>
-            <!-- AddThis Button END -->
-          </div>
-          <?php } ?>
+          </div><!-- end shippingpd-product -->
         </div>
-      </div>
-      <?php if ($products) { ?>
-      <h3><?php echo $text_related; ?></h3>
-      <div class="row">
-        <?php $i = 0; ?>
-        <?php foreach ($products as $product) { ?>
-        <?php if ($column_left && $column_right) { ?>
-        <?php $class = 'col-lg-6 col-md-6 col-sm-12 col-xs-12'; ?>
-        <?php } elseif ($column_left || $column_right) { ?>
-        <?php $class = 'col-lg-4 col-md-4 col-sm-6 col-xs-12'; ?>
-        <?php } else { ?>
-        <?php $class = 'col-lg-3 col-md-3 col-sm-6 col-xs-12'; ?>
-        <?php } ?>
-        <div class="<?php echo $class; ?>">
-          <div class="product-thumb transition">
-            <div class="image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
-            <div class="caption">
-              <h4><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
-              <p><?php echo $product['description']; ?></p>
-              <?php if ($product['rating']) { ?>
-              <div class="rating">
-                <?php for ($i = 1; $i <= 5; $i++) { ?>
-                <?php if ($product['rating'] < $i) { ?>
-                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                <?php } else { ?>
-                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                <?php } ?>
-                <?php } ?>
+
+        <?php if($accessories):?>
+        <div class="boxphukien">
+          <div class="headingphukien">
+            <p class="titheading-allpage">Phụ kiện</p>
+          </div>
+          <div class="contentphukien">
+            <?php foreach($accessories as $access): ?>
+            <div class="itemphukien">
+
+              <div class="img-itemphukien">
+                <img src="<?php echo $access['image']; ?>"/>
               </div>
-              <?php } ?>
-              <?php if ($product['price']) { ?>
-              <p class="price">
-                <?php if (!$product['special']) { ?>
-                <?php echo $product['price']; ?>
-                <?php } else { ?>
-                <span class="price-new"><?php echo $product['special']; ?></span> <span class="price-old"><?php echo $product['price']; ?></span>
-                <?php } ?>
-                <?php if ($product['tax']) { ?>
-                <span class="price-tax"><?php echo $text_tax; ?> <?php echo $product['tax']; ?></span>
-                <?php } ?>
-              </p>
-              <?php } ?>
+
+
+              <div class="middlephukien">
+                        <span class="name-itemphukien">
+                          <a href="<?php echo $access['href'];?>"><?php echo $access['name']; ?></a>
+                        </span>
+                <?php if($access['special']): ?>
+                <div class="wrapgiaphukien">
+                  <div class="txtgiaphukien">
+                    Giá niêm yết:
+                  </div>
+                  <div class="pricegiaphukien">
+                    <?php echo $access['price']; ?>
+                  </div>
+                </div>
+                <div class="wrapgiaphukien">
+                  <div class="txtgiaphukien clred">
+                    Giá bán:
+                  </div>
+                  <div class="pricegiaphukien clred">
+                    <?php echo $access['special']; ?>
+                  </div>
+                </div>
+                <div class="wrapgiaphukien">
+                  <div class="txtgiaphukien">
+                    Tiết kiệm:
+                  </div>
+                  <div class="pricegiaphukien">
+                    <?php echo $access['price_down']; ?> (<?php echo $access['specialper']; ?>%)
+                  </div>
+                </div>
+                <?php else: ?>
+                <div class="wrapgiaphukien">
+                  <div class="txtgiaphukien clred">
+                    Giá bán:
+                  </div>
+                  <div class="pricegiaphukien clred">
+                    <?php echo $access['price']; ?>
+                  </div>
+                </div>
+                <?php endif;?>
+                <div class="nutphukien">
+                  <a class="btnphukien button-cart-access" data-loading-text="<?php echo $text_loading; ?>" access-id="<?php echo $access['product_id'];?>" has-Sale="<?php echo $access['hasSale'];?>"><?php echo $button_cart; ?></a>
+                </div>
+              </div><!-- end contentphukien -->
+            </div><!-- end itemphukien -->
+            <?php endforeach;?>
+          </div><!-- end contentphukien -->
+        </div><!-- end boxphukien -->
+        <?php endif;?>
+
+        <div class="information-product">
+          <div class="colinfor">
+            <div class="img-colinfor">
+              <img src="image/hdmh.png"/>
             </div>
-            <div class="button-group">
-              <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span> <i class="fa fa-shopping-cart"></i></button>
-              <button type="button" data-toggle="tooltip" title="<?php echo $button_wishlist; ?>" onclick="wishlist.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-heart"></i></button>
-              <button type="button" data-toggle="tooltip" title="<?php echo $button_compare; ?>" onclick="compare.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-exchange"></i></button>
+            <div class="content-colinfor">
+              <a href="<?php echo $hd_mua_hang;?>">Hướng dẫn mua hàng</a><br>
+              Mua hàng online an toàn, không khó
+            </div>
+          </div>
+          <div class="colinfor">
+            <div class="img-colinfor">
+              <img src="image/cttt.png"/>
+            </div>
+            <div class="content-colinfor">
+              <a href="<?php echo $cach_thuc_tt;?>">Cách thức thanh toán</a><br>
+              Xem đầy đủ các thông tin thanh toán
+            </div>
+          </div>
+          <div class="colinfor">
+            <div class="img-colinfor">
+              <img src="image/csvc.png"/>
+            </div>
+            <div class="content-colinfor">
+              <a href="<?php echo $cs_van_chuyen;?>">Chính sách vận chuyển</a><br>
+              Xem đầy đủ các thông tin thanh toán
             </div>
           </div>
         </div>
-        <?php if (($column_left && $column_right) && ($i % 2 == 0)) { ?>
-        <div class="clearfix visible-md visible-sm"></div>
-        <?php } elseif (($column_left || $column_right) && ($i % 3 == 0)) { ?>
-        <div class="clearfix visible-md"></div>
-        <?php } elseif ($i % 4 == 0) { ?>
-        <div class="clearfix visible-md"></div>
-        <?php } ?>
-        <?php $i++; ?>
-        <?php } ?>
-      </div>
-      <?php } ?>
-      <?php if ($tags) { ?>
-      <p><?php echo $text_tags; ?>
-        <?php for ($i = 0; $i < count($tags); $i++) { ?>
-        <?php if ($i < (count($tags) - 1)) { ?>
-        <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>,
-        <?php } else { ?>
-        <a href="<?php echo $tags[$i]['href']; ?>"><?php echo $tags[$i]['tag']; ?></a>
-        <?php } ?>
-        <?php } ?>
-      </p>
-      <?php } ?>
-      <?php echo $content_bottom; ?></div>
+      </div><!-- end contenthead-product -->
+      <!-- contentmiddle-product -->
+      <div class="contentmiddle-product" id="detail-product">
+
+        <div class="boxdetailandnews">
+          <div class="descdetails-product">
+            <div class="tab-content">
+              <div class="headhoidap">
+                <p class="titheading-allpage">Mô tả sản phẩm</p>
+              </div>
+              <div id="motasanpham-product" class="">
+                <p>
+                  <?php echo $description;?>
+                </p>
+              </div>
+              <div class="headhoidap">
+                <p class="titheading-allpage">Thông số kỹ thuật</p>
+              </div>
+              <div id="thongsokythuat-product" class="">
+                <p>
+                  <?php echo $specs_description;?>
+                 </p>
+              </div>
+            </div>
+          </div><!-- end descdetails-product -->
+          <div class="newspart-product">
+            <div class="boxnewsrelated">
+              <div class="headingnewsrelated">
+                Bài viết liên quan
+              </div>
+              <div class="contentnewsrelated">
+                <ul class="categorynewsrelated">
+                  <li><a href="#">Lưu ý bảo dưỡng</a></li>
+                  <li><a href="#">Sử dụng máy bơm an toàn</a></li>
+                  <li><a href="#">Hướng dẫn sử dụng</a></li>
+                  <li><a href="#">Thống kê các dòng tương tự</a></li>
+                  <li><a href="#">Lưu ý khi mua hàng cũ</a></li>
+                </ul>
+              </div>
+            </div><!-- end boxnewsrelated -->
+
+          </div><!-- end newspart-product -->
+        </div><!-- end boxdetailandnews -->
+
+        <?php if ($products):?>
+         <div class="boxproductrelated">
+          <div class="headproductrelated">
+            <p class="titheading-allpage"><?php echo $text_related; ?></p>
+          </div>
+          <div class="middleproductrelated">
+            <!-- 1 -->
+            <?php foreach ($products as $product): ?>
+              <div class="colitemproduct">
+              <div class="itemproduct">
+                <div class="wrapbox-product">
+                  <div class="contentbox-product">
+                    <?php if ($product['special']): ?>
+                      <div class="boxsale-product">
+                        Sale
+                      </div>
+                    <?php endif;?>
+                    <div class="boximage-product">
+                      <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>"></a>
+                      <div class="txtboximage">
+                        <a href="<?php echo $product['href']; ?>" class="btn btn-boximage">Xem chi tiết</a>
+                      </div>
+                    </div>
+                    <div class="boxname-product">
+                      <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
+                    </div>
+                    <div class="boxprice-product">
+                      <?php if ($product['special']): ?>
+                        <div class="productprice wbp">
+                          <span class="productsell"><?php echo $product['special']; ?></span>
+                          <span class="productsale"> <?php echo $product['price']; ?></span>
+                        </div>
+                        <div class="percentsale wps">
+                          <span class="percentdiscount">-20%</span>
+                        </div>
+                      <?php else: ?>
+                        <div class="productprice wbp">
+                          <span class="productsell"> <?php echo $product['price']; ?></span>
+                        </div>
+                      <?php endif;?>
+                    </div>
+                    <div class="boxreview-product">
+                      ( 19 nhận xét )
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <?php endforeach;?>
+            <!-- 2 -->
+          </div><!-- end middleproductrelated -->
+        </div><!-- end boxproductrelated -->
+        <?php endif;?>
+      </div><!-- end contentmiddle-product -->
+      <?php if ($review_status): ?>
+        <div class="contentfooter-product">
+
+        <div class="nhanxetvesanpham">
+          <div class="headnhanxet">
+            <p class="titheading-allpage">Nhận xét về sản phẩm</p>
+          </div>
+          <div class="contentnhanxet">
+            <div class="boxdanhgia">
+              <div class="diemdanhgia">
+                <b class="txtdanhgia">Đánh giá trung bình</b>
+                <h2><?php echo $rating;?>/5</h2>
+                <?php for($i=0; $i<5; $i++):?>
+                  <?php if ($rating <= $i ) { ?>
+                  <span class="fa fa-stack star-grey"><i class="fa fa-star-o fa-stack-2x"></i></span>
+                  <?php } else { ?>
+                  <span class="fa fa-stack star-yelow"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+                  <?php } ?>
+                <?php endfor;?>
+               <br>
+                (<?php echo $count_reviews;?> nhận xét)
+              </div>
+              <div class="soluongdanhgia">
+                <?php foreach($ratings as $rating): ?>
+                  <div class="wrapprogress">
+                    <div class="sosaodanhgia">
+                      <?php echo $rating['rating']; ?> sao
+                    </div>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo $rating['percent'];?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $rating['percent'];?>%">
+                      </div>
+                    </div>
+                    <div class="songuoidanhgia">
+                     <?php echo $rating['num_rate']; ?>
+                    </div>
+                  </div>
+                <?php endforeach; ?>
+
+              </div>
+              <div class="vietdanhgia">
+                <b class="txtdanhgia">Chia sẻ nhận xét về sản phẩm</b><br>
+                <!-- <a href="#" class="vnx">Viết nhận xét của bạn</a> -->
+                <!-- test -->
+                <!-- Button trigger modal -->
+                <a class="vnx" data-toggle="modal" data-target="#myModal">
+                  Viết nhận xét của bạn
+                </a>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <form id="form-review">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h4 class="modal-title modaldanhgia" id="myModalLabel">Chúng tôi muốn nhận được những đánh giá khách quan của bạn</h4>
+                        </div>
+                        <div class="modal-body">
+                          <div class="well well-sm modaltensanpham"><?php echo $heading_title; ?></div>
+                          <div class="boxthongtindanhgia">
+                            <div class="thongtindanhgia-left">
+                              Họ và tên:
+                            </div>
+                            <div class="thongtindanhgia-right">
+                              <input type="text" name="name" value="<?php echo $customer_name; ?>" id="input-name" class="form-control" />
+                            </div>
+                          </div>
+                          <div class="boxthongtindanhgia">
+                            <div class="thongtindanhgia-left">
+                              Nội dung đánh giá của bạn:
+                            </div>
+                            <div class="thongtindanhgia-right">
+                              <textarea name="text" cols="25" rows="4" id="input-review" class="form-control"></textarea>
+                            </div>
+                          </div>
+                          <div class="boxthongtindanhgia">
+                            <div class="thongtindanhgia-left">
+                              Đánh giá:
+                            </div>
+                            <div class="thongtindanhgia-right">
+                              <div class="stars">
+                                <input type="radio" name="rating" value="1" class="star-1" id="star-1"/>
+                                <label class="star-1" for="star-1">1</label>
+                                <input type="radio" name="rating" value="2" class="star-2" id="star-2"/>
+                                <label class="star-2" for="star-2">2</label>
+                                <input type="radio" name="rating" value="3" class="star-3" id="star-3"/>
+                                <label class="star-3" for="star-3">3</label>
+                                <input type="radio" name="rating" value="4" class="star-4" id="star-4"/>
+                                <label class="star-4" for="star-4">4</label>
+                                <input type="radio" name="rating" value="5" class="star-5" id="star-5"/>
+                                <label class="star-5" for="star-5">5</label>
+                                <span></span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" id="button-review" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary">Gửi</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <!-- end test -->
+              </div>
+            </div><!-- end boxdanhgia -->
+            <div class="cacnhanxetdd" id="review">
+
+            </div><!-- cacnhanxetdd -->
+          </div><!-- end contentnhanxet -->
+        </div><!-- end nhanxetvesanpham -->
+      </div><!-- end contentfooter-product -->
+      <?php endif;?>
+    </div>
     <?php echo $column_right; ?></div>
 </div>
+
+<script>
+
+  $('#link-detail').click(function(){
+    $('html, body').animate({
+      scrollTop: $( $(this).attr('href') ).offset().top
+    }, 500);
+    return false;
+  });
+
+  $('#datcauhoi').click(function(){
+    $('html, body').animate({
+      scrollTop: $( $(this).attr('href') ).offset().top
+    }, 500);
+    return false;
+  });
+</script>
 
 <script type="text/javascript"><!--
 $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
@@ -670,15 +874,16 @@ $('#button-review').on('click', function() {
 			$('.alert-success, .alert-danger').remove();
 
 			if (json['error']) {
-				$('#review').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+				$('.modaltensanpham').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
 			}
 
 			if (json['success']) {
-				$('#review').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+				$('.boxdanhgia').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
 
 				$('input[name=\'name\']').val('');
 				$('textarea[name=\'text\']').val('');
 				$('input[name=\'rating\']:checked').prop('checked', false);
+                $('.close').trigger('click');
 			}
 		}
 	});

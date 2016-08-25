@@ -211,6 +211,7 @@ class ControllerCheckoutConfirm extends Controller {
 						'option_id'               => $option['option_id'],
 						'option_value_id'         => $option['option_value_id'],
 						'name'                    => $option['name'],
+						'text'                    => $option['text'],
 						'value'                   => $option['value'],
 						'type'                    => $option['type']
 					);
@@ -362,6 +363,7 @@ class ControllerCheckoutConfirm extends Controller {
 
 					$option_data[] = array(
 						'name'  => $option['name'],
+						'text'  => $option['text'],
 						'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
 					);
 				}
