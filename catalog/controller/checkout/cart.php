@@ -242,7 +242,8 @@ class ControllerCheckoutCart extends Controller {
 
 			$data['modules'] = array();
 			
-			$files = glob(DIR_APPLICATION . '/controller/total/*.php');
+			//$files = glob(DIR_APPLICATION . '/controller/total/*.php');
+			$files = glob(DIR_APPLICATION . '/controller/total/coupon.php');
 
 			if ($files) {
 				foreach ($files as $file) {

@@ -7,6 +7,7 @@
         <td class="text-left"><?php echo $column_model; ?></td>
         <td class="text-right"><?php echo $column_quantity; ?></td>
         <td class="text-right"><?php echo $column_price; ?></td>
+        <td class="text-right">Phụ kiện</td>
         <td class="text-right"><?php echo $column_total; ?></td>
       </tr>
     </thead>
@@ -16,7 +17,7 @@
         <td class="text-left"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a>
           <?php foreach ($product['option'] as $option) { ?>
           <br />
-          &nbsp;<small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+          &nbsp;<small><?php echo $option['name'];?>: <?php echo $option['text']; ?></small>
           <?php } ?>
           <?php if($product['recurring']) { ?>
           <br />
@@ -25,6 +26,7 @@
         <td class="text-left"><?php echo $product['model']; ?></td>
         <td class="text-right"><?php echo $product['quantity']; ?></td>
         <td class="text-right"><?php echo $product['price']; ?></td>
+        <td class="text-right"><?php echo $product['access_price']; ?></td>
         <td class="text-right"><?php echo $product['total']; ?></td>
       </tr>
       <?php } ?>

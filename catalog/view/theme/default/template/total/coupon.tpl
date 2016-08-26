@@ -1,15 +1,9 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4 class="panel-title"><a href="#collapse-coupon" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion"><?php echo $heading_title; ?> <i class="fa fa-caret-down"></i></a></h4>
-  </div>
-  <div id="collapse-coupon" class="panel-collapse collapse">
-    <div class="panel-body">
-      <label class="col-sm-2 control-label" for="input-coupon"><?php echo $entry_coupon; ?></label>
-      <div class="input-group">
-        <input type="text" name="coupon" value="<?php echo $coupon; ?>" placeholder="<?php echo $entry_coupon; ?>" id="input-coupon" class="form-control" />
-        <span class="input-group-btn">
-        <input type="button" value="<?php echo $button_coupon; ?>" id="button-coupon" data-loading-text="<?php echo $text_loading; ?>"  class="btn btn-primary" />
-        </span></div>
+<div class="bmagiamgia">
+	<h3><?php echo $heading_title; ?> </h3>
+	<input type="text" name="coupon" value="<?php echo $coupon; ?>" placeholder="<?php echo $entry_coupon; ?>" id="input-coupon" />
+	<a id="button-coupon" data-loading-text="<?php echo $text_loading; ?>"  class="btnmagiamgia"><?php echo $button_coupon; ?></a>
+</div>
+
       <script type="text/javascript"><!--
 $('#button-coupon').on('click', function() {
 	$.ajax({
@@ -39,6 +33,3 @@ $('#button-coupon').on('click', function() {
 	});
 });
 //--></script>
-    </div>
-  </div>
-</div>

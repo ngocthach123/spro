@@ -134,7 +134,11 @@ class ControllerCheckoutShippingMethod extends Controller {
 			$data['comment'] = '';
 		}
 
-		$this->response->setOutput($this->load->view('checkout/shipping_method', $data));
+		if(isset($this->request->get['view_cart'])){
+			$this->response->setOutput($this->load->view('checkout/shipping_method_cart', $data));
+		}else{
+			$this->response->setOutput($this->load->view('checkout/shipping_method', $data));
+		}
 	}
 
 	public function save() {
@@ -246,7 +250,7 @@ class ControllerCheckoutShippingMethod extends Controller {
 			if ($this->config->get($result['code'] . '_status')) {
 				$this->load->model('shipping/' . $result['code']);
 
-				$quote = $this->{'model_shipping_' . $result['code']}->getQuote($this->session->data['shipping_address']);
+				$quote = $this->{'model_shipping_' . $result['code']}->getQuote(array('country_id'=>230, 'zone_id'=>''));
 
 				if($quote['code'] == 'motobike'){
 					if($bike_cost) {

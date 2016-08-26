@@ -1,4 +1,7 @@
 <?php echo $header; ?>
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCvwryvPG1-OcPRLrMb89YcrFRlTbJQ69g&libraries=places"></script>
+
 <div class="container">
   <ul class="breadcrumb">
     <?php foreach ($breadcrumbs as $breadcrumb) { ?>
@@ -49,7 +52,7 @@
         </div>
         <?php } ?>
         <?php if ($shipping_required) { ?>
-        <div class="panel panel-default">
+        <div class="panel panel-default hidden">
           <div class="panel-heading">
             <h4 class="panel-title"><?php echo $text_checkout_shipping_address; ?></h4>
           </div>
@@ -373,24 +376,113 @@ $(document).delegate('#button-payment-address', 'click', function() {
 				$('.text-danger').parent().parent().addClass('has-error');
             } else {
                 <?php if ($shipping_required) { ?>
-                $.ajax({
-                    url: 'index.php?route=checkout/shipping_address',
-                    dataType: 'html',
-                    success: function(html) {
+//                $.ajax({
+//                    url: 'index.php?route=checkout/shipping_address',
+//                    dataType: 'html',
+//                    success: function(html) {
+//                        $('#collapse-shipping-address .panel-body').html(html);
+//
+//						$('#collapse-shipping-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-shipping-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle"><?php echo $text_checkout_shipping_address; ?> <i class="fa fa-caret-down"></i></a>');
+//
+//						$('a[href=\'#collapse-shipping-address\']').trigger('click');
+//
+//						$('#collapse-shipping-method').parent().find('.panel-heading .panel-title').html('<?php echo $text_checkout_shipping_method; ?>');
+//						$('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('<?php echo $text_checkout_payment_method; ?>');
+//						$('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('<?php echo $text_checkout_confirm; ?>');
+//                    },
+//                    error: function(xhr, ajaxOptions, thrownError) {
+//                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+//                    }
+//                });
+
+                    //***************CAL DISTANCE*****************
+
+                    var address ='';
+                    var selected = $("input[type='radio'][name='payment_address']:checked");
+                    if(selected.length >0){
+                        if(selected.val() == 'existing'){
+                            address = $("select[name='address_id'] option:selected").html();
+                        }
+                        if(selected.val() == 'new'){
+                            address = $("input[name='address_1']").val();
+                            address += ', '+ $("select[name='zone_id'] option:selected").html();
+                        }
+                     }
+
+                    var source, destination;
+                    var directionsDisplay;
+
+                    if(address != '' && $("#source").val() != ''){
+                    var mumbai = new google.maps.LatLng(18.9750, 72.8258);
+                    var mapOptions = {
+                    zoom: 7,
+                    center: mumbai
+                };
+
+                    //*********DIRECTIONS AND ROUTE**********************//
+                    source = document.getElementById("source").value;
+                    destination = address;
+
+                    //*********DISTANCE AND DURATION**********************//
+                    var service = new google.maps.DistanceMatrixService();
+                    service.getDistanceMatrix({
+                    origins: [source],
+                    destinations: [destination],
+                    travelMode: google.maps.TravelMode.DRIVING,
+                    unitSystem: google.maps.UnitSystem.METRIC,
+                    avoidHighways: false,
+                    avoidTolls: false
+                    }, function (response, status) {
+                    if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+                    var distance = response.rows[0].elements[0].distance.value;
+                    var duration = response.rows[0].elements[0].duration.text;
+                    //CHANGE M TO KM
+                    distance = distance/1000;
+                    distance = distance.toFixed(2);
+
+                    //send
+
+                        $.ajax({
+                        url: 'index.php?route=checkout/shipping_method',
+                        dataType: 'html',
+                        data:{
+                        distance: distance,
+                        },
+                        complete: function() {
+                        $('#button-shipping-address').button('reset');
+                        },
+                        success: function(html) {
+                        $('#collapse-shipping-method .panel-body').html(html);
+
+                        $('#collapse-shipping-method').parent().find('.panel-heading .panel-title').html('<a href="#collapse-shipping-method" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle"><?php echo $text_checkout_shipping_method; ?> <i class="fa fa-caret-down"></i></a>');
+
+                        $('a[href=\'#collapse-shipping-method\']').trigger('click');
+
+                        $('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('<?php echo $text_checkout_payment_method; ?>');
+                        $('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('<?php echo $text_checkout_confirm; ?>');
+
+                        $.ajax({
+                        url: 'index.php?route=checkout/shipping_address',
+                        dataType: 'html',
+                        success: function(html) {
                         $('#collapse-shipping-address .panel-body').html(html);
-
-						$('#collapse-shipping-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-shipping-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle"><?php echo $text_checkout_shipping_address; ?> <i class="fa fa-caret-down"></i></a>');
-
-						$('a[href=\'#collapse-shipping-address\']').trigger('click');
-
-						$('#collapse-shipping-method').parent().find('.panel-heading .panel-title').html('<?php echo $text_checkout_shipping_method; ?>');
-						$('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('<?php echo $text_checkout_payment_method; ?>');
-						$('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('<?php echo $text_checkout_confirm; ?>');
-                    },
-                    error: function(xhr, ajaxOptions, thrownError) {
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
                         alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-                    }
+                        }
+                        });
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
+                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                        }
+                    });
+
+                } else {
+                    alert("Unable to find the distance via road.");
+                }
                 });
+                }
+
                 <?php } else { ?>
                 $.ajax({
                     url: 'index.php?route=checkout/payment_method',
@@ -551,7 +643,94 @@ $(document).delegate('#button-guest', 'click', function() {
                 <?php if ($shipping_required) { ?>
                 var shipping_address = $('#collapse-payment-address input[name=\'shipping_address\']:checked').prop('value');
 
-                if (shipping_address) {
+                if (shipping_address){
+                    //***************CAL DISTANCE*****************
+                        var address = $("input[name='address_1']").val();
+                        address += ', '+ $("select[name='zone_id'] option:selected").html();
+
+                        var source, destination;
+                        var directionsDisplay;
+//                        var directionsService = new google.maps.DirectionsService();
+//                        google.maps.event.addDomListener(window, 'load', function () {
+//                        new google.maps.places.SearchBox(document.getElementById('source'));
+//                        new google.maps.places.SearchBox(document.getElementById('destination'));
+//                        directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
+//                        });
+
+                        if(address != '' && $("#source").val() != ''){
+                            var mumbai = new google.maps.LatLng(18.9750, 72.8258);
+                            var mapOptions = {
+                            zoom: 7,
+                            center: mumbai
+                            };
+
+                            //*********DIRECTIONS AND ROUTE**********************//
+                            source = document.getElementById("source").value;
+                            destination = address;
+
+                            //*********DISTANCE AND DURATION**********************//
+                            var service = new google.maps.DistanceMatrixService();
+                            service.getDistanceMatrix({
+                            origins: [source],
+                            destinations: [destination],
+                            travelMode: google.maps.TravelMode.DRIVING,
+                            unitSystem: google.maps.UnitSystem.METRIC,
+                            avoidHighways: false,
+                            avoidTolls: false
+                            }, function (response, status) {
+                            if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+                                 var distance = response.rows[0].elements[0].distance.value;
+                                var duration = response.rows[0].elements[0].duration.text;
+                                //CHANGE M TO KM
+                                distance = distance/1000;
+                                distance = distance.toFixed(2);
+
+                                //send
+                                    $.ajax({
+                                    url: 'index.php?route=checkout/shipping_method',
+                                    dataType: 'html',
+                                    data:{
+                                    distance: distance,
+                                },
+                                    complete: function() {
+                                    $('#button-guest').button('reset');
+                                },
+                                    success: function(html) {
+                                    // Add the shipping address
+                                    $.ajax({
+                                    url: 'index.php?route=checkout/guest_shipping',
+                                    dataType: 'html',
+                                    success: function(html) {
+                                    $('#collapse-shipping-address .panel-body').html(html);
+
+                                    $('#collapse-shipping-address').parent().find('.panel-heading .panel-title').html('<a href="#collapse-shipping-address" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle"><?php echo $text_checkout_shipping_address; ?> <i class="fa fa-caret-down"></i></a>');
+                                },
+                                    error: function(xhr, ajaxOptions, thrownError) {
+                                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                }
+                                });
+
+                                    $('#collapse-shipping-method .panel-body').html(html);
+
+                                    $('#collapse-shipping-method').parent().find('.panel-heading .panel-title').html('<a href="#collapse-shipping-method" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle"><?php echo $text_checkout_shipping_method; ?> <i class="fa fa-caret-down"></i></a>');
+
+                                    $('a[href=\'#collapse-shipping-method\']').trigger('click');
+
+                                    $('#collapse-payment-method').parent().find('.panel-heading .panel-title').html('<?php echo $text_checkout_payment_method; ?>');
+                                    $('#collapse-checkout-confirm').parent().find('.panel-heading .panel-title').html('<?php echo $text_checkout_confirm; ?>');
+                                },
+                                    error: function(xhr, ajaxOptions, thrownError) {
+                                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                                }
+                                });
+
+                            } else {
+                                alert("Unable to find the distance via road.");
+                            }
+                            });
+                        }
+
+                //***************END CAL DISTANCE*****************
                     $.ajax({
                         url: 'index.php?route=checkout/shipping_method',
                         dataType: 'html',

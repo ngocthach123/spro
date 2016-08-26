@@ -1,6 +1,6 @@
 <?php
 // Heading 
-$_['heading_title'] = 'Áp dụng mã giảm giá';
+$_['heading_title'] = 'Nhập mã giảm giá';
 
 // Text
 $_['text_coupon']   = 'Mã giảm giá(%s):';

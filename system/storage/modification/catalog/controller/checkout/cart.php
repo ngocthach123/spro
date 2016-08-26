@@ -17,6 +17,8 @@ class ControllerCheckoutCart extends Controller {
 			'text' => $this->language->get('heading_title')
 		);
 
+		$data['store_address'] = $this->config->get('config_address');
+
 		if ($this->cart->hasProducts() || !empty($this->session->data['vouchers'])) {
 			$data['heading_title'] = $this->language->get('heading_title');
 
@@ -264,8 +266,10 @@ class ControllerCheckoutCart extends Controller {
 			$this->load->model('extension/extension');
 
 			$data['modules'] = array();
-			
-			$files = glob(DIR_APPLICATION . '/controller/total/*.php');
+
+
+			//$files = glob(DIR_APPLICATION . '/controller/total/*.php');
+			$files = glob(DIR_APPLICATION . '/controller/total/coupon.php');
 
 			if ($files) {
 				foreach ($files as $file) {

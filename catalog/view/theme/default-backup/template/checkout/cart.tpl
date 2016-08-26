@@ -60,9 +60,17 @@
                   <?php if ($product['option']) { ?>
                   <?php foreach ($product['option'] as $option) { ?>
                   <br />
-                  <small><?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
+                  <small><?php echo $option['name']; ?>: <?php echo $option['text']; ?></small>
                   <?php } ?>
                   <?php } ?>
+
+                  <?php if ($product['accessories']) { ?>
+                  <?php foreach ($product['accessories'] as $access) { ?>
+                  <br />
+                  <small><?php echo $access['name']; ?>: <?php echo $access['price']; ?></small>
+                  <?php } ?>
+                  <?php } ?>
+
                   <?php if ($product['reward']) { ?>
                   <br />
                   <small><?php echo $product['reward']; ?></small>
@@ -76,7 +84,7 @@
                     <input type="text" name="quantity[<?php echo $product['cart_id']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" class="form-control" />
                     <span class="input-group-btn">
                     <button type="submit" data-toggle="tooltip" title="<?php echo $button_update; ?>" class="btn btn-primary"><i class="fa fa-refresh"></i></button>
-                    <button type="button" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger" onclick="cart.remove('<?php echo $product['cart_id']; ?>');"><i class="fa fa-times-circle"></i></button>
+                    <button type="button" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger" onclick="cart.remove('<?php echo $product['cart_id']; ?>','<?php echo $product['product_id']; ?>');"><i class="fa fa-times-circle"></i></button>
                     </span></div></td>
                 <td class="text-right"><?php echo $product['price']; ?></td>
                 <td class="text-right"><?php echo $product['total']; ?></td>

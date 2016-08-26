@@ -877,7 +877,7 @@ $(document).ready(function() {
           html += '>' + json['zone'][i]['name'] + '</option>';
         }
       } else {
-        html += '<option value="0" selected="selected">--None--</option>';
+        html += '<option value="0" selected="selected">Chọn Tỉnh/Thành phố</option>';
       }
 
       $('#zone').html(html);
