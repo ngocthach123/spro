@@ -83,7 +83,9 @@ class ModelCatalogProduct extends Model {
 				'viewed'           => $query->row['viewed'],
 				'access_group'           => $query->row['access_group'],
 				'virtual'           => $query->row['virtual'],
-				'virtual_id'           => $query->row['virtual_id']
+				'virtual_id'           => $query->row['virtual_id'],
+				'type'			=> $query->row['type'],
+				'total'           => $query->row['special'] ? $query->row['special'] : $query->row['price'],
 			);
 		} else {
 			return false;

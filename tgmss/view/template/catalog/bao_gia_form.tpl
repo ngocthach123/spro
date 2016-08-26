@@ -134,7 +134,7 @@
                             <?php } ?></td>
                           <td class="text-left"><?php echo $product['name']; ?></td>
 
-                          <td class="text-left"><?php echo $product['description']; ?></td>
+                          <td class="text-left"><?php echo $product['specs']; ?></td>
 
                           <td class="text-center"><?php echo $product['price']; ?></td>
 

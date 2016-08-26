@@ -2389,6 +2389,7 @@ ul.boxcategory li ul li a:hover {
 	line-height: 45px;
 	border-radius: 5px;
 	font-weight: bold;
+	text-decoration: none;
 }
 .baogiakh a.bgckh:hover {
 	background: #6d6f6f;
@@ -3049,7 +3050,7 @@ ul.categorynewsrelated li a:hover {
 }
 .bdmodalbaogia .bdmodalbaogia-right {
 	float: left;
-	width: 49.5%;
+	/*width: 49.5%;*/
 	margin-left: 0.5%;
 	font-size: 15px;
 	line-height: 25px;

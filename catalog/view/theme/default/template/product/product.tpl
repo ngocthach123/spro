@@ -15,6 +15,7 @@
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <!-- add scrtipt -->
+      <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCvwryvPG1-OcPRLrMb89YcrFRlTbJQ69g&libraries=places"></script>
       <script src="catalog/view/javascript/js/jquery.bxslider.js" type="text/javascript"></script>
       <script src="catalog/view/javascript/js/jquery.ba-throttle-debounce.js" type="text/javascript"></script>
       <script src="catalog/view/javascript/js/jquery.bridget.js" type="text/javascript"></script>
@@ -205,52 +206,19 @@
               <div class="selectaddress">
                 <h4>Tùy chọn giao hàng</h4>
                 Tỉnh/Thành
-                <select>
+                <select id="zone" name="zone">
                   <option>Chọn Tỉnh/Thành phố</option>
-                  <option>Hồ Chí Minh</option>
-                  <option>Hà Nội</option>
-                  <option>Đà Nẵng</option>
-                  <option>...</option>
                 </select>
                 Quận/Huyện
-                <select>
+                <select id="district" name="district">
                   <option>Chọn Quận/Huyện</option>
-                  <option>Quận 1</option>
-                  <option>Quận 2</option>
-                  <option>Quận 3</option>
-                  <option>...</option>
                 </select>
               </div>
-              <div class="ghtieuchuanfree">
-                <div class="cbphivanchuyen">
-                  <input type="checkbox"/>
-                </div>
-                <div class="txtphivanchuyen">
-                  G.hàng tiêu chuẩn: Miễn phí<br>
-                  <span>Giao hàng 10 - 12 Aug 16</span>
-                </div>
-                <button type="button" class="tooltipshipping" data-toggle="tooltip" data-placement="bottom" title="Giao hàng tiêu chuẩn là hình thức giao hàng phổ biến nhất tại Lazada với mức phí thấp và thời gian giao hàng nhanh chóng. Bạn có thể tìm thêm thông tin tại đây."></button>
+
+              <div id="shipping_cost">
+
               </div>
-              <div class="ghnhanh">
-                <div class="cbphivanchuyen">
-                  <input type="checkbox"/>
-                </div>
-                <div class="txtphivanchuyen">
-                  G.hàng nhanh: 30.000 VNĐ<br>
-                  <span>Giao hàng 3 - 6h</span>
-                </div>
-                <button type="button" class="tooltipshipping" data-toggle="tooltip" data-placement="bottom" title="Giao hàng tiêu chuẩn là hình thức giao hàng phổ biến nhất tại Lazada với mức phí thấp và thời gian giao hàng nhanh chóng. Bạn có thể tìm thêm thông tin tại đây."></button>
-              </div>
-              <div class="ghnhanhfree">
-                <div class="cbphivanchuyen">
-                  <input type="checkbox"/>
-                </div>
-                <div class="txtphivanchuyen">
-                  G.hàng nhanh: Miễn phí<br>
-                  <span>Giao hàng 6 - 12h</span>
-                </div>
-                <button type="button" class="tooltipshipping" data-toggle="tooltip" data-placement="bottom" title="Giao hàng tiêu chuẩn là hình thức giao hàng phổ biến nhất tại Lazada với mức phí thấp và thời gian giao hàng nhanh chóng. Bạn có thể tìm thêm thông tin tại đây."></button>
-              </div>
+
               <div class="thanhtoankhinhan">
                 <div class="imgphivanchuyen">
                   <img src="image/icondollarbill.png"/>
@@ -276,28 +244,22 @@
               <a href="#" class="bgckh" data-toggle="modal" data-target="#myModalbaogia">Yêu cầu báo giá ngay</a>
               <!-- test -->
               <div id="myModalbaogia" class="modal fade" role="dialog">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-md">
                   <div class="modal-content ctmodalbaogia">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
                       <h4 class="modal-title">Yêu cầu báo giá</h4>
                     </div>
                     <div class="modal-body bdmodalbaogia">
-                      <div class="bdmodalbaogia-left">
-                        Thông tin đơn hàng: <span>*</span><br>
-                        <textarea rows="4" placeholder="Thông tin chi tiết về sản phẩm, số lượng từng loại"></textarea><br>
-                        File đính kèm:<br>
-                        <input type="file"/>
-                      </div>
                       <div class="bdmodalbaogia-right">
                         Tên: <span>*</span><br>
-                        <input type="text"/><br>
+                        <input type="text" name="customer"/><br>
                         Số điện thoại: <span>*</span><br>
-                        <input type="text"/><br>
+                        <input type="text" name="phone"/><br>
                         Email: <span>*</span><br>
-                        <input type="text"/><br>
+                        <input type="text" name="email"/><br>
                         <label><input type="checkbox"/> <span>Tôi đồng ý</span> Điều khoản sử dụng của SPRO.VN</label><br>
-                        <button type="button" class="btnguibaogian">Gửi yêu cầu báo giá ngay</button>
+                        <button type="button" class="btnguibaogian" id="btn-send-report">Gửi yêu cầu báo giá ngay</button>
                       </div>
                     </div>
                     <div class="modal-footer">
@@ -634,7 +596,6 @@
     return false;
   });
 </script>
-
 <script type="text/javascript"><!--
 $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 	$.ajax({
@@ -899,4 +860,127 @@ $(document).ready(function() {
 	});
 });
 //--></script>
+
+<script type="text/javascript">
+
+  $.ajax({
+    url: 'index.php?route=checkout/checkout/country&country_id=230',
+    dataType: 'json',
+    success: function(json) {
+
+      html = '<option value="">Chọn Tỉnh/Thành phố</option>';
+
+      if (json['zone'] && json['zone'] != '') {
+        for (i = 0; i < json['zone'].length; i++) {
+          html += '<option value="' + json['zone'][i]['zone_id'] + '"';
+
+          html += '>' + json['zone'][i]['name'] + '</option>';
+        }
+      } else {
+        html += '<option value="0" selected="selected">--None--</option>';
+      }
+
+      $('#zone').html(html);
+    },
+    error: function(xhr, ajaxOptions, thrownError) {
+      alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+    }
+  });
+
+    $('#zone').on('change', function() {
+      $.ajax({
+        url: 'index.php?route=checkout/checkout/district&zone_id=' + this.value,
+        dataType: 'json',
+        success: function(json) {
+
+          html = '<option value="">Chọn Quận/Huyện</option>';
+
+          if (json && json != '') {
+            for (i = 0; i < json.length; i++) {
+              html += '<option value="' + json[i]['district_id'] + '"';
+
+              html += '>' + json[i]['name'] + '</option>';
+            }
+          } else {
+            html += '<option value="0" selected="selected">Chọn Quận/Huyện</option>';
+          }
+
+          $('#district').html(html);
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+      });
+    });
+
+    $('#zone').trigger('change');
+
+  $('#district').on('change', function() {
+    //*********DIRECTIONS AND ROUTE**********************//
+    var source = '<?php echo $store_address;?>';
+    var zone = $("select[name='zone'] option:selected").html();
+    var district = $("select[name='district'] option:selected").html();
+
+    var destination = district + ',' + zone + 'Việt Nam';
+
+    //*********DISTANCE AND DURATION**********************//
+    var service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix({
+      origins: [source],
+      destinations: [destination],
+      travelMode: google.maps.TravelMode.DRIVING,
+      unitSystem: google.maps.UnitSystem.METRIC,
+      avoidHighways: false,
+      avoidTolls: false
+    }, function (response, status) {
+      if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+        var distance = response.rows[0].elements[0].distance.value;
+        var duration = response.rows[0].elements[0].duration.text;
+        //CHANGE M TO KM
+        distance = distance / 1000;
+        distance = distance.toFixed(2);
+
+        //send
+
+        $.ajax({
+          url: 'index.php?route=checkout/shipping_method/costbyproduct',
+          type: 'post',
+          dataType: 'html',
+          data: {
+            distance: distance,
+            product_id: $("input[name='product_id']").val()
+          },
+          success: function (html) {
+            $('#shipping_cost').html(html);
+
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+          }
+        });
+
+      } else {
+        alert("Không thể tính khoảng cách bằng đường bộ.");
+      }
+    });
+  });
+</script>
+
+<script>
+  $('#btn-send-report').click(function(){
+    if($("input[name='email']").val()==''){
+      $('.bdmodalbaogia').prepend('<div class="alert alert-danger">Bạn chưa nhập email<button type="button" class="close" data-dismiss="alert">×</button></div>');
+      return false;
+    }
+    var url = "<?php echo html_entity_decode($action_baogia);?>";
+    url += "&quantity="+$("input[name='quantity']").val();
+    url += "&customer="+$("input[name='customer']").val();
+    url += "&phone="+$("input[name='phone']").val();
+    url += "&email="+$("input[name='email']").val();
+    url += "&address=";
+
+    window.location.replace(url);
+  });
+</script>
+
 <?php echo $footer; ?>

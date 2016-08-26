@@ -30,6 +30,13 @@ class ControllerCatalogBaoGia extends Controller
             $data['report_info']['date_added'] = date('d-m-Y',strtotime($data['report_info']['date_added']));
             $data['user'] = $this->model_user_user->getUser($data['report_info']['user_id']);
 
+            $data['owner']=$this->config->get('config_owner');
+            $data['name']=$this->config->get('config_name');
+            $data['address'] = $this->config->get('config_address');
+            $data['phone'] = $this->config->get('config_telephone');
+            $data['email'] = $this->config->get('config_email');
+            $data['fax'] = $this->config->get('config_fax');
+
             $products = $this->model_catalog_bao_gia->getProductReports($this->request->get['report_id']);
 
             foreach ($products as $product) {
@@ -44,7 +51,7 @@ class ControllerCatalogBaoGia extends Controller
                         'image'     =>  $this->model_tool_image->resize($product_info['image'], 100, 100,1),
                         'quantity'  =>$product['quantity'],
                         'sub_total' => $this->currency->format($sub_total, $this->session->data['currency']),
-                        'description' => html_entity_decode($product_info['description']),
+                        'specs' => html_entity_decode($product_info['specs']),
                     );
                 }
             }
@@ -97,7 +104,7 @@ class ControllerCatalogBaoGia extends Controller
                         'image'     =>  $this->model_tool_image->resize($product_info['image'], 100, 100,1),
                         'quantity'  =>$product['quantity'],
                         'sub_total' => $this->currency->format($sub_total, $this->session->data['currency']),
-                        'description' => html_entity_decode($product_info['description']),
+                        'specs' => html_entity_decode($product_info['specs']),
                     );
                 }
             }
@@ -118,7 +125,7 @@ class ControllerCatalogBaoGia extends Controller
                 foreach ($data['products'] as $row) {
                     $objPHPExcel->setActiveSheetIndex(0)
                         ->setCellValue('A' . $i, $i)
-                        ->setCellValue('B' . $i, $row['description'])
+                        ->setCellValue('B' . $i, $row['specs'])
                         ->setCellValue('C' . $i, $row['quantity'])
                         ->setCellValue('D' . $i, $row['price'])
                         ->setCellValue('E' . $i, $row['sub_total']);
@@ -506,8 +513,6 @@ class ControllerCatalogBaoGia extends Controller
         foreach ($products as $product) {
             $product_info = $this->model_catalog_product->getProduct($product['product_id']);
 
-            $desc = html_entity_decode($product_info['description']);
-
             if ($product_info) {
                 $data['products'][] = array(
                     'product_id' => $product_info['product_id'],
@@ -515,7 +520,7 @@ class ControllerCatalogBaoGia extends Controller
                     'price'       =>$this->currency->format($product_info['special'] ? $product_info['special'] : $product_info['price'], $this->session->data['currency']),
                     'image'     =>  $this->model_tool_image->resize($product_info['image'], 40, 40),
                     'quantity'  =>$product['quantity'],
-                    'description' => $desc,
+                    'specs' => html_entity_decode($product_info['specs']),
                 );
             }
         }

@@ -3441,3 +3441,163 @@
 2016-08-25 11:03:37 - PHP Notice:  Undefined index: virtual in E:\Work2\spro\tgmss\model\catalog\product.php on line 147
 2016-08-25 12:06:22 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 374
 2016-08-25 12:06:30 - PHP Notice:  Undefined index: virtual in E:\Work2\spro\tgmss\model\catalog\product.php on line 147
+2016-08-26 4:29:07 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 944
+2016-08-26 4:29:07 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 951
+2016-08-26 4:29:16 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 944
+2016-08-26 4:29:16 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 951
+2016-08-26 4:30:06 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 944
+2016-08-26 4:30:06 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 951
+2016-08-26 4:30:46 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 944
+2016-08-26 4:30:46 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 951
+2016-08-26 4:31:05 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 944
+2016-08-26 4:31:05 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 951
+2016-08-26 4:31:49 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 944
+2016-08-26 4:31:49 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 951
+2016-08-26 4:32:36 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 943
+2016-08-26 4:32:36 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 950
+2016-08-26 4:32:39 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 943
+2016-08-26 4:32:39 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 950
+2016-08-26 4:32:59 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 921
+2016-08-26 4:32:59 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 928
+2016-08-26 4:33:31 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 943
+2016-08-26 4:33:31 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 950
+2016-08-26 4:44:40 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 943
+2016-08-26 4:44:40 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 950
+2016-08-26 4:46:11 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 943
+2016-08-26 4:46:11 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 950
+2016-08-26 4:47:00 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 943
+2016-08-26 4:47:00 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 950
+2016-08-26 4:47:15 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 943
+2016-08-26 4:47:15 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 950
+2016-08-26 4:48:38 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 943
+2016-08-26 4:48:38 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 950
+2016-08-26 4:49:17 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 943
+2016-08-26 4:49:17 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 950
+2016-08-26 4:49:36 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 943
+2016-08-26 4:49:36 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 950
+2016-08-26 4:49:47 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 943
+2016-08-26 4:49:47 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 950
+2016-08-26 4:50:08 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 943
+2016-08-26 4:50:08 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 950
+2016-08-26 4:50:20 - PHP Notice:  Undefined variable: zone_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 943
+2016-08-26 4:50:20 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 950
+2016-08-26 6:02:46 - PHP Notice:  Undefined index: product_id in E:\Work2\spro\catalog\controller\checkout\shipping_method.php on line 215
+2016-08-26 6:02:46 - PHP Notice:  Undefined variable: shipping_method in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 2
+2016-08-26 6:02:46 - PHP Notice:  Undefined variable: shipping_method in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 3
+2016-08-26 6:02:46 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 3
+2016-08-26 6:03:57 - PHP Notice:  Undefined variable: shipping_method in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 2
+2016-08-26 6:03:57 - PHP Notice:  Undefined variable: shipping_method in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 3
+2016-08-26 6:03:57 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 3
+2016-08-26 6:06:37 - PHP Notice:  Undefined index: shipping_methods in E:\Work2\spro\catalog\controller\checkout\shipping_method.php on line 241
+2016-08-26 6:06:37 - PHP Notice:  Undefined variable: shipping_method in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 2
+2016-08-26 6:06:37 - PHP Notice:  Undefined variable: shipping_method in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 3
+2016-08-26 6:06:37 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 3
+2016-08-26 6:07:22 - PHP Notice:  Undefined index: shipping_methods in E:\Work2\spro\catalog\controller\checkout\shipping_method.php on line 240
+2016-08-26 6:07:22 - PHP Notice:  Undefined variable: shipping_method in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 2
+2016-08-26 6:07:22 - PHP Notice:  Undefined variable: shipping_method in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 3
+2016-08-26 6:07:22 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 3
+2016-08-26 6:08:11 - PHP Notice:  Undefined variable: shipping_method in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 2
+2016-08-26 6:08:11 - PHP Notice:  Undefined variable: shipping_method in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 3
+2016-08-26 6:08:11 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 3
+2016-08-26 6:08:57 - PHP Notice:  Undefined index: error in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 2
+2016-08-26 6:08:57 - PHP Notice:  Undefined index: quote in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 3
+2016-08-26 6:08:57 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\checkout\shipping_method_product.tpl on line 3
+2016-08-26 6:12:02 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 374
+2016-08-26 6:15:10 - PHP Notice:  Undefined index: type in E:\Work2\spro\catalog\model\transport\cost.php on line 6
+2016-08-26 6:15:10 - PHP Notice:  Undefined index: total in E:\Work2\spro\catalog\model\transport\cost.php on line 6
+2016-08-26 6:39:51 - PHP Notice:  Undefined index: specs in E:\Work2\spro\tgmss\view\template\catalog\bao_gia_form.tpl on line 137
+2016-08-26 6:39:51 - PHP Notice:  Undefined index: specs in E:\Work2\spro\tgmss\view\template\catalog\bao_gia_form.tpl on line 137
+2016-08-26 6:40:07 - PHP Notice:  Undefined index: specs in E:\Work2\spro\tgmss\view\template\catalog\bao_gia_form.tpl on line 137
+2016-08-26 6:40:07 - PHP Notice:  Undefined index: specs in E:\Work2\spro\tgmss\view\template\catalog\bao_gia_form.tpl on line 137
+2016-08-26 6:40:11 - PHP Notice:  Undefined index: specs in E:\Work2\spro\tgmss\view\template\catalog\bao_gia_form.tpl on line 137
+2016-08-26 6:40:11 - PHP Notice:  Undefined index: specs in E:\Work2\spro\tgmss\view\template\catalog\bao_gia_form.tpl on line 137
+2016-08-26 6:40:55 - PHP Notice:  Undefined index: specs in E:\Work2\spro\tgmss\view\template\catalog\bao_gia_form.tpl on line 137
+2016-08-26 6:40:55 - PHP Notice:  Undefined index: specs in E:\Work2\spro\tgmss\view\template\catalog\bao_gia_form.tpl on line 137
+2016-08-26 7:16:08 - PHP Notice:  Undefined index: quantity in E:\Work2\spro\system\storage\modification\catalog\controller\product\product.php on line 842
+2016-08-26 7:16:08 - PHP Notice:  Undefined index: quantity in E:\Work2\spro\system\storage\modification\catalog\controller\product\product.php on line 849
+2016-08-26 7:17:58 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 33
+2016-08-26 7:17:58 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 40
+2016-08-26 7:17:58 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 46
+2016-08-26 7:17:58 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 52
+2016-08-26 7:19:13 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 33
+2016-08-26 7:19:13 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 40
+2016-08-26 7:19:13 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 46
+2016-08-26 7:19:13 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 52
+2016-08-26 7:19:14 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 33
+2016-08-26 7:19:14 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 40
+2016-08-26 7:19:14 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 46
+2016-08-26 7:19:14 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 52
+2016-08-26 7:19:15 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 33
+2016-08-26 7:19:15 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 40
+2016-08-26 7:19:15 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 46
+2016-08-26 7:19:15 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 52
+2016-08-26 7:19:15 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 33
+2016-08-26 7:19:15 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 40
+2016-08-26 7:19:15 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 46
+2016-08-26 7:19:15 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 52
+2016-08-26 7:19:16 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 33
+2016-08-26 7:19:16 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 40
+2016-08-26 7:19:16 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 46
+2016-08-26 7:19:16 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 52
+2016-08-26 7:19:17 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 33
+2016-08-26 7:19:17 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 40
+2016-08-26 7:19:17 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 46
+2016-08-26 7:19:17 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 52
+2016-08-26 7:19:18 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 33
+2016-08-26 7:19:18 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 40
+2016-08-26 7:19:18 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 46
+2016-08-26 7:19:18 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 52
+2016-08-26 7:50:34 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 33
+2016-08-26 7:50:34 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 40
+2016-08-26 7:50:34 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 46
+2016-08-26 7:50:34 - PHP Notice:  Undefined variable: report_info in E:\Work2\spro\catalog\view\theme\default\template\product\form_report.tpl on line 52
+2016-08-26 9:24:37 - PHP Notice:  Undefined index: likes in E:\Work2\spro\system\storage\modification\catalog\controller\product\product.php on line 701
+2016-08-26 9:24:37 - PHP Notice:  Undefined index: likes in E:\Work2\spro\system\storage\modification\catalog\controller\product\product.php on line 701
+2016-08-26 9:24:37 - PHP Notice:  Undefined index: likes in E:\Work2\spro\system\storage\modification\catalog\controller\product\product.php on line 701
+2016-08-26 9:24:37 - PHP Notice:  Undefined index: likes in E:\Work2\spro\system\storage\modification\catalog\controller\product\product.php on line 701
+2016-08-26 9:24:37 - PHP Notice:  Undefined index: likes in E:\Work2\spro\system\storage\modification\catalog\controller\product\product.php on line 701
+2016-08-26 9:24:37 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:24:37 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:24:37 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:24:37 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:24:37 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:25:02 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:25:02 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:25:02 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:25:02 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:25:02 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:25:42 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:25:42 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:25:42 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:25:42 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:25:42 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:25:51 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:25:51 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:25:51 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:25:51 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:25:51 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:27:37 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:27:37 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:27:37 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:27:37 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:27:37 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 25
+2016-08-26 9:30:25 - PHP Notice:  Undefined index: likes in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 26
+2016-08-26 9:30:25 - PHP Notice:  Undefined index: review_id in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 31
+2016-08-26 9:30:25 - PHP Notice:  Undefined index: likes in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 26
+2016-08-26 9:30:25 - PHP Notice:  Undefined index: review_id in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 31
+2016-08-26 9:30:25 - PHP Notice:  Undefined index: likes in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 26
+2016-08-26 9:30:25 - PHP Notice:  Undefined index: review_id in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 31
+2016-08-26 9:30:25 - PHP Notice:  Undefined index: likes in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 26
+2016-08-26 9:30:25 - PHP Notice:  Undefined index: review_id in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 31
+2016-08-26 9:30:25 - PHP Notice:  Undefined index: likes in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 26
+2016-08-26 9:30:25 - PHP Notice:  Undefined index: review_id in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 31
+2016-08-26 9:30:52 - PHP Notice:  Undefined index: review_id in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 31
+2016-08-26 9:30:52 - PHP Notice:  Undefined index: review_id in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 31
+2016-08-26 9:30:52 - PHP Notice:  Undefined index: review_id in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 31
+2016-08-26 9:30:52 - PHP Notice:  Undefined index: review_id in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 31
+2016-08-26 9:30:52 - PHP Notice:  Undefined index: review_id in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 31
+2016-08-26 9:34:41 - PHP Notice:  Undefined index: review_id in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 32
+2016-08-26 9:34:41 - PHP Notice:  Undefined index: review_id in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 32
+2016-08-26 9:34:41 - PHP Notice:  Undefined index: review_id in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 32
+2016-08-26 9:34:41 - PHP Notice:  Undefined index: review_id in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 32
+2016-08-26 9:34:41 - PHP Notice:  Undefined index: review_id in E:\Work2\spro\catalog\view\theme\default\template\product\review.tpl on line 32

@@ -1,4 +1,4 @@
-class ControllerCheckoutCheckout extends Controller {
+<?php class ControllerCheckoutCheckout extends Controller {
 	public function index() {
 		// Validate cart has products and has stock.
 		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
@@ -122,6 +122,17 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 		$this->response->setOutput(json_encode($json));
 	}
 
+	public function district() {
+		$json = array();
+
+		$this->load->model('localisation/zone');
+
+		$json = $this->model_localisation_zone->getDistrictByZoneId($this->request->get['zone_id']);
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
 	public function customfield() {
 		$json = array();
 
@@ -147,3 +158,4 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 		$this->response->setOutput(json_encode($json));
 	}
 }
+

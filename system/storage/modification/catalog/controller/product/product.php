@@ -1,4 +1,9 @@
 <?php
+// include autoloader
+require_once 'tgmss/dompdf/autoload.inc.php';
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
 class ControllerProductProduct extends Controller {
 	private $error = array();
 
@@ -272,6 +277,7 @@ class ControllerProductProduct extends Controller {
 			$data['hd_mua_hang'] = $this->url->link('information/information', 'information_id=' . '7');
 			$data['cach_thuc_tt'] = $this->url->link('information/information', 'information_id=' . '8');
 			$data['cs_van_chuyen'] = $this->url->link('information/information', 'information_id=' . '6');
+			$data['store_address'] = $this->config->get('config_address');
 
 			$data['product_id'] = (int)$this->request->get['product_id'];
 			$data['manufacturer'] = $product_info['manufacturer'];
@@ -499,6 +505,8 @@ class ControllerProductProduct extends Controller {
 
 			$data['share'] = $this->url->link('product/product', 'product_id=' . (int)$this->request->get['product_id']);
 
+			$data['action_baogia'] = $this->url->link('product/product/exportpdf', 'product_id=' . (int)$this->request->get['product_id']);
+
 			$data['attribute_groups'] = $this->model_catalog_product->getProductAttributes($this->request->get['product_id']);
 
 			$data['products'] = array();
@@ -687,8 +695,10 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 		foreach ($results as $result) {
 			$data['reviews'][] = array(
 				'author'     => $result['author'],
+				'review_id'     => $result['review_id'],
 				'text'       => nl2br($result['text']),
 				'rating'     => (int)$result['rating'],
+				'likes'     => (int)$result['likes'],
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
 			);
 		}
@@ -700,8 +710,10 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 		foreach ($results_rating as $result) {
 			$data['reviews_rating'][] = array(
 				'author'     => $result['author'],
+				'review_id'     => $result['review_id'],
 				'text'       => nl2br($result['text']),
 				'rating'     => (int)$result['rating'],
+				'likes'     => (int)$result['likes'],
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
 			);
 		}
@@ -717,6 +729,15 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($review_total) ? (($page - 1) * 5) + 1 : 0, ((($page - 1) * 5) > ($review_total - 5)) ? $review_total : ((($page - 1) * 5) + 5), $review_total, ceil($review_total / 5));
 
 		$this->response->setOutput($this->load->view('product/review', $data));
+	}
+
+	public function like()
+	{
+		$this->load->model('catalog/review');
+
+		if(isset($this->request->post['review_id'])){
+			$this->model_catalog_review->like($this->request->post['review_id']);
+		}
 	}
 
 	public function write() {
@@ -817,5 +838,57 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
+	}
+
+	public function exportpdf(){
+		$this->load->model('catalog/product');
+		$this->load->model('tool/image');
+
+		if (isset($this->request->get['product_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+
+			$data['owner']=$this->config->get('config_owner');
+			$data['name']=$this->config->get('config_name');
+			$data['address'] = $this->config->get('config_address');
+			$data['phone'] = $this->config->get('config_telephone');
+			$data['email'] = $this->config->get('config_email');
+			$data['fax'] = $this->config->get('config_fax');
+
+			$data['report_info'] = $this->request->get;
+
+			$product_info = $this->model_catalog_product->getProduct($data['report_info']['product_id']);
+			$price = $product_info['special'] ? $product_info['special'] : $product_info['price'];
+			$sub_total = (int)$data['report_info']['quantity']* (int)$price;
+			if ($product_info) {
+				$data['products'][] = array(
+					'product_id' => $product_info['product_id'],
+					'name'       => $product_info['name'],
+					'price'       =>$this->currency->format($price, $this->session->data['currency']),
+					'image'     =>  $this->model_tool_image->resize($product_info['image'], 100, 100,1),
+					'quantity'  =>$data['report_info']['quantity'],
+					'sub_total' => $this->currency->format($sub_total, $this->session->data['currency']),
+					'specs' => html_entity_decode($product_info['specs']),
+				);
+			}
+
+//            $this->response->setOutput($this->load->view('catalog/form_report', $data));
+			// instantiate and use the dompdf class
+
+			$dompdf = new Dompdf(array('enable‌​_remote' => true));
+			$html = $this->load->view('product/form_report',$data);
+
+			$html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
+
+			$dompdf->loadHtml($html);
+
+// (Optional) Setup the paper size and orientation
+			$dompdf->setPaper('A4', 'portrait');
+
+// Render the HTML as PDF
+			$dompdf->render();
+
+// Output the generated PDF to Browser
+			$dompdf->stream("Bao_gia");
+
+		}
 	}
 }

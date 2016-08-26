@@ -58,12 +58,12 @@ class ModelCatalogReview extends Model {
 		}
 
 		if($order_rating){
-			$order = "ORDER BY r.rating DESC";
+			$order = "ORDER BY r.likes DESC";
 		}else{
 			$order = "ORDER BY r.date_added DESC";
 		}
 
-		$query = $this->db->query("SELECT r.review_id, r.author, r.rating, r.text, p.product_id, pd.name, p.price, p.image, r.date_added FROM " . DB_PREFIX . "review r LEFT JOIN " . DB_PREFIX . "product p ON (r.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND p.date_available <= NOW() AND p.status = '1' AND r.status = '1' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' ".$order." LIMIT " . (int)$start . "," . (int)$limit);
+		$query = $this->db->query("SELECT r.review_id, r.author, r.rating, r.text, p.product_id, pd.name, p.price, p.image, r.date_added,r.likes FROM " . DB_PREFIX . "review r LEFT JOIN " . DB_PREFIX . "product p ON (r.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND p.date_available <= NOW() AND p.status = '1' AND r.status = '1' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "' ".$order." LIMIT " . (int)$start . "," . (int)$limit);
 
 		return $query->rows;
 	}
@@ -72,5 +72,9 @@ class ModelCatalogReview extends Model {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "review r LEFT JOIN " . DB_PREFIX . "product p ON (r.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id) WHERE p.product_id = '" . (int)$product_id . "' AND p.date_available <= NOW() AND p.status = '1' AND r.status = '1' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 
 		return $query->row['total'];
+	}
+
+	public function like($review_id) {
+		$this->db->query("UPDATE " . DB_PREFIX . "review SET likes=(likes+1) WHERE review_id =".(int)$review_id);
 	}
 }

@@ -22,7 +22,17 @@
         <?php } ?>
 
         <p><?php echo $review['text']; ?></p>
-        <span class="nxdco"><b>7 người</b> đã cảm ơn nhận xét này. </span><span class="nxhhk">Nhận xét này hữu ích với bạn?</span> <a class="camon" href="#"><i class="fa fa-thumbs-o-up"></i> Cảm ơn</a>
+
+        <span class="nxdco" id="wrap-textlike<?php echo $review['review_id'];?>">
+           <?php if($review['likes']): ?>
+            <b><span id="text_likes<?php echo $review['review_id'];?>"><?php echo $review['likes'];?></span> người</b> đã cảm ơn nhận xét này.
+          <?php endif;?>
+        </span>
+        <input type="hidden" value="<?php echo $review['likes'];?>" id="num_likes<?php echo $review['review_id'];?>"/>
+         <span id="wrap-btnlike">
+          <span class="nxhhk">Nhận xét này hữu ích với bạn?</span> <a class="camon like" review-id="<?php echo $review['review_id'];?>"><i class="fa fa-thumbs-o-up"></i> Cảm ơn</a>
+        </span>
+
       </div>
     </div>
     <?php endforeach; ?>
@@ -48,7 +58,16 @@
         <?php } ?>
 
         <p><?php echo $review['text']; ?></p>
-        <span class="nxdco"><b>7 người</b> đã cảm ơn nhận xét này. </span><span class="nxhhk">Nhận xét này hữu ích với bạn?</span> <a class="camon" href="#"><i class="fa fa-thumbs-o-up"></i> Cảm ơn</a>
+          <span class="nxdco" id="wrap-textlike<?php echo $review['review_id'];?>">
+             <?php if($review['likes']): ?>
+               <b><span id="text_likes<?php echo $review['review_id'];?>"><?php echo $review['likes'];?></span> người</b> đã cảm ơn nhận xét này.
+            <?php endif;?>
+          </span>
+
+        <input type="hidden" value="<?php echo $review['likes'];?>" id="num_likes<?php echo $review['review_id'];?>"/>
+        <span id="wrap-btnlike">
+          <span class="nxhhk">Nhận xét này hữu ích với bạn?</span> <a class="camon like" review-id="<?php echo $review['review_id'];?>"><i class="fa fa-thumbs-o-up"></i> Cảm ơn</a>
+        </span>
       </div>
     </div>
     <?php endforeach; ?>
@@ -61,3 +80,29 @@
   <p><?php echo $text_no_reviews; ?></p>
 <?php } ?>
 
+<script>
+  $('.like').click(function(){
+    var review_id = $(this).attr('review-id');
+    $.ajax({
+      url: 'index.php?route=product/product/like',
+      type: 'post',
+      dataType: 'text',
+      data:{
+        review_id: review_id,
+      },
+      success: function(result) {
+        if($('#num_likes'+review_id).val() == 0){
+          var html =  "<b><span id='text_likes'>1</span> người</b> đã cảm ơn nhận xét này.";
+          $('#wrap-textlike'+review_id).html(html);
+        }else {
+          $('#text_likes'+review_id).html(parseInt($('#num_likes'+review_id).val())+1);
+        }
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+      }
+    });
+
+    $(this).parent().fadeOut('slow');
+  });
+</script>

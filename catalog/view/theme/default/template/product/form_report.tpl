@@ -31,32 +31,27 @@
         <tr>
             <td><em>Kính gửi</em></td>
             <td>: <?php echo $report_info['customer'];?></td>
-            <td><em>Người báo giá</em></td>
-            <td>: <?php echo $user['firstname'].' '.$user['lastname'];?></td>
+            <td><em></em></td>
+            <td></td>
         </tr>
-        <tr>
-            <td><em>Đơn vị</em></td>
-            <td>: <?php echo $report_info['work_place'];?></td>
-            <td><em>Điện thoại</em></td>
-            <td>: <?php echo $user['phone'];?></td>
-        </tr>
+
         <tr>
             <td valign="top"><em>Địa chỉ</em></td>
             <td>: <?php echo $report_info['address'];?></td>
-            <td valign="top"><em>Số Báo Giá</em></td>
-            <td valign="top">: <?php echo $report_info['report_code'];?></td>
+            <td valign="top"><em></em></td>
+            <td valign="top"></td>
         </tr>
         <tr>
             <td><em>Điện thoại/Fax</em></td>
             <td>: <?php echo $report_info['phone'];?></td>
-            <td><em>Ngày Báo Giá</em></td>
-            <td>: <?php echo $report_info['date_added'];?></td>
+            <td><em></em></td>
+            <td></td>
         </tr>
         <tr>
             <td><em>Email</em></td>
             <td>: <?php echo $report_info['email'];?></td>
-            <td><em>Email</em></td>
-            <td>: hotrospro@gmail.com</td>
+            <td><em></em></td>
+            <td></td>
         </tr>
         <tr>
             <td colspan="4">&nbsp;</td>
