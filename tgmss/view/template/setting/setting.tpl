@@ -33,7 +33,7 @@
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
             <li><a href="#tab-store" data-toggle="tab"><?php echo $tab_store; ?></a></li>
-            <li class="hidden"><a href="#tab-local" data-toggle="tab"><?php echo $tab_local; ?></a></li>
+            <li class=""><a href="#tab-local" data-toggle="tab"><?php echo $tab_local; ?></a></li>
             <li><a href="#tab-option" data-toggle="tab"><?php echo $tab_option; ?></a></li>
             <li><a href="#tab-image" data-toggle="tab"><?php echo $tab_image; ?></a></li>
             <li class="hidden"><a href="#tab-ftp" data-toggle="tab"><?php echo $tab_ftp; ?></a></li>
@@ -208,7 +208,7 @@
               </div>
               <?php } ?>
             </div>
-            <div class="tab-pane hidden" id="tab-local">
+            <div class="tab-pane" id="tab-local">
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-country"><?php echo $entry_country; ?></label>
                 <div class="col-sm-10">

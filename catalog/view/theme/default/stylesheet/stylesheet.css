@@ -3784,7 +3784,7 @@ a.btncngh-f:hover {
 	overflow: hidden;
 	margin-top: 10px;
 }
-.bthongtinkhmuahang .ndthongtinkhmuahang input[type="text"], .bthongtinkhmuahang .ndthongtinkhmuahang select, .bthongtinkhmuahang .ndthongtinkhmuahang textarea {
+.bthongtinkhmuahang .ndthongtinkhmuahang input[type="text"], .bthongtinkhmuahang .ndthongtinkhmuahang select,.ndthongtinkhmuahang input[type="password"], .bthongtinkhmuahang .ndthongtinkhmuahang textarea {
 	width: 100%;
 	border: 1px solid #cbcbcb;
 	border-radius: 3px;
@@ -4290,4 +4290,20 @@ a.btncngh-f:hover {
 
 a{
 	cursor: pointer;
+}
+
+.btn-login {
+	background: #ff5014;
+	color: #fff;
+	padding: 6px 12px;
+	border: none;
+	margin: 14px 0px;
+	float: right;
+}
+
+.btn-orange{
+	background: #ff5014;
+	color: #fff;
+	padding: 8px 12px;
+	border: none;
 }

@@ -73,8 +73,6 @@ class Customer {
 
 	public function socialLogin($customer_query){
 
-		//$customer_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer WHERE LOWER(email) = '" . $this->db->escape(utf8_strtolower($user['email'])) . "' AND status = '1'");
-
 		if ($customer_query->num_rows) {
 			$this->session->data['customer_id'] = $customer_query->row['customer_id'];
 

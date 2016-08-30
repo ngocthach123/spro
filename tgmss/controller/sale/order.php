@@ -891,10 +891,11 @@ class ControllerSaleOrder extends Controller {
 			if ($order_info['payment_address_format']) {
 				$format = $order_info['payment_address_format'];
 			} else {
-				$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}';
+				$format = 'SDT: '.'{telephone}'. "\n" .'{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}';
 			}
 
 			$find = array(
+				'{telephone}',
 				'{firstname}',
 				'{lastname}',
 				'{company}',
@@ -908,6 +909,7 @@ class ControllerSaleOrder extends Controller {
 			);
 
 			$replace = array(
+				'telephone' => $order_info['payment_telephone'],
 				'firstname' => $order_info['payment_firstname'],
 				'lastname'  => $order_info['payment_lastname'],
 				'company'   => $order_info['payment_company'],

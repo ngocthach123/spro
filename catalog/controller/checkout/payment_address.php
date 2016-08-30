@@ -16,6 +16,7 @@ class ControllerCheckoutPaymentAddress extends Controller {
 		$data['entry_address_2'] = $this->language->get('entry_address_2');
 		$data['entry_postcode'] = $this->language->get('entry_postcode');
 		$data['entry_city'] = $this->language->get('entry_city');
+		$data['entry_telephone'] = $this->language->get('entry_telephone');
 		$data['entry_country'] = $this->language->get('entry_country');
 		$data['entry_zone'] = $this->language->get('entry_zone');
 
@@ -27,6 +28,9 @@ class ControllerCheckoutPaymentAddress extends Controller {
 		} else {
 			$data['address_id'] = $this->customer->getAddressId();
 		}
+
+		$data['customer_name']= $this->customer->getFirstName();
+		$data['customer_phone']= $this->customer->getTelephone();
 
 		$this->load->model('account/address');
 
@@ -114,8 +118,8 @@ class ControllerCheckoutPaymentAddress extends Controller {
 
 					$this->session->data['payment_address'] = $this->model_account_address->getAddress($this->request->post['address_id']);
 
-					unset($this->session->data['payment_method']);
-					unset($this->session->data['payment_methods']);
+//					unset($this->session->data['payment_method']);
+//					unset($this->session->data['payment_methods']);
 				}
 			} else {
 				if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
@@ -171,8 +175,8 @@ class ControllerCheckoutPaymentAddress extends Controller {
 
 					$this->session->data['payment_address'] = $this->model_account_address->getAddress($address_id);
 
-					unset($this->session->data['payment_method']);
-					unset($this->session->data['payment_methods']);
+//					unset($this->session->data['payment_method']);
+//					unset($this->session->data['payment_methods']);
 
 					$this->load->model('account/activity');
 
@@ -183,6 +187,99 @@ class ControllerCheckoutPaymentAddress extends Controller {
 
 					$this->model_account_activity->addActivity('address_add', $activity_data);
 				}
+			}
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
+	public function validate() {
+		$this->load->language('checkout/checkout');
+
+		$json = array();
+
+		// Validate if customer is logged in.
+		if (!$this->customer->isLogged()) {
+			$json['redirect'] = $this->url->link('checkout/checkout', '', true);
+		}
+
+		// Validate cart has products and has stock.
+		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
+			$json['redirect'] = $this->url->link('checkout/cart');
+		}
+
+		// Validate minimum quantity requirements.
+		$products = $this->cart->getProducts();
+
+		foreach ($products as $product) {
+			$product_total = 0;
+
+			foreach ($products as $product_2) {
+				if ($product_2['product_id'] == $product['product_id']) {
+					$product_total += $product_2['quantity'];
+				}
+			}
+
+			if ($product['minimum'] > $product_total) {
+				$json['redirect'] = $this->url->link('checkout/cart');
+
+				break;
+			}
+		}
+
+		if (!$json) {
+			if (isset($this->request->post['payment_address']) && $this->request->post['payment_address'] == 'existing') {
+				$this->load->model('account/address');
+
+				if (empty($this->request->post['address_id'])) {
+					$json['error']['warning'] = $this->language->get('error_address');
+				} elseif (!in_array($this->request->post['address_id'], array_keys($this->model_account_address->getAddresses()))) {
+					$json['error']['warning'] = $this->language->get('error_address');
+				}
+
+				if (!$json) {
+					// Default Payment Address
+					$this->load->model('account/address');
+
+					$this->session->data['payment_address'] = $this->session->data['shipping_address'] = $this->model_account_address->getAddress($this->request->post['address_id']);
+
+//					unset($this->session->data['payment_method']);
+//					unset($this->session->data['payment_methods']);
+				}
+			} else {
+				if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
+					$json['error']['firstname'] = $this->language->get('error_firstname');
+				}
+
+				if ((utf8_strlen(trim($this->request->post['telephone'])) < 1) || (utf8_strlen(trim($this->request->post['telephone'])) > 32)) {
+					$json['error']['telephone'] = $this->language->get('error_telephone');
+				}
+
+				if ((utf8_strlen(trim($this->request->post['address_1'])) < 3) || (utf8_strlen(trim($this->request->post['address_1'])) > 128)) {
+					$json['error']['address_1'] = $this->language->get('error_address_1');
+				}
+
+				if ($this->request->post['city'] == '') {
+					$json['error']['city'] = $this->language->get('error_city');
+				}
+
+				$this->load->model('localisation/country');
+
+				$country_info = $this->model_localisation_country->getCountry($this->request->post['country_id']);
+
+				if ($country_info && $country_info['postcode_required'] && (utf8_strlen(trim($this->request->post['postcode'])) < 2 || utf8_strlen(trim($this->request->post['postcode'])) > 10)) {
+					$json['error']['postcode'] = $this->language->get('error_postcode');
+				}
+
+				if ($this->request->post['country_id'] == '') {
+					$json['error']['country'] = $this->language->get('error_country');
+				}
+
+				if (!isset($this->request->post['zone_id']) || $this->request->post['zone_id'] == '' || !is_numeric($this->request->post['zone_id'])) {
+					$json['error']['zone'] = $this->language->get('error_zone');
+				}
+
 			}
 		}
 

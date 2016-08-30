@@ -3,7 +3,7 @@ class ControllerCheckoutShippingMethod extends Controller {
 	public function index() {
 		$this->load->language('checkout/checkout');
 
-		if (isset($this->session->data['shipping_address'])) {
+		if (isset($this->session->data['shipping_address']) || isset($this->request->get['view_cart'])) {
 			//distance
 
 			$bike_cost = 0;
@@ -21,19 +21,27 @@ class ControllerCheckoutShippingMethod extends Controller {
 					foreach ($products as $product) {
 						$transports = $this->model_transport_cost->getCost($product);
 
-						foreach($transports as $transport){
-							if($transport['van_chuyen'] == 1){//xe may
-								$bike_cost += $transport['gia_van_chuyen']*$data['distance'];
-							}
+						if(count($transports)){
+							foreach($transports as $transport){
+								if($transport['van_chuyen'] == 1){//xe may
+									$bike_cost += $transport['gia_van_chuyen']*$data['distance'];
+								}
 
-							if($transport['van_chuyen'] == 2){//oto
-								$car_cost += $transport['gia_van_chuyen']*$data['distance'];
-							}
+								if($transport['van_chuyen'] == 2){//oto
+									$car_cost += $transport['gia_van_chuyen']*$data['distance'];
+								}
 
-							if($transport['van_chuyen'] == 3){//chanh xe
-								$bus_cost += $transport['gia_van_chuyen']*$data['distance'];
+								if($transport['van_chuyen'] == 3){//chanh xe
+									$bus_cost += $transport['gia_van_chuyen']*$data['distance'];
+								}
 							}
+						}else{
+							$bike_cost = 0;
+							$car_cost = 0;
+							$bus_cost = 0; //chanh xe
+							break;
 						}
+
 					}
 				}
 			}else{
@@ -53,7 +61,11 @@ class ControllerCheckoutShippingMethod extends Controller {
 				if ($this->config->get($result['code'] . '_status')) {
 					$this->load->model('shipping/' . $result['code']);
 
-					$quote = $this->{'model_shipping_' . $result['code']}->getQuote($this->session->data['shipping_address']);
+					if(isset($this->request->get['view_cart']) && !isset($this->session->data['shipping_address'])){
+						$quote = $this->{'model_shipping_' . $result['code']}->getQuote(array('country_id'=>230, 'zone_id'=>''));
+					}else{
+						$quote = $this->{'model_shipping_' . $result['code']}->getQuote($this->session->data['shipping_address']);
+					}
 
 					if($quote['code'] == 'motobike'){
 						if($bike_cost) {

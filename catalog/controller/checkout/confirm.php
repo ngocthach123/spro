@@ -5,11 +5,11 @@ class ControllerCheckoutConfirm extends Controller {
 
 		if ($this->cart->hasShipping()) {
 			// Validate if shipping address has been set.
-			if (!isset($this->session->data['shipping_address'])) {
-				$redirect = $this->url->link('checkout/checkout', '', true);
-			}
+//			if (!isset($this->session->data['shipping_address'])) {
+//				$redirect = $this->url->link('checkout/checkout', '', true);
+//			}
 
-			// Validate if shipping method has been set.
+//			 Validate if shipping method has been set.
 			if (!isset($this->session->data['shipping_method'])) {
 				$redirect = $this->url->link('checkout/checkout', '', true);
 			}
@@ -135,6 +135,7 @@ class ControllerCheckoutConfirm extends Controller {
 
 			$order_data['payment_firstname'] = $this->session->data['payment_address']['firstname'];
 			$order_data['payment_lastname'] = $this->session->data['payment_address']['lastname'];
+			$order_data['payment_telephone'] = $this->session->data['payment_address']['telephone'];
 			$order_data['payment_address_1'] = $this->session->data['payment_address']['address_1'];
 			$order_data['payment_city'] = $this->session->data['payment_address']['city'];
 			$order_data['payment_postcode'] = $this->session->data['payment_address']['postcode'];
@@ -345,6 +346,7 @@ class ControllerCheckoutConfirm extends Controller {
 
 			$data['products'] = array();
 
+			$this->load->model('tool/image');
 			foreach ($this->cart->getProducts() as $product) {
 				$option_data = array();
 
@@ -390,11 +392,18 @@ class ControllerCheckoutConfirm extends Controller {
 					}
 				}
 
+				if ($product['image']) {
+					$image = $this->model_tool_image->resize($product['image'], $this->config->get($this->config->get('config_theme') . '_image_cart_width'), $this->config->get($this->config->get('config_theme') . '_image_cart_height'));
+				} else {
+					$image = '';
+				}
+
 				$access_total = $product['access_price'] * $product['quantity'];
 				$data['products'][] = array(
 					'cart_id'    => $product['cart_id'],
 					'product_id' => $product['product_id'],
 					'name'       => $product['name'],
+					'thumb'     => $image,
 					'model'      => $product['model'],
 					'option'     => $option_data,
 					'recurring'  => $recurring,
@@ -428,7 +437,41 @@ class ControllerCheckoutConfirm extends Controller {
 				);
 			}
 
+			if (isset($this->session->data['guest']['firstname'])) {
+				$data['firstname'] = $this->session->data['guest']['firstname'];
+			} else {
+				$data['firstname'] = '';
+			}
+
+			if (isset($this->session->data['payment_address']['address_1'])) {
+				$data['address_1'] = $this->session->data['payment_address']['address_1'];
+			} else {
+				$data['address_1'] = '';
+			}
+
+			if (isset($this->session->data['payment_address']['city'])) {
+				$data['city'] = $this->session->data['payment_address']['city'];
+			} else {
+				$data['city'] = '';
+			}
+
+			if (isset($this->session->data['payment_address']['zone_id'])) {
+				$data['zone_id'] = $this->session->data['payment_address']['zone_id'];
+			} elseif (isset($this->session->data['shipping_address']['zone_id'])) {
+				$data['zone_id'] = $this->session->data['shipping_address']['zone_id'];
+			} else {
+				$data['zone_id'] = '';
+			}
+			if($data['zone_id'] != ''){
+				$this->load->model('localisation/zone');
+				$zone = $this->model_localisation_zone->getZone($data['zone_id']);
+				$data['zone'] = $zone['name'];
+			}else{
+				$data['zone'] = '';
+			}
+
 			$data['payment'] = $this->load->controller('payment/' . $this->session->data['payment_method']['code']);
+
 		} else {
 			$data['redirect'] = $redirect;
 		}

@@ -2,199 +2,64 @@
   <?php if ($addresses) { ?>
   <div class="radio">
     <label>
-      <input type="radio" name="payment_address" value="existing" checked="checked" />
+      <input type="radio" name="payment_address" class="radio-address" value="existing" checked="checked" />
       <?php echo $text_address_existing; ?></label>
   </div>
   <div id="payment-existing">
-    <select name="address_id" class="form-control">
+    <select name="address_id" class="form-control" id="address_id">
       <?php foreach ($addresses as $address) { ?>
       <?php if ($address['address_id'] == $address_id) { ?>
-      <option value="<?php echo $address['address_id']; ?>" selected="selected"><?php echo $address['address_1']; ?>, <?php echo $address['zone']; ?>, <?php echo $address['country']; ?></option>
+      <option value="<?php echo $address['address_id']; ?>" selected="selected"><?php echo $address['address_1']; ?>,<?php echo $address['city']; ?>, <?php echo $address['zone']; ?>, <?php echo $address['country']; ?></option>
       <?php } else { ?>
-      <option value="<?php echo $address['address_id']; ?>"><?php echo $address['address_1']; ?>, <?php echo $address['zone']; ?>, <?php echo $address['country']; ?></option>
+      <option value="<?php echo $address['address_id']; ?>"><?php echo $address['address_1']; ?>, <?php echo $address['city']; ?>,<?php echo $address['zone']; ?>, <?php echo $address['country']; ?></option>
       <?php } ?>
       <?php } ?>
     </select>
   </div>
   <div class="radio">
     <label>
-      <input type="radio" name="payment_address" value="new" />
+      <input type="radio" name="payment_address" class="radio-address" value="new" />
       <?php echo $text_address_new; ?></label>
   </div>
   <?php } ?>
   <br />
   <div id="payment-new" style="display: <?php echo ($addresses ? 'none' : 'block'); ?>;">
-    <div class="form-group required">
-      <label class="col-sm-2 control-label" for="input-payment-firstname"><?php echo $entry_firstname; ?></label>
-      <div class="col-sm-10">
-        <input type="text" name="firstname" value="" placeholder="<?php echo $entry_firstname; ?>" id="input-payment-firstname" class="form-control" />
-      </div>
-    </div>
-    <div class="form-group required hidden">
-      <label class="col-sm-2 control-label" for="input-payment-lastname"><?php echo $entry_lastname; ?></label>
-      <div class="col-sm-10">
-        <input type="text" name="lastname" value="" placeholder="<?php echo $entry_lastname; ?>" id="input-payment-lastname" class="form-control" />
-      </div>
-    </div>
-    <div class="form-group required">
-      <label class="col-sm-2 control-label" for="input-payment-address-1"><?php echo $entry_address_1; ?></label>
-      <div class="col-sm-10">
-        <input type="text" name="address_1" value="" placeholder="<?php echo $entry_address_1; ?>" id="input-payment-address-1" class="form-control" />
-      </div>
-    </div>
-    <div class="form-group required hidden">
-      <label class="col-sm-2 control-label" for="input-payment-city"><?php echo $entry_city; ?></label>
-      <div class="col-sm-10">
-        <input type="text" name="city" value="" placeholder="<?php echo $entry_city; ?>" id="input-payment-city" class="form-control" />
-      </div>
-    </div>
-    <div class="form-group required hidden">
-      <label class="col-sm-2 control-label" for="input-payment-postcode"><?php echo $entry_postcode; ?></label>
-      <div class="col-sm-10">
-        <input type="text" name="postcode" value="" placeholder="<?php echo $entry_postcode; ?>" id="input-payment-postcode" class="form-control" />
-      </div>
-    </div>
-    <div class="form-group required hidden">
+
+  <input type="hidden" name="lastname" value="" placeholder="<?php echo $entry_lastname; ?>" id="input-payment-lastname" class="form-control" />
+  <input type="hidden" name="postcode" value="" placeholder="<?php echo $entry_postcode; ?>" id="input-payment-postcode" class="form-control" />
+  <div class="form-group required hidden">
       <label class="col-sm-2 control-label" for="input-payment-country"><?php echo $entry_country; ?></label>
       <div class="col-sm-10">
-        <select name="country_id" id="input-payment-country" class="form-control">
-          <option value=""><?php echo $text_select; ?></option>
-          <?php foreach ($countries as $country) { ?>
-          <?php if ($country['country_id'] == $country_id) { ?>
-          <option value="<?php echo $country['country_id']; ?>" selected="selected"><?php echo $country['name']; ?></option>
-          <?php } else { ?>
-          <option value="<?php echo $country['country_id']; ?>"><?php echo $country['name']; ?></option>
-          <?php } ?>
-          <?php } ?>
-        </select>
+          <select name="country_id" id="input-payment-country" class="form-control">
+              <option value=""><?php echo $text_select; ?></option>
+              <?php foreach ($countries as $country) { ?>
+              <?php if ($country['country_id'] == $country_id) { ?>
+              <option value="<?php echo $country['country_id']; ?>" selected="selected"><?php echo $country['name']; ?></option>
+              <?php } else { ?>
+              <option value="<?php echo $country['country_id']; ?>"><?php echo $country['name']; ?></option>
+              <?php } ?>
+              <?php } ?>
+          </select>
       </div>
-    </div>
-    <div class="form-group required">
-      <label class="col-sm-2 control-label" for="input-payment-zone"><?php echo $entry_zone; ?></label>
-      <div class="col-sm-10">
-        <select name="zone_id" id="input-payment-zone" class="form-control">
-        </select>
-      </div>
-    </div>
-    <?php foreach ($custom_fields as $custom_field) { ?>
-    <?php if ($custom_field['location'] == 'address') { ?>
-    <?php if ($custom_field['type'] == 'select') { ?>
-    <div class="form-group<?php echo ($custom_field['required'] ? ' required' : ''); ?> custom-field" data-sort="<?php echo $custom_field['sort_order']; ?>">
-      <label class="col-sm-2 control-label" for="input-payment-custom-field<?php echo $custom_field['custom_field_id']; ?>"><?php echo $custom_field['name']; ?></label>
-      <div class="col-sm-10">
-        <select name="custom_field[<?php echo $custom_field['custom_field_id']; ?>]" id="input-payment-custom-field<?php echo $custom_field['custom_field_id']; ?>" class="form-control">
-          <option value=""><?php echo $text_select; ?></option>
-          <?php foreach ($custom_field['custom_field_value'] as $custom_field_value) { ?>
-          <option value="<?php echo $custom_field_value['custom_field_value_id']; ?>"><?php echo $custom_field_value['name']; ?></option>
-          <?php } ?>
-        </select>
-      </div>
-    </div>
-    <?php } ?>
-    <?php if ($custom_field['type'] == 'radio') { ?>
-    <div class="form-group<?php echo ($custom_field['required'] ? ' required' : ''); ?> custom-field" data-sort="<?php echo $custom_field['sort_order']; ?>">
-      <label class="col-sm-2 control-label"><?php echo $custom_field['name']; ?></label>
-      <div class="col-sm-10">
-        <div id="input-payment-custom-field<?php echo $custom_field['custom_field_id']; ?>">
-          <?php foreach ($custom_field['custom_field_value'] as $custom_field_value) { ?>
-          <div class="radio">
-            <label>
-              <input type="radio" name="custom_field[<?php echo $custom_field['custom_field_id']; ?>]" value="<?php echo $custom_field_value['custom_field_value_id']; ?>" />
-              <?php echo $custom_field_value['name']; ?></label>
-          </div>
-          <?php } ?>
-        </div>
-      </div>
-    </div>
-    <?php } ?>
-    <?php if ($custom_field['type'] == 'checkbox') { ?>
-    <div class="form-group<?php echo ($custom_field['required'] ? ' required' : ''); ?> custom-field" data-sort="<?php echo $custom_field['sort_order']; ?>">
-      <label class="col-sm-2 control-label"><?php echo $custom_field['name']; ?></label>
-      <div class="col-sm-10">
-        <div id="input-payment-custom-field<?php echo $custom_field['custom_field_id']; ?>">
-          <?php foreach ($custom_field['custom_field_value'] as $custom_field_value) { ?>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox" name="custom_field[<?php echo $custom_field['custom_field_id']; ?>][]" value="<?php echo $custom_field_value['custom_field_value_id']; ?>" />
-              <?php echo $custom_field_value['name']; ?></label>
-          </div>
-          <?php } ?>
-        </div>
-      </div>
-    </div>
-    <?php } ?>
-    <?php if ($custom_field['type'] == 'text') { ?>
-    <div class="form-group<?php echo ($custom_field['required'] ? ' required' : ''); ?> custom-field" data-sort="<?php echo $custom_field['sort_order']; ?>">
-      <label class="col-sm-2 control-label" for="input-payment-custom-field<?php echo $custom_field['custom_field_id']; ?>"><?php echo $custom_field['name']; ?></label>
-      <div class="col-sm-10">
-        <input type="text" name="custom_field[<?php echo $custom_field['custom_field_id']; ?>]" value="<?php echo $custom_field['value']; ?>" placeholder="<?php echo $custom_field['name']; ?>" id="input-payment-custom-field<?php echo $custom_field['custom_field_id']; ?>" class="form-control" />
-      </div>
-    </div>
-    <?php } ?>
-    <?php if ($custom_field['type'] == 'textarea') { ?>
-    <div class="form-group<?php echo ($custom_field['required'] ? ' required' : ''); ?> custom-field" data-sort="<?php echo $custom_field['sort_order']; ?>">
-      <label class="col-sm-2 control-label" for="input-payment-custom-field<?php echo $custom_field['custom_field_id']; ?>"><?php echo $custom_field['name']; ?></label>
-      <div class="col-sm-10">
-        <textarea name="custom_field[<?php echo $custom_field['custom_field_id']; ?>]" rows="5" placeholder="<?php echo $custom_field['name']; ?>" id="input-payment-custom-field<?php echo $custom_field['custom_field_id']; ?>" class="form-control"><?php echo $custom_field['value']; ?></textarea>
-      </div>
-    </div>
-    <?php } ?>
-    <?php if ($custom_field['type'] == 'file') { ?>
-    <div class="form-group<?php echo ($custom_field['required'] ? ' required' : ''); ?> custom-field" data-sort="<?php echo $custom_field['sort_order']; ?>">
-      <label class="col-sm-2 control-label"><?php echo $custom_field['name']; ?></label>
-      <div class="col-sm-10">
-        <button type="button" id="button-payment-custom-field<?php echo $custom_field['custom_field_id']; ?>" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-default"><i class="fa fa-upload"></i> <?php echo $button_upload; ?></button>
-        <input type="hidden" name="custom_field[<?php echo $custom_field['custom_field_id']; ?>]" value="" id="input-payment-custom-field<?php echo $custom_field['custom_field_id']; ?>" />
-      </div>
-    </div>
-    <?php } ?>
-    <?php if ($custom_field['type'] == 'date') { ?>
-    <div class="form-group<?php echo ($custom_field['required'] ? ' required' : ''); ?> custom-field" data-sort="<?php echo $custom_field['sort_order']; ?>">
-      <label class="col-sm-2 control-label" for="input-payment-custom-field<?php echo $custom_field['custom_field_id']; ?>"><?php echo $custom_field['name']; ?></label>
-      <div class="col-sm-10">
-        <div class="input-group date">
-          <input type="text" name="custom_field[<?php echo $custom_field['custom_field_id']; ?>]" value="<?php echo $custom_field['value']; ?>" placeholder="<?php echo $custom_field['name']; ?>" data-date-format="YYYY-MM-DD" id="input-payment-custom-field<?php echo $custom_field['custom_field_id']; ?>" class="form-control" />
-          <span class="input-group-btn">
-          <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
-          </span></div>
-      </div>
-    </div>
-    <?php } ?>
-    <?php if ($custom_field['type'] == 'time') { ?>
-    <div class="form-group<?php echo ($custom_field['required'] ? ' required' : ''); ?> custom-field" data-sort="<?php echo $custom_field['sort_order']; ?>">
-      <label class="col-sm-2 control-label" for="input-payment-custom-field<?php echo $custom_field['custom_field_id']; ?>"><?php echo $custom_field['name']; ?></label>
-      <div class="col-sm-10">
-        <div class="input-group time">
-          <input type="text" name="custom_field[<?php echo $custom_field['custom_field_id']; ?>]" value="<?php echo $custom_field['value']; ?>" placeholder="<?php echo $custom_field['name']; ?>" data-date-format="HH:mm" id="input-payment-custom-field<?php echo $custom_field['custom_field_id']; ?>" class="form-control" />
-          <span class="input-group-btn">
-          <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
-          </span></div>
-      </div>
-    </div>
-    <?php } ?>
-    <?php if ($custom_field['type'] == 'datetime') { ?>
-    <div class="form-group<?php echo ($custom_field['required'] ? ' required' : ''); ?> custom-field" data-sort="<?php echo $custom_field['sort_order']; ?>">
-      <label class="col-sm-2 control-label" for="input-payment-custom-field<?php echo $custom_field['custom_field_id']; ?>"><?php echo $custom_field['name']; ?></label>
-      <div class="col-sm-10">
-        <div class="input-group datetime">
-          <input type="text" name="custom_field[<?php echo $custom_field['custom_field_id']; ?>]" value="<?php echo $custom_field['value']; ?>" placeholder="<?php echo $custom_field['name']; ?>" data-date-format="YYYY-MM-DD HH:mm" id="input-payment-custom-field<?php echo $custom_field['custom_field_id']; ?>" class="form-control" />
-          <span class="input-group-btn">
-          <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
-          </span></div>
-      </div>
-    </div>
-    <?php } ?>
-    <?php } ?>
-    <?php } ?>
   </div>
 
-    <input type="hidden" value="<?php echo $store_address;?>" id="source">
 
-  <div class="buttons clearfix">
-    <div class="pull-right">
-      <input type="button" value="<?php echo $button_continue; ?>" id="button-payment-address" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary" />
-    </div>
-  </div>
+  <input type="text" name="firstname" value="<?php echo $customer_name;?>" placeholder="<?php echo $entry_firstname; ?>" id="input-payment-firstname" />
+  <input type="text" name="telephone" value="<?php echo $customer_phone;?>" placeholder="<?php echo $entry_telephone; ?>" id="input-payment-telephone" />
+
+  <select name="zone_id" id="input-payment-zone">
+  </select><br>
+
+  <select name="city" id="input-payment-city">
+      <option>-- Chọn quận huyện --</option>
+  </select><br>
+  <input type="text" name="address_1" value="" placeholder="<?php echo $entry_address_1; ?>" id="input-payment-address-1"/>
+
+  <input type="hidden" value="<?php echo $store_address;?>" id="source">
+
+</div>
+<textarea placeholder="Ghi chú" rows="4" name="comment"></textarea><br>
+
 </form>
 <script type="text/javascript"><!--
 $('input[name=\'payment_address\']').on('change', function() {
@@ -207,93 +72,7 @@ $('input[name=\'payment_address\']').on('change', function() {
 	}
 });
 //--></script>
-<script type="text/javascript"><!--
-// Sort the custom fields
-$('#collapse-payment-address .form-group[data-sort]').detach().each(function() {
-	if ($(this).attr('data-sort') >= 0 && $(this).attr('data-sort') <= $('#collapse-payment-address .form-group').length-2) {
-		$('#collapse-payment-address .form-group').eq(parseInt($(this).attr('data-sort'))+2).before(this);
-	}
 
-	if ($(this).attr('data-sort') > $('#collapse-payment-address .form-group').length-2) {
-		$('#collapse-payment-address .form-group:last').after(this);
-	}
-
-	if ($(this).attr('data-sort') == $('#collapse-payment-address .form-group').length-2) {
-		$('#collapse-payment-address .form-group:last').after(this);
-	}
-
-	if ($(this).attr('data-sort') < -$('#collapse-payment-address .form-group').length-2) {
-		$('#collapse-payment-address .form-group:first').before(this);
-	}
-});
-//--></script>
-<script type="text/javascript"><!--
-$('#collapse-payment-address button[id^=\'button-payment-custom-field\']').on('click', function() {
-	var node = this;
-
-	$('#form-upload').remove();
-
-	$('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
-
-	$('#form-upload input[name=\'file\']').trigger('click');
-
-	if (typeof timer != 'undefined') {
-    	clearInterval(timer);
-	}
-
-	timer = setInterval(function() {
-		if ($('#form-upload input[name=\'file\']').val() != '') {
-			clearInterval(timer);
-
-			$.ajax({
-				url: 'index.php?route=tool/upload',
-				type: 'post',
-				dataType: 'json',
-				data: new FormData($('#form-upload')[0]),
-				cache: false,
-				contentType: false,
-				processData: false,
-				beforeSend: function() {
-					$(node).button('loading');
-				},
-				complete: function() {
-					$(node).button('reset');
-				},
-				success: function(json) {
-					$(node).parent().find('.text-danger').remove();
-
-					if (json['error']) {
-						$(node).parent().find('input[name^=\'custom_field\']').after('<div class="text-danger">' + json['error'] + '</div>');
-					}
-
-					if (json['success']) {
-						alert(json['success']);
-
-						$(node).parent().find('input[name^=\'custom_field\']').attr('value', json['code']);
-					}
-				},
-				error: function(xhr, ajaxOptions, thrownError) {
-					alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-				}
-			});
-		}
-	}, 500);
-});
-//--></script>
-<script type="text/javascript"><!--
-$('.date').datetimepicker({
-	pickTime: false
-});
-
-$('.time').datetimepicker({
-	pickDate: false
-});
-
-$('.datetime').datetimepicker({
-	pickDate: true,
-	pickTime: true
-});
-//--></script>
 <script type="text/javascript"><!--
 $('#collapse-payment-address select[name=\'country_id\']').on('change', function() {
 	$.ajax({
@@ -328,7 +107,8 @@ $('#collapse-payment-address select[name=\'country_id\']').on('change', function
 				html += '<option value="0" selected="selected"><?php echo $text_none; ?></option>';
 			}
 
-			$('#collapse-payment-address select[name=\'zone_id\']').html(html);
+            $('select[name=\'zone_id\']').html(html);
+            $('select[name=\'zone_id\']').trigger('change');
 		},
 		error: function(xhr, ajaxOptions, thrownError) {
 			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -336,5 +116,35 @@ $('#collapse-payment-address select[name=\'country_id\']').on('change', function
 	});
 });
 
-$('#collapse-payment-address select[name=\'country_id\']').trigger('change');
+    $('#collapse-payment-address select[name=\'country_id\']').trigger('change');
+
+    $('select[name=\'zone_id\']').on('change', function() {
+        $.ajax({
+            url: 'index.php?route=checkout/checkout/district&zone_id=' + this.value,
+            dataType: 'json',
+            success: function(json) {
+
+                html = '<option value="">Chọn Quận/Huyện</option>';
+
+                if (json && json != '') {
+                    for (i = 0; i < json.length; i++) {
+                        html += '<option value="' + json[i]['name'] + '"';
+
+                        if (json[i]['name'] == '<?php echo $city; ?>') {
+                            html += ' selected="selected"';
+                        }
+
+                        html += '>' + json[i]['name'] + '</option>';
+                    }
+                } else {
+                    html += '<option value="0" selected="selected">Chọn Quận/Huyện</option>';
+                }
+
+                $('select[name=\'city\']').html(html);
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
 //--></script>
