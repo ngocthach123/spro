@@ -3986,3 +3986,41 @@
 2016-08-30 7:00:33 - PHP Notice:  Undefined index: telephone in E:\Work2\spro\catalog\controller\checkout\confirm.php on line 138
 2016-08-30 7:00:34 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
 2016-08-30 7:02:35 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
+2016-08-30 8:46:34 - PHP Notice:  Undefined index: href in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 292
+2016-08-30 8:46:34 - PHP Notice:  Undefined index: price_down in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 316
+2016-08-30 8:46:34 - PHP Notice:  Undefined index: specialper in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 316
+2016-08-30 8:46:34 - PHP Notice:  Undefined index: hasSale in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 330
+2016-08-30 8:48:25 - PHP Warning:  Illegal string offset 'access_price' in E:\Work2\spro\system\storage\modification\catalog\controller\product\product.php on line 425
+2016-08-30 8:48:25 - PHP Warning:  Illegal string offset 'access_price' in E:\Work2\spro\system\storage\modification\catalog\controller\product\product.php on line 427
+2016-08-30 8:48:25 - PHP Warning:  Illegal string offset 'access_price' in E:\Work2\spro\system\storage\modification\catalog\controller\product\product.php on line 428
+2016-08-30 8:48:25 - PHP Warning:  Illegal string offset 'access_price' in E:\Work2\spro\system\storage\modification\catalog\controller\product\product.php on line 428
+2016-08-30 8:48:25 - PHP Warning:  Illegal string offset 'access_price' in E:\Work2\spro\system\storage\modification\catalog\controller\product\product.php on line 429
+2016-08-30 8:48:25 - PHP Warning:  Illegal string offset 'access_price' in E:\Work2\spro\system\storage\modification\catalog\controller\product\product.php on line 429
+2016-08-30 8:48:25 - PHP Warning:  Illegal string offset 'access_price' in E:\Work2\spro\system\storage\modification\catalog\controller\product\product.php on line 443
+2016-08-30 8:48:25 - PHP Warning:  Illegal string offset 'access_price' in E:\Work2\spro\system\storage\modification\catalog\controller\product\product.php on line 449
+2016-08-30 8:50:35 - PHP Notice:  Undefined index: href in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 292
+2016-08-30 8:50:35 - PHP Notice:  Undefined index: price_down in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 316
+2016-08-30 8:50:35 - PHP Notice:  Undefined index: specialper in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 316
+2016-08-30 8:50:35 - PHP Notice:  Undefined index: hasSale in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 330
+2016-08-30 9:02:53 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 374
+2016-08-30 9:02:55 - PHP Notice:  Undefined variable: order in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 103
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144
+2016-08-30 9:02:55 - PHP Notice:  Undefined index: customer_group_id in E:\Work2\spro\tgmss\view\template\catalog\special_list.tpl on line 144

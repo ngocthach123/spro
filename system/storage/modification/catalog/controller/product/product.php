@@ -422,15 +422,32 @@ class ControllerProductProduct extends Controller {
 				foreach ($products_access_group as $product_id) {
 					$access_info = $this->model_catalog_product->getProduct($product_id);
 
+					$access_price = $this->tax->calculate($access_info['price'] , $access_info['tax_class_id'], $this->config->get('config_tax'));
+
+					if($access_info['special']){
+						$access_special_cal = $this->tax->calculate($access_info['special'], $access_info['tax_class_id'], $this->config->get('config_tax'));
+						$access_special = $this->currency->format($this->tax->calculate($access_info['special'], $access_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+
+						$access_price_down = $access_price - $access_special_cal;
+						$access_specialper = $access_price_down/$access_price *100;
+					}else{
+						$access_special = false;
+						$access_specialper =false;
+						$access_price_down = 0;
+					}
+
 					if ($access_info) {
 						$data['accessories'][] = array(
 							'product_id' => $access_info['product_id'],
 							'name'       => $access_info['name'],
-							'price'       => $this->currency->format($this->tax->calculate($access_info['special'] ? $access_info['special'] : $access_info['price'], $access_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']),
-							'price_origin' =>  $this->tax->calculate($access_info['price'], $access_info['tax_class_id'], $this->config->get('config_tax')),
-							'special' => $this->currency->format($access_info['special'], $this->session->data['currency']),
-							'special_origin' => $this->currency->format($access_info['special'], $this->session->data['currency']),
+							'price'       => $this->currency->format($this->tax->calculate($access_info['price'], $access_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']),
+							'price_origin' =>  $access_price,
+							'special' => $access_special,
+							'specialper' => ceil($access_specialper),
+							'price_down' => $this->currency->format($access_price_down, $this->session->data['currency']),
+							'hasSale' => 0,
 							'image'       =>$this->model_tool_image->resize($access_info['image'], 50, 50),
+							'href'        => $this->url->link('product/product', 'product_id=' . $access_info['product_id'])
 						);
 					}
 				}

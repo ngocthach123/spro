@@ -50,7 +50,6 @@
 <input type="hidden" value="<?php echo $store_address;?>" id="source">
 
 <textarea placeholder="Ghi chú" rows="4" name="comment"></textarea><br>
-<label><input type="checkbox"/> Giao hàng đến địa chỉ khác</label>
 
 <?php if ($shipping_required) { ?>
 <div class="checkbox hidden">
