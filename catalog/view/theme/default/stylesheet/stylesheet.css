@@ -2333,7 +2333,7 @@ ul.boxcategory li ul li a:hover {
 .boxbuyproduct .quantity {
 	overflow: hidden;
 }
-.quantity input {
+.quantity>input {
 	border-radius: 5px;
 	background: #fbfbfb;
 	width: auto;
@@ -3213,6 +3213,7 @@ ul.categorynewsrelated li a:hover {
 	margin-bottom: 10px;
 	height: 35px;
 	border: 1px solid #d6d5d5;
+	padding: 5px 10px;
 }
 .btruongdangnhap a.forgetpass {
 	color: #000;

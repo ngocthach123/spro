@@ -23,7 +23,7 @@
       <div class="row">
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-login">
           <div class="bdangnhapfacebook">
-            <h1>Đăng nhập email hoặc tài khoản facbook</h1>
+            <h1>Đăng nhập email hoặc tài khoản facebook</h1>
             <div class="btruongdangnhap well">
               <div class="dangnhapemail">
                 <span>Địa chỉ Email:</span><br>

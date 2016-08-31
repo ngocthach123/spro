@@ -4501,3 +4501,9 @@
 2016-08-31 10:41:02 - PHP Notice:  Undefined index: address_2 in E:\Work2\spro\catalog\model\account\address.php on line 21
 2016-08-31 10:57:19 - PHP Notice:  Undefined variable: rating in E:\Work2\spro\catalog\controller\news\category.php on line 225
 2016-08-31 10:57:19 - PHP Notice:  Undefined variable: rating in E:\Work2\spro\catalog\controller\news\category.php on line 225
+2016-08-31 11:56:08 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 387
+2016-08-31 11:56:29 - PHP Notice:  Undefined index: virtual in E:\Work2\spro\tgmss\model\catalog\product.php on line 153
+2016-08-31 12:01:24 - PHP Notice:  Undefined index: stock_status_id in E:\Work2\spro\system\storage\modification\catalog\controller\product\product.php on line 312
+2016-08-31 12:47:42 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
+2016-08-31 12:47:50 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
+2016-08-31 12:49:54 - PHP Notice:  Use of undefined constant heading_title - assumed 'heading_title' in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 272

@@ -302,9 +302,11 @@ class ControllerProductProduct extends Controller {
 			}
 
 			$data['soldout'] = false;
+			$data['stock_status_id'] = false;
 			if ($product_info['quantity'] <= 0) {
 				$data['stock'] = $product_info['stock_status'];
 				$data['soldout'] = true;
+				$data['stock_status_id'] = $product_info['stock_status_id'];
 			} elseif ($this->config->get('config_stock_display')) {
 				$data['stock'] = $product_info['quantity'];
 			} else {
@@ -800,6 +802,49 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 				$this->load->model('catalog/review');
 
 				$this->model_catalog_review->addReview($this->request->get['product_id'], $this->request->post);
+
+				$json['success'] = $this->language->get('text_success');
+			}
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}
+
+	public function order() {
+		$this->load->language('product/product');
+
+		$json = array();
+
+		if ($this->request->server['REQUEST_METHOD'] == 'POST') {
+			if ((utf8_strlen($this->request->post['order_name']) < 3) || (utf8_strlen($this->request->post['order_name']) > 25)) {
+				$json['error'] = $this->language->get('error_order_name');
+			}
+
+			if ((utf8_strlen($this->request->post['order_text']) < 3) || (utf8_strlen($this->request->post['order_text']) > 1000)) {
+				$json['error'] = $this->language->get('error_order_text');
+			}
+
+			if (!filter_var($this->request->post['order_email'], FILTER_VALIDATE_EMAIL)) {
+				$this->error['email'] = $this->language->get('error_email');
+			}
+
+			if (!isset($json['error'])) {
+				$mail = new Mail();
+				$mail->protocol = $this->config->get('config_mail_protocol');
+				$mail->parameter = $this->config->get('config_mail_parameter');
+				$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
+				$mail->smtp_username = $this->config->get('config_mail_smtp_username');
+				$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
+				$mail->smtp_port = $this->config->get('config_mail_smtp_port');
+				$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
+
+				$mail->setTo($this->config->get('config_email'));
+				$mail->setFrom($this->request->post['order_email']);
+				$mail->setSender(html_entity_decode($this->request->post['order_name'], ENT_QUOTES, 'UTF-8'));
+				$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['order_name']." ". $this->request->post['product_name']), ENT_QUOTES, 'UTF-8'));
+				$mail->setText($this->request->post['order_text']);
+				$mail->send();
 
 				$json['success'] = $this->language->get('text_success');
 			}

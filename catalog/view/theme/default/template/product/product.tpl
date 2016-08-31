@@ -231,8 +231,58 @@
                 <div class="quantity">
                   <input type="text" name="quantity" value="<?php echo $minimum; ?>" size="2" id="input-quantity"/>
                   <input type="hidden" name="product_id" value="<?php echo $product_id; ?>" />
-
-                  <a type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btnbuy"><?php echo $button_cart; ?></a>
+                  <?php if($stock_status_id && $stock_status_id == 8):?>
+                  <a class="btnbuy" data-toggle="modal" data-target="#modal-order">
+                    Đặt hàng
+                  </a>
+                  <!-- Modal -->
+                  <div class="modal fade" id="modal-order" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <form id="form-order">
+                          <input type="hidden" name="product_name" value="<?php echo $heading_title; ?>"/>
+                          <input type="hidden" name="product_model" value="<?php echo $model; ?>"/>
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title modaldanhgia" id="myModalLabel">Gửi yêu cầu đặt hàng</h4>
+                          </div>
+                          <div class="modal-body">
+                            <div class="well well-sm modaltenkhach"><?php echo $heading_title; ?></div>
+                            <div class="boxthongtindanhgia">
+                              <div class="thongtindanhgia-left">
+                                Họ và tên:
+                              </div>
+                              <div class="thongtindanhgia-right">
+                                <input type="text" name="order_name" value="<?php echo $customer_name; ?>" id="input-name" class="form-control" />
+                              </div>
+                            </div>
+                            <div class="boxthongtindanhgia">
+                              <div class="thongtindanhgia-left">
+                               Email:
+                              </div>
+                              <div class="thongtindanhgia-right">
+                                <input type="text" name="order_email" value="" id="input-name" class="form-control" />
+                              </div>
+                            </div>
+                            <div class="boxthongtindanhgia">
+                              <div class="thongtindanhgia-left">
+                                Nội dung:
+                              </div>
+                              <div class="thongtindanhgia-right">
+                                <textarea name="order_text" cols="25" rows="4" id="input-review" class="form-control">Tôi muốn đặt hàng trước sản phẩm <?php echo $heading_title;?> - Mã: <?php echo $model;?></textarea>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" id="button-order" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary">Gửi</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <?php else:?>
+                    <a type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btnbuy"><?php echo $button_cart; ?></a>
+                  <?php endif;?>
                 </div>
                 <div class="spyeuthich">
                   <a onclick="wishlist.add('<?php echo $product_id; ?>');"><i class="fa fa-heart-o"></i> Tôi thích sản phẩm này</a>
@@ -404,8 +454,8 @@
                 </ul>
               </div>
             </div><!-- end boxnewsrelated -->
-          <?php endif;?>
           </div><!-- end newspart-product -->
+          <?php endif;?>
         </div><!-- end boxdetailandnews -->
 
         <?php if ($products):?>
@@ -982,4 +1032,35 @@ $(document).ready(function() {
   });
 </script>
 
+<script>
+  $('#button-order').on('click', function() {
+    $.ajax({
+      url: 'index.php?route=product/product/order&product_id=<?php echo $product_id; ?>',
+      type: 'post',
+      dataType: 'json',
+      data: $("#form-order").serialize(),
+      beforeSend: function() {
+        $('#button-order').button('loading');
+      },
+      complete: function() {
+        $('#button-order').button('reset');
+      },
+      success: function(json) {
+        $('.alert-success, .alert-danger').remove();
+
+        if (json['error']) {
+          $('.modaltenkhach').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+        }
+
+        if (json['success']) {
+          $('#content').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+
+          $('input[name=\'order_name\']').val('');
+          $('input[name=\'order_email\']').val('');
+          $('.close').trigger('click');
+        }
+      }
+    });
+  });
+</script>
 <?php echo $footer; ?>

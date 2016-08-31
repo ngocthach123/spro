@@ -55,7 +55,7 @@
             <?php } ?>
             <input type="password" name="confirm" value="<?php echo $confirm; ?>" placeholder="<?php echo $entry_confirm; ?>" id="input-confirm" /><br/>
             <label><input type="checkbox" name="newsletter" checked="checked" /> &nbsp;Nhận tin khuyến mãi và thông tin cập nhật mới nhất từ SPRO</label>
-            <a class="btndangkytaikhoan" onclick="document.getElementById('form-register').submit();"><?php echo $button_continue; ?></a>
+            <a class="btndangkytaikhoan" onclick="document.getElementById('form-register').submit();">Đăng ký</a>
           </div>
         </div><!-- bdangkytaikhoan -->
       </form>
