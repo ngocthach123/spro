@@ -6,10 +6,9 @@
     </div>
     <div class="col-md-8 col-sm-8 col-xs-12 pillcategoryproduct-home pdglrn">
       <ul class="nav nav-pills navpillcategoryproduct-home">
-        <li class="active"><a data-toggle="pill" href="#mayxitruaproject">Máy xịt rửa Project</a></li>
-        <li><a data-toggle="pill" href="#mayxitruakarcher">Máy xịt rửa Karcher</a></li>
-        <li><a data-toggle="pill" href="#mayruaxegiadinh">Máy rửa xe gia đình</a></li>
-        <li><a data-toggle="pill" href="#mayruaxenuocnong">Máy rửa xe nước nóng</a></li>
+        <?php foreach($childrens as $child):?>
+         <li class="active"><a href="<?php echo $child['href'];?>"><?php echo $child['name'];?></a></li>
+        <?php endforeach;?>
       </ul>
     </div>
   </div>
@@ -24,9 +23,11 @@
           <?php foreach ($products as $product) { ?>
           <div class="item wrapbox-product">
             <div class="contentbox-product">
-              <div class="boxnew-product">
-                New
-              </div>
+              <?php if ($product['special']): ?>
+                <div class="boxsale-product">
+                  Sale
+                </div>
+              <?php endif;?>
               <div class="boximage-product">
                 <a href="#"><img src="<?php echo $product['thumb']; ?>"/></a>
                 <div class="txtboximage">

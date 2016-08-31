@@ -228,6 +228,19 @@
 					</div>
 				  </div>
 				  <div class="form-group">
+					  <label class="col-sm-2 control-label" for="input-article-related"><?php echo $entry_article_related; ?></label>
+					  <div class="col-sm-10">
+						  <input type="text" name="article" value="" placeholder="<?php echo $entry_article_related; ?>" id="input-article-related" class="form-control" />
+						  <div id="article-related" class="well well-sm" style="height: 150px; overflow: auto;">
+							  <?php foreach ($article_relateds as $article_related) { ?>
+							  <div id="article-related<?php echo $article_related['article_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $article_related['name']; ?>
+								  <input type="hidden" name="article_related[]" value="<?php echo $article_related['article_id']; ?>" />
+							  </div>
+							  <?php } ?>
+						  </div>
+					  </div>
+				  </div>
+				  <div class="form-group">
 					  <label class="col-sm-2 control-label" for="access_group_id"><?php echo $entry_access_group; ?></label>
 					  <div class="col-sm-10">
 						  <select name="access_group_id" id="access_group_id" class="form-control">
@@ -1173,6 +1186,36 @@
   }
 </script>
 <script type="text/javascript"><!--
+
+	// Article Related
+	$('input[name=\'article\']').autocomplete({
+		'source': function(request, response) {
+			$.ajax({
+				url: 'index.php?route=news/article/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+				dataType: 'json',
+				success: function(json) {
+					response($.map(json, function(item) {
+						return {
+							label: item['name'],
+							value: item['article_id']
+						}
+					}));
+				}
+			});
+		},
+		'select': function(item) {
+			$('input[name=\'related\']').val('');
+
+			$('#article-related' + item['value']).remove();
+
+			$('#article-related').append('<div id="article-related' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="article_related[]" value="' + item['value'] + '" /></div>');
+		}
+	});
+
+	$('#article-related').delegate('.fa-minus-circle', 'click', function() {
+		$(this).parent().remove();
+	});
+
 // Manufacturer
 $('input[name=\'manufacturer\']').autocomplete({
 	'source': function(request, response) {

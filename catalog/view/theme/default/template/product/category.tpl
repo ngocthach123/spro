@@ -57,9 +57,11 @@
               <div class="itemproduct">
               <div class="wrapbox-product">
                 <div class="contentbox-product">
-                  <div class="boxsale-product">
-                    Sale
-                  </div>
+                  <?php if ($product['special']):?>
+                    <div class="boxsale-product">
+                      Sale
+                    </div>
+                  <?php endif;?>
                   <div class="boximage-product">
                     <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>"></a>
                     <div class="txtboximage">

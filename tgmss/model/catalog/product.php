@@ -99,6 +99,12 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+		if (isset($data['article_related'])) {
+			foreach ($data['article_related'] as $article_id) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_article SET product_id = '" . (int)$product_id . "', article_id = '" . (int)$article_id . "'");
+			}
+		}
+
 		if (isset($data['product_filter'])) {
 			foreach ($data['product_filter'] as $filter_id) {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "product_filter SET product_id = '" . (int)$product_id . "', filter_id = '" . (int)$filter_id . "'");
@@ -247,6 +253,14 @@ class ModelCatalogProduct extends Model {
 		if (isset($data['product_category'])) {
 			foreach ($data['product_category'] as $category_id) {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$category_id . "'");
+			}
+		}
+
+		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_article WHERE product_id = '" . (int)$product_id . "'");
+
+		if (isset($data['article_related'])) {
+			foreach ($data['article_related'] as $article_id) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_article SET product_id = '" . (int)$product_id . "', article_id = '" . (int)$article_id . "'");
 			}
 		}
 
@@ -708,6 +722,18 @@ class ModelCatalogProduct extends Model {
 
 		foreach ($query->rows as $result) {
 			$product_related_data[] = $result['related_id'];
+		}
+
+		return $product_related_data;
+	}
+
+	public function getArticleRelated($product_id) {
+		$product_related_data = array();
+
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_to_article WHERE product_id = '" . (int)$product_id . "'");
+
+		foreach ($query->rows as $result) {
+			$product_related_data[] = $result['article_id'];
 		}
 
 		return $product_related_data;

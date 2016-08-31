@@ -182,7 +182,7 @@ class ControllerModuleCategory extends Controller {
 						$filter_data_2 = array('filter_category_id' => $child_2['category_id'], 'filter_sub_category' => true);
 						$children_data_2[] = array(
 							'category_id' => $child_2['category_id'],
-							'name' => $child_2['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data_2) . ')' : ''),
+							'name' => $child_2['name'],
 							'href' => $this->url->link('product/category', 'path=' . $child['category_id'] . '_' . $child_2['category_id']),
 						);
 					}
@@ -192,7 +192,7 @@ class ControllerModuleCategory extends Controller {
 
 					$children_data[] = array(
 						'category_id' => $child['category_id'],
-						'name' => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+						'name' => $child['name'],
 						'href' => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id']),
 						'children'    => $children_data_2,
 					);
@@ -205,7 +205,7 @@ class ControllerModuleCategory extends Controller {
 
 				$data['categories'][] = array(
 					'category_id' => $category['category_id'],
-					'name'        => $category['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+					'name'        => $category['name'],
 					'children'    => $children_data,
 					'href'        => $this->url->link('product/category', 'path=' . $category['category_id'])
 				);

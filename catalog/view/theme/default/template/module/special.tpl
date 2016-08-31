@@ -4,8 +4,8 @@
     <?php foreach ($products as $product): ?>
     <div class="item wrapbox-product">
       <div class="contentbox-product">
-        <div class="boxhot-product">
-          Hot
+        <div class="boxsale-product">
+          Sale
         </div>
         <div class="boximage-product">
           <a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>"/></a>

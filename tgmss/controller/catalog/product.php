@@ -996,6 +996,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_category'] = $this->language->get('entry_category');
 		$data['entry_filter'] = $this->language->get('entry_filter');
 		$data['entry_related'] = $this->language->get('entry_related');
+		$data['entry_article_related'] = $this->language->get('entry_article_related');
 		$data['entry_access'] = $this->language->get('entry_access');
 		$data['entry_access_group'] = $this->language->get('entry_access_group');
 		$data['entry_attribute'] = $this->language->get('entry_attribute');
@@ -1763,6 +1764,29 @@ class ControllerCatalogProduct extends Controller {
 			}
 		}
 
+		if (isset($this->request->post['article_related'])) {
+			$articles = $this->request->post['article_related'];
+		} elseif (isset($this->request->get['product_id'])) {
+			$articles = $this->model_catalog_product->getArticleRelated($this->request->get['product_id']);
+		} else {
+			$articles = array();
+		}
+
+		$data['article_relateds'] = array();
+
+		$this->load->model('news/article');
+
+		foreach ($articles as $article_id) {
+			$related_info = $this->model_news_article->getArticle($article_id);
+
+			if ($related_info) {
+				$data['article_relateds'][] = array(
+					'article_id' => $related_info['article_id'],
+					'name'       => $related_info['name']
+				);
+			}
+		}
+
 		//nhom phu kien
 		$this->load->model('catalog/access_group');
 		$access_groups = $this->model_catalog_access_group->getAccessGroups(array());
@@ -1798,24 +1822,6 @@ class ControllerCatalogProduct extends Controller {
 		} else {
 			$data['access_group_id'] = 0;
 		}
-
-
-//		$products_access =array();
-//
-//		if($data['access_group_id']){
-//			$products_access = $this->model_catalog_access_group->getProductAccess($data['access_group_id']);
-//
-//			foreach ($products_access as $product_id) {
-//				$access_info = $this->model_catalog_product->getProduct($product_id);
-//
-//				if ($access_info) {
-//					$data['products_access'][] = array(
-//						'product_id' => $access_info['product_id'],
-//						'name'       => $access_info['name']
-//					);
-//				}
-//			}
-//		}
 
 		//phu kien
 		if (isset($this->request->post['product_access'])) {

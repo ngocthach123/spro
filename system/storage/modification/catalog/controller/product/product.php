@@ -584,6 +584,18 @@ class ControllerProductProduct extends Controller {
 				);
 			}
 
+			$data['articles'] = array();
+
+			$results = $this->model_catalog_product->getArticleRelated($this->request->get['product_id']);
+
+			foreach ($results as $result) {
+				$data['articles'][]=array(
+					'article_id' => $result['article_id'],
+					'name' =>$result['name'],
+					'href'        => $this->url->link('news/article', '&article_id=' . $result['article_id'])
+				);
+			}
+
 			$data['tags'] = array();
 
 			if ($product_info['tag']) {

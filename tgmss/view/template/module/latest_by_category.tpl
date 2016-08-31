@@ -38,7 +38,7 @@
 			<label class="col-sm-2 control-label" for="input-parent"><?php echo $entry_category; ?></label>
 			<div class="col-sm-10">
 			  <input type="text" name="path" value="<?php echo $path; ?>" placeholder="<?php echo $entry_category; ?>" id="input-parent" class="form-control" />
-			  <input type="hidden" name="category_id" value="<?php  echo $parent_id; ?>" />
+			  <input type="hidden" name="category_id" value="<?php echo $category_id; ?>" />
 			</div>
           </div>
           <div class="form-group">

@@ -88,18 +88,22 @@ class ControllerModuleLatestByCategory extends Controller {
 			}
 
 			$children_data = array();
-			$children = $this->model_catalog_category->getCategories($setting['category_id']);
+			$filter = array(
+				'start' => 0,
+				'limit' => 4
+			);
+			$children = $this->model_catalog_category->getCategories($setting['category_id'],$filter);
 			foreach($children as $child) {
 				$filter_data = array('filter_category_id' => $child['category_id'], 'filter_sub_category' => true);
 
 				$children_data[] = array(
 					'category_id' => $child['category_id'],
-					'name' => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+					'name' => $child['name'],
 					'href' => $this->url->link('product/category', 'path=' . $setting['category_id'] . '_' . $child['category_id'])
 				);
 			}
 
-			$data['children'] = $children_data; //sub categories
+			$data['childrens'] = $children_data; //sub categories
 
 			return $this->load->view('module/latest_by_category', $data);
 		}

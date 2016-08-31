@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']    = 'Latest By Category';
+$_['heading_title']    = 'Sản phẩm theo danh mục';
 
 // Text
 $_['text_module']      = 'Modules';

@@ -21,35 +21,29 @@
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
       <div class="row">
-        <div class="col-sm-6">
-          <div class="well">
-            <h2><?php echo $text_new_customer; ?></h2>
-            <p><strong><?php echo $text_register; ?></strong></p>
-            <p><?php echo $text_register_account; ?></p>
-            <a href="Javascript:newPopup('<?php echo $fb_login;?>')">Login with facebook</a><br/>
-            <a href="Javascript:newPopup('<?php echo $gg_login;?>')">Login with google</a>
-            <a href="<?php echo $register; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
-        </div>
-        <div class="col-sm-6">
-          <div class="well">
-            <h2><?php echo $text_returning_customer; ?></h2>
-            <p><strong><?php echo $text_i_am_returning_customer; ?></strong></p>
-            <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
-              <div class="form-group">
-                <label class="control-label" for="input-email"><?php echo $entry_email; ?></label>
-                <input type="text" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-email" class="form-control" />
+        <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-login">
+          <div class="bdangnhapfacebook">
+            <h1>Đăng nhập email hoặc tài khoản facbook</h1>
+            <div class="btruongdangnhap well">
+              <div class="dangnhapemail">
+                <span>Địa chỉ Email:</span><br>
+                <input type="text" name="email" value="<?php echo $email; ?>" placeholder="" id="input-email" /><br>
+                <span>Mật khẩu:</span><br>
+                <input type="password" name="password" value="<?php echo $password; ?>" placeholder="" id="input-password"/><br>
+                <a class="btndangnhapemail" onclick="document.getElementById('form-login').submit();">Tiếp tục</a><br>
+                <a href="<?php echo $forgotten; ?>" class="forgetpass"><?php echo $text_forgotten; ?></a>
               </div>
-              <div class="form-group">
-                <label class="control-label" for="input-password"><?php echo $entry_password; ?></label>
-                <input type="password" name="password" value="<?php echo $password; ?>" placeholder="<?php echo $entry_password; ?>" id="input-password" class="form-control" />
-                <a href="<?php echo $forgotten; ?>"><?php echo $text_forgotten; ?></a></div>
-              <input type="submit" value="<?php echo $button_login; ?>" class="btn btn-primary" />
-              <?php if ($redirect) { ?>
-              <input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />
-              <?php } ?>
-            </form>
+              <div class="dangnhapfacebook">
+                <h3>Đăng nhập bằng tài khoản mạng xã hội</h3>
+                <p>Spro cam kết không bao giờ gửi bài viết hay chia sẻ thông tin khi chưa được sự đồng ý của bạn</p>
+                <a href="Javascript:newPopup('<?php echo $fb_login;?>')" class="btndangnhapfacebook"><i class="fa fa-facebook"></i> &nbsp;&nbsp;&nbsp;Sign in with Facebook</a>
+              </div>
+            </div>
           </div>
-        </div>
+          <?php if ($redirect) { ?>
+          <input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />
+          <?php } ?>
+        </form>
       </div>
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>

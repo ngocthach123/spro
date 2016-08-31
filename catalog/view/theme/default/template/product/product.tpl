@@ -390,6 +390,7 @@
               </div>
             </div>
           </div><!-- end descdetails-product -->
+        <?php if($articles):?>
           <div class="newspart-product">
             <div class="boxnewsrelated">
               <div class="headingnewsrelated">
@@ -397,15 +398,13 @@
               </div>
               <div class="contentnewsrelated">
                 <ul class="categorynewsrelated">
-                  <li><a href="#">Lưu ý bảo dưỡng</a></li>
-                  <li><a href="#">Sử dụng máy bơm an toàn</a></li>
-                  <li><a href="#">Hướng dẫn sử dụng</a></li>
-                  <li><a href="#">Thống kê các dòng tương tự</a></li>
-                  <li><a href="#">Lưu ý khi mua hàng cũ</a></li>
+                  <?php foreach($articles as $article):?>
+                    <li><a href="<?php echo $article['href'];?>"><?php echo $article['name'];?></a></li>
+                  <?php endforeach;?>
                 </ul>
               </div>
             </div><!-- end boxnewsrelated -->
-
+          <?php endif;?>
           </div><!-- end newspart-product -->
         </div><!-- end boxdetailandnews -->
 

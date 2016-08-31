@@ -435,6 +435,13 @@ class ModelCatalogProduct extends Model {
 		return $product_data;
 	}
 
+	public function getArticleRelated($product_id) {
+
+		$query = $this->db->query("SELECT na.article_id, n.name FROM " . DB_PREFIX . "product_to_article pa LEFT JOIN " . DB_PREFIX . "news_articles_description n ON (pa.article_id = n.article_id) LEFT JOIN " . DB_PREFIX . "news_articles na ON (pa.article_id = na.article_id) WHERE pa.product_id = '" . (int)$product_id . "' AND na.status = '1'");
+
+		return $query->rows;
+	}
+
 	public function getProductLayoutId($product_id) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_to_layout WHERE product_id = '" . (int)$product_id . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "'");
 

@@ -87,6 +87,7 @@ $_['entry_category']         = 'Danh mục sản phẩm:';
 $_['entry_filter']           = 'Bộ lọc: ';
 $_['entry_download']         = 'Tải về:';
 $_['entry_related']          = 'Sản phẩm liên quan:';
+$_['entry_article_related']          = 'Tin tức liên quan:';
 $_['entry_access']          = 'Phụ kiện sản phẩm:';
 $_['entry_access_group']          = 'Nhóm phụ kiện:';
 $_['entry_tag']              = 'Tags:';

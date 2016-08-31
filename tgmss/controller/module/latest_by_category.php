@@ -110,13 +110,13 @@ class ControllerModuleLatestByCategory extends Controller {
 			$data['name'] = '';
 		}
 
-		if (isset($this->request->post['parent_id'])) {
-			$data['parent_id'] = $this->request->post['parent_id'];
-		} elseif (!empty($module_info)) {
-			$data['parent_id'] = $module_info['parent_id'];
-		} else {
-			$data['parent_id'] = '';
-		}
+//		if (isset($this->request->post['category_id'])) {
+//			$data['parent_id'] = $this->request->post['category_id'];
+//		} elseif (!empty($module_info)) {
+//			$data['parent_id'] = $module_info['parent_id'];
+//		} else {
+//			$data['parent_id'] = '';
+//		}
 
 		if (isset($this->request->post['path'])) {
 			$data['path'] = $this->request->post['path'];
