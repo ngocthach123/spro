@@ -166,6 +166,14 @@ class ControllerNewsCategory extends Controller {
 				'limit'              => $limit
 			);
 
+			if(isset($this->request->get['filter_name'])){
+				$filter_data['filter_name'] = $this->request->get['filter_name'];
+				$data['filter_name'] = $this->request->get['filter_name'];
+			}else{
+				$data['filter_name'] = '';
+			}
+
+
 			$article_total = $this->model_news_article->getTotalArticles($filter_data);
 
 			$results = $this->model_news_article->getArticles($filter_data);
@@ -188,10 +196,39 @@ class ControllerNewsCategory extends Controller {
 					'thumb'       => $image,
 					'name'        => $result['name'],
 					'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..',
+					'short_description' => utf8_substr(strip_tags(html_entity_decode($result['short_description'], ENT_QUOTES, 'UTF-8')), 0, 100) . '..',
 					'rating'      => $result['rating'],
 					'href'        => $this->url->link('news/article', 'news_path=' . $this->request->get['news_path'] . '&article_id=' . $result['article_id'] . $url)
 				);
 			}
+
+			if($data['articles']){
+				$data['top_article'] = $data['articles'][0];
+				unset($data['articles'][0]);
+			}else{
+				$data['top_article'] = array();
+			}
+
+			$data['action_search'] = $this->url->link('news/category', 'news_path=1');
+
+			$data['articles_lasted'] = array();
+
+			$results = $this->model_news_article->getArticleLasted(array('start'=>0, 'limit'=> 5));
+
+			foreach ($results as $result) {
+
+				$data['articles_lasted'][] = array(
+					'article_id' => $result['article_id'],
+					'thumb'   	 => $this->model_tool_image->resize($result['image'], $this->config->get('news_image_related_width'), $this->config->get('news_image_related_height')),
+					'name'    	 => $result['name'],
+					'short_description' => $result['short_description'],
+					'rating'     => $rating,
+					'reviews'    => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
+					'href'    	 => $this->url->link('news/article', 'article_id=' . $result['article_id'])
+				);
+			}
+
+			$data['categories'] = $this->load->controller('module/news_category');
 
 			$url = '';
 
@@ -306,11 +343,8 @@ class ControllerNewsCategory extends Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
-			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/news/category.tpl')) {
-				$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/news/category.tpl', $data));
-			} else {
-				$this->response->setOutput($this->load->view('default/template/news/category.tpl', $data));
-			}
+			$this->response->setOutput($this->load->view('news/category', $data));
+
 		} else {
 			$url = '';
 

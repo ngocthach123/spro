@@ -5,129 +5,98 @@
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
   </ul>
-  <div class="row"><?php echo $column_left; ?>
-    <?php if ($column_left && $column_right) { ?>
-    <?php $class = 'col-sm-6'; ?>
-    <?php } elseif ($column_left || $column_right) { ?>
-    <?php $class = 'col-sm-9'; ?>
-    <?php } else { ?>
-    <?php $class = 'col-sm-12'; ?>
-    <?php } ?>
-    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h2><?php echo $heading_title; ?></h2>
-      <?php if ($thumb || $description) { ?>
-      <div class="row">
-        <?php if ($thumb) { ?>
-        <div class="col-sm-2"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>" title="<?php echo $heading_title; ?>" class="img-thumbnail" /></div>
-        <?php } ?>
-        <?php if ($description) { ?>
-        <div class="col-sm-10"><?php echo $description; ?></div>
-        <?php } ?>
-      </div>
-      <hr>
-      <?php } ?>
-      <?php if ($categories) { ?>
-      <h3><?php echo $text_refine; ?></h3>
-      <?php if (count($categories) <= 5) { ?>
-      <div class="row">
-        <div class="col-sm-3">
-          <ul>
-            <?php foreach ($categories as $category) { ?>
-            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-            <?php } ?>
-          </ul>
-        </div>
-      </div>
-      <?php } else { ?>
-      <div class="row">
-        <?php foreach (array_chunk($categories, ceil(count($categories) / 4)) as $categories) { ?>
-        <div class="col-sm-3">
-          <ul>
-            <?php foreach ($categories as $category) { ?>
-            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-            <?php } ?>
-          </ul>
-        </div>
-        <?php } ?>
-      </div>
-      <?php } ?>
-      <?php } ?>
-      <?php if ($articles) { ?>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="btn-group hidden-xs">
-            <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title="<?php echo $button_list; ?>"><i class="fa fa-th-list"></i></button>
-            <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip" title="<?php echo $button_grid; ?>"><i class="fa fa-th"></i></button>
-          </div>
-        </div>
-        <div class="col-md-2 text-right">
-          <label class="control-label" for="input-sort"><?php echo $text_sort; ?></label>
-        </div>
-        <div class="col-md-3 text-right">
-          <select id="input-sort" class="form-control" onchange="location = this.value;">
-            <?php foreach ($sorts as $sorts) { ?>
-            <?php if ($sorts['value'] == $sort . '-' . $order) { ?>
-            <option value="<?php echo $sorts['href']; ?>" selected="selected"><?php echo $sorts['text']; ?></option>
-            <?php } else { ?>
-            <option value="<?php echo $sorts['href']; ?>"><?php echo $sorts['text']; ?></option>
-            <?php } ?>
-            <?php } ?>
-          </select>
-        </div>
-        <div class="col-md-1 text-right">
-          <label class="control-label" for="input-limit"><?php echo $text_limit; ?></label>
-        </div>
-        <div class="col-md-2 text-right">
-          <select id="input-limit" class="form-control" onchange="location = this.value;">
-            <?php foreach ($limits as $limits) { ?>
-            <?php if ($limits['value'] == $limit) { ?>
-            <option value="<?php echo $limits['href']; ?>" selected="selected"><?php echo $limits['text']; ?></option>
-            <?php } else { ?>
-            <option value="<?php echo $limits['href']; ?>"><?php echo $limits['text']; ?></option>
-            <?php } ?>
-            <?php } ?>
-          </select>
-        </div>
-      </div>
-      <br />
-      <div class="row">
-        <?php foreach ($articles as $article) { ?>
-        <div class="product-layout product-list col-xs-12">
-          <div class="product-thumb">
-            <div class="image"><a href="<?php echo $article['href']; ?>"><img src="<?php echo $article['thumb']; ?>" alt="<?php echo $article['name']; ?>" title="<?php echo $article['name']; ?>" class="img-responsive" /></a></div>
-            <div>
-              <div class="caption">
-                <h4><a href="<?php echo $article['href']; ?>"><?php echo $article['name']; ?></a></h4>
-                <p><?php echo $article['description']; ?></p>
-                <?php if ($article['rating']) { ?>
-                <div class="rating">
-                  <?php for ($i = 1; $i <= 5; $i++) { ?>
-                  <?php if ($article['rating'] < $i) { ?>
-                  <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
-                  <?php } else { ?>
-                  <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
-                  <?php } ?>
-                  <?php } ?>
+  <div class="row">
+    <div class="vmax-colum-left col-lg-3 col-md-3"><div class="vmax-filter sidebar sidebar-main">
+        <div id="sidebar" class="vmax-blog-search">
+          <div class="widget block">
+            <h3 class="block block-title">Tìm kiếm bài viết</h3>
+            <div class="block-content">
+              <form class="form minisearch" action="<?php echo $action_search;?>" method="get">
+                <div class="field search">
+                  <div class="control">
+                    <div class="input-group">
+                      <input id="search_blog" type="text" name="filter_name" value="<?php echo $filter_name;?>" class="form-control" aria-haspopup="false" maxlength="128" role="combobox" placeholder="Tìm kiếm bài viết..." aria-autocomplete="both" autocomplete="off">
+                            <span class="input-group-btn">
+                                <button class="action search" type="submit">
+                                  <i class="fa fa-search" aria-hidden="true"></i> </button>
+                            </span>
+                    </div>
+                  </div>
                 </div>
-                <?php } ?>
-              </div>
+              </form>
             </div>
           </div>
         </div>
-        <?php } ?>
+        <div id="sidebar" class="vmax-blog-category">
+          <?php echo $categories;?>
+        </div>
+
+        <?php if ($articles_lasted): ?>
+        <div id="sidebar" class="vmax-blog-latest">
+          <div class="widget widget_latest block">
+            <h3 class="block block-title">Bài viết mới</h3>
+            <ul>
+              <?php foreach ($articles_lasted as $article): ?>
+              <li class="cat-item">
+                <a href="<?php echo $article['href']; ?>">
+                  <img src="<?php echo $article['thumb']; ?>" alt="<?php echo $article['name']; ?>" title="<?php echo $article['name']; ?>">
+                  <?php echo $article['name']; ?></a>
+              </li>
+              <?php endforeach;?>
+            </ul>
+          </div>
+        </div>
+        <?php endif;?>
+
       </div>
-      <div class="row">
-        <div class="col-sm-6 text-left"><?php echo $pagination; ?></div>
-        <div class="col-sm-6 text-right"><?php echo $results; ?></div>
+    </div>
+    <div id="content" class="col-md-9">
+      <?php echo $content_top; ?>
+
+      <div class="wrapbtintuc wrap-article">
+        <?php if ($top_article): ?>
+        <div class="btinmoinhat">
+          <div class="img-btinmoinhat">
+            <a href="<?php echo $top_article['href']; ?>"><img src="<?php echo $top_article['thumb']; ?>"/></a>
+          </div>
+          <div class="tit-btinmoinhat">
+            <a href="<?php echo $top_article['href']; ?>"><?php echo $top_article['name']; ?></a>
+            <p><?php echo $top_article['short_description']; ?></p>
+          </div>
+          <a href="<?php echo $top_article['href']; ?>" class="xemchitiet">Xem thêm >></a>
+        </div>
+        <div class="btintuc">
+
+            <?php foreach ($articles as $article): ?>
+              <div class="itemstintuc">
+              <div class="img-itemstintuc">
+                <a href="<?php echo $article['href']; ?>"><img src="<?php echo $article['thumb']; ?>"/></a>
+                <div class="txtboximage">
+                  <a href="<?php echo $article['href']; ?>" class="btn btn-boximage">Xem chi tiết</a>
+                </div>
+              </div>
+              <div class="tit-itemstintuc">
+                <a href="<?php echo $article['href']; ?>"><?php echo $article['name']; ?></a>
+              </div>
+              <div class="des-itemstintuc">
+                <?php echo $article['short_description']; ?>
+              </div>
+              <div class="more-itemstintuc">
+                <a href="<?php echo $article['href']; ?>">Xem chi tiết</a>
+              </div>
+          </div>
+            <?php endforeach;?>
+          <?php else: ?>
+            <p><?php echo $text_empty; ?></p>
+          <?php endif;?>
+        </div>
+        <div class="pagination-btintuc">
+          <?php echo $pagination; ?>
+        </div>
       </div>
-      <?php } ?>
-      <?php if (!$categories && !$articles) { ?>
-      <p><?php echo $text_empty; ?></p>
-      <div class="buttons">
-        <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
-      </div>
-      <?php } ?>
-      <?php echo $content_bottom; ?></div>
+
+      <?php echo $content_bottom; ?>
+    </div>
     <?php echo $column_right; ?></div>
 </div>
 <?php echo $footer; ?>

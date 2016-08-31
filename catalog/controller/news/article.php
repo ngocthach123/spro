@@ -226,13 +226,13 @@ class ControllerNewsArticle extends Controller {
 			$this->load->model('tool/image');
 
 			if ($article_info['image']) {
-				$data['thumb'] = $this->model_tool_image->resize($article_info['image'], $this->config->get('news_image_thumb_width'), $this->config->get('config_image_thumb_height'));
+				$data['thumb'] = $this->model_tool_image->resize($article_info['image'], $this->config->get('news_image_thumb_width'), $this->config->get('news_image_thumb_height'));
 			} else {
 				$data['thumb'] = '';
 			}
 
 			if ($article_info['image']) {
-				$data['popup'] = $this->model_tool_image->resize($article_info['image'], $this->config->get('config_image_popup_width'), $this->config->get('config_image_popup_height'));
+				$data['popup'] = $this->model_tool_image->resize($article_info['image'], $this->config->get($this->config->get('config_theme') . '_image_additional_width'), $this->config->get($this->config->get('config_theme') . '_image_additional_height'));
 			} else {
 				$data['popup'] = '';
 			}
@@ -265,11 +265,19 @@ class ControllerNewsArticle extends Controller {
 			$data['news_show_date_modified'] = $this->config->get('news_show_date_modified');
 			$data['news_show_author'] = $this->config->get('news_show_author');
 
-			
+
+			$data['action_search'] = $this->url->link('news/category', 'news_path=1');
+
 			if($article_info['author_id']){
 				$query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "user` WHERE user_id = '" . (int)$article_info['author_id'] . "'");
 			
 				$data['author'] = $query->row['username'];
+			}
+
+			if ($this->customer->isLogged()) {
+				$data['customer_name'] = $this->customer->getFirstName() . '&nbsp;' . $this->customer->getLastName();
+			} else {
+				$data['customer_name'] = '';
 			}
 
 			
@@ -296,6 +304,24 @@ class ControllerNewsArticle extends Controller {
 				);
 			}
 
+			$data['articles_lasted'] = array();
+
+			$results = $this->model_news_article->getArticleLasted(array('start'=>0, 'limit'=> 5));
+
+			foreach ($results as $result) {
+
+				$data['articles_lasted'][] = array(
+					'article_id' => $result['article_id'],
+					'thumb'   	 => $this->model_tool_image->resize($result['image'], $this->config->get('news_image_related_width'), $this->config->get('news_image_related_height')),
+					'name'    	 => $result['name'],
+					'short_description' => $result['short_description'],
+					'reviews'    => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
+					'href'    	 => $this->url->link('news/article', 'article_id=' . $result['article_id'])
+				);
+			}
+
+			$data['categories'] = $this->load->controller('module/news_category');
+
 			$data['tags'] = array();
 
 			if ($article_info['tag']) {
@@ -318,11 +344,8 @@ class ControllerNewsArticle extends Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
-			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/news/article.tpl')) {
-				$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/news/article.tpl', $data));
-			} else {
-				$this->response->setOutput($this->load->view('default/template/news/article.tpl', $data));
-			}
+			$this->response->setOutput($this->load->view('news/article', $data));
+
 		} else {
 			$url = '';
 
@@ -428,9 +451,11 @@ class ControllerNewsArticle extends Controller {
 
 		foreach ($results as $result) {
 			$data['reviews'][] = array(
+				'review_id'     => $result['review_id'],
 				'author'     => $result['author'],
 				'text'       => nl2br($result['text']),
 				'rating'     => (int)$result['rating'],
+				'likes'     => (int)$result['likes'],
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
 			);
 		}
@@ -445,10 +470,15 @@ class ControllerNewsArticle extends Controller {
 
 		$data['results'] = sprintf($this->language->get('text_pagination'), ($review_total) ? (($page - 1) * 5) + 1 : 0, ((($page - 1) * 5) > ($review_total - 5)) ? $review_total : ((($page - 1) * 5) + 5), $review_total, ceil($review_total / 5));
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/news/review.tpl')) {
-			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/news/review.tpl', $data));
-		} else {
-			$this->response->setOutput($this->load->view('default/template/news/review.tpl', $data));
+		$this->response->setOutput($this->load->view('news/review', $data));
+	}
+
+	public function like()
+	{
+		$this->load->model('news/review');
+
+		if(isset($this->request->post['review_id'])){
+			$this->model_news_review->like($this->request->post['review_id']);
 		}
 	}
 
@@ -462,7 +492,7 @@ class ControllerNewsArticle extends Controller {
 				$json['error'] = $this->language->get('error_name');
 			}
 
-			if ((utf8_strlen($this->request->post['text']) < 25) || (utf8_strlen($this->request->post['text']) > 1000)) {
+			if ((utf8_strlen($this->request->post['text']) < 4) || (utf8_strlen($this->request->post['text']) > 1000)) {
 				$json['error'] = $this->language->get('error_text');
 			}
 

@@ -95,6 +95,7 @@ class ControllerCommonHeader extends Controller {
 		$data['phone'] = $this->config->get('config_telephone');
 		$data['hotline'] = $this->config->get('config_hotline');
 		$data['email'] = $this->config->get('config_email');
+		$data['news'] = $this->url->link('news/category', 'news_path=1');
 
 		// Menu
 		$this->load->model('catalog/category');

@@ -56,12 +56,8 @@ class ControllerModuleNewsByCategory extends Controller {
 			}
 		
 		}
-		
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/news_by_category.tpl')) {
-			return $this->load->view($this->config->get('config_template') . '/template/module/news_by_category.tpl', $data);
-		} else {
-			return $this->load->view('default/template/module/news_by_category.tpl', $data);
-		}
+
+		return $this->load->view('module/news_by_category', $data);
 	}
 }
 ?>

@@ -168,6 +168,35 @@ class ModelNewsArticle extends Model {
 		return $article_description_data;
 	}
 
+	public function getArticleLasted($data = array()) {
+
+		$sql = "SELECT * FROM ".DB_PREFIX."news_articles a JOIN ".DB_PREFIX."news_articles_description d ON a.article_id=d.article_id ORDER BY a.date_added DESC";
+
+		if (isset($data['start']) || isset($data['limit'])) {
+			if ($data['start'] < 0) {
+				$data['start'] = 0;
+			}
+
+			if ($data['limit'] < 1) {
+				$data['limit'] = 5;
+			}
+
+			$sql .= " LIMIT " . (int)$data['start'] . "," . (int)$data['limit'];
+		}
+
+		$articles_data = array();
+
+
+		$query = $this->db->query($sql);
+
+		foreach ($query->rows as $result) {
+
+			$articles_data[$result['article_id']] = $this->getArticle($result['article_id']);
+		}
+
+		return $articles_data;
+	}
+
 	public function getArticleStores($article_id) {
 		$article_store_data = array();
 

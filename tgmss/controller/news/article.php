@@ -578,7 +578,7 @@ class ControllerNewsArticle extends Controller {
 		$data['cancel'] = $this->url->link('news/article', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		if (isset($this->request->get['article_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-			$article_info = $this->model_news_article->getarticle($this->request->get['article_id']);
+			$article_info = $this->model_news_article->getArticle($this->request->get['article_id']);
 		}
 
 		$data['token'] = $this->session->data['token'];
@@ -590,7 +590,7 @@ class ControllerNewsArticle extends Controller {
 		if (isset($this->request->post['article_description'])) {
 			$data['article_description'] = $this->request->post['article_description'];
 		} elseif (isset($this->request->get['article_id'])) {
-			$data['article_description'] = $this->model_news_article->getarticleDescriptions($this->request->get['article_id']);
+			$data['article_description'] = $this->model_news_article->getArticleDescriptions($this->request->get['article_id']);
 		} else {
 			$data['article_description'] = array();
 		}
@@ -622,7 +622,7 @@ class ControllerNewsArticle extends Controller {
 		if (isset($this->request->post['article_store'])) {
 			$data['article_store'] = $this->request->post['article_store'];
 		} elseif (isset($this->request->get['article_id'])) {
-			$data['article_store'] = $this->model_news_article->getarticleStores($this->request->get['article_id']);
+			$data['article_store'] = $this->model_news_article->getArticleStores($this->request->get['article_id']);
 		} else {
 			$data['article_store'] = array(0);
 		}
@@ -699,7 +699,7 @@ class ControllerNewsArticle extends Controller {
 		if (isset($this->request->post['article_related'])) {
 			$articles = $this->request->post['article_related'];
 		} elseif (isset($this->request->get['article_id'])) {
-			$articles = $this->model_news_article->getarticleRelated($this->request->get['article_id']);
+			$articles = $this->model_news_article->getArticleRelated($this->request->get['article_id']);
 		} else {
 			$articles = array();
 		}
@@ -707,7 +707,7 @@ class ControllerNewsArticle extends Controller {
 		$data['article_relateds'] = array();
 
 		foreach ($articles as $article_id) {
-			$related_info = $this->model_news_article->getarticle($article_id);
+			$related_info = $this->model_news_article->getArticle($article_id);
 
 			if ($related_info) {
 				$data['article_relateds'][] = array(
@@ -720,7 +720,7 @@ class ControllerNewsArticle extends Controller {
 		if (isset($this->request->post['article_layout'])) {
 			$data['article_layout'] = $this->request->post['article_layout'];
 		} elseif (isset($this->request->get['article_id'])) {
-			$data['article_layout'] = $this->model_news_article->getarticleLayouts($this->request->get['article_id']);
+			$data['article_layout'] = $this->model_news_article->getArticleLayouts($this->request->get['article_id']);
 		} else {
 			$data['article_layout'] = array();
 		}

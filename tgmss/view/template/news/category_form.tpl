@@ -34,7 +34,7 @@
             <div class="tab-pane active in" id="tab-general">
               <ul class="nav nav-tabs" id="language">
                 <?php foreach ($languages as $language) { ?>
-                <li><a href="#language<?php echo $language['language_id']; ?>" data-toggle="tab"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a></li>
+                <li><a href="#language<?php echo $language['language_id']; ?>" data-toggle="tab"><img src="language/<?php echo $language['code']; ?>/<?php echo $language['code']; ?>.png" title="<?php echo $language['name']; ?>" /> <?php echo $language['name']; ?></a></li>
                 <?php } ?>
               </ul>
               <div class="tab-content">
@@ -43,7 +43,7 @@
                   <div class="form-group required">
                     <label class="col-sm-2 control-label" for="input-name<?php echo $language['language_id']; ?>"><?php echo $entry_name; ?></label>
                     <div class="col-sm-10">
-                      <input type="text" name="category_description[<?php echo $language['language_id']; ?>][name]" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['name'] : ''; ?>" placeholder="<?php echo $entry_name; ?>" id="input-name<?php echo $language['language_id']; ?>" class="form-control" />
+                      <input type="text" name="category_description[<?php echo $language['language_id']; ?>][name]" value="<?php echo isset($category_description[$language['language_id']]) ? $category_description[$language['language_id']]['name'] : ''; ?>" placeholder="<?php echo $entry_name; ?>" id="input-name<?php echo $language['language_id']; ?>" class="form-control" onkeyup="locdau();"/>
                       <?php if (isset($error_name[$language['language_id']])) { ?>
                       <div class="text-danger"><?php echo $error_name[$language['language_id']]; ?></div>
                       <?php } ?>
@@ -204,7 +204,28 @@ $('#input-description<?php echo $language['language_id']; ?>').summernote({
   height: 300
 });
 <?php } ?>
-//--></script> 
+//--></script>
+
+<script type='text/javascript'>
+  function locdau() {
+    var str = (document.getElementById("input-name2").value);// lấy chuỗi dữ liệu nhập vào từ form có tên title
+    str= str.toLowerCase();// chuyển chuỗi sang chữ thường để xử lý
+    /* tìm kiếm và thay thế tất cả các nguyên âm có dấu sang không dấu*/
+    str= str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a");
+    str= str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e");
+    str= str.replace(/ì|í|ị|ỉ|ĩ/g,"i");
+    str= str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o");
+    str= str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u");
+    str= str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y");
+    str= str.replace(/đ/g,"d");
+    str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|_/g,"-");
+    /* tìm và thay thế các kí tự đặc biệt trong chuỗi sang kí tự - */
+    str= str.replace(/-+-/g,"-"); //thay thế 2- thành 1-
+    str= str.replace(/^\-+|\-+$/g,"");//cắt bỏ ký tự - ở đầu và cuối chuỗi
+    document.getElementById("input-keyword").value = str;// xuất kết quả xữ lý ra input-keyword
+  }
+</script>
+
   <script type="text/javascript"><!--
 $('input[name=\'news_path\']').autocomplete({
   'source': function(request, response) {

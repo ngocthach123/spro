@@ -14,7 +14,7 @@ class ControllerModuleNewsCategory extends Controller {
 		if (isset($parts[0])) {
 			$data['category_id'] = $parts[0];
 		} else {
-			$data['category_id'] = 0;
+			$data['category_id'] = 1;
 		}
 
 		if (isset($parts[1])) {
@@ -60,10 +60,7 @@ class ControllerModuleNewsCategory extends Controller {
 			);
 		}
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/module/news_category.tpl')) {
-			return $this->load->view($this->config->get('config_template') . '/template/module/news_category.tpl', $data);
-		} else {
-			return $this->load->view('default/template/module/news_category.tpl', $data);
-		}
+		return $this->load->view('module/news_category', $data);
+
 	}
 }

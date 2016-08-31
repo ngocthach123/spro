@@ -228,7 +228,7 @@
           <ul class="nav navbar-nav">
             <li class="dropdown"><a href="<?php echo $home; ?>" class="dropdown-toggle" data-toggle="dropdown">Trang chủ</a></li>
             <li><a href="#">Khuyến mãi</a></li>
-            <li><a href="#">Hàng thanh lý</a></li>
+            <li><a href="<?php echo $news;?>">Tin tức</a></li>
             <li><a href="<?php echo $contact;?>">Liên hệ</a></li>
           </ul>
         </div>

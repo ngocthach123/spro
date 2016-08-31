@@ -3,7 +3,7 @@ class ModelNewsReview extends Model {
 	public function addReview($article_id, $data) {
 		$this->event->trigger('pre.review.add', $data);
 
-		$this->db->query("INSERT INTO " . DB_PREFIX . "news_review SET author = '" . $this->db->escape($data['name']) . "', customer_id = '" . (int)$this->customer->getId() . "', article_id = '" . (int)$article_id . "', text = '" . $this->db->escape($data['text']) . "', rating = '" . (int)$data['rating'] . "'");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "news_review SET author = '" . $this->db->escape($data['name']) . "', customer_id = '" . (int)$this->customer->getId() . "', article_id = '" . (int)$article_id . "', text = '" . $this->db->escape($data['text']) . "', rating = '" . (int)$data['rating'] . "', date_added = NOW()");
 
 		$review_id = $this->db->getLastId();
 
@@ -70,5 +70,9 @@ class ModelNewsReview extends Model {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "news_review r LEFT JOIN " . DB_PREFIX . "news_articles p ON (r.article_id = p.article_id) LEFT JOIN " . DB_PREFIX . "news_articles_description pd ON (p.article_id = pd.article_id) WHERE p.article_id = '" . (int)$article_id . "' AND p.status = '1' AND r.status = '1' AND pd.language_id = '" . (int)$this->config->get('config_language_id') . "'");
 
 		return $query->row['total'];
+	}
+
+	public function like($review_id) {
+		$this->db->query("UPDATE " . DB_PREFIX . "news_review SET likes=(likes+1) WHERE review_id =".(int)$review_id);
 	}
 }

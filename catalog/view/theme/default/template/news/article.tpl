@@ -5,165 +5,157 @@
     <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
     <?php } ?>
   </ul>
-  <div class="row"><?php echo $column_left; ?>
-    <?php if ($column_left && $column_right) { ?>
-    <?php $class = 'col-sm-6'; ?>
-    <?php } elseif ($column_left || $column_right) { ?>
-    <?php $class = 'col-sm-9'; ?>
-    <?php } else { ?>
-    <?php $class = 'col-sm-12'; ?>
-    <?php } ?>
-    <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
+  <div class="row">
+    <div class="vmax-colum-left col-lg-3 col-md-3"><div class="vmax-filter sidebar sidebar-main">
+        <div id="sidebar" class="vmax-blog-search">
+          <div class="widget block">
+            <h3 class="block block-title">Tìm kiếm bài viết</h3>
+            <div class="block-content">
+              <form class="form minisearch" action="<?php echo $action_search;?>" method="get">
+                <div class="field search">
+                  <div class="control">
+                    <div class="input-group">
+                      <input id="search_blog" type="text" name="filter_name" value="" class="form-control" aria-haspopup="false" maxlength="128" role="combobox" placeholder="Tìm kiếm bài viết..." aria-autocomplete="both" autocomplete="off">
+                            <span class="input-group-btn">
+                                <button class="action search" type="submit">
+                                  <i class="fa fa-search" aria-hidden="true"></i> </button>
+                            </span>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div id="sidebar" class="vmax-blog-category">
+          <?php echo $categories;?>
+        </div>
+
+        <?php if ($articles_lasted): ?>
+        <div id="sidebar" class="vmax-blog-latest">
+          <div class="widget widget_latest block">
+            <h3 class="block block-title">Bài viết mới</h3>
+            <ul>
+              <?php foreach ($articles_lasted as $article): ?>
+              <li class="cat-item">
+                <a href="<?php echo $article['href']; ?>">
+                  <img src="<?php echo $article['thumb']; ?>" alt="<?php echo $article['name']; ?>" title="<?php echo $article['name']; ?>">
+                  <?php echo $article['name']; ?></a>
+              </li>
+              <?php endforeach;?>
+            </ul>
+          </div>
+        </div>
+        <?php endif;?>
+
+        <?php if ($articles): ?>
+          <div id="sidebar" class="vmax-blog-popular">
+            <div class="widget widget_popular block">
+              <h3 class="block block-title"><?php echo $text_related; ?></h3>
+              <ul>
+                <?php foreach ($articles as $article): ?>
+                  <li class="cat-item">
+                    <a href="<?php echo $article['href']; ?>">
+                      <img src="<?php echo $article['thumb']; ?>" alt="<?php echo $article['name']; ?>" title="<?php echo $article['name']; ?>" class="img-responsive" >
+                      <strong><?php echo $article['name']; ?></strong>
+                    </a>
+                  </li>
+                <?php endforeach;?>
+              </ul></div>
+          </div>
+        <?php endif;?>
+
+      </div>
+    </div>
+
+    <div id="content" class="col-md-9"><?php echo $content_top; ?>
       <div class="row">
-        <?php if ($column_left && $column_right) { ?>
-        <?php $class = 'col-sm-6'; ?>
-        <?php } elseif ($column_left || $column_right) { ?>
-        <?php $class = 'col-sm-6'; ?>
-        <?php } else { ?>
-        <?php $class = 'col-sm-8'; ?>
-        <?php } ?>
-        <div class="<?php echo $class; ?>">
-          <?php if ($thumb) { ?>
-          <ul class="thumbnails">
-            <?php if ($thumb) { ?>
-            <li><a class="thumbnail" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
-            <?php } ?>
-          </ul>
-          <?php } ?>
+        <div class="wrap-article">
+          <h1 class="block block-title"><?php echo $heading_title; ?></h1>
+          <div class="article-info">
+            <span><?php echo $date_added;?> - <?php echo $author;?> </span>
+          </div>
           <?php echo $description; ?>
-          <ul class="nav nav-tabs">
-            <?php if ($review_status) { ?>
-            <li class="active"><a href="#tab-review" data-toggle="tab"><?php echo $tab_review; ?></a></li>
-            <?php } ?>
-          </ul>
+
+          <div class="headnhanxet head-article">
+            <p class="titheading-allpage">Nhận xét về bài viết</p>
+          </div>
+
+          <div class="box-write-comment">
+            <div class="vietdanhgia">
+              <a class="vnx" data-toggle="modal" data-target="#myModal">
+                Viết nhận xét của bạn
+              </a>
+            </div>
+          </div> <div style="clear: both"></div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <form id="form-review">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title modaldanhgia" id="myModalLabel">Chúng tôi muốn nhận được những đánh giá khách quan của bạn</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="well well-sm modaltensanpham"><?php echo $heading_title; ?></div>
+                    <div class="boxthongtindanhgia">
+                      <div class="thongtindanhgia-left">
+                        Họ và tên:
+                      </div>
+                      <div class="thongtindanhgia-right">
+                        <input type="text" name="name" value="<?php echo $customer_name; ?>" id="input-name" class="form-control" />
+                      </div>
+                    </div>
+                    <div class="boxthongtindanhgia">
+                      <div class="thongtindanhgia-left">
+                        Nội dung đánh giá của bạn:
+                      </div>
+                      <div class="thongtindanhgia-right">
+                        <textarea name="text" cols="25" rows="4" id="input-review" class="form-control"></textarea>
+                      </div>
+                    </div>
+                    <div class="boxthongtindanhgia">
+                      <div class="thongtindanhgia-left">
+                        Đánh giá:
+                      </div>
+                      <div class="thongtindanhgia-right">
+                        <div class="stars">
+                          <input type="radio" name="rating" value="1" class="star-1" id="star-1"/>
+                          <label class="star-1" for="star-1">1</label>
+                          <input type="radio" name="rating" value="2" class="star-2" id="star-2"/>
+                          <label class="star-2" for="star-2">2</label>
+                          <input type="radio" name="rating" value="3" class="star-3" id="star-3"/>
+                          <label class="star-3" for="star-3">3</label>
+                          <input type="radio" name="rating" value="4" class="star-4" id="star-4"/>
+                          <label class="star-4" for="star-4">4</label>
+                          <input type="radio" name="rating" value="5" class="star-5" id="star-5"/>
+                          <label class="star-5" for="star-5">5</label>
+                          <span></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" id="button-review" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary">Gửi</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- end test -->
+
           <div class="tab-content">
             <?php if ($review_status) { ?>
             <div class="tab-pane active" id="tab-review">
-              <form class="form-horizontal" id="form-review">
-                <div id="review"></div>
-                <h2><?php echo $text_write; ?></h2>
-                <?php if ($review_guest) { ?>
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
-                    <input type="text" name="name" value="" id="input-name" class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="input-review"><?php echo $entry_review; ?></label>
-                    <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-                    <div class="help-block"><?php echo $text_note; ?></div>
-                  </div>
-                </div>
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label"><?php echo $entry_rating; ?></label>
-                    &nbsp;&nbsp;&nbsp; <?php echo $entry_bad; ?>&nbsp;
-                    <input type="radio" name="rating" value="1" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="2" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="3" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="4" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="5" />
-                    &nbsp;<?php echo $entry_good; ?></div>
-                </div>
-                <?php if ($site_key) { ?>
-                  <div class="form-group">
-                    <div class="col-sm-12">
-                      <div class="g-recaptcha" data-sitekey="<?php echo $site_key; ?>"></div>
-                    </div>
-                  </div>
-                <?php } ?>
-                <div class="buttons clearfix">
-                  <div class="pull-right">
-                    <button type="button" id="button-review" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><?php echo $button_continue; ?></button>
-                  </div>
-                </div>
-                <?php } else { ?>
-                <?php echo $text_login; ?>
-                <?php } ?>
-              </form>
+              <div id="review"></div>
             </div>
             <?php } ?>
           </div>
         </div>
-        <?php if ($column_left && $column_right) { ?>
-        <?php $class = 'col-sm-6'; ?>
-        <?php } elseif ($column_left || $column_right) { ?>
-        <?php $class = 'col-sm-6'; ?>
-        <?php } else { ?>
-        <?php $class = 'col-sm-4'; ?>
-        <?php } ?>
-        <div class="<?php echo $class; ?>">
-          <h1><?php echo $heading_title; ?></h1>
-          <?php echo $short_description; ?>
-          <?php if ($review_status) { ?>
-          <div class="rating">
-            <p>
-              <?php for ($i = 1; $i <= 5; $i++) { ?>
-              <?php if ($rating < $i) { ?>
-              <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-              <?php } else { ?>
-              <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-              <?php } ?>
-              <?php } ?>
-              <?php echo $reviews; ?></p>
-            <hr>
-            <!-- AddThis Button BEGIN -->
-            <div class="addthis_toolbox addthis_default_style"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a></div>
-            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script>
-            <!-- AddThis Button END -->
-          </div>
-          <?php } ?>
-        </div>
       </div>
-      <?php if ($articles) { ?>
-      <h3><?php echo $text_related; ?></h3>
-      <div class="row">
-        <?php $i = 0; ?>
-        <?php foreach ($articles as $article) { ?>
-        <?php if ($column_left && $column_right) { ?>
-        <?php $class = 'col-lg-6 col-md-6 col-sm-12 col-xs-12'; ?>
-        <?php } elseif ($column_left || $column_right) { ?>
-        <?php $class = 'col-lg-4 col-md-4 col-sm-6 col-xs-12'; ?>
-        <?php } else { ?>
-        <?php $class = 'col-lg-3 col-md-3 col-sm-6 col-xs-12'; ?>
-        <?php } ?>
-        <div class="<?php echo $class; ?>">
-          <div class="product-thumb transition">
-            <div class="image"><a href="<?php echo $article['href']; ?>"><img src="<?php echo $article['thumb']; ?>" alt="<?php echo $article['name']; ?>" title="<?php echo $article['name']; ?>" class="img-responsive" /></a></div>
-            <div class="caption">
-              <h4><a href="<?php echo $article['href']; ?>"><?php echo $article['name']; ?></a></h4>
-              <p><?php echo $article['short_description']; ?></p>
-              <?php if ($article['rating']) { ?>
-              <div class="rating">
-                <?php for ($i = 1; $i <= 5; $i++) { ?>
-                <?php if ($article['rating'] < $i) { ?>
-                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
-                <?php } else { ?>
-                <span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
-                <?php } ?>
-                <?php } ?>
-              </div>
-              <?php } ?>
-            </div>
-          </div>
-        </div>
-        <?php if (($column_left && $column_right) && ($i % 2 == 0)) { ?>
-        <div class="clearfix visible-md visible-sm"></div>
-        <?php } elseif (($column_left || $column_right) && ($i % 3 == 0)) { ?>
-        <div class="clearfix visible-md"></div>
-        <?php } elseif ($i % 4 == 0) { ?>
-        <div class="clearfix visible-md"></div>
-        <?php } ?>
-        <?php $i++; ?>
-        <?php } ?>
-      </div>
-      <?php } ?>
+
       <?php if ($tags) { ?>
       <p><?php echo $text_tags; ?>
         <?php for ($i = 0; $i < count($tags); $i++) { ?>
@@ -207,15 +199,16 @@ $('#button-review').on('click', function() {
       $('.alert-success, .alert-danger').remove();
 
       if (json['error']) {
-        $('#review').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+        $('.modaltensanpham').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
       }
 
       if (json['success']) {
-        $('#review').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+        $('#review').before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
 
         $('input[name=\'name\']').val('');
         $('textarea[name=\'text\']').val('');
         $('input[name=\'rating\']:checked').prop('checked', false);
+        $('.close').trigger('click');
       }
     }
   });

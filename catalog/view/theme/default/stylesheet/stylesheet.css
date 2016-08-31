@@ -4132,7 +4132,7 @@ a.btncngh-f:hover {
 	z-index: 999;
 	bottom: 0;
 	right: 0;
-	font-size: 16px;
+	font-size: 14px;
 	text-decoration: underline;
 }
 .btinmoinhat .xemchitiet:hover {
@@ -4184,9 +4184,10 @@ a.btncngh-f:hover {
 	border-bottom: 1px solid #cbcbcb;
 	text-align: center;
 	margin-bottom: 7px;
+	min-height: 65px;
 }
 .btintuc .itemstintuc .tit-itemstintuc a {
-	font-size: 15px;
+	font-size: 13px;
 	line-height: 25px;
 	color: #000;
 	transition: all .8s ease;
@@ -4196,6 +4197,7 @@ a.btncngh-f:hover {
 	line-height: 22px;
 	color: #000;
 	margin-bottom: 15px;
+	min-height: 88px;
 }
 .btintuc .itemstintuc .more-itemstintuc {
 	text-align: center;
@@ -4252,6 +4254,199 @@ a.btncngh-f:hover {
 }
 .itemstintuc:hover .img-itemstintuc .txtboximage {
 	top: 0;
+}
+
+/*-------------------------------------tin tuc-----------------------------------------*/
+
+#sidebar .widget {
+	padding: 0;
+	margin: 0;
+	position: relative;
+	background: white;
+	border: 0;
+	border-top: 0;
+}
+
+.vmax-colum-left #sidebar .block h3, h1.block, .vmax-colum-left #sidebar .widget_popular h3, .vmax-colum-left #sidebar .widget_categories h3, .vmax-colum-left #sidebar .block h3, .vmax-colum-left #sidebar .widget_latest h3, .footer-wrapper .footer-container .footer-wrapper {
+	position: relative;
+}
+
+#sidebar .widget h3, h1.block {
+	border: 0;
+	margin: 0;
+	color: #fff;
+	line-height: 48px;
+	padding: 15px 20px;
+	background: #f23d4c;
+	text-transform: uppercase;
+	font: 600 13px sans-serif;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+.vmax-colum-left #sidebar .block h3, h1.block, .vmax-colum-left #sidebar .widget_popular h3, .vmax-colum-left #sidebar .widget_categories h3, .vmax-colum-left #sidebar .block h3, .vmax-colum-left #sidebar .widget_latest h3 {
+	color: #1f1e1e;
+	background: initial;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: initial;
+	padding-left: initial;
+}
+
+#sidebar{
+	border: 1px solid #cccccc;
+	box-shadow: 0 0 3px 1px #f3f3f3;
+	margin-bottom: 20px ;
+	padding: 0px 10px;
+}
+
+#sidebar .widget .block-content {
+	padding: 20px;
+	border-top: 0;
+}
+
+#sidebar .widget {
+	padding: 0;
+	margin: 0;
+	position: relative;
+	background: white;
+	border: 0;
+	border-top: 0;
+}
+
+#sidebar .widget ul {
+	list-style: none;
+}
+
+.vmax-filter #sidebar .widget ul li.cat-item {
+	padding: 7px 0 5px 0;
+}
+
+#sidebar .widget ul li {
+	margin: 0;
+	padding: 10px 0;
+	border-bottom: 1px dotted #ccc;
+}
+
+.widget_categories li {
+	color: #999;
+}
+
+.wrap-article h1.block{
+	font-size: 20px!important;
+}
+
+.article-info{
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+#sidebar a:hover, a:focus {
+	text-decoration: none;
+	color: #f23d4c;
+}
+
+#sidebar a {
+	color: #454545;
+}
+
+.block .block-title:before, h1.block:before {
+	background-color: #f23d4c;
+}
+
+.block .block-title:before, h1.block:before {
+	content: "";
+	display: inline-block;
+	height: 1px;
+	width: 100px;
+	position: absolute;
+	left: 0;
+	bottom: -1px;
+}
+
+.vmax-colum-left #sidebar .widget_categories ul, .vmax-colum-left #sidebar .widget_popular ul, .vmax-colum-left #sidebar .widget_latest ul {
+	padding: initial;
+}
+
+.widget_popular li {
+	color: #999;
+}
+
+.vmax-filter #sidebar .widget ul li a img {
+	margin-top: initial;
+}
+
+#sidebar .widget ul li a img {
+	float: left;
+	margin-right: 7px;
+	margin-bottom: 7px;
+	margin-top: 5px;
+	width: 40px;
+	height: 40px;
+}
+
+button.search {
+	border: 0 !important;
+	overflow: visible;
+	display: inline-block;
+	background: #444;
+	width: auto;
+	margin: 0;
+	cursor: pointer;
+	height: 35px;
+	line-height: 35px;
+	white-space: nowrap;
+	font-size: 100% !important;
+	text-transform: uppercase;
+	font-weight: 400;
+	position: relative;
+	padding: 0 20px !important;
+	color: #fff !important;
+	text-decoration: none !important;
+}
+
+button.search i{
+	line-height: 35px;
+}
+
+.minisearch input[type="text"] {
+	height: 35px;
+	font-size: 100%;
+	border: 1px solid #adadad;
+	line-height: 1.66;
+	background-color: #fff;
+	box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+}
+
+.box-write-comment{
+	margin: -43px 0px;
+	margin-bottom: 80px;
+	z-index: 1;
+	position: relative;
+}
+.box-write-comment .vietdanhgia{
+	float: right;
+}
+
+.head-article{
+	margin-top: 35px;
+}
+
+li.cat-item a{
+	min-height: 40px;
+	display: block;
+}
+
+li.cat-item-1 a{
+	min-height: inherit;
+	display: inline;
+}
+
+.wrap-article{
+	border: 1px solid #cccccc;
+	box-shadow: 0 0 3px 3px #f3f3f3;
+	padding: 10px 20px;
+	margin-bottom: 10px;
 }
 
 /*module banner ads*/

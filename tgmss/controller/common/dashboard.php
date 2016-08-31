@@ -53,7 +53,7 @@ class ControllerCommonDashboard extends Controller {
 		$news_review = $this->model_news_review->getTotalReviewsAwaitingApproval();
 
 		if ($news_review != 0) {
-			$data['warning_news_review'] = "Warning: " . $news_review . " news review need approval. <a href=\"index.php?route=news/review&token=" . $this->session->data['token'] . "\"> Click here</a> to approval";
+			$data['warning_news_review'] = "Thông báo: " . $news_review . " nhận xét tin tức cần duyệt. <a href=\"index.php?route=news/review&token=" . $this->session->data['token'] . "\"> Click vào đây</a> để duyệt";
 		} else {
 			$data['warning_news_review'] = '';
 		}
