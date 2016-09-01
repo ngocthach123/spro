@@ -4507,3 +4507,142 @@
 2016-08-31 12:47:42 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
 2016-08-31 12:47:50 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
 2016-08-31 12:49:54 - PHP Notice:  Use of undefined constant heading_title - assumed 'heading_title' in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 272
+2016-09-01 3:57:53 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 12
+2016-09-01 3:57:53 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 3:57:53 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 3:57:53 - PHP Notice:  Undefined variable: action_search in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 38
+2016-09-01 3:57:53 - PHP Notice:  Undefined variable: filter_name in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 39
+2016-09-01 3:57:53 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 44
+2016-09-01 3:57:53 - PHP Notice:  Undefined variable: money in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 3:57:53 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 3:58:38 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 12
+2016-09-01 3:58:38 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 3:58:38 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 3:58:38 - PHP Notice:  Undefined variable: action_search in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 38
+2016-09-01 3:58:38 - PHP Notice:  Undefined variable: filter_name in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 39
+2016-09-01 3:58:38 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 44
+2016-09-01 3:58:38 - PHP Notice:  Undefined variable: money in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 3:58:38 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 3:58:43 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 12
+2016-09-01 3:58:43 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 3:58:43 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 3:58:43 - PHP Notice:  Undefined variable: action_search in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 38
+2016-09-01 3:58:43 - PHP Notice:  Undefined variable: filter_name in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 39
+2016-09-01 3:58:43 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 44
+2016-09-01 3:58:43 - PHP Notice:  Undefined variable: money in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 3:58:43 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 3:58:57 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 12
+2016-09-01 3:58:57 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 3:58:57 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 3:58:57 - PHP Notice:  Undefined variable: action_search in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 38
+2016-09-01 3:58:57 - PHP Notice:  Undefined variable: filter_name in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 39
+2016-09-01 3:58:57 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 44
+2016-09-01 3:58:57 - PHP Notice:  Undefined variable: money in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 3:58:57 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 3:59:02 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 12
+2016-09-01 3:59:02 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 3:59:02 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 3:59:02 - PHP Notice:  Undefined variable: action_search in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 38
+2016-09-01 3:59:02 - PHP Notice:  Undefined variable: filter_name in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 39
+2016-09-01 3:59:02 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 44
+2016-09-01 3:59:02 - PHP Notice:  Undefined variable: money in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 3:59:02 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 4:00:51 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 12
+2016-09-01 4:00:51 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 4:00:51 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 4:00:51 - PHP Notice:  Undefined variable: action_search in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 38
+2016-09-01 4:00:51 - PHP Notice:  Undefined variable: filter_name in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 39
+2016-09-01 4:00:51 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 44
+2016-09-01 4:00:51 - PHP Notice:  Undefined variable: money in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 4:00:51 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 4:01:58 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 12
+2016-09-01 4:01:58 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 4:01:58 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 4:01:58 - PHP Notice:  Undefined variable: action_search in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 38
+2016-09-01 4:01:58 - PHP Notice:  Undefined variable: filter_name in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 39
+2016-09-01 4:01:58 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 44
+2016-09-01 4:01:58 - PHP Notice:  Undefined variable: money in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 4:01:58 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 4:03:53 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 12
+2016-09-01 4:03:53 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 4:03:53 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 4:03:53 - PHP Notice:  Undefined variable: action_search in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 38
+2016-09-01 4:03:53 - PHP Notice:  Undefined variable: filter_name in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 39
+2016-09-01 4:03:53 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 44
+2016-09-01 4:03:53 - PHP Notice:  Undefined variable: money in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 4:03:53 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 4:04:06 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 12
+2016-09-01 4:04:06 - PHP Notice:  Undefined variable: category in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 4:04:06 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 16
+2016-09-01 4:04:06 - PHP Notice:  Undefined variable: action_search in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 38
+2016-09-01 4:04:06 - PHP Notice:  Undefined variable: filter_name in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 39
+2016-09-01 4:04:06 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 44
+2016-09-01 4:04:06 - PHP Notice:  Undefined variable: money in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 4:04:06 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 67
+2016-09-01 4:18:31 - PHP Notice:  Undefined variable: manufacturer in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 22
+2016-09-01 4:18:31 - PHP Notice:  Undefined variable: manufacturer in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 22
+2016-09-01 4:18:31 - PHP Notice:  Undefined variable: manufacturer in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 22
+2016-09-01 4:18:31 - PHP Notice:  Undefined variable: manufacturer in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 22
+2016-09-01 4:18:31 - PHP Notice:  Undefined variable: manufacturer in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 22
+2016-09-01 4:18:31 - PHP Notice:  Undefined variable: manufacturer in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 22
+2016-09-01 4:18:31 - PHP Notice:  Undefined variable: manufacturer in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 22
+2016-09-01 4:18:31 - PHP Notice:  Undefined variable: manufacturer in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 22
+2016-09-01 4:18:31 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:20:29 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:23:21 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:23:26 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:23:31 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:23:43 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:23:53 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:23:57 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:24:19 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:24:22 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:24:28 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:24:32 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:26:26 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:26:30 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:26:33 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:26:35 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:26:39 - PHP Notice:  Undefined variable: manufacturers in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 31
+2016-09-01 4:37:50 - PHP Notice:  Undefined variable: sorts in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 43
+2016-09-01 4:37:50 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 43
+2016-09-01 4:37:50 - PHP Notice:  Undefined variable: limits in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 55
+2016-09-01 4:37:50 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 55
+2016-09-01 4:37:50 - PHP Notice:  Undefined variable: pagination in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 66
+2016-09-01 4:37:50 - PHP Notice:  Undefined variable: pagination in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 122
+2016-09-01 4:39:11 - PHP Notice:  Undefined variable: sorts in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 43
+2016-09-01 4:39:11 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 43
+2016-09-01 4:39:11 - PHP Notice:  Undefined variable: limits in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 55
+2016-09-01 4:39:11 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 55
+2016-09-01 4:39:11 - PHP Notice:  Undefined variable: pagination in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 66
+2016-09-01 4:39:11 - PHP Notice:  Undefined variable: pagination in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 122
+2016-09-01 4:40:19 - PHP Notice:  Undefined variable: sorts in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 43
+2016-09-01 4:40:19 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 43
+2016-09-01 4:40:19 - PHP Notice:  Undefined variable: limits in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 55
+2016-09-01 4:40:19 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 55
+2016-09-01 4:40:19 - PHP Notice:  Undefined variable: pagination in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 66
+2016-09-01 4:40:19 - PHP Notice:  Undefined variable: pagination in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 122
+2016-09-01 4:41:42 - PHP Notice:  Undefined variable: sorts in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 43
+2016-09-01 4:41:42 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 43
+2016-09-01 4:41:42 - PHP Notice:  Undefined variable: limits in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 55
+2016-09-01 4:41:42 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 55
+2016-09-01 4:41:42 - PHP Notice:  Undefined variable: pagination in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 66
+2016-09-01 4:41:42 - PHP Notice:  Undefined variable: pagination in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 122
+2016-09-01 4:43:22 - PHP Notice:  Undefined variable: sorts in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 43
+2016-09-01 4:43:22 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 43
+2016-09-01 4:43:22 - PHP Notice:  Undefined variable: limits in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 55
+2016-09-01 4:43:22 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 55
+2016-09-01 4:43:22 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 66
+2016-09-01 4:43:22 - PHP Notice:  Array to string conversion in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 122
+2016-09-01 4:43:34 - PHP Notice:  Undefined variable: sorts in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 43
+2016-09-01 4:43:34 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 43
+2016-09-01 4:43:34 - PHP Notice:  Undefined variable: limits in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 55
+2016-09-01 4:43:34 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 55
+2016-09-01 5:19:26 - PHP Notice:  Undefined variable: sorts in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 58
+2016-09-01 5:19:26 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 58
+2016-09-01 5:19:26 - PHP Notice:  Undefined variable: limits in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 70
+2016-09-01 5:19:26 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 70
+2016-09-01 5:19:39 - PHP Notice:  Undefined variable: sorts in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 58
+2016-09-01 5:19:39 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 58
+2016-09-01 5:19:39 - PHP Notice:  Undefined variable: limits in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 70
+2016-09-01 5:19:39 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 70

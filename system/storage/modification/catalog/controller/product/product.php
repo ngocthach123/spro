@@ -846,7 +846,7 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 				$mail->setText($this->request->post['order_text']);
 				$mail->send();
 
-				$json['success'] = $this->language->get('text_success');
+				$json['success'] = $this->language->get('text_order_success');
 			}
 		}
 

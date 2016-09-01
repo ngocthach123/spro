@@ -708,6 +708,8 @@ $('#button-cart').on('click', function() {
 
 				$('#shoppingcart span.top-quantity').html(json['total_origin']);
 
+                location = "index.php?route=checkout/cart";
+
 				$('html, body').animate({ scrollTop: 0 }, 'slow');
 
 				$('#cart > ul').load('index.php?route=common/cart/info ul li');
@@ -1053,7 +1055,7 @@ $(document).ready(function() {
         }
 
         if (json['success']) {
-          $('#content').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+          $('#content').before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
 
           $('input[name=\'order_name\']').val('');
           $('input[name=\'order_email\']').val('');

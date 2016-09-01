@@ -94,12 +94,12 @@ class ControllerProductSearch extends Controller {
 			$url .= '&description=' . $this->request->get['description'];
 		}
 
-		if (isset($this->request->get['category_id'])) {
-			$url .= '&category_id=' . $this->request->get['category_id'];
-		}
-
 		if (isset($this->request->get['sub_category'])) {
 			$url .= '&sub_category=' . $this->request->get['sub_category'];
+		}
+
+		if (isset($this->request->get['manu_id'])) {
+			$url .= '&manu_id=' . $this->request->get['manu_id'];
 		}
 
 		if (isset($this->request->get['sort'])) {
@@ -156,6 +156,12 @@ class ControllerProductSearch extends Controller {
 
 		$data['compare'] = $this->url->link('product/compare');
 
+		if (isset($this->request->get['category_id'])) {
+			$cat_id = $this->request->get['category_id'];
+		}else{
+			$cat_id = 0;
+		}
+
 		$this->load->model('catalog/category');
 
 		// 3 Level Category Search
@@ -190,11 +196,73 @@ class ControllerProductSearch extends Controller {
 			$data['categories'][] = array(
 				'category_id' => $category_1['category_id'],
 				'name'        => $category_1['name'],
+				'href'	=> $this->url->link('product/search'. $url. ($cat_id == $category_1['category_id'] ? '' : '&category_id='.$category_1['category_id'])),
+				'checked' => $cat_id == $category_1['category_id'] ? true : false,
 				'children'    => $level_2_data
 			);
 		}
 
+		$url = '';
+
+		if (isset($this->request->get['search'])) {
+			$url .= '&search=' . urlencode(html_entity_decode($this->request->get['search'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['tag'])) {
+			$url .= '&tag=' . urlencode(html_entity_decode($this->request->get['tag'], ENT_QUOTES, 'UTF-8'));
+		}
+
+		if (isset($this->request->get['description'])) {
+			$url .= '&description=' . $this->request->get['description'];
+		}
+
+		if (isset($this->request->get['sub_category'])) {
+			$url .= '&sub_category=' . $this->request->get['sub_category'];
+		}
+
+		if (isset($this->request->get['category_id'])) {
+			$url .= '&category_id=' . $this->request->get['category_id'];
+		}
+
+		if (isset($this->request->get['sort'])) {
+			$url .= '&sort=' . $this->request->get['sort'];
+		}
+
+		if (isset($this->request->get['order'])) {
+			$url .= '&order=' . $this->request->get['order'];
+		}
+
+		if (isset($this->request->get['page'])) {
+			$url .= '&page=' . $this->request->get['page'];
+		}
+
+		if (isset($this->request->get['limit'])) {
+			$url .= '&limit=' . $this->request->get['limit'];
+		}
+
+		if (isset($this->request->get['manu_id'])) {
+			$manu_id = $this->request->get['manu_id'];
+		}else{
+			$manu_id = 0;
+		}
+
+		$data['manufacturers'] = array();
+
+		$this->load->model('catalog/manufacturer');
+
+		$manufacturers = $this->model_catalog_manufacturer->getManufacturers();
+
+		foreach ($manufacturers as $manufacturer) {
+			$data['manufacturers'][] = array(
+				'manufacturer_id' => $manufacturer['manufacturer_id'],
+				'name' =>  $manufacturer['name'],
+				'href'  => $this->url->link('product/search' .$url. ($manu_id == $manufacturer['manufacturer_id'] ? '' :'&manu_id='.$manufacturer['manufacturer_id'])),
+				'checked' => $manu_id == $manufacturer['manufacturer_id'] ? 1 : 0,
+			);
+		}
+
 		$data['products'] = array();
+		$data['pagination'] = '';
 
 		if (isset($this->request->get['search']) || isset($this->request->get['tag'])) {
 			$filter_data = array(
@@ -202,6 +270,7 @@ class ControllerProductSearch extends Controller {
 				'filter_tag'          => $tag,
 				'filter_description'  => $description,
 				'filter_category_id'  => $category_id,
+				'filter_manufacturer_id' => $manu_id ? $manu_id : '',
 				'filter_sub_category' => $sub_category,
 				'sort'                => $sort,
 				'order'               => $order,
@@ -385,8 +454,6 @@ class ControllerProductSearch extends Controller {
 					'href'  => $this->url->link('product/search', $url . '&limit=' . $value)
 				);
 			}
-
-			$url = '';
 
 			if (isset($this->request->get['search'])) {
 				$url .= '&search=' . urlencode(html_entity_decode($this->request->get['search'], ENT_QUOTES, 'UTF-8'));

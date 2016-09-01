@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 26, 2016 at 10:07 AM
+-- Generation Time: Aug 31, 2016 at 01:03 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `tgm_address` (
   `customer_id` int(11) NOT NULL,
   `firstname` varchar(32) NOT NULL,
   `lastname` varchar(32) NOT NULL,
+  `telephone` varchar(20) NOT NULL,
   `company` varchar(40) NOT NULL,
   `address_1` varchar(128) NOT NULL,
   `address_2` varchar(128) NOT NULL,
@@ -60,20 +61,30 @@ CREATE TABLE IF NOT EXISTS `tgm_address` (
   `custom_field` text NOT NULL,
   PRIMARY KEY (`address_id`),
   KEY `customer_id` (`customer_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=55 ;
 
 --
 -- Dumping data for table `tgm_address`
 --
 
-INSERT INTO `tgm_address` (`address_id`, `customer_id`, `firstname`, `lastname`, `company`, `address_1`, `address_2`, `city`, `postcode`, `country_id`, `zone_id`, `custom_field`) VALUES
-(1, 1, 'Thach', '', '', '123 a', '', '', '', 230, 3769, ''),
-(2, 3, 'Thach', 'Ngoc', '', 'TT Đức Hòa, Đức Hòa', '', 'CA', '', 230, 4417, ''),
-(3, 3, 'Thach', '', '', '111AX', '', '', '', 230, 4375, ''),
-(9, 3, 'Thach', '', '', 'TP.Tây Ninh', '', '', '', 230, 4403, ''),
-(10, 3, 'Thach', '', '', '1123scsadc', '', '', '', 230, 4375, ''),
-(11, 3, 'Thach', '', '', '123adsqee', '', '', '', 230, 4375, ''),
-(12, 3, 'Thach', '', '', '111AXs', '', '', '', 230, 4375, '');
+INSERT INTO `tgm_address` (`address_id`, `customer_id`, `firstname`, `lastname`, `telephone`, `company`, `address_1`, `address_2`, `city`, `postcode`, `country_id`, `zone_id`, `custom_field`) VALUES
+(1, 1, 'Thach', '', '', '', '123 a', '', '', '', 230, 3769, ''),
+(49, 3, 'Bean Jelly', '', '', '', '111', '', 'Huyện Nhà Bè', '', 230, 4389, '[]'),
+(48, 3, 'Bean Jelly', '', '', '', 'Can thanh', '', 'Huyện Cần Giờ', '', 230, 4389, ''),
+(47, 3, 'Bean Jelly', '', '', '', 'Ten lua', '', 'Quận Bình Tân', '', 230, 4389, '[]'),
+(46, 3, 'Bean Jelly', '', '', '', 'Ten lua', '', 'Quận Bình Tân', '', 230, 4389, '[]'),
+(45, 3, 'Bean Jelly', '', '', '', 'Ten lua', '', 'Quận Bình Tân', '', 230, 4389, '[]'),
+(44, 3, 'Bean Jelly', '', '', '', 'Ten lua', '', 'Quận Bình Tân', '', 230, 4389, '[]'),
+(43, 3, 'Bean Jelly', '', '', '', 'Ten lua', '', 'Quận Bình Tân', '', 230, 4389, '[]'),
+(42, 3, 'Bean Jelly', '', '', '', 'Ten lua', '', 'Quận Bình Tân', '', 230, 4389, '[]'),
+(15, 3, 'Thach', 'Ngoc', '', '', '111AX', '', 'Nam ban', '', 230, 4418, '[]'),
+(40, 3, 'Thach', 'Ngoc', '', '', '111AX', '', 'Quận 3', '', 230, 4389, '[]'),
+(41, 3, 'Thach', '', '', '', '111AX', '', 'Huyện Cần Giờ', '', 230, 4389, '[]'),
+(50, 3, 'Bean Jelly', '', '', '', '111', '', 'Huyện Bình Chánh', '', 230, 4389, '[]'),
+(51, 3, 'Bean Jelly', '', '', '', '111', '', 'Quận 9', '', 230, 4389, '[]'),
+(52, 22, 'Thach', '', '', '', 'Cu lao', '', '', '', 230, 4389, ''),
+(53, 3, 'Bean Jelly', '', '0123456789', '', '111', '', 'Quận Bình Tân', '', 230, 4389, ''),
+(54, 23, 'Thach', '', '', '', '', '', '', '', 0, 0, '');
 
 -- --------------------------------------------------------
 
@@ -226,58 +237,34 @@ CREATE TABLE IF NOT EXISTS `tgm_api_session` (
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,
   PRIMARY KEY (`api_session_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=127 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=199 ;
 
 --
 -- Dumping data for table `tgm_api_session`
 --
 
 INSERT INTO `tgm_api_session` (`api_session_id`, `api_id`, `token`, `session_id`, `session_name`, `ip`, `date_added`, `date_modified`) VALUES
-(118, 1, 'dpLVcTXDhJFCSHbYxcN9kOBDkCs1xtcN', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beb1dabcb49', '127.0.0.1', '2016-08-25 15:52:42', '2016-08-25 15:53:33'),
-(117, 1, 'i5PUPY2gdmDoDxCuT4KhXXFOSjzsoQtL', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beb1d477e26', '127.0.0.1', '2016-08-25 15:52:36', '2016-08-25 15:52:36'),
-(116, 1, 'C3tup7n1gHypvewoKnJF7QL2nVJwZlcN', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beb1a97ed77', '127.0.0.1', '2016-08-25 15:51:53', '2016-08-25 15:52:03'),
-(115, 1, 'VQsp12F1uwtGLWJpPvGwkSD8cFSZrpiE', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beb0a524acb', '127.0.0.1', '2016-08-25 15:47:33', '2016-08-25 15:49:49'),
-(114, 1, 'YR8P9XNNgRQmr9a56FeLQEAodP702h3U', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beb07795280', '127.0.0.1', '2016-08-25 15:46:47', '2016-08-25 15:46:50'),
-(113, 1, 'zxS0XFzCqT8lhScrgMklTC7HuRtEuCcZ', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beb05c268f0', '127.0.0.1', '2016-08-25 15:46:20', '2016-08-25 15:46:25'),
-(112, 1, 'Xe7bGazaumkuPmpU1T0hNBM6FehcpNlB', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beaf2b417ff', '127.0.0.1', '2016-08-25 15:41:15', '2016-08-25 15:43:52'),
-(111, 1, 'tRsnLEsaprVURhnYxv7E1j80ITnLB9I5', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beaf01cca76', '127.0.0.1', '2016-08-25 15:40:33', '2016-08-25 15:40:36'),
-(110, 1, '83w6ALoSCu7ol17tOOs80ZOlj39BP4wY', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beae4947fe0', '127.0.0.1', '2016-08-25 15:37:29', '2016-08-25 15:40:29'),
-(109, 1, 'M03dwPnnmQYB6P8ypxuCPuaUWztx9dEN', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beae3ddec67', '127.0.0.1', '2016-08-25 15:37:17', '2016-08-25 15:37:17'),
-(108, 1, 'wGYXlZelGXn3pQj2j6ntSqQngkcybHtH', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beae3306589', '127.0.0.1', '2016-08-25 15:37:07', '2016-08-25 15:37:07'),
-(107, 1, 'rUZBIqKoapLjHTpdWzYSD247aLp9Zz4i', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beae07e105f', '127.0.0.1', '2016-08-25 15:36:23', '2016-08-25 15:36:23'),
-(106, 1, 'gyvjYzxSkdSxbNcaM8swPy4EYFK0Zaw5', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beadd22a393', '127.0.0.1', '2016-08-25 15:35:30', '2016-08-25 15:35:30'),
-(105, 1, 'wXUQFlY7uVCv15WbTf1CherbYHX7PIcL', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead9558893', '127.0.0.1', '2016-08-25 15:34:29', '2016-08-25 15:34:29'),
-(104, 1, '3ikWpkAZ3TPnN3HknJNjfbfviN3Txsy2', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead695a5b4', '127.0.0.1', '2016-08-25 15:33:45', '2016-08-25 15:33:45'),
-(86, 1, 'BoNz8xkVyBfUIdOKlT16IT9IxSAjdGtn', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead18d405f', '127.0.0.1', '2016-08-25 15:32:24', '2016-08-25 15:32:43'),
-(85, 1, 'UZsqvMB5tCBlD9y8aKy3KMiM9PzffZEn', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beabb102f86', '127.0.0.1', '2016-08-25 15:26:25', '2016-08-25 15:26:25'),
-(84, 1, 'V88EpGp5hZoEplCZRN0ArofS7CI6QYys', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beab48b47fc', '127.0.0.1', '2016-08-25 15:24:40', '2016-08-25 15:24:40'),
-(83, 1, 'cdSfVD0HPsr3FpbAULUjwMj4Z3UGyAXG', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beaa07d6384', '127.0.0.1', '2016-08-25 15:19:19', '2016-08-25 15:19:19'),
-(82, 1, 'Q8w23fYgi4lH6tYYCfU3js8MtXHlbMfc', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beaa054fb17', '127.0.0.1', '2016-08-25 15:19:17', '2016-08-25 15:19:17'),
-(103, 1, 'HIaSsNp6YUZ3TWEfk2j42rNpe0hAhFzk', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead50ed21d', '127.0.0.1', '2016-08-25 15:33:20', '2016-08-25 15:33:20'),
-(102, 1, 'aaM1vDi6mUITK5aJkIsNUHHOowJ5Bjgk', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead4e9d96a', '127.0.0.1', '2016-08-25 15:33:18', '2016-08-25 15:33:20'),
-(101, 1, 'U6TuG8SlWjP4f8X4RfXi8vnt8wBaRYFZ', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead4c9bf84', '127.0.0.1', '2016-08-25 15:33:16', '2016-08-25 15:33:18'),
-(100, 1, '4WpacwcbEDFrnPyUFo5EsWB5684vBuKM', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead4aa6379', '127.0.0.1', '2016-08-25 15:33:14', '2016-08-25 15:33:16'),
-(99, 1, 'tE15jIXDqc3bNUSbpYHEXe5OtoxScDyq', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead4839b6a', '127.0.0.1', '2016-08-25 15:33:12', '2016-08-25 15:33:14'),
-(98, 1, 'X9Xi6jrxAZCARZ06zzN5QYxPUgdsMfYv', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead461219d', '127.0.0.1', '2016-08-25 15:33:10', '2016-08-25 15:33:11'),
-(97, 1, 'XCZIrR7xgKx2HlOhNG4ZCy63nUAD0n1d', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead43d8410', '127.0.0.1', '2016-08-25 15:33:07', '2016-08-25 15:33:09'),
-(96, 1, 'ibRCz6io37rZ4eFNBENjGVmV9O5XW72N', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead41dfe73', '127.0.0.1', '2016-08-25 15:33:05', '2016-08-25 15:33:07'),
-(95, 1, 'xeGEAFGBUIAtF7JoDis0nw2rniXoKpY3', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead3ff3311', '127.0.0.1', '2016-08-25 15:33:03', '2016-08-25 15:33:05'),
-(94, 1, 'XgKttm9sd3CXEniQJSrLcIbL9yOkSMwL', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead3e10d44', '127.0.0.1', '2016-08-25 15:33:02', '2016-08-25 15:33:03'),
-(93, 1, 'tSqTrHayoG8FdUOICynxOgiTbFJLvgrB', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead3c27209', '127.0.0.1', '2016-08-25 15:33:00', '2016-08-25 15:33:01'),
-(92, 1, 'BJVeKVsicCcxNcNUP9qU0KDt9wz85G9L', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead39898d1', '127.0.0.1', '2016-08-25 15:32:57', '2016-08-25 15:32:59'),
-(91, 1, 'i0441AFGISpDyGpD2XR1xaxOh7FOWAwD', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead36ce075', '127.0.0.1', '2016-08-25 15:32:54', '2016-08-25 15:32:57'),
-(90, 1, 'zBwBd30fQYHOLS0Ok3OgOuj7NVr7cOsm', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead34bdca2', '127.0.0.1', '2016-08-25 15:32:52', '2016-08-25 15:32:54'),
-(89, 1, 'FatzyylbMUuXZII0U8ChWZqaNbrLLoAA', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead32828a0', '127.0.0.1', '2016-08-25 15:32:50', '2016-08-25 15:32:52'),
-(88, 1, 'ZgdwqACODtpoTWMwwsq6kAHasd6ALljf', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead3041a3e', '127.0.0.1', '2016-08-25 15:32:48', '2016-08-25 15:32:50'),
-(87, 1, 'RyzCbr31MLvedJ9pJALQ2iOeSfAs90FU', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57bead2c3c579', '127.0.0.1', '2016-08-25 15:32:44', '2016-08-25 15:32:47'),
-(119, 1, 'xt5InF7gXIpMosuADeV7HXHxDb4BNqAa', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beb21857609', '127.0.0.1', '2016-08-25 15:53:44', '2016-08-25 15:53:49'),
-(120, 1, 'hDw6jo744Nb7q2J78DMfpTFiSWvKI9Os', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beb221e0625', '127.0.0.1', '2016-08-25 15:53:53', '2016-08-25 15:53:53'),
-(121, 1, 'HnIRsa5G2dUDf0St0uFYI2CQfBoP0eaq', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beb224b345b', '127.0.0.1', '2016-08-25 15:53:56', '2016-08-25 15:53:56'),
-(122, 1, 'yNGZRL2ZTrCeVbcWICI7Nu7FaapLB2Qs', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beb229644ad', '127.0.0.1', '2016-08-25 15:54:01', '2016-08-25 15:54:04'),
-(123, 1, 'IjBXVJCFdG0bRI9RlLgeSOTKAnornCA6', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beb22d5778d', '127.0.0.1', '2016-08-25 15:54:05', '2016-08-25 15:54:05'),
-(124, 1, 'Zvy8ROcKUUKHuG4i9PPgfjJFK95BPDtR', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beb2300606b', '127.0.0.1', '2016-08-25 15:54:08', '2016-08-25 15:54:08'),
-(125, 1, 'g8pMh0J0Tkz3k6kHksbzJ6unbyM3wlic', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beb237b281b', '127.0.0.1', '2016-08-25 15:54:15', '2016-08-25 15:54:26'),
-(126, 1, '2Bv6P9wvKTshSNtL4QvLfx6jZvlC3mdv', 'd94e5ahkbvvumigmp12lf752n3', 'temp_session_57beb24a59285', '127.0.0.1', '2016-08-25 15:54:34', '2016-08-25 15:54:34');
+(184, 1, 'o8PIClyouDkbeCmgUv9BlVxaHECMJPgP', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c5138390635', '127.0.0.1', '2016-08-30 12:02:59', '2016-08-30 12:03:02'),
+(183, 1, 'wNeHhPMWcImpl7H2p4wquhDM5vXS4M01', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c5137a4fe18', '127.0.0.1', '2016-08-30 12:02:50', '2016-08-30 12:02:50'),
+(182, 1, 'S78e8LULnGEzBBsEGFsL7iITXPMOQ21o', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c51378e6adc', '127.0.0.1', '2016-08-30 12:02:48', '2016-08-30 12:02:48'),
+(181, 1, 'GcH6va8wDEtA5PYvnGZmMMVdhfFi5lhE', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c513734ba71', '127.0.0.1', '2016-08-30 12:02:43', '2016-08-30 12:02:43'),
+(180, 1, 'gphwlqa0iSabXAlRSMfkFPby3V1RXAQd', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c5136f557ab', '127.0.0.1', '2016-08-30 12:02:39', '2016-08-30 12:02:39'),
+(179, 1, '2uHjo7EfXWpIWeoL9xGn04oEBuzaUqqB', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c51158d96e9', '127.0.0.1', '2016-08-30 11:53:44', '2016-08-30 11:53:44'),
+(178, 1, 'xGCTxsGDyT3vZCr6bXwcgiYueJz9z2ix', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c511567465d', '127.0.0.1', '2016-08-30 11:53:42', '2016-08-30 11:53:42'),
+(198, 1, 'X33D1BXfxJt6GnUIUqOtWLG4gojssOos', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c513a69fbcb', '127.0.0.1', '2016-08-30 12:03:34', '2016-08-30 12:03:34'),
+(197, 1, 'oipStldacVxrDBgBv8TZhZSNk3oENGYj', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c513a3ca2df', '127.0.0.1', '2016-08-30 12:03:31', '2016-08-30 12:03:34'),
+(196, 1, 'YMZtXaIqWOYdXwZk1PeBNZnJWBFkgDYn', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c513a1755e6', '127.0.0.1', '2016-08-30 12:03:29', '2016-08-30 12:03:31'),
+(195, 1, 'KvkSwHTffhosXsWecb5Agq4YVeco7yas', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c5139f1fccb', '127.0.0.1', '2016-08-30 12:03:27', '2016-08-30 12:03:28'),
+(194, 1, 'GpKsqyCdrYKntEUKgQaQMBDAtfg0Qf6n', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c5139d1a994', '127.0.0.1', '2016-08-30 12:03:25', '2016-08-30 12:03:26'),
+(193, 1, 'ribiYiEoAGDZKBJ7CXj02eoMitBJJdEz', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c5139b1b098', '127.0.0.1', '2016-08-30 12:03:23', '2016-08-30 12:03:24'),
+(192, 1, 'Cf2TNFNQ4i2y8NfTFz03eR1qHjL64132', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c51398c24e1', '127.0.0.1', '2016-08-30 12:03:20', '2016-08-30 12:03:22'),
+(191, 1, 'RwqALay9NvGm7hj7vVqg72qanEdrnZe5', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c51396943d5', '127.0.0.1', '2016-08-30 12:03:18', '2016-08-30 12:03:20'),
+(190, 1, 'TNxnDivYJJJ5VfYtNLHW11Z1G7jin8U3', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c513947d67a', '127.0.0.1', '2016-08-30 12:03:16', '2016-08-30 12:03:18'),
+(189, 1, 'f51SWXHFYJ8Ep1cJ9OhDYkVXHV7DrCtn', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c5139280608', '127.0.0.1', '2016-08-30 12:03:14', '2016-08-30 12:03:16'),
+(188, 1, 'iSzFZsIMzAi4fr76xNytMwY0YbOhDQ7M', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c513902f2d3', '127.0.0.1', '2016-08-30 12:03:12', '2016-08-30 12:03:14'),
+(187, 1, '8qnoqn6OHEnZsjPRl1KWZpx37Uj5TKv9', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c5138e1bc79', '127.0.0.1', '2016-08-30 12:03:10', '2016-08-30 12:03:11'),
+(186, 1, 'qTotXGArzniVhK5lNdQReRMbp2sDlDNR', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c51389784c2', '127.0.0.1', '2016-08-30 12:03:05', '2016-08-30 12:03:09'),
+(185, 1, 'K9Rn8CJdEqsRxZshRLYfPFQ8oEfMNEzF', 'f8dte0lqgdm87024rh43mp8h93', 'temp_session_57c51386c7ca6', '127.0.0.1', '2016-08-30 12:03:02', '2016-08-30 12:03:04');
 
 -- --------------------------------------------------------
 
@@ -541,43 +528,14 @@ CREATE TABLE IF NOT EXISTS `tgm_cart` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`cart_id`),
   KEY `cart_id` (`customer_id`,`session_id`,`product_id`,`recurring_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=60 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=110 ;
 
 --
 -- Dumping data for table `tgm_cart`
 --
 
 INSERT INTO `tgm_cart` (`cart_id`, `customer_id`, `session_id`, `product_id`, `recurring_id`, `option`, `accessories`, `has_access_sale`, `parent_id`, `quantity`, `date_added`) VALUES
-(4, 1, '4s2fhl0rhmvc1i7u81007onct4', 40, 0, '[]', '[]', 0, 0, 1, '2016-08-17 09:32:00'),
-(20, 3, 'd94e5ahkbvvumigmp12lf752n3', 40, 0, '[]', '{"41":"41"}', 0, 0, 1, '2016-08-17 12:08:45'),
-(30, 3, 'd94e5ahkbvvumigmp12lf752n3', 40, 0, '[]', '[]', 0, 0, 4, '2016-08-18 11:14:53');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tgm_cat`
---
-
-CREATE TABLE IF NOT EXISTS `tgm_cat` (
-  `cat_id` int(11) NOT NULL AUTO_INCREMENT,
-  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `parent_id` int(11) NOT NULL DEFAULT '0',
-  `top` tinyint(1) NOT NULL,
-  `column` int(3) NOT NULL,
-  `sort_order` int(3) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL,
-  `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `date_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`cat_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `tgm_cat`
---
-
-INSERT INTO `tgm_cat` (`cat_id`, `image`, `parent_id`, `top`, `column`, `sort_order`, `status`, `date_added`, `date_modified`) VALUES
-(1, '', 0, 0, 1, 0, 1, '2016-08-23 11:13:10', '2016-08-23 11:13:10'),
-(2, '', 1, 0, 1, 1, 1, '2016-08-23 14:00:32', '2016-08-23 14:00:32');
+(4, 1, '4s2fhl0rhmvc1i7u81007onct4', 40, 0, '[]', '[]', 0, 0, 1, '2016-08-17 09:32:00');
 
 -- --------------------------------------------------------
 
@@ -927,85 +885,6 @@ INSERT INTO `tgm_category_to_store` (`category_id`, `store_id`) VALUES
 (57, 0),
 (58, 0),
 (59, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tgm_cat_description`
---
-
-CREATE TABLE IF NOT EXISTS `tgm_cat_description` (
-  `cat_id` int(11) NOT NULL,
-  `language_id` int(11) NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
-  `description` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `meta_description` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `meta_keyword` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`cat_id`,`language_id`),
-  KEY `name` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tgm_cat_description`
---
-
-INSERT INTO `tgm_cat_description` (`cat_id`, `language_id`, `name`, `description`, `meta_description`, `meta_keyword`) VALUES
-(1, 2, 'News', '', '', ''),
-(2, 2, 'new2', '', '', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tgm_cat_to_layout`
---
-
-CREATE TABLE IF NOT EXISTS `tgm_cat_to_layout` (
-  `cat_id` int(11) NOT NULL,
-  `store_id` int(11) NOT NULL,
-  `layout_id` int(11) NOT NULL,
-  PRIMARY KEY (`cat_id`,`store_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tgm_cat_to_store`
---
-
-CREATE TABLE IF NOT EXISTS `tgm_cat_to_store` (
-  `cat_id` int(11) NOT NULL,
-  `store_id` int(11) NOT NULL,
-  PRIMARY KEY (`cat_id`,`store_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tgm_cat_to_store`
---
-
-INSERT INTO `tgm_cat_to_store` (`cat_id`, `store_id`) VALUES
-(1, 0),
-(2, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tgm_comment`
---
-
-CREATE TABLE IF NOT EXISTS `tgm_comment` (
-  `comment_id` int(11) NOT NULL AUTO_INCREMENT,
-  `news_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
-  `author` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
-  `text` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `rating` int(1) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '0',
-  `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `date_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `countcomment` int(11) NOT NULL,
-  PRIMARY KEY (`comment_id`),
-  KEY `news_id` (`news_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -1382,7 +1261,7 @@ CREATE TABLE IF NOT EXISTS `tgm_currency` (
 
 INSERT INTO `tgm_currency` (`currency_id`, `title`, `code`, `symbol_left`, `symbol_right`, `decimal_place`, `value`, `status`, `date_modified`) VALUES
 (2, 'US Dollar', 'USD', '$', '', '2', 1.10270000, 1, '2016-07-22 03:49:21'),
-(4, 'VNĐ', 'VND', '', 'đ', '', 1.00000000, 1, '2016-08-26 08:57:00');
+(4, 'VNĐ', 'VND', '', 'đ', '', 1.00000000, 1, '2016-08-31 05:49:19');
 
 -- --------------------------------------------------------
 
@@ -1418,7 +1297,7 @@ CREATE TABLE IF NOT EXISTS `tgm_customer` (
   `note` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `picture` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`customer_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `tgm_customer`
@@ -1426,7 +1305,9 @@ CREATE TABLE IF NOT EXISTS `tgm_customer` (
 
 INSERT INTO `tgm_customer` (`customer_id`, `customer_group_id`, `store_id`, `firstname`, `lastname`, `email`, `telephone`, `fax`, `password`, `salt`, `cart`, `wishlist`, `newsletter`, `address_id`, `custom_field`, `ip`, `status`, `approved`, `safe`, `token`, `code`, `date_added`, `fbid`, `ggid`, `note`, `picture`) VALUES
 (1, 1, 0, 'Thach', '', 'creamsanwich@gmail.com', '1234444', '', '44deed9cc83f9ac806c3ffe5182ab0aa60ce8b27', '2cJMZNEqQ', NULL, NULL, 0, 1, '', '127.0.0.1', 1, 1, 0, '', '', '2016-08-13 10:31:36', '', '', '', ''),
-(3, 1, 0, 'Bean Jelly', 'Jelly', 'nvngocthach@gmail.com', '0123456789', '', '', '', NULL, NULL, 0, 2, '[]', '127.0.0.1', 1, 1, 0, '', '', '2016-08-15 10:25:57', '521001851425288', '115736310138423736235', '', '');
+(3, 1, 0, 'Bean Jelly', 'Jelly', 'nvngocthach@gmail.com', '0123456789', '', 'ba1e2bfaf8a152559374e10961f385b397319277', 'o6TTXKrvq', NULL, NULL, 0, 2, '[]', '127.0.0.1', 1, 1, 0, '', '', '2016-08-15 10:25:57', '521001851425288', '115736310138423736235', '', ''),
+(22, 1, 0, 'Thach', '', 'nvngocthach94@gmail.com', '124123123', '', 'b40d16c7d174180437423b13aabcd89c2529284e', 'rQkfOT7NW', NULL, NULL, 0, 52, '', '127.0.0.1', 1, 1, 0, '', '', '2016-08-30 10:15:54', '', '', '', ''),
+(23, 1, 0, 'Thach', '', 'asd@gmail.com', '', '', '4fcffce05978789741f732e90cdf1a24e57f0122', 'zUIKvObAj', NULL, NULL, 0, 54, '', '127.0.0.1', 1, 1, 0, '', '', '2016-08-31 14:45:15', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -1442,7 +1323,7 @@ CREATE TABLE IF NOT EXISTS `tgm_customer_activity` (
   `ip` varchar(40) NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`customer_activity_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=66 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=135 ;
 
 --
 -- Dumping data for table `tgm_customer_activity`
@@ -1513,7 +1394,76 @@ INSERT INTO `tgm_customer_activity` (`customer_activity_id`, `customer_id`, `key
 (62, 3, 'login', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-24 16:18:09'),
 (63, 0, 'order_guest', '{"name":"Thach ","order_id":47}', '127.0.0.1', '2016-08-25 15:19:04'),
 (64, 0, 'order_guest', '{"name":"Thach ","order_id":48}', '127.0.0.1', '2016-08-25 15:23:24'),
-(65, 0, 'order_guest', '{"name":"Thach ","order_id":49}', '127.0.0.1', '2016-08-25 15:37:01');
+(65, 0, 'order_guest', '{"name":"Thach ","order_id":49}', '127.0.0.1', '2016-08-25 15:37:01'),
+(66, 3, 'login', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-27 08:48:29'),
+(67, 3, 'login', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-27 09:05:12'),
+(68, 0, 'order_guest', '{"name":"Thach ","order_id":57}', '127.0.0.1', '2016-08-29 13:25:51'),
+(69, 0, 'order_guest', '{"name":"Thach ","order_id":76}', '127.0.0.1', '2016-08-29 15:30:47'),
+(70, 3, 'login', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:10:25'),
+(71, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:56:35'),
+(72, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:56:35'),
+(73, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:56:36'),
+(74, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:56:38'),
+(75, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:56:40'),
+(76, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:56:44'),
+(77, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:56:50'),
+(78, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:56:51'),
+(79, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:57:48'),
+(80, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:57:49'),
+(81, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:57:55'),
+(82, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:57:57'),
+(83, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:58:03'),
+(84, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:58:04'),
+(85, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:58:06'),
+(86, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:58:09'),
+(87, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:58:15'),
+(88, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:58:16'),
+(89, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:58:21'),
+(90, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:58:22'),
+(91, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:58:23'),
+(92, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:58:28'),
+(93, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:59:50'),
+(94, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:59:53'),
+(95, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 16:59:55'),
+(96, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 17:00:23'),
+(97, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 17:00:25'),
+(98, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-29 18:13:56'),
+(99, 3, 'order_account', '{"customer_id":"3","name":"Bean Jelly Jelly","order_id":77}', '127.0.0.1', '2016-08-29 18:18:23'),
+(100, 0, 'order_guest', '{"name":"Thach ","order_id":78}', '127.0.0.1', '2016-08-29 18:43:24'),
+(101, 0, 'order_guest', '{"name":"Thach ","order_id":79}', '127.0.0.1', '2016-08-30 08:34:17'),
+(102, 0, 'order_guest', '{"name":"Thach ","order_id":80}', '127.0.0.1', '2016-08-30 08:43:07'),
+(103, 0, 'order_guest', '{"name":"Thach ","order_id":81}', '127.0.0.1', '2016-08-30 08:46:42'),
+(104, 3, 'login', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 08:48:15'),
+(105, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 09:12:41'),
+(106, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 09:12:57'),
+(107, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 09:13:01'),
+(108, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 09:15:36'),
+(109, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 09:16:09'),
+(110, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 09:17:37'),
+(111, 3, 'order_account', '{"customer_id":"3","name":"Bean Jelly Jelly","order_id":82}', '127.0.0.1', '2016-08-30 09:17:38'),
+(112, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 09:37:20'),
+(113, 3, 'order_account', '{"customer_id":"3","name":"Bean Jelly Jelly","order_id":83}', '127.0.0.1', '2016-08-30 09:37:21'),
+(114, 3, 'login', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 09:47:02'),
+(115, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 09:47:37'),
+(116, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 09:49:28'),
+(117, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 09:51:49'),
+(118, 3, 'order_account', '{"customer_id":"3","name":"Bean Jelly Jelly","order_id":84}', '127.0.0.1', '2016-08-30 09:51:51'),
+(119, 3, 'address_edit', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 09:52:56'),
+(120, 3, 'login', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 09:53:40'),
+(121, 3, 'order_account', '{"customer_id":"3","name":"Bean Jelly Jelly","order_id":85}', '127.0.0.1', '2016-08-30 09:55:37'),
+(122, 22, 'register', '{"customer_id":22,"name":"Thach "}', '127.0.0.1', '2016-08-30 10:15:55'),
+(123, 22, 'address_edit', '{"customer_id":"22","name":"Thach "}', '127.0.0.1', '2016-08-30 10:22:09'),
+(124, 22, 'order_account', '{"customer_id":"22","name":"Thach ","order_id":86}', '127.0.0.1', '2016-08-30 10:47:16'),
+(125, 3, 'login', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 10:47:38'),
+(126, 3, 'login', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 10:48:37'),
+(127, 3, 'address_add', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-30 11:53:28'),
+(128, 3, 'order_account', '{"customer_id":"3","name":"Bean Jelly Jelly","order_id":87}', '127.0.0.1', '2016-08-30 11:53:30'),
+(129, 0, 'order_guest', '{"name":"thach ","order_id":88}', '127.0.0.1', '2016-08-30 12:00:35'),
+(130, 0, 'order_guest', '{"name":"Thach ","order_id":89}', '127.0.0.1', '2016-08-30 12:02:35'),
+(131, 23, 'register', '{"customer_id":23,"name":"Thach "}', '127.0.0.1', '2016-08-31 14:45:16'),
+(132, 23, 'login', '{"customer_id":"23","name":"Thach "}', '127.0.0.1', '2016-08-31 15:36:13'),
+(133, 3, 'login', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-31 15:38:10'),
+(134, 3, 'address_edit', '{"customer_id":"3","name":"Bean Jelly Jelly"}', '127.0.0.1', '2016-08-31 15:41:02');
 
 -- --------------------------------------------------------
 
@@ -1584,7 +1534,7 @@ CREATE TABLE IF NOT EXISTS `tgm_customer_ip` (
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`customer_ip_id`),
   KEY `ip` (`ip`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `tgm_customer_ip`
@@ -1593,7 +1543,9 @@ CREATE TABLE IF NOT EXISTS `tgm_customer_ip` (
 INSERT INTO `tgm_customer_ip` (`customer_ip_id`, `customer_id`, `ip`, `date_added`) VALUES
 (1, 1, '127.0.0.1', '2016-08-13 10:31:37'),
 (2, 3, '127.0.0.1', '2016-08-15 10:28:47'),
-(3, 21, '127.0.0.1', '2016-08-15 14:15:12');
+(3, 21, '127.0.0.1', '2016-08-15 14:15:12'),
+(4, 22, '127.0.0.1', '2016-08-30 10:15:56'),
+(5, 23, '127.0.0.1', '2016-08-31 14:45:16');
 
 -- --------------------------------------------------------
 
@@ -1611,14 +1563,15 @@ CREATE TABLE IF NOT EXISTS `tgm_customer_login` (
   PRIMARY KEY (`customer_login_id`),
   KEY `email` (`email`),
   KEY `ip` (`ip`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `tgm_customer_login`
 --
 
 INSERT INTO `tgm_customer_login` (`customer_login_id`, `email`, `ip`, `total`, `date_added`, `date_modified`) VALUES
-(1, 'nvngocthach@gmail.com', '127.0.0.1', 3, '2016-08-13 05:56:42', '2016-08-17 06:51:06');
+(3, 'admin', '127.0.0.1', 1, '2016-08-31 10:36:02', '2016-08-31 10:36:02'),
+(2, '', '127.0.0.1', 6, '2016-08-29 11:04:30', '2016-08-30 07:12:12');
 
 -- --------------------------------------------------------
 
@@ -2535,7 +2488,7 @@ CREATE TABLE IF NOT EXISTS `tgm_extension` (
   `type` varchar(32) NOT NULL,
   `code` varchar(32) NOT NULL,
   PRIMARY KEY (`extension_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
 
 --
 -- Dumping data for table `tgm_extension`
@@ -2576,8 +2529,9 @@ INSERT INTO `tgm_extension` (`extension_id`, `type`, `code`) VALUES
 (33, 'module', 'latest_by_category'),
 (34, 'module', 'featuredCategory'),
 (35, 'module', 'html'),
-(36, 'module', 'newsfeatured'),
-(37, 'module', 'cat');
+(38, 'module', 'news_category'),
+(39, 'module', 'news_by_category'),
+(40, 'module', 'news_carousel');
 
 -- --------------------------------------------------------
 
@@ -2783,7 +2737,7 @@ CREATE TABLE IF NOT EXISTS `tgm_language` (
 --
 
 INSERT INTO `tgm_language` (`language_id`, `name`, `code`, `locale`, `image`, `directory`, `sort_order`, `status`) VALUES
-(1, 'English', 'en-gb', 'en_US.UTF-8,en_US,en-gb,english', 'gb.png', 'english', 2, 0),
+(1, 'English', 'en-gb', 'en_US.UTF-8,en_US,en-gb,english', 'gb.png', 'english', 0, 0),
 (2, 'Vietnamese', 'vi-vn', '', '', '', 1, 1);
 
 -- --------------------------------------------------------
@@ -2832,7 +2786,7 @@ CREATE TABLE IF NOT EXISTS `tgm_layout_module` (
   `position` varchar(20) NOT NULL,
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`layout_module_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=210 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=267 ;
 
 --
 -- Dumping data for table `tgm_layout_module`
@@ -2844,24 +2798,22 @@ INSERT INTO `tgm_layout_module` (`layout_module_id`, `layout_id`, `code`, `posit
 (20, 5, '0', 'column_left', 2),
 (69, 10, 'affiliate', 'column_right', 1),
 (68, 6, 'account', 'column_right', 1),
-(191, 1, 'bestseller.34', 'tab_2', 0),
-(190, 1, 'featured.28', 'tab_1', 1),
 (206, 3, 'slideshow.42', 'content_top', 0),
 (205, 3, 'category', 'column_left', 1),
-(187, 1, 'featuredCategory.40', 'content_bottom_2', 0),
-(189, 1, 'slideshow.27', 'content_top', 1),
-(188, 1, 'carousel.29', 'content_bottom_2', 2),
-(186, 1, 'latest_by_category.39', 'content_bottom', 4),
-(185, 1, 'popup.36', 'content_bottom', 3),
-(184, 1, 'latest.32', 'content_bottom', 1),
-(183, 1, 'banner_ads.38', 'content_bottom', 0),
+(266, 1, 'latest_by_category.39', 'content_bottom', 4),
+(265, 1, 'special.33', 'tab_3', 0),
+(264, 1, 'bestseller.34', 'tab_2', 0),
+(262, 1, 'slideshow.27', 'content_top', 1),
+(263, 1, 'featured.28', 'tab_1', 1),
+(261, 1, 'carousel.29', 'content_bottom_2', 2),
+(260, 1, 'featuredCategory.40', 'content_bottom_2', 0),
+(259, 1, 'popup.36', 'content_bottom', 3),
+(256, 1, 'banner.31', 'col_right', 1),
 (170, 14, 'html.41', 'footer_top', 1),
-(182, 1, 'banner.31', 'col_right', 1),
-(192, 1, 'special.33', 'tab_3', 0),
+(258, 1, 'latest.32', 'content_bottom', 1),
 (193, 15, 'category', 'header_top', 0),
 (207, 3, 'banner.30', 'column_left', 2),
-(208, 8, 'newsfeatured.43', 'content_top', 1),
-(209, 8, 'cat', 'content_top', 2);
+(257, 1, 'banner_ads.38', 'content_bottom', 0);
 
 -- --------------------------------------------------------
 
@@ -2875,7 +2827,7 @@ CREATE TABLE IF NOT EXISTS `tgm_layout_route` (
   `store_id` int(11) NOT NULL,
   `route` varchar(255) NOT NULL,
   PRIMARY KEY (`layout_route_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=83 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=89 ;
 
 --
 -- Dumping data for table `tgm_layout_route`
@@ -2885,11 +2837,11 @@ INSERT INTO `tgm_layout_route` (`layout_route_id`, `layout_id`, `store_id`, `rou
 (38, 6, 0, 'account/%'),
 (17, 10, 0, 'affiliate/%'),
 (81, 3, 0, 'product/category'),
-(72, 1, 0, 'common/home'),
+(87, 1, 0, 'common/home'),
 (20, 2, 0, 'product/product'),
 (24, 11, 0, 'information/information'),
 (23, 7, 0, 'checkout/%'),
-(82, 8, 0, 'information/contact'),
+(88, 8, 0, 'information/contact'),
 (32, 9, 0, 'information/sitemap'),
 (34, 4, 0, ''),
 (45, 5, 0, 'product/manufacturer'),
@@ -3089,7 +3041,7 @@ CREATE TABLE IF NOT EXISTS `tgm_module` (
   `code` varchar(32) NOT NULL,
   `setting` text NOT NULL,
   PRIMARY KEY (`module_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=45 ;
 
 --
 -- Dumping data for table `tgm_module`
@@ -3106,41 +3058,11 @@ INSERT INTO `tgm_module` (`module_id`, `name`, `code`, `setting`) VALUES
 (34, 'Bán chạy nhất trang chủ', 'bestseller', '{"name":"B\\u00e1n ch\\u1ea1y nh\\u1ea5t trang ch\\u1ee7","limit":"5","width":"200","height":"200","status":"1"}'),
 (36, 'Pop up home', 'popup', '{"name":"Pop up home","banner_id":"9","width":"400","height":"300","delay":"4","status":"0"}'),
 (38, 'QCao', 'banner_ads', '{"name":"QCao","banner_id":"6","width":"100","height":"200","top":"100","left":"","bottom":"","right":"0","status":"1"}'),
-(39, 'Sản phẩm theo danh mục', 'latest_by_category', '{"name":"S\\u1ea3n ph\\u1ea9m theo danh m\\u1ee5c","path":"Laptops &amp; Notebooks","category_id":"18","limit":"6","width":"200","height":"200","status":"1"}'),
+(39, 'Sản phẩm theo danh mục laptop', 'latest_by_category', '{"name":"S\\u1ea3n ph\\u1ea9m theo danh m\\u1ee5c laptop","path":"Laptops &amp; Notebooks","category_id":"18","limit":"6","width":"200","height":"200","status":"1"}'),
 (40, 'Danh mục nổi bật', 'featuredCategory', '{"name":"Danh m\\u1ee5c n\\u1ed5i b\\u1eadt","category":["18","25"],"limit":"5","description_status":"0","description_length":"200","width":"250","height":"160","status":"1"}'),
 (41, 'Hot tags footer', 'html', '{"name":"Hot tags footer","module_description":{"2":{"title":"Hot tags","description":"&lt;a href=&quot;#&quot;&gt;Abbout Hoa K\\u1ef3&lt;\\/a&gt; | &lt;a href=&quot;#&quot;&gt;Similar Mom&lt;\\/a&gt; | &lt;a href=&quot;#&quot;&gt;Ensure Gold&lt;\\/a&gt; | &lt;a href=&quot;#&quot;&gt;Abbout Hoa K\\u1ef3&lt;\\/a&gt; | &lt;a href=&quot;#&quot;&gt;Similar Mom&lt;\\/a&gt; | &lt;a href=&quot;#&quot;&gt;Ensure Gold&lt;\\/a&gt; | &lt;a href=&quot;#&quot;&gt;Abbout Hoa K\\u1ef3&lt;\\/a&gt; | &lt;a href=&quot;#&quot;&gt;Similar Mom&lt;\\/a&gt; | &lt;a href=&quot;#&quot;&gt;Ensure Gold&lt;\\/a&gt; | &lt;a href=&quot;#&quot;&gt;Abbout Hoa K\\u1ef3&lt;\\/a&gt; | &lt;a href=&quot;#&quot;&gt;Similar Mom&lt;\\/a&gt; | &lt;a href=&quot;#&quot;&gt;Ensure Gold&lt;\\/a&gt;"}},"status":"1"}'),
 (42, 'Category', 'slideshow', '{"name":"Category","banner_id":"7","width":"870","height":"290","status":"1"}'),
-(43, 'Chi tiết', 'newsfeatured', '{"name":"Chi ti\\u1ebft","news_name":"","news":["1"],"limit":"5","width":"200","height":"200","status":"1"}');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tgm_news`
---
-
-CREATE TABLE IF NOT EXISTS `tgm_news` (
-  `news_id` int(11) NOT NULL AUTO_INCREMENT,
-  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `date_available` date NOT NULL,
-  `subtract` tinyint(1) NOT NULL DEFAULT '1',
-  `sort_order` int(11) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '0',
-  `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `date_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `viewed` int(5) NOT NULL DEFAULT '0',
-  `highlights` tinyint(1) NOT NULL DEFAULT '0',
-  `filename` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `airline` int(11) NOT NULL,
-  `departure` int(11) NOT NULL,
-  PRIMARY KEY (`news_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `tgm_news`
---
-
-INSERT INTO `tgm_news` (`news_id`, `image`, `date_available`, `subtract`, `sort_order`, `status`, `date_added`, `date_modified`, `viewed`, `highlights`, `filename`, `airline`, `departure`) VALUES
-(1, '', '2016-08-22', 1, 1, 1, '2016-08-23 13:59:21', '2016-08-23 13:59:21', 7, 0, '', 0, 0);
+(44, 'Tin tức', 'news_by_category', '{"name":"Tin t\\u1ee9c","category":"1","limit":"5","width":"200","height":"200","status":"1"}');
 
 -- --------------------------------------------------------
 
@@ -3159,7 +3081,15 @@ CREATE TABLE IF NOT EXISTS `tgm_news_articles` (
   `viewed` int(11) NOT NULL DEFAULT '0',
   `login_to_view` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`article_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `tgm_news_articles`
+--
+
+INSERT INTO `tgm_news_articles` (`article_id`, `author_id`, `date_added`, `date_modified`, `image`, `sort_order`, `status`, `viewed`, `login_to_view`) VALUES
+(1, 1, '2016-08-30 14:16:06', '2016-08-31 10:18:42', 'catalog/tin_tuc/bai_viet_2/ip1.jpg', 1, 1, 43, 0),
+(2, 1, '2016-08-30 15:30:49', '2016-08-31 12:05:29', 'catalog/tin_tuc/bai_viet_2/ip1.jpg', 1, 1, 132, 0);
 
 -- --------------------------------------------------------
 
@@ -3179,6 +3109,14 @@ CREATE TABLE IF NOT EXISTS `tgm_news_articles_description` (
   PRIMARY KEY (`article_id`,`language_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tgm_news_articles_description`
+--
+
+INSERT INTO `tgm_news_articles_description` (`article_id`, `language_id`, `name`, `description`, `short_description`, `meta_description`, `meta_keyword`, `tag`) VALUES
+(1, 2, 'Test tin tức', '&lt;p&gt;&lt;b&gt;Test tin tức&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 15px; line-height: 25px;&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/span&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;br&gt;&lt;/p&gt;', 'Lorem ipsum dolor sit amet', '', '', ''),
+(2, 2, 'Kinh nghiệm chọn máy rửa xe tốt nhất', '&lt;p&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(79, 79, 79); font-family: Arial; line-height: 20px; font-size: 16px;&quot;&gt;Máy rửa xịt rửa xe máy – máy xịt rửa xe cao áp là thiết bị chuyên dụng và đóng vai trò quan trọng trong việc chăm sóc, vệ sinh xe ô tô, xe máy là những phương tiện đi lại đóng vai trò cực kỳ quan trọng do đó việc chăm sóc, bảo dưỡng phương tiện của mình cũng là điều dễ hiểu. Máy bơm rửa xe cao áp có nhiều loại như:&lt;/span&gt;&lt;span style=&quot;color: rgb(79, 79, 79); font-family: Arial; font-size: 13px; line-height: 20px;&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;div style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(79, 79, 79); font-family: inherit; font-size: 13px; font-style: inherit; font-weight: inherit; line-height: 20px; border: 0px; vertical-align: baseline;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 14px;&quot;&gt;-&amp;nbsp;&lt;a href=&quot;http://spro.vn/may-phun-xit-rua-xe-may-projet-p1600.html&quot; style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(18, 121, 190); cursor: pointer; transition: all 0.3s ease-in-out; border-width: 0px 0px 1px; border-bottom-style: solid; border-bottom-color: rgb(197, 197, 197); font-family: inherit; font-style: inherit; font-weight: inherit; vertical-align: baseline; background-image: none; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;&quot;&gt;Máy phun xịt rửa xe máy PROJET P1600&lt;/a&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;&lt;div style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(79, 79, 79); font-family: inherit; font-size: 13px; font-style: inherit; font-weight: inherit; line-height: 20px; border: 0px; vertical-align: baseline;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 14px;&quot;&gt;-&amp;nbsp;&lt;a href=&quot;http://spro.vn/may-phun-rua-cao-ap-projet-p22-1508btf.html&quot; style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(18, 121, 190); cursor: pointer; transition: all 0.3s ease-in-out; border-width: 0px 0px 1px; border-bottom-style: solid; border-bottom-color: rgb(197, 197, 197); font-family: inherit; font-style: inherit; font-weight: inherit; vertical-align: baseline; background-image: none; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;&quot;&gt;Máy phun rửa cao áp PROJET P22-1508BTF&lt;/a&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;&lt;div style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(79, 79, 79); font-family: inherit; font-size: 13px; font-style: inherit; font-weight: inherit; line-height: 20px; border: 0px; vertical-align: baseline;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 14px;&quot;&gt;-&amp;nbsp;&lt;a href=&quot;http://spro.vn/may-xit-rua-xe-ap-luc-cao-PROJET-P2200-15.html&quot; style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(18, 121, 190); cursor: pointer; transition: all 0.3s ease-in-out; border-width: 0px 0px 1px; border-bottom-style: solid; border-bottom-color: rgb(197, 197, 197); font-family: inherit; font-style: inherit; font-weight: inherit; vertical-align: baseline; background-image: none; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;&quot;&gt;Máy xịt rửa xe áp lực cao PROJET P2200-15&lt;/a&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;&lt;div style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(79, 79, 79); font-family: inherit; font-size: 13px; font-style: inherit; font-weight: inherit; line-height: 20px; border: 0px; vertical-align: baseline;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 14px;&quot;&gt;-&amp;nbsp;&lt;a href=&quot;http://spro.vn/may-xit-rua-ap-luc-cao-projet/may-xit-rua-xe-ap-luc-cao-P3000-15.html&quot; style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(18, 121, 190); cursor: pointer; transition: all 0.3s ease-in-out; border-width: 0px 0px 1px; border-bottom-style: solid; border-bottom-color: rgb(197, 197, 197); font-family: inherit; font-style: inherit; font-weight: inherit; vertical-align: baseline; background-image: none; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;&quot;&gt;Máy xịt rửa xe áp lực cao PROJET P3000-15&lt;/a&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;&lt;div style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(79, 79, 79); font-family: inherit; font-size: 13px; font-style: inherit; font-weight: inherit; line-height: 20px; border: 0px; vertical-align: baseline;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 14px;&quot;&gt;-&amp;nbsp;&lt;a href=&quot;http://spro.vn/may-rua-xe-cao-ap-7-5kw-projet-p7500-18.html&quot; style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(18, 121, 190); cursor: pointer; transition: all 0.3s ease-in-out; border-width: 0px 0px 1px; border-bottom-style: solid; border-bottom-color: rgb(197, 197, 197); font-family: inherit; font-style: inherit; font-weight: inherit; vertical-align: baseline; background-image: none; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;&quot;&gt;Máy rửa xe cao áp 5.5kw PROJET P5500-18&lt;/a&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;&lt;div style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(79, 79, 79); font-family: inherit; font-size: 13px; font-style: inherit; font-weight: inherit; line-height: 20px; border: 0px; vertical-align: baseline;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 14px;&quot;&gt;-&amp;nbsp;&lt;a href=&quot;http://spro.vn/may-xit-rua-cao-ap-projet-p5500-18-rua-oto-xe-tai.html&quot; style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(18, 121, 190); cursor: pointer; transition: all 0.3s ease-in-out; border-width: 0px 0px 1px; border-bottom-style: solid; border-bottom-color: rgb(197, 197, 197); font-family: inherit; font-style: inherit; font-weight: inherit; vertical-align: baseline; background-image: none; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;&quot;&gt;Máy xịt rửa cao áp 7.5kw PROJET P7500-18&lt;/a&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;&lt;p style=&quot;margin-bottom: 24px; padding: 0px; outline: 0px; border: 0px; font-family: &amp;quot;PT Sans&amp;quot;, sans-serif; font-size: 16px; vertical-align: baseline; color: rgb(48, 48, 48); line-height: 24px;&quot;&gt;Vậy hôm nay chúng ta cùng đi vào phân tích từng loại máy để có sự hiểu biết kỹ càng trước khi bước vào kinh doanh cũng như sắm cho mình một chiếc để phục vụ cá nhân.&lt;/p&gt;&lt;h2 style=&quot;margin-right: 0px; margin-bottom: 24px; margin-left: 0px; padding: 0px; outline: 0px; font-size: 16px; font-weight: bold; color: rgb(48, 48, 48); font-family: &amp;quot;PT Sans&amp;quot;, sans-serif; border: 0px; vertical-align: baseline; line-height: 24px;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 20px;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;&lt;u style=&quot;margin: 0px; padding: 0px; outline: 0px;&quot;&gt;KINH NGHIỆM CHỌN MÁY RỬA XE&lt;/u&gt;&lt;/strong&gt;&lt;/span&gt;&lt;/h2&gt;&lt;p style=&quot;margin-bottom: 24px; padding: 0px; outline: 0px; border: 0px; font-family: &amp;quot;PT Sans&amp;quot;, sans-serif; font-size: 16px; vertical-align: baseline; color: rgb(48, 48, 48); line-height: 24px;&quot;&gt;Hiện nay có hai nguồn cung cấp mặt hàng máy rửa xe là các nguồn không rõ rang, thường được lắp ráp, chắp ghép các phần lại với nhau từ các máy móc hỏng hóc lại với nhau để bán cho khách và các mặt hàng này thường được bày bán ở các khu thu mua đồ cũ còn được gọi là “&lt;em style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-weight: inherit; vertical-align: baseline;&quot;&gt;chợ giời&lt;/em&gt;”.&lt;/p&gt;&lt;p style=&quot;margin-bottom: 24px; padding: 0px; outline: 0px; border: 0px; font-family: &amp;quot;PT Sans&amp;quot;, sans-serif; font-size: 16px; vertical-align: baseline; color: rgb(48, 48, 48); line-height: 24px;&quot;&gt;Mua&amp;nbsp;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;máy xịt xe máy – máy xịt rửa cao áp&lt;/strong&gt;&amp;nbsp;ở chợ trời thì thường có các đặc điểm sau:&lt;/p&gt;&lt;p style=&quot;margin-bottom: 24px; padding: 0px; outline: 0px; border: 0px; font-family: &amp;quot;PT Sans&amp;quot;, sans-serif; font-size: 16px; vertical-align: baseline; color: rgb(48, 48, 48); line-height: 24px;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;&lt;u style=&quot;margin: 0px; padding: 0px; outline: 0px;&quot;&gt;Ưu điểm:&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;&lt;div style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(79, 79, 79); font-family: inherit; font-size: 13px; font-style: inherit; font-weight: inherit; line-height: 20px; border: 0px; vertical-align: baseline;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 16px;&quot;&gt;- Giá rẻ, sử dụng nhanh chóng, dễ tìm và dễ dàng có được, mang về sử dụng.&lt;/span&gt;&lt;br style=&quot;margin: 0px; padding: 0px; outline: 0px;&quot;&gt;&amp;nbsp;&lt;/div&gt;&lt;p style=&quot;margin-bottom: 24px; padding: 0px; outline: 0px; border: 0px; font-family: &amp;quot;PT Sans&amp;quot;, sans-serif; font-size: 16px; vertical-align: baseline; color: rgb(48, 48, 48); line-height: 24px;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;&lt;u style=&quot;margin: 0px; padding: 0px; outline: 0px;&quot;&gt;Nhược điểm:&amp;nbsp;&lt;/u&gt;&lt;/strong&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;&lt;div style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(79, 79, 79); font-family: inherit; font-size: 13px; font-style: inherit; font-weight: inherit; line-height: 20px; border: 0px; vertical-align: baseline;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 16px;&quot;&gt;- Nhanh chóng hỏng hóc lặt vặt, xài không ổn định, áp lực không chuẩn.&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(79, 79, 79); font-family: inherit; font-size: 13px; font-style: inherit; font-weight: inherit; line-height: 20px; border: 0px; vertical-align: baseline;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 16px;&quot;&gt;-&amp;nbsp;Ti thép rất hay bị trầy xước dẫn đến hiện tượng Phốt ti bơm nhanh hư hỏng.&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(79, 79, 79); font-family: inherit; font-size: 13px; font-style: inherit; font-weight: inherit; line-height: 20px; border: 0px; vertical-align: baseline;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 16px;&quot;&gt;- Dây đai bị trượt nên không suất ko đạt được áp suất cao gây ra tốn điện, việc phải thường xuyên thay dây đai không tránh khỏi việc định tâm dây đai sai lệch dẫn đến máy bị kêu ảnh hưởng đến tuổi bền của máy à Thay máy liên tục .&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(79, 79, 79); font-family: inherit; font-size: 13px; font-style: inherit; font-weight: inherit; line-height: 20px; border: 0px; vertical-align: baseline;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 16px;&quot;&gt;- Không nguồn gốc, không được bảo hành, nếu vừa mua về hư thì cũng không ai chịu trách nhiệm…&lt;/span&gt;&lt;/div&gt;&lt;p style=&quot;margin-bottom: 24px; padding: 0px; outline: 0px; border: 0px; font-family: &amp;quot;PT Sans&amp;quot;, sans-serif; font-size: 16px; vertical-align: baseline; color: rgb(48, 48, 48); line-height: 24px;&quot;&gt;&lt;img alt=&quot;Untitled-2&quot; class=&quot;aligncenter size-full wp-image-341&quot; src=&quot;https://sungxietbulongspro.files.wordpress.com/2016/03/untitled-2.jpg?w=648&amp;amp;h=324&quot; title=&quot;lua chon mua may xit rua xe tiet kiem chi phi nhat&quot; style=&quot;margin: 0px auto; padding: 0px; outline: 0px; transition: all 0.3s ease-in-out; max-width: 100%; border-width: initial; border-style: none; display: block; height: 324px; clear: both; width: 648px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin-bottom: 24px; padding: 0px; outline: 0px; border: 0px; font-family: &amp;quot;PT Sans&amp;quot;, sans-serif; font-size: 16px; vertical-align: baseline; color: rgb(48, 48, 48); line-height: 24px;&quot;&gt;Nếu là một người sành mua sắm, hay là người mua sắm thông mình thì sẽ lựa chọn các nguồn cung uy tín, có thương hiệu như các công ty, nhà máy có tiếng trên thị trường.&lt;/p&gt;&lt;p style=&quot;margin-bottom: 24px; padding: 0px; outline: 0px; border: 0px; font-family: &amp;quot;PT Sans&amp;quot;, sans-serif; font-size: 16px; vertical-align: baseline; color: rgb(48, 48, 48); line-height: 24px;&quot;&gt;Mua&amp;nbsp;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;máy&lt;/strong&gt;&amp;nbsp;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;xịt xe máy&lt;/strong&gt;&amp;nbsp;–&amp;nbsp;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;&lt;a href=&quot;http://spro.vn/may-xit-rua-ap-luc-cao&quot; style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(18, 121, 190); cursor: pointer; transition: all 0.3s ease-in-out; border-width: 0px 0px 1px; border-bottom-style: solid; border-bottom-color: rgb(197, 197, 197); font-family: inherit; font-style: inherit; font-weight: inherit; vertical-align: baseline; background-image: none; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;&quot;&gt;máy xịt rửa cao áp&lt;/a&gt;&lt;/strong&gt;&amp;nbsp;ở các siêu thị nhà cung cấp chính hãng sẽ có các đặc điểm sau:&lt;/p&gt;&lt;p style=&quot;margin-bottom: 24px; padding: 0px; outline: 0px; border: 0px; font-family: &amp;quot;PT Sans&amp;quot;, sans-serif; font-size: 16px; vertical-align: baseline; color: rgb(48, 48, 48); line-height: 24px;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;&lt;u style=&quot;margin: 0px; padding: 0px; outline: 0px;&quot;&gt;Ưu điểm:&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;&lt;ul style=&quot;margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0px; outline: 0px; list-style-type: none; color: rgb(79, 79, 79); font-family: Arial; font-size: 13px; line-height: 20px;&quot;&gt;&lt;li style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; font-weight: inherit; vertical-align: baseline;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 16px;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;Tiết kiệm nước&lt;/strong&gt;: Trong cùng một thời gian chạy máy, lượng nước tiêu thụ chỉ bằng 50% so với máy bơm rửa thông thường.&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; font-weight: inherit; vertical-align: baseline;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 16px;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;Tiết kiệm thời gian&lt;/strong&gt;: Áp lực nước cao giúp thổi bay các “Vết bẩn cứng đầu” một cách nhanh chóng, cho phép tẩy rửa các vết bẩn ở những vị trí khó thao tác như gầm xe, bánh xe một cách dễ dàng. Thời gian rửa một chiếc xe giảm thiểu một cách đáng kể, do đó năng xuất rửa xe chắc chắn sẽ tăng vọt.&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; font-weight: inherit; vertical-align: baseline;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 16px;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;Tiết kiệm điện&lt;/strong&gt;: Một chiếc máy với cùng công suất nhưng áp lực nước ra cao hơn, giúp rửa xe nhanh hơn, đương nhiên sẽ giúp quí khách tiết kiệm điện.&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; font-weight: inherit; vertical-align: baseline;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 16px;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;Tiết kiệm tiền:&lt;/strong&gt;Chỉ cần làm một việc đơn giản là qui đổi giá mua máy, thời gian, điện, nước và độ bền của máy ra tiền, quí khách hàng sẽ dễ dàng nhận thấy ưu điểm tuyệt đối của máy phun rửa áp lực cao.&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;&amp;nbsp;&lt;/strong&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p style=&quot;margin-bottom: 24px; padding: 0px; outline: 0px; border: 0px; font-family: &amp;quot;PT Sans&amp;quot;, sans-serif; font-size: 16px; vertical-align: baseline; color: rgb(48, 48, 48); line-height: 24px;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;&lt;u style=&quot;margin: 0px; padding: 0px; outline: 0px;&quot;&gt;Nhược điểm:&lt;/u&gt;&lt;/strong&gt;&lt;/p&gt;&lt;ul style=&quot;margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0px; outline: 0px; list-style-type: none; color: rgb(79, 79, 79); font-family: Arial; font-size: 13px; line-height: 20px;&quot;&gt;&lt;li style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; font-weight: inherit; vertical-align: baseline;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 16px;&quot;&gt;Giá cao.&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; font-weight: inherit; vertical-align: baseline;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 16px;&quot;&gt;Chi phí lắp đặt cao hơn.&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; font-weight: inherit; vertical-align: baseline;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 16px;&quot;&gt;Phải am hiểu và chọn đúng thương hiệu, nhà phân phối uy tín.&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p style=&quot;margin-bottom: 24px; padding: 0px; outline: 0px; border: 0px; font-family: &amp;quot;PT Sans&amp;quot;, sans-serif; font-size: 16px; vertical-align: baseline; color: rgb(48, 48, 48); line-height: 24px;&quot;&gt;&lt;img alt=&quot;con-nguoi-thong-minh-nhat-o-tuoi-nao&quot; class=&quot;aligncenter size-full wp-image-342&quot; height=&quot;389&quot; src=&quot;https://sungxietbulongspro.files.wordpress.com/2016/03/con-nguoi-thong-minh-nhat-o-tuoi-nao1.jpg?w=648&amp;amp;h=389&quot; width=&quot;648&quot; style=&quot;margin: 0px auto; padding: 0px; outline: 0px; transition: all 0.3s ease-in-out; max-width: 100%; border-width: initial; border-style: none; display: block; height: auto; clear: both;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin-bottom: 24px; padding: 0px; outline: 0px; border: 0px; font-family: &amp;quot;PT Sans&amp;quot;, sans-serif; font-size: 16px; vertical-align: baseline; color: rgb(48, 48, 48); line-height: 24px;&quot;&gt;Chúng tôi cũng hân hạnh giới thiệu đến các bạn về nhà cung cấp các dòng&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;máy&lt;/strong&gt;&amp;nbsp;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;xịt rửa xe máy – máy xịt rửa cao áp&lt;/strong&gt;&amp;nbsp;chuyên nghiệp đó là CÔNG TY NAM VIỆT với uy tín lâu năm&amp;nbsp;– đi đầu trong lĩnh vực cung cấp máy móc thiết bị dân dụng và công nghiệp. Công ty Nam Việt có trụ sở tại 143 – Bình Lợi ( Nơ Trang Long nối dài) – P.13 – Q.Bình Thạnh. Quý khách có thể đặt hàng trực tiếp qua hệ thống website&amp;nbsp;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;&lt;a href=&quot;http://www.spro.vn/&quot; style=&quot;margin: 0px; padding: 0px; outline: 0px; color: rgb(18, 121, 190); cursor: pointer; transition: all 0.3s ease-in-out; border-width: 0px 0px 1px; border-bottom-style: solid; border-bottom-color: rgb(197, 197, 197); font-family: inherit; font-style: inherit; font-weight: inherit; vertical-align: baseline; background-image: none; background-attachment: initial; background-size: initial; background-origin: initial; background-clip: initial; background-position: initial; background-repeat: initial;&quot;&gt;Spro.vn&lt;/a&gt;&lt;/strong&gt;&amp;nbsp;hoặt qua đường dây nóng&amp;nbsp;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; font-size: 18px;&quot;&gt;&lt;span style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; font-weight: inherit; vertical-align: baseline; color: rgb(255, 0, 0);&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;0909 115 704 –&amp;nbsp;0986 954 423&lt;/strong&gt;&lt;/span&gt;&amp;nbsp;&lt;/span&gt;Quý khách luôn được chào đón tận tình và tư vấn kỷ càng nhất trường khi chọn máy.&lt;/p&gt;&lt;p style=&quot;margin-bottom: 24px; padding: 0px; outline: 0px; border: 0px; font-family: &amp;quot;PT Sans&amp;quot;, sans-serif; font-size: 16px; vertical-align: baseline; color: rgb(48, 48, 48); line-height: 24px;&quot;&gt;&lt;img alt=&quot;CÔNG TY NAM VIỆT&quot; class=&quot;aligncenter size-full wp-image-299&quot; height=&quot;486&quot; src=&quot;https://sungxietbulongspro.files.wordpress.com/2016/03/img_8847.jpg?w=648&amp;amp;h=486&quot; width=&quot;648&quot; style=&quot;margin: 0px auto; padding: 0px; outline: 0px; transition: all 0.3s ease-in-out; max-width: 100%; border-width: initial; border-style: none; display: block; height: auto; clear: both;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin-bottom: 24px; padding: 0px; outline: 0px; border: 0px; font-family: &amp;quot;PT Sans&amp;quot;, sans-serif; font-size: 16px; vertical-align: baseline; color: rgb(48, 48, 48); line-height: 24px;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;MÁY XỊT RỬA XE MÁY – MÁY XỊT RỬA CAO ÁP NHẬP KHẨU CHÍNH HÃNG.&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;margin-bottom: 24px; padding: 0px; outline: 0px; border: 0px; font-family: &amp;quot;PT Sans&amp;quot;, sans-serif; font-size: 16px; vertical-align: baseline; color: rgb(48, 48, 48); line-height: 24px;&quot;&gt;&lt;strong style=&quot;margin: 0px; padding: 0px; outline: 0px; border: 0px; font-family: inherit; font-style: inherit; vertical-align: baseline;&quot;&gt;HÂN HẠNH LÀ NHÀ ĐỒNG HÀNH CÙNG QUÝ KHÁCH&lt;/strong&gt;&lt;/p&gt;', 'Để có được kinh nghiệm về cơ khí máy móc, đặc biệt là kinh nghiệm trong việc lựa chọn máy rửa xe, máy xịt rửa áp lực cao tốt, với mức giá ổn định tương đối là một điều không dễ dàng gì có được.\r\n', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -3190,6 +3128,15 @@ CREATE TABLE IF NOT EXISTS `tgm_news_articles_to_category` (
   `category_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`article_id`,`category_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tgm_news_articles_to_category`
+--
+
+INSERT INTO `tgm_news_articles_to_category` (`article_id`, `category_id`) VALUES
+(1, 1),
+(1, 2),
+(2, 1);
 
 -- --------------------------------------------------------
 
@@ -3204,6 +3151,14 @@ CREATE TABLE IF NOT EXISTS `tgm_news_articles_to_layout` (
   PRIMARY KEY (`article_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tgm_news_articles_to_layout`
+--
+
+INSERT INTO `tgm_news_articles_to_layout` (`article_id`, `store_id`, `layout_id`) VALUES
+(1, 0, 0),
+(2, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -3216,6 +3171,14 @@ CREATE TABLE IF NOT EXISTS `tgm_news_articles_to_related` (
   PRIMARY KEY (`article_id`,`related_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tgm_news_articles_to_related`
+--
+
+INSERT INTO `tgm_news_articles_to_related` (`article_id`, `related_id`) VALUES
+(1, 2),
+(2, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -3227,6 +3190,14 @@ CREATE TABLE IF NOT EXISTS `tgm_news_articles_to_store` (
   `store_id` int(11) NOT NULL,
   PRIMARY KEY (`article_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tgm_news_articles_to_store`
+--
+
+INSERT INTO `tgm_news_articles_to_store` (`article_id`, `store_id`) VALUES
+(1, 0),
+(2, 0);
 
 -- --------------------------------------------------------
 
@@ -3245,7 +3216,16 @@ CREATE TABLE IF NOT EXISTS `tgm_news_category` (
   `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `date_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`category_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `tgm_news_category`
+--
+
+INSERT INTO `tgm_news_category` (`category_id`, `image`, `parent_id`, `top`, `column`, `sort_order`, `status`, `date_added`, `date_modified`) VALUES
+(1, '', 0, 0, 1, 0, 1, '2016-08-30 14:14:11', '2016-08-30 14:22:12'),
+(2, '', 1, 0, 1, 0, 1, '2016-08-31 09:09:06', '2016-08-31 09:09:06'),
+(3, '', 1, 0, 1, 0, 1, '2016-08-31 09:21:11', '2016-08-31 09:21:11');
 
 -- --------------------------------------------------------
 
@@ -3264,6 +3244,15 @@ CREATE TABLE IF NOT EXISTS `tgm_news_category_description` (
   KEY `name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tgm_news_category_description`
+--
+
+INSERT INTO `tgm_news_category_description` (`category_id`, `language_id`, `name`, `description`, `meta_description`, `meta_keyword`) VALUES
+(1, 2, 'Tin tức', '', '', ''),
+(2, 2, 'Tin khuyến mãi', '', '', ''),
+(3, 2, 'Tin tức sự kiện', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -3276,6 +3265,17 @@ CREATE TABLE IF NOT EXISTS `tgm_news_category_path` (
   `level` int(11) NOT NULL,
   PRIMARY KEY (`category_id`,`path_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tgm_news_category_path`
+--
+
+INSERT INTO `tgm_news_category_path` (`category_id`, `path_id`, `level`) VALUES
+(1, 1, 0),
+(2, 1, 0),
+(2, 2, 1),
+(3, 1, 0),
+(3, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -3290,6 +3290,15 @@ CREATE TABLE IF NOT EXISTS `tgm_news_category_to_layout` (
   PRIMARY KEY (`category_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tgm_news_category_to_layout`
+--
+
+INSERT INTO `tgm_news_category_to_layout` (`category_id`, `store_id`, `layout_id`) VALUES
+(1, 0, 0),
+(2, 0, 0),
+(3, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -3302,43 +3311,14 @@ CREATE TABLE IF NOT EXISTS `tgm_news_category_to_store` (
   PRIMARY KEY (`category_id`,`store_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `tgm_news_description`
+-- Dumping data for table `tgm_news_category_to_store`
 --
 
-CREATE TABLE IF NOT EXISTS `tgm_news_description` (
-  `news_id` int(11) NOT NULL AUTO_INCREMENT,
-  `language_id` int(11) NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `description` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `meta_description` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `meta_keyword` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`news_id`,`language_id`),
-  KEY `name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `tgm_news_description`
---
-
-INSERT INTO `tgm_news_description` (`news_id`, `language_id`, `name`, `description`, `meta_description`, `meta_keyword`) VALUES
-(1, 2, 'Test tin tức', '&lt;p&gt;Bài tin tức&lt;/p&gt;\r\n', 'tin tức', 'test');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tgm_news_image`
---
-
-CREATE TABLE IF NOT EXISTS `tgm_news_image` (
-  `news_image_id` int(11) NOT NULL AUTO_INCREMENT,
-  `news_id` int(11) NOT NULL,
-  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
-  `sort_order` int(3) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`news_image_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+INSERT INTO `tgm_news_category_to_store` (`category_id`, `store_id`) VALUES
+(1, 0),
+(2, 0),
+(3, 0);
 
 -- --------------------------------------------------------
 
@@ -3365,91 +3345,22 @@ CREATE TABLE IF NOT EXISTS `tgm_news_review` (
   `author` varchar(64) NOT NULL,
   `text` text NOT NULL,
   `rating` int(1) NOT NULL,
+  `likes` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `date_added` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`review_id`),
   KEY `articles_id` (`article_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Table structure for table `tgm_news_tag`
+-- Dumping data for table `tgm_news_review`
 --
 
-CREATE TABLE IF NOT EXISTS `tgm_news_tag` (
-  `news_tag_id` int(11) NOT NULL AUTO_INCREMENT,
-  `news_id` int(11) NOT NULL,
-  `language_id` int(11) NOT NULL,
-  `tag` varchar(32) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`news_tag_id`),
-  KEY `news_id` (`news_id`),
-  KEY `language_id` (`language_id`),
-  KEY `tag` (`tag`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tgm_news_to_cat`
---
-
-CREATE TABLE IF NOT EXISTS `tgm_news_to_cat` (
-  `news_id` int(11) NOT NULL,
-  `cat_id` int(11) NOT NULL,
-  PRIMARY KEY (`news_id`,`cat_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tgm_news_to_cat`
---
-
-INSERT INTO `tgm_news_to_cat` (`news_id`, `cat_id`) VALUES
-(1, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tgm_news_to_download`
---
-
-CREATE TABLE IF NOT EXISTS `tgm_news_to_download` (
-  `news_id` int(11) NOT NULL,
-  `download_id` int(11) NOT NULL,
-  PRIMARY KEY (`news_id`,`download_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tgm_news_to_layout`
---
-
-CREATE TABLE IF NOT EXISTS `tgm_news_to_layout` (
-  `news_id` int(11) NOT NULL,
-  `store_id` int(11) NOT NULL,
-  `layout_id` int(11) NOT NULL,
-  PRIMARY KEY (`news_id`,`store_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tgm_news_to_store`
---
-
-CREATE TABLE IF NOT EXISTS `tgm_news_to_store` (
-  `news_id` int(11) NOT NULL,
-  `store_id` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`news_id`,`store_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tgm_news_to_store`
---
-
-INSERT INTO `tgm_news_to_store` (`news_id`, `store_id`) VALUES
-(1, 0);
+INSERT INTO `tgm_news_review` (`review_id`, `article_id`, `customer_id`, `author`, `text`, `rating`, `likes`, `status`, `date_added`) VALUES
+(1, 2, 0, 'Admin', 'hay.......................................aa', 2, 2, 1, '2016-08-30 17:32:10'),
+(2, 2, 0, 'adm', 'good ..............................................', 4, 0, 0, '0000-00-00 00:00:00'),
+(3, 2, 0, 'admin', '1234', 3, 0, 0, '2016-08-30 18:06:16'),
+(4, 2, 0, 'ad3', '12341', 2, 3, 1, '2016-08-30 18:09:57');
 
 -- --------------------------------------------------------
 
@@ -3621,6 +3532,7 @@ CREATE TABLE IF NOT EXISTS `tgm_order` (
   `custom_field` text NOT NULL,
   `payment_firstname` varchar(32) NOT NULL,
   `payment_lastname` varchar(32) NOT NULL,
+  `payment_telephone` varchar(20) NOT NULL,
   `payment_company` varchar(40) NOT NULL,
   `payment_address_1` varchar(128) NOT NULL,
   `payment_address_2` varchar(128) NOT NULL,
@@ -3667,44 +3579,70 @@ CREATE TABLE IF NOT EXISTS `tgm_order` (
   `date_added` datetime NOT NULL,
   `date_modified` datetime NOT NULL,
   PRIMARY KEY (`order_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=50 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=90 ;
 
 --
 -- Dumping data for table `tgm_order`
 --
 
-INSERT INTO `tgm_order` (`order_id`, `invoice_no`, `invoice_prefix`, `store_id`, `store_name`, `store_url`, `customer_id`, `customer_group_id`, `firstname`, `lastname`, `email`, `telephone`, `fax`, `custom_field`, `payment_firstname`, `payment_lastname`, `payment_company`, `payment_address_1`, `payment_address_2`, `payment_city`, `payment_postcode`, `payment_country`, `payment_country_id`, `payment_zone`, `payment_zone_id`, `payment_address_format`, `payment_custom_field`, `payment_method`, `payment_code`, `shipping_firstname`, `shipping_lastname`, `shipping_company`, `shipping_address_1`, `shipping_address_2`, `shipping_city`, `shipping_postcode`, `shipping_country`, `shipping_country_id`, `shipping_zone`, `shipping_zone_id`, `shipping_address_format`, `shipping_custom_field`, `shipping_method`, `shipping_code`, `comment`, `total`, `order_status_id`, `affiliate_id`, `commission`, `marketing_id`, `tracking`, `language_id`, `currency_id`, `currency_code`, `currency_value`, `ip`, `forwarded_ip`, `user_agent`, `accept_language`, `date_added`, `date_modified`) VALUES
-(1, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'zxc', 'zxc', 'a@gmail.com', '123425125', '', '[]', 'zxc', 'zxc', 'zxc', 'ádád', '', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'zxc', 'zxc', 'zxc', 'ádád', '', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '127.2000', 1, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', 'en-US,en;q=0.8', '2016-08-05 17:34:28', '2016-08-05 17:34:30'),
-(2, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'asd', 'asd', 'asd@gmai.com', '123124123', '', '[]', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '558.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', 'en-US,en;q=0.8', '2016-08-08 15:05:46', '2016-08-08 15:05:46'),
-(3, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'asd', 'asd', 'asd@gmai.com', '123124123', '', '[]', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '558.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', 'en-US,en;q=0.8', '2016-08-08 15:12:37', '2016-08-08 15:12:37'),
-(4, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'asd', 'asd', 'asd@gmai.com', '123124123', '', '[]', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '558.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', 'en-US,en;q=0.8', '2016-08-08 15:13:24', '2016-08-08 15:13:24'),
-(5, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'asd', 'asd', 'asd@gmai.com', '123124123', '', '[]', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '558.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', 'en-US,en;q=0.8', '2016-08-08 15:14:27', '2016-08-08 15:14:27'),
-(6, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'asd', 'asd', 'asd@gmai.com', '123124123', '', '[]', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '558.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', 'en-US,en;q=0.8', '2016-08-08 15:16:15', '2016-08-08 15:16:15'),
-(7, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'asd', 'asd', 'asd@gmai.com', '123124123', '', '[]', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '558.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', 'en-US,en;q=0.8', '2016-08-08 15:19:05', '2016-08-08 15:19:05'),
-(8, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'asd', 'asd', 'asd@gmai.com', '123124123', '', '[]', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '774.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', 'en-US,en;q=0.8', '2016-08-08 15:20:57', '2016-08-08 15:20:57'),
-(49, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '108.0000', 1, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-25 15:36:57', '2016-08-25 15:37:00'),
-(12, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', 'Ngoc', 'nvngocthach@gmail.com', '12324141', '', '[]', 'Thach', 'Ngoc', '', '123444', '', 'hcm', '123', 'Viet Nam', 230, 'Dong Nai', 3769, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', 'Ngoc', '', '123444', '', 'hcm', '123', 'Viet Nam', 230, 'Dong Nai', 3769, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '222.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-12 14:22:08', '2016-08-12 14:22:08'),
-(13, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', 'Ngoc', 'nvngocthach@gmail.com', '12324141', '', '[]', 'Thach', 'Ngoc', '', '123444', '', 'hcm', '123', 'Viet Nam', 230, 'Dong Nai', 3769, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', 'Ngoc', '', '123444', '', 'hcm', '123', 'Viet Nam', 230, 'Dong Nai', 3769, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '222.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-12 14:23:49', '2016-08-12 14:23:49'),
-(14, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', 'Ngoc', 'nvngocthach@gmail.com', '12324141', '', '[]', 'Thach', 'Ngoc', '', '123444', '', 'hcm', '123', 'Viet Nam', 230, 'Dong Nai', 3769, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', 'Ngoc', '', '123444', '', 'hcm', '123', 'Viet Nam', 230, 'Dong Nai', 3769, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '222.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-12 14:24:16', '2016-08-12 14:24:16'),
-(22, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '123 ac', '', '', '', 'Viet Nam', 230, 'Lâm Đồng', 4418, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '123 ac', '', '', '', 'Viet Nam', 230, 'Lâm Đồng', 4418, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '216.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 10:52:49', '2016-08-17 10:52:49'),
-(23, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '123 ac', '', '', '', 'Viet Nam', 230, 'Lâm Đồng', 4418, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '123 ac', '', '', '', 'Viet Nam', 230, 'Lâm Đồng', 4418, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '216.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 10:53:50', '2016-08-17 10:53:50'),
-(24, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '123 ac', '', '', '', 'Viet Nam', 230, 'Lâm Đồng', 4418, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '123 ac', '', '', '', 'Viet Nam', 230, 'Lâm Đồng', 4418, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '216.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 10:54:21', '2016-08-17 10:54:21'),
-(28, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '114.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 16:01:47', '2016-08-17 16:01:47'),
-(29, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 16:02:00', '2016-08-17 16:02:00'),
-(30, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 16:13:05', '2016-08-17 16:13:05'),
-(31, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 16:15:01', '2016-08-17 16:15:01'),
-(32, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 16:16:27', '2016-08-17 16:16:27'),
-(33, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '113.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 16:19:52', '2016-08-17 16:19:52'),
-(34, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 16:25:10', '2016-08-17 16:25:10'),
-(36, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', 'Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', 'Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '752.9000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-18 10:23:41', '2016-08-18 10:23:41'),
-(39, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '216.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-20 10:22:58', '2016-08-20 10:22:58'),
-(40, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-25 15:08:49', '2016-08-25 15:08:49'),
-(41, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-25 15:12:49', '2016-08-25 15:12:49'),
-(42, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-25 15:13:47', '2016-08-25 15:13:47'),
-(43, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-25 15:13:56', '2016-08-25 15:13:56'),
-(44, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-25 15:15:22', '2016-08-25 15:15:22'),
-(45, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-25 15:17:36', '2016-08-25 15:17:36'),
-(46, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-25 15:18:09', '2016-08-25 15:18:09');
+INSERT INTO `tgm_order` (`order_id`, `invoice_no`, `invoice_prefix`, `store_id`, `store_name`, `store_url`, `customer_id`, `customer_group_id`, `firstname`, `lastname`, `email`, `telephone`, `fax`, `custom_field`, `payment_firstname`, `payment_lastname`, `payment_telephone`, `payment_company`, `payment_address_1`, `payment_address_2`, `payment_city`, `payment_postcode`, `payment_country`, `payment_country_id`, `payment_zone`, `payment_zone_id`, `payment_address_format`, `payment_custom_field`, `payment_method`, `payment_code`, `shipping_firstname`, `shipping_lastname`, `shipping_company`, `shipping_address_1`, `shipping_address_2`, `shipping_city`, `shipping_postcode`, `shipping_country`, `shipping_country_id`, `shipping_zone`, `shipping_zone_id`, `shipping_address_format`, `shipping_custom_field`, `shipping_method`, `shipping_code`, `comment`, `total`, `order_status_id`, `affiliate_id`, `commission`, `marketing_id`, `tracking`, `language_id`, `currency_id`, `currency_code`, `currency_value`, `ip`, `forwarded_ip`, `user_agent`, `accept_language`, `date_added`, `date_modified`) VALUES
+(2, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'asd', 'asd', 'asd@gmai.com', '123124123', '', '[]', 'asd', 'asd', '', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '558.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', 'en-US,en;q=0.8', '2016-08-08 15:05:46', '2016-08-08 15:05:46'),
+(3, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'asd', 'asd', 'asd@gmai.com', '123124123', '', '[]', 'asd', 'asd', '', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '558.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', 'en-US,en;q=0.8', '2016-08-08 15:12:37', '2016-08-08 15:12:37'),
+(4, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'asd', 'asd', 'asd@gmai.com', '123124123', '', '[]', 'asd', 'asd', '', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '558.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', 'en-US,en;q=0.8', '2016-08-08 15:13:24', '2016-08-08 15:13:24'),
+(5, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'asd', 'asd', 'asd@gmai.com', '123124123', '', '[]', 'asd', 'asd', '', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '558.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', 'en-US,en;q=0.8', '2016-08-08 15:14:27', '2016-08-08 15:14:27'),
+(6, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'asd', 'asd', 'asd@gmai.com', '123124123', '', '[]', 'asd', 'asd', '', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '558.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', 'en-US,en;q=0.8', '2016-08-08 15:16:15', '2016-08-08 15:16:15'),
+(7, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'asd', 'asd', 'asd@gmai.com', '123124123', '', '[]', 'asd', 'asd', '', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '558.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', 'en-US,en;q=0.8', '2016-08-08 15:19:05', '2016-08-08 15:19:05'),
+(8, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'asd', 'asd', 'asd@gmai.com', '123124123', '', '[]', 'asd', 'asd', '', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'asd', 'asd', 'zxc', 'ádád', 'a', 'sáda', '123123', 'Viet Nam', 230, 'Dien Bien', 3768, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '774.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36', 'en-US,en;q=0.8', '2016-08-08 15:20:57', '2016-08-08 15:20:57'),
+(50, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-26 17:00:14', '2016-08-26 17:00:14'),
+(51, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'nvngocthach@gmail.com', '1234444', '', '[]', 'Thach', '', '', '', 'Hai bà trưng', '', 'Huyện Đông Anh', '', 'Viet Nam', 230, 'Hà Nội', 4385, '', '[]', '', '', 'Thach', '', '', 'Hai bà trưng', '', 'Huyện Đông Anh', '', 'Viet Nam', 230, 'Hà Nội', 4385, '', '[]', '', '', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 10:42:07', '2016-08-29 10:42:07'),
+(52, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'nvngocthach@gmail.com', '1234444', '', '[]', 'Thach', '', '', '', 'Hai bà trưng', '', 'Huyện Đông Anh', '', 'Viet Nam', 230, 'Hà Nội', 4385, '', '[]', '', '', 'Thach', '', '', 'Hai bà trưng', '', 'Huyện Đông Anh', '', 'Viet Nam', 230, 'Hà Nội', 4385, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', 'gc', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 11:47:37', '2016-08-29 11:47:37'),
+(12, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', 'Ngoc', 'nvngocthach@gmail.com', '12324141', '', '[]', 'Thach', 'Ngoc', '', '', '123444', '', 'hcm', '123', 'Viet Nam', 230, 'Dong Nai', 3769, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', 'Ngoc', '', '123444', '', 'hcm', '123', 'Viet Nam', 230, 'Dong Nai', 3769, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '222.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-12 14:22:08', '2016-08-12 14:22:08'),
+(13, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', 'Ngoc', 'nvngocthach@gmail.com', '12324141', '', '[]', 'Thach', 'Ngoc', '', '', '123444', '', 'hcm', '123', 'Viet Nam', 230, 'Dong Nai', 3769, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', 'Ngoc', '', '123444', '', 'hcm', '123', 'Viet Nam', 230, 'Dong Nai', 3769, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '222.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-12 14:23:49', '2016-08-12 14:23:49'),
+(14, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', 'Ngoc', 'nvngocthach@gmail.com', '12324141', '', '[]', 'Thach', 'Ngoc', '', '', '123444', '', 'hcm', '123', 'Viet Nam', 230, 'Dong Nai', 3769, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', 'Ngoc', '', '123444', '', 'hcm', '123', 'Viet Nam', 230, 'Dong Nai', 3769, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '222.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-12 14:24:16', '2016-08-12 14:24:16'),
+(53, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'nvngocthach@gmail.com', '1234444', '', '[]', 'Thach', '', '', '', 'Hai bà trưng', '', 'Huyện Đông Anh', '', 'Viet Nam', 230, 'Hà Nội', 4385, '', '[]', '', '', 'Thach', '', '', 'Hai bà trưng', '', 'Huyện Đông Anh', '', 'Viet Nam', 230, 'Hà Nội', 4385, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 11:57:40', '2016-08-29 11:57:40'),
+(54, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'nvngocthach@gmail.com', '1234444', '', '[]', 'Thach', '', '', '', 'Hai bà trưng', '', 'Huyện Đông Anh', '', 'Viet Nam', 230, 'Hà Nội', 4385, '', '[]', '', '', 'Thach', '', '', 'Hai bà trưng', '', 'Huyện Đông Anh', '', 'Viet Nam', 230, 'Hà Nội', 4385, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 12:00:18', '2016-08-29 12:00:18'),
+(55, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'nvngocthach@gmail.com', '1234444', '', '[]', 'Thach', '', '', '', 'Hai bà trưng', '', 'Huyện Đông Anh', '', 'Viet Nam', 230, 'Hà Nội', 4385, '', '[]', '', '', 'Thach', '', '', 'Hai bà trưng', '', 'Huyện Đông Anh', '', 'Viet Nam', 230, 'Hà Nội', 4385, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 12:01:41', '2016-08-29 12:01:41'),
+(56, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'nvngocthach@gmail.com', '1234444', '', '[]', 'Thach', '', '', '', 'Hai bà trưng', '', 'Huyện Đông Anh', '', 'Viet Nam', 230, 'Hà Nội', 4385, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', 'Hai bà trưng', '', 'Huyện Đông Anh', '', 'Viet Nam', 230, 'Hà Nội', 4385, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 13:24:52', '2016-08-29 13:24:52'),
+(57, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'nvngocthach@gmail.com', '1234444', '', '[]', 'Thach', '', '', '', 'Hai bà trưng', '', 'Huyện Đông Anh', '', 'Viet Nam', 230, 'Hà Nội', 4385, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', 'Hai bà trưng', '', 'Huyện Đông Anh', '', 'Viet Nam', 230, 'Hà Nội', 4385, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '90.0000', 1, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 13:25:12', '2016-08-29 13:25:50'),
+(58, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 13:29:22', '2016-08-29 13:29:22'),
+(22, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '123 ac', '', '', '', 'Viet Nam', 230, 'Lâm Đồng', 4418, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '123 ac', '', '', '', 'Viet Nam', 230, 'Lâm Đồng', 4418, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '216.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 10:52:49', '2016-08-17 10:52:49'),
+(23, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '123 ac', '', '', '', 'Viet Nam', 230, 'Lâm Đồng', 4418, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '123 ac', '', '', '', 'Viet Nam', 230, 'Lâm Đồng', 4418, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '216.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 10:53:50', '2016-08-17 10:53:50'),
+(24, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '123 ac', '', '', '', 'Viet Nam', 230, 'Lâm Đồng', 4418, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '123 ac', '', '', '', 'Viet Nam', 230, 'Lâm Đồng', 4418, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '216.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 10:54:21', '2016-08-17 10:54:21'),
+(59, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 13:33:02', '2016-08-29 13:33:02'),
+(60, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 13:34:06', '2016-08-29 13:34:06'),
+(61, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 13:46:19', '2016-08-29 13:46:19'),
+(28, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Phí vận chuyển cố định', 'flat.flat', '', '114.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 16:01:47', '2016-08-17 16:01:47'),
+(29, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 16:02:00', '2016-08-17 16:02:00'),
+(30, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 16:13:05', '2016-08-17 16:13:05'),
+(31, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 16:15:01', '2016-08-17 16:15:01'),
+(32, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 16:16:27', '2016-08-17 16:16:27'),
+(33, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '113.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 16:19:52', '2016-08-17 16:19:52'),
+(34, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', '868 Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-17 16:25:10', '2016-08-17 16:25:10'),
+(62, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 13:46:49', '2016-08-29 13:46:49'),
+(36, 0, 'INV-2013-00', 0, 'Your Store', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', 'Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', 'Lê Đức Thọ, phường 16, Gò Vấp', '', '', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '752.9000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-18 10:23:41', '2016-08-18 10:23:41'),
+(63, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '23005.2000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 13:47:55', '2016-08-29 13:47:55'),
+(64, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '23005.2000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 13:48:50', '2016-08-29 13:48:50'),
+(39, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '216.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-20 10:22:58', '2016-08-20 10:22:58'),
+(40, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-25 15:08:49', '2016-08-25 15:08:49'),
+(41, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-25 15:12:49', '2016-08-25 15:12:49'),
+(42, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-25 15:13:47', '2016-08-25 15:13:47'),
+(43, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-25 15:13:56', '2016-08-25 15:13:56'),
+(44, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-25 15:15:22', '2016-08-25 15:15:22'),
+(45, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-25 15:17:36', '2016-08-25 15:17:36'),
+(46, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', '', '', 'Viet Nam', 230, 'An Giang', 4360, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '108.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-25 15:18:09', '2016-08-25 15:18:09'),
+(65, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 13:50:11', '2016-08-29 13:50:11'),
+(66, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '23005.2000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 13:50:49', '2016-08-29 13:50:49'),
+(67, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', 'Huyện Cư Jút', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Vận chuyển chành xe', 'chanhxe.chanhxe', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 13:53:43', '2016-08-29 13:53:43'),
+(68, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', 'Le Lai', '', 'Huyện Bình Chánh', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', 'Le Lai', '', 'Huyện Bình Chánh', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '1518.7000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 15:05:49', '2016-08-29 15:05:49'),
+(69, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', 'Le Lai', '', 'Huyện Bình Chánh', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', 'Le Lai', '', 'Huyện Bình Chánh', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 15:08:22', '2016-08-29 15:08:22'),
+(70, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', 'Le Lai', '', 'Huyện Bình Chánh', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', 'Le Lai', '', 'Huyện Bình Chánh', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 15:08:48', '2016-08-29 15:08:48'),
+(71, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', 'Le Lai', '', 'Huyện Bình Chánh', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', 'Le Lai', '', 'Huyện Bình Chánh', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 15:09:14', '2016-08-29 15:09:14'),
+(72, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', 'Le Lai', '', 'Huyện Bình Chánh', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', 'Le Lai', '', 'Huyện Bình Chánh', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '856.5000', 1, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 15:10:18', '2016-08-29 15:10:18'),
+(73, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', 'Le Lai', '', 'Huyện Bình Chánh', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', 'Le Lai', '', 'Huyện Bình Chánh', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 15:15:03', '2016-08-29 15:15:03'),
+(74, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', 'Le Lai', '', 'Huyện Bình Chánh', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', 'Le Lai', '', 'Huyện Bình Chánh', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '90.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 15:16:48', '2016-08-29 15:16:48'),
+(75, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', 'Le Lai', '', 'Huyện Bình Chánh', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Chuyển khoản ngân hàng', 'bank_transfer', 'Thach', '', '', 'Le Lai', '', 'Huyện Bình Chánh', '', 'Viet Nam', 230, 'Hồ Chí Minh', 4389, '', '[]', 'Vận chuyển xe máy', 'motobike.motobike', '', '1518.7000', 1, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 15:25:36', '2016-08-29 15:25:36'),
+(78, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', 'Huyện Krông Nô', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', 'Huyện Krông Nô', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Vận chuyển Ô tô', 'oto.oto', 'asdc', '626990.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-29 18:43:24', '2016-08-29 18:43:24'),
+(80, 0, 'INV-2013-00', 0, 'SPRO.VN', 'http://spro.gg/', 0, 1, 'Thach', '', 'creamsanwich@gmail.com', '0123456789', '', '[]', 'Thach', '', '', '', '111AX', '', 'Huyện Đắk Glong', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Thu tiền khi giao hàng', 'cod', 'Thach', '', '', '111AX', '', 'Huyện Đắk Glong', '', 'Viet Nam', 230, 'Đăk Nông', 4375, '', '[]', 'Miễn phí vận chuyển', 'free.free', '', '208.0000', 0, 0, '0.0000', 0, '', 2, 4, 'VND', '1.00000000', '127.0.0.1', '', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36', 'en-US,en;q=0.8', '2016-08-30 08:43:07', '2016-08-30 08:43:07');
 
 -- --------------------------------------------------------
 
@@ -3721,7 +3659,7 @@ CREATE TABLE IF NOT EXISTS `tgm_order_accessories` (
   `price` text NOT NULL,
   `price_origin` decimal(15,0) NOT NULL,
   PRIMARY KEY (`order_option_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `tgm_order_accessories`
@@ -3743,7 +3681,8 @@ INSERT INTO `tgm_order_accessories` (`order_option_id`, `order_id`, `order_produ
 (15, 24, 33, 47, 'HP LP3065', '108đ', '108'),
 (16, 25, 34, 47, 'HP LP3065', '108đ', '108'),
 (17, 26, 35, 41, 'iMac', '120đ', '120'),
-(18, 27, 37, 47, 'HP LP3065', '108đ', '108');
+(18, 27, 37, 47, 'HP LP3065', '108đ', '108'),
+(19, 77, 89, 41, 'iMac', '120đ', '120');
 
 -- --------------------------------------------------------
 
@@ -3777,15 +3716,16 @@ CREATE TABLE IF NOT EXISTS `tgm_order_history` (
   `comment` text NOT NULL,
   `date_added` datetime NOT NULL,
   PRIMARY KEY (`order_history_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=68 ;
 
 --
 -- Dumping data for table `tgm_order_history`
 --
 
 INSERT INTO `tgm_order_history` (`order_history_id`, `order_id`, `order_status_id`, `notify`, `comment`, `date_added`) VALUES
-(1, 1, 1, 0, '', '2016-08-05 17:34:30'),
-(37, 49, 1, 0, '', '2016-08-25 15:37:00');
+(39, 57, 1, 1, 'Hướng dẫn chuyển khoản ngân hàng\n\nNgân hàng agribank.\r\nSố TK: 0923 2133 4412\n\nSản phẩm bạn không được vận chuyển cho đến khi bạn thanh toán.', '2016-08-29 13:25:50'),
+(40, 72, 1, 0, '', '2016-08-29 15:10:18'),
+(41, 75, 1, 1, 'Hướng dẫn chuyển khoản ngân hàng\n\nNgân hàng agribank.\r\nSố TK: 0923 2133 4412\n\nSản phẩm bạn không được vận chuyển cho đến khi bạn thanh toán.', '2016-08-29 15:25:36');
 
 -- --------------------------------------------------------
 
@@ -3804,15 +3744,16 @@ CREATE TABLE IF NOT EXISTS `tgm_order_option` (
   `value` text NOT NULL,
   `type` varchar(32) NOT NULL,
   PRIMARY KEY (`order_option_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `tgm_order_option`
 --
 
 INSERT INTO `tgm_order_option` (`order_option_id`, `order_id`, `order_product_id`, `product_option_id`, `product_option_value_id`, `name`, `text`, `value`, `type`) VALUES
-(10, 40, 52, 0, 35, 'Quà tặng kèm', '', 'Gift', 'radio'),
-(19, 49, 61, 0, 34, 'Quà tặng kèm', 'Tặng hộp keo và miếng vá Tech 2 way của USA ', 'Gift', 'radio');
+(21, 78, 91, 0, 38, 'Quà tặng kèm', 'Tặng máy mài vỏ xe', 'Gift', 'radio'),
+(20, 50, 62, 0, 38, 'Quà tặng kèm', 'Tặng máy mài vỏ xe', 'Gift', 'radio'),
+(10, 40, 52, 0, 35, 'Quà tặng kèm', '', 'Gift', 'radio');
 
 -- --------------------------------------------------------
 
@@ -3832,14 +3773,13 @@ CREATE TABLE IF NOT EXISTS `tgm_order_product` (
   `tax` decimal(15,4) NOT NULL DEFAULT '0.0000',
   `reward` int(8) NOT NULL,
   PRIMARY KEY (`order_product_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=62 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=106 ;
 
 --
 -- Dumping data for table `tgm_order_product`
 --
 
 INSERT INTO `tgm_order_product` (`order_product_id`, `order_id`, `product_id`, `name`, `model`, `quantity`, `price`, `total`, `tax`, `reward`) VALUES
-(1, 1, 40, 'iPhone', 'product 11', 1, '101.0000', '101.0000', '20.2000', 0),
 (2, 2, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (3, 2, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (4, 3, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
@@ -3854,13 +3794,24 @@ INSERT INTO `tgm_order_product` (`order_product_id`, `order_id`, `product_id`, `
 (13, 7, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (14, 8, 40, 'iPhone', 'product 11', 2, '90.0000', '180.0000', '18.0000', 0),
 (15, 8, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
-(61, 49, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(62, 50, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(63, 51, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (19, 12, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (20, 13, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (21, 14, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(64, 52, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(65, 53, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(66, 54, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(67, 55, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(68, 56, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(69, 57, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(70, 58, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (31, 22, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (32, 23, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (33, 24, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(71, 59, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(72, 60, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(73, 61, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (38, 28, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (39, 29, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (40, 30, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
@@ -3869,6 +3820,8 @@ INSERT INTO `tgm_order_product` (`order_product_id`, `order_id`, `product_id`, `
 (43, 33, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (44, 34, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (46, 36, 40, 'iPhone', 'product 11', 2, '90.0000', '180.0000', '18.0000', 0),
+(74, 62, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(75, 63, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (49, 39, 47, 'HP LP3065', 'Product 21', 2, '90.0000', '180.0000', '18.0000', 600),
 (50, 39, 47, 'HP LP3065', 'Product 21', 1, '0.0000', '0.0000', '0.0000', 300),
 (51, 39, 40, 'iPhone', 'product 11', 1, '0.0000', '0.0000', '0.0000', 0),
@@ -3878,7 +3831,22 @@ INSERT INTO `tgm_order_product` (`order_product_id`, `order_id`, `product_id`, `
 (55, 43, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (56, 44, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
 (57, 45, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
-(58, 46, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0);
+(58, 46, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(76, 64, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(77, 65, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(78, 66, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(79, 67, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(80, 68, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(81, 69, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(82, 70, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(83, 71, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(84, 72, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(85, 73, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(86, 74, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(87, 75, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(91, 78, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0),
+(94, 80, 30, 'Canon EOS 5D', 'Product 3', 1, '100.0000', '100.0000', '0.0000', 200),
+(95, 80, 40, 'iPhone', 'product 11', 1, '90.0000', '90.0000', '18.0000', 0);
 
 -- --------------------------------------------------------
 
@@ -3988,17 +3956,13 @@ CREATE TABLE IF NOT EXISTS `tgm_order_total` (
   `sort_order` int(3) NOT NULL,
   PRIMARY KEY (`order_total_id`),
   KEY `order_id` (`order_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=197 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=313 ;
 
 --
 -- Dumping data for table `tgm_order_total`
 --
 
 INSERT INTO `tgm_order_total` (`order_total_id`, `order_id`, `code`, `title`, `value`, `sort_order`) VALUES
-(1, 1, 'sub_total', 'Thành tiền:', '101.0000', 1),
-(2, 1, 'shipping', 'Phí vận chuyển cố định', '5.0000', 3),
-(3, 1, 'tax', 'VAT (20%)', '21.2000', 5),
-(4, 1, 'total', 'Tổng cộng :', '127.2000', 9),
 (5, 2, 'sub_total', 'Thành tiền:', '516.0000', 1),
 (6, 2, 'shipping', 'Phí vận chuyển cố định', '5.0000', 3),
 (7, 2, 'tax', 'VAT (20%)', '37.0000', 5),
@@ -4027,10 +3991,12 @@ INSERT INTO `tgm_order_total` (`order_total_id`, `order_id`, `code`, `title`, `v
 (30, 8, 'shipping', 'Phí vận chuyển cố định', '5.0000', 3),
 (31, 8, 'tax', 'VAT (20%)', '55.0000', 5),
 (32, 8, 'total', 'Tổng cộng :', '774.0000', 9),
-(196, 49, 'total', 'Tổng cộng :', '108.0000', 9),
-(195, 49, 'tax', 'VAT (20%)', '18.0000', 5),
-(193, 49, 'sub_total', 'Thành tiền:', '90.0000', 1),
-(194, 49, 'shipping', 'Miễn phí vận chuyển', '0.0000', 3),
+(200, 50, 'total', 'Tổng cộng :', '108.0000', 9),
+(199, 50, 'tax', 'VAT (20%)', '18.0000', 5),
+(197, 50, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(198, 50, 'shipping', 'Miễn phí vận chuyển', '0.0000', 3),
+(202, 51, 'total', 'Tổng cộng :', '90.0000', 9),
+(201, 51, 'sub_total', 'Thành tiền:', '90.0000', 1),
 (45, 12, 'sub_total', 'Thành tiền:', '198.0000', 1),
 (46, 12, 'shipping', 'Phí vận chuyển cố định', '5.0000', 3),
 (47, 12, 'tax', 'VAT (20%)', '19.0000', 5),
@@ -4043,6 +4009,28 @@ INSERT INTO `tgm_order_total` (`order_total_id`, `order_id`, `code`, `title`, `v
 (54, 14, 'shipping', 'Phí vận chuyển cố định', '5.0000', 3),
 (55, 14, 'tax', 'VAT (20%)', '19.0000', 5),
 (56, 14, 'total', 'Tổng cộng :', '222.0000', 9),
+(224, 62, 'total', 'Tổng cộng :', '90.0000', 9),
+(223, 62, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(203, 52, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(204, 52, 'total', 'Tổng cộng :', '90.0000', 9),
+(205, 53, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(206, 53, 'total', 'Tổng cộng :', '90.0000', 9),
+(207, 54, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(208, 54, 'total', 'Tổng cộng :', '90.0000', 9),
+(209, 55, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(210, 55, 'total', 'Tổng cộng :', '90.0000', 9),
+(211, 56, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(212, 56, 'total', 'Tổng cộng :', '90.0000', 9),
+(213, 57, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(214, 57, 'total', 'Tổng cộng :', '90.0000', 9),
+(215, 58, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(216, 58, 'total', 'Tổng cộng :', '90.0000', 9),
+(217, 59, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(218, 59, 'total', 'Tổng cộng :', '90.0000', 9),
+(219, 60, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(220, 60, 'total', 'Tổng cộng :', '90.0000', 9),
+(221, 61, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(222, 61, 'total', 'Tổng cộng :', '90.0000', 9),
 (85, 22, 'sub_total', 'Thành tiền:', '198.0000', 1),
 (86, 22, 'shipping', 'Miễn phí vận chuyển', '0.0000', 3),
 (87, 22, 'tax', 'VAT (20%)', '18.0000', 5),
@@ -4055,6 +4043,13 @@ INSERT INTO `tgm_order_total` (`order_total_id`, `order_id`, `code`, `title`, `v
 (94, 24, 'shipping', 'Miễn phí vận chuyển', '0.0000', 3),
 (95, 24, 'tax', 'VAT (20%)', '18.0000', 5),
 (96, 24, 'total', 'Tổng cộng :', '216.0000', 9),
+(228, 64, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(227, 63, 'total', 'Tổng cộng :', '23005.2000', 9),
+(225, 63, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(226, 63, 'shipping', 'Vận chuyển xe máy', '22915.2000', 3),
+(230, 64, 'total', 'Tổng cộng :', '23005.2000', 9),
+(229, 64, 'shipping', 'Vận chuyển xe máy', '22915.2000', 3),
+(231, 65, 'sub_total', 'Thành tiền:', '90.0000', 1),
 (109, 28, 'sub_total', 'Thành tiền:', '90.0000', 1),
 (110, 28, 'shipping', 'Phí vận chuyển cố định', '5.0000', 3),
 (111, 28, 'tax', 'VAT (20%)', '19.0000', 5),
@@ -4083,10 +4078,18 @@ INSERT INTO `tgm_order_total` (`order_total_id`, `order_id`, `code`, `title`, `v
 (134, 34, 'shipping', 'Vận chuyển xe máy', '0.0000', 3),
 (135, 34, 'tax', 'VAT (20%)', '18.0000', 5),
 (136, 34, 'total', 'Tổng cộng :', '108.0000', 9),
+(234, 66, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(233, 65, 'total', 'Tổng cộng :', '90.0000', 9),
+(232, 65, 'shipping', 'Miễn phí vận chuyển', '0.0000', 3),
 (141, 36, 'sub_total', 'Thành tiền:', '180.0000', 1),
 (142, 36, 'shipping', 'Vận chuyển xe máy', '536.9000', 3),
 (143, 36, 'tax', 'VAT (20%)', '36.0000', 5),
 (144, 36, 'total', 'Tổng cộng :', '752.9000', 9),
+(237, 67, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(236, 66, 'total', 'Tổng cộng :', '23005.2000', 9),
+(235, 66, 'shipping', 'Vận chuyển xe máy', '22915.2000', 3),
+(239, 67, 'total', 'Tổng cộng :', '90.0000', 9),
+(238, 67, 'shipping', 'Vận chuyển chành xe', '0.0000', 3),
 (153, 39, 'sub_total', 'Thành tiền:', '180.0000', 1),
 (154, 39, 'shipping', 'Miễn phí vận chuyển', '0.0000', 3),
 (155, 39, 'tax', 'VAT (20%)', '36.0000', 5),
@@ -4118,7 +4121,38 @@ INSERT INTO `tgm_order_total` (`order_total_id`, `order_id`, `code`, `title`, `v
 (181, 46, 'sub_total', 'Thành tiền:', '90.0000', 1),
 (182, 46, 'shipping', 'Miễn phí vận chuyển', '0.0000', 3),
 (183, 46, 'tax', 'VAT (20%)', '18.0000', 5),
-(184, 46, 'total', 'Tổng cộng :', '108.0000', 9);
+(184, 46, 'total', 'Tổng cộng :', '108.0000', 9),
+(243, 69, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(242, 68, 'total', 'Tổng cộng :', '1518.7000', 9),
+(240, 68, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(241, 68, 'shipping', 'Vận chuyển xe máy', '1428.7000', 3),
+(244, 69, 'shipping', 'Miễn phí vận chuyển', '0.0000', 3),
+(245, 69, 'total', 'Tổng cộng :', '90.0000', 9),
+(246, 70, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(247, 70, 'shipping', 'Miễn phí vận chuyển', '0.0000', 3),
+(248, 70, 'total', 'Tổng cộng :', '90.0000', 9),
+(249, 71, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(250, 71, 'shipping', 'Miễn phí vận chuyển', '0.0000', 3),
+(251, 71, 'total', 'Tổng cộng :', '90.0000', 9),
+(252, 72, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(253, 72, 'shipping', 'Vận chuyển xe máy', '766.5000', 3),
+(254, 72, 'total', 'Tổng cộng :', '856.5000', 9),
+(255, 73, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(256, 73, 'shipping', 'Miễn phí vận chuyển', '0.0000', 3),
+(257, 73, 'total', 'Tổng cộng :', '90.0000', 9),
+(258, 74, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(259, 74, 'shipping', 'Miễn phí vận chuyển', '0.0000', 3),
+(260, 74, 'total', 'Tổng cộng :', '90.0000', 9),
+(261, 75, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(262, 75, 'shipping', 'Vận chuyển xe máy', '1428.7000', 3),
+(263, 75, 'total', 'Tổng cộng :', '1518.7000', 9),
+(270, 78, 'sub_total', 'Thành tiền:', '90.0000', 1),
+(271, 78, 'shipping', 'Vận chuyển Ô tô', '626900.0000', 3),
+(272, 78, 'total', 'Tổng cộng :', '626990.0000', 9),
+(277, 80, 'sub_total', 'Thành tiền:', '190.0000', 1),
+(278, 80, 'shipping', 'Miễn phí vận chuyển', '0.0000', 3),
+(279, 80, 'tax', 'VAT (20%)', '18.0000', 5),
+(280, 80, 'total', 'Tổng cộng :', '208.0000', 9);
 
 -- --------------------------------------------------------
 
@@ -4249,23 +4283,23 @@ CREATE TABLE IF NOT EXISTS `tgm_product` (
 INSERT INTO `tgm_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `cost`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `viewed`, `date_added`, `date_modified`, `access_group`, `virtual`, `virtual_id`, `type`) VALUES
 (28, 'Product 1', '', '', '', '', '', '', '', 939, 7, 'catalog/demo/htc_touch_hd_1.jpg', 5, 1, '100', '0', 200, 9, '2009-02-03', '146.40000000', 2, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 0, '2009-02-03 16:06:50', '2011-09-30 01:05:39', 0, 0, 0, 0),
 (29, 'Product 2', '', '', '', '', '', '', '', 999, 6, 'catalog/demo/palm_treo_pro_1.jpg', 6, 1, '280', '0', 0, 9, '2009-02-03', '133.00000000', 2, '0.00000000', '0.00000000', '0.00000000', 3, 1, 1, 0, 1, 0, '2009-02-03 16:42:17', '2011-09-30 01:06:08', 0, 0, 0, 0),
-(30, 'Product 3', '', '', '', '', '', '', '', 123, 6, 'catalog/demo/canon_eos_5d_1.jpg', 9, 1, '100', '0', 0, 0, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 11, '2009-02-03 16:59:00', '2016-08-08 14:33:44', 0, 0, 0, 0),
+(30, 'Product 3', '', '', '', '', '', '', '', 123, 6, 'catalog/demo/canon_eos_5d_1.jpg', 9, 1, '100', '0', 0, 0, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 14, '2009-02-03 16:59:00', '2016-08-08 14:33:44', 0, 0, 0, 0),
 (31, 'Product 4', '', '', '', '', '', '', '', 1000, 6, 'catalog/demo/nikon_d300_1.jpg', 0, 1, '80', '0', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 3, 1, 1, 0, 1, 0, '2009-02-03 17:00:10', '2011-09-30 01:06:00', 0, 0, 0, 0),
 (32, 'Product 5', '', '', '', '', '', '', '', 999, 6, 'catalog/demo/ipod_touch_1.jpg', 8, 1, '100', '0', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 0, '2009-02-03 17:07:26', '2011-09-30 01:07:22', 0, 0, 0, 0),
 (33, 'Product 6', '', '', '', '', '', '', '', 1000, 6, 'catalog/demo/samsung_syncmaster_941bw.jpg', 0, 1, '200', '0', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 17:08:31', '2011-09-30 01:06:29', 0, 0, 0, 0),
 (34, 'Product 7', '', '', '', '', '', '', '', 1000, 6, 'catalog/demo/ipod_shuffle_1.jpg', 8, 1, '100', '0', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 18:07:54', '2011-09-30 01:07:17', 0, 0, 0, 0),
 (35, 'Product 8', '', '', '', '', '', '', '', 1000, 5, '', 0, 0, '100', '0', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 0, '2009-02-03 18:08:31', '2011-09-30 01:06:17', 0, 0, 0, 0),
 (36, 'Product 9', '', '', '', '', '', '', '', 994, 6, 'catalog/demo/ipod_nano_1.jpg', 8, 0, '100', '0', 100, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 18:09:19', '2011-09-30 01:07:12', 0, 0, 0, 0),
-(40, 'product 11', '', '', '', '', '', '', '', 108, 8, 'catalog/demo/iphone_1.jpg', 8, 1, '101', '0', 0, 9, '2009-02-03', '10.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 569, '2009-02-03 21:07:12', '2016-08-25 17:06:30', 3, 0, 0, 1),
+(40, 'product 11', '', '', '', '', '', '', '', 107, 8, 'catalog/demo/iphone_1.jpg', 8, 1, '101', '0', 0, 9, '2009-02-03', '10.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 646, '2009-02-03 21:07:12', '2016-08-25 17:06:30', 3, 0, 0, 1),
 (41, 'Product 14', '', '', '', '', '', '', '', 977, 5, 'catalog/demo/imac_1.jpg', 8, 1, '100', '0', 0, 9, '2009-02-03', '5.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 0, 1, 0, '2009-02-03 21:07:26', '2016-08-25 14:04:22', 0, 0, 0, 0),
-(42, 'Product 15', '', '', '', '', '', '', '', 2, 10, 'catalog/demo/apple_cinema_30.jpg', 8, 1, '100', '1000', 400, 9, '2009-02-04', '12.50000000', 1, '1.00000000', '2.00000000', '3.00000000', 1, 1, 2, 0, 1, 40, '2009-02-03 21:07:37', '2016-08-25 14:45:21', 3, 0, 0, 2),
-(43, 'Product 16', '', '', '', '', '', '', '', 929, 5, 'catalog/demo/macbook_1.jpg', 8, 0, '500', '0', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 15, '2009-02-03 21:07:49', '2016-08-25 16:03:37', 0, 0, 0, 0),
+(42, 'Product 15', '', '', '', '', '', '', '', 2, 10, 'catalog/demo/apple_cinema_30.jpg', 8, 1, '100', '1000', 400, 9, '2009-02-04', '12.50000000', 1, '1.00000000', '2.00000000', '3.00000000', 1, 1, 2, 0, 1, 60, '2009-02-03 21:07:37', '2016-08-31 11:43:35', 3, 0, 0, 2),
+(43, 'Product 16', '', '', '', '', '', '', '', 0, 8, 'catalog/demo/macbook_1.jpg', 8, 0, '500', '0', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 31, '2009-02-03 21:07:49', '2016-08-31 16:56:29', 0, 0, 0, 0),
 (44, 'Product 17', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/macbook_air_1.jpg', 8, 1, '1000', '0', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 21:08:00', '2016-08-15 20:54:08', 0, 1, 42, 0),
 (45, 'Product 18', '', '', '', '', '', '', '', 998, 5, 'catalog/demo/macbook_pro_1.jpg', 8, 1, '2000', '0', 0, 100, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 21:08:17', '2011-09-15 22:22:01', 0, 0, 0, 0),
 (46, 'Product 19', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/sony_vaio_1.jpg', 10, 1, '1000', '0', 0, 9, '2009-02-03', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-03 21:08:29', '2011-09-30 01:06:39', 0, 0, 0, 0),
 (47, 'Product 21', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/hp_1.jpg', 7, 1, '100', '0', 400, 9, '2009-02-03', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 0, 1, 0, 1, 5, '2009-02-03 21:08:40', '2016-08-19 15:57:16', 3, 0, 0, 0),
 (48, 'product 20', 'test 1', '', '', '', '', '', 'test 2', 995, 5, 'catalog/demo/ipod_classic_1.jpg', 8, 1, '100', '0', 0, 9, '2009-02-08', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 2, 1, 1, 0, 1, 0, '2009-02-08 17:21:51', '2011-09-30 01:07:06', 0, 0, 0, 0),
-(49, 'SAM1', '', '', '', '', '', '', '', 0, 8, 'catalog/demo/samsung_tab_1.jpg', 0, 1, '200', '0', 0, 9, '2011-04-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 4, '2011-04-26 08:57:34', '2011-09-30 01:06:23', 0, 0, 0, 0),
+(49, 'SAM1', '', '', '', '', '', '', '', 0, 8, 'catalog/demo/samsung_tab_1.jpg', 0, 1, '200', '0', 0, 9, '2011-04-25', '0.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 1, 1, 1, 1, 5, '2011-04-26 08:57:34', '2011-09-30 01:06:23', 0, 0, 0, 0),
 (52, 'Product 123', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/hp_1.jpg', 7, 1, '100', '0', 400, 9, '2009-02-03', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 0, 1, 0, 1, 0, '2016-08-22 14:19:38', '2016-08-22 14:30:37', 0, 0, 0, 0),
 (53, 'Product 21', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/hp_1.jpg', 7, 1, '100', '0', 400, 9, '2009-02-03', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 0, 1, 0, 1, 1, '2016-08-22 14:19:45', '2016-08-22 14:30:52', 0, 0, 0, 0),
 (54, 'Product 123', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/hp_1.jpg', 7, 1, '100', '0', 400, 9, '2009-02-03', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 0, 1, 0, 1, 0, '2016-08-22 14:37:11', '2016-08-22 14:38:03', 0, 0, 0, 0),
@@ -4277,7 +4311,7 @@ INSERT INTO `tgm_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `i
 (60, 'Product 123', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/hp_1.jpg', 7, 1, '100', '0', 400, 9, '2009-02-03', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 0, 1, 0, 1, 0, '2016-08-22 14:37:30', '2016-08-22 14:39:13', 0, 0, 0, 0),
 (61, 'Product 123', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/hp_1.jpg', 7, 1, '100', '0', 400, 9, '2009-02-03', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 0, 1, 0, 1, 0, '2016-08-22 14:39:44', '2016-08-22 14:39:58', 0, 0, 0, 0),
 (62, 'Product 123', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/hp_1.jpg', 7, 1, '100', '0', 400, 9, '2009-02-03', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 0, 1, 0, 1, 2, '2016-08-22 14:39:44', '2016-08-22 14:40:09', 0, 0, 0, 0),
-(63, 'Product 123', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/hp_1.jpg', 7, 1, '100', '0', 400, 9, '2009-02-03', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 0, 1, 0, 1, 0, '2016-08-22 14:39:44', '2016-08-22 14:40:24', 0, 0, 0, 0);
+(63, 'Product 123', '', '', '', '', '', '', '', 1000, 5, 'catalog/demo/hp_1.jpg', 7, 1, '100', '0', 400, 9, '2009-02-03', '1.00000000', 1, '0.00000000', '0.00000000', '0.00000000', 1, 0, 1, 0, 1, 1, '2016-08-22 14:39:44', '2016-08-22 14:40:24', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -4322,10 +4356,10 @@ CREATE TABLE IF NOT EXISTS `tgm_product_attribute` (
 
 INSERT INTO `tgm_product_attribute` (`product_id`, `attribute_id`, `language_id`, `text`) VALUES
 (52, 4, 2, '16GB'),
-(43, 4, 2, '8gb'),
+(43, 2, 2, '1'),
 (52, 2, 2, '4'),
 (53, 4, 2, '16GB'),
-(43, 2, 2, '1'),
+(43, 4, 2, '8gb'),
 (42, 3, 2, '100mhz'),
 (47, 2, 2, '4'),
 (47, 4, 2, '16GB'),
@@ -4369,8 +4403,7 @@ INSERT INTO `tgm_product_attribute` (`product_id`, `attribute_id`, `language_id`
 (63, 2, 2, '4'),
 (61, 4, 1, ''),
 (62, 4, 1, ''),
-(63, 4, 1, ''),
-(42, 3, 1, '');
+(63, 4, 1, '');
 
 -- --------------------------------------------------------
 
@@ -4409,6 +4442,7 @@ INSERT INTO `tgm_product_description` (`product_id`, `language_id`, `name`, `des
 (41, 1, 'iMac', '&lt;div&gt;Just when you thought iMac had everything, now there´s even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife ´08, and it´s more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.&lt;/div&gt;\r\n', '', '', '', 'iMac', '', ''),
 (33, 1, 'Samsung SyncMaster 941BW', '&lt;div&gt;\r\n	Imagine the advantages of going big without slowing down. The big 19&amp;quot; 941BW monitor combines wide aspect ratio with fast pixel response time, for bigger images, more room to work and crisp motion. In addition, the exclusive MagicBright 2, MagicColor and MagicTune technologies help deliver the ideal image in every situation, while sleek, narrow bezels and adjustable stands deliver style just the way you want it. With the Samsung 941BW widescreen analog/digital LCD monitor, it&amp;#39;s not hard to imagine.&lt;/div&gt;\r\n', '', '', '', 'Samsung SyncMaster 941BW', '', ''),
 (34, 1, 'iPod Shuffle', '&lt;div&gt;\r\n	&lt;strong&gt;Born to be worn.&lt;/strong&gt;\r\n	&lt;p&gt;\r\n		Clip on the worlds most wearable music player and take up to 240 songs with you anywhere. Choose from five colors including four new hues to make your musical fashion statement.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;strong&gt;Random meets rhythm.&lt;/strong&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		With iTunes autofill, iPod shuffle can deliver a new musical experience every time you sync. For more randomness, you can shuffle songs during playback with the slide of a switch.&lt;/p&gt;\r\n	&lt;strong&gt;Everything is easy.&lt;/strong&gt;\r\n	&lt;p&gt;\r\n		Charge and sync with the included USB dock. Operate the iPod shuffle controls with one hand. Enjoy up to 12 hours straight of skip-free music playback.&lt;/p&gt;\r\n&lt;/div&gt;\r\n', '', '', '', 'iPod Shuffle', '', ''),
+(43, 2, 'MacBook', '&lt;div&gt;\r\n&lt;p&gt;&lt;b&gt;Intel Core 2 Duo processor&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;Powered by an Intel Core 2 Duo processor at speeds up to 2.16GHz, the new MacBook is the fastest ever.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;1GB memory, larger hard drives&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;The new MacBook now comes with 1GB of memory standard and larger hard drives for the entire line perfect for running more of your favorite applications and storing growing media collections.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Sleek, 1.08-inch-thin design&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;MacBook makes it easy to hit the road thanks to its tough polycarbonate case, built-in wireless technologies, and innovative MagSafe Power Adapter that releases automatically if someone accidentally trips on the cord.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Built-in iSight camera&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;Right out of the box, you can have a video chat with friends or family,2 record a video at your desk, or take fun pictures with Photo Booth&lt;/p&gt;\r\n&lt;/div&gt;\r\n', '', '&lt;p&gt;Tai nghe&lt;/p&gt;\r\n', '', 'MacBook', '', ''),
 (31, 1, 'Nikon D300', '&lt;div class=&quot;cpt_product_description &quot;&gt;\r\n	&lt;div&gt;\r\n		Engineered with pro-level features and performance, the 12.3-effective-megapixel D300 combines brand new technologies with advanced features inherited from Nikon&amp;#39;s newly announced D3 professional digital SLR camera to offer serious photographers remarkable performance combined with agility.&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		Similar to the D3, the D300 features Nikon&amp;#39;s exclusive EXPEED Image Processing System that is central to driving the speed and processing power needed for many of the camera&amp;#39;s new features. The D300 features a new 51-point autofocus system with Nikon&amp;#39;s 3D Focus Tracking feature and two new LiveView shooting modes that allow users to frame a photograph using the camera&amp;#39;s high-resolution LCD monitor. The D300 shares a similar Scene Recognition System as is found in the D3; it promises to greatly enhance the accuracy of autofocus, autoexposure, and auto white balance by recognizing the subject or scene being photographed and applying this information to the calculations for the three functions.&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		The D300 reacts with lightning speed, powering up in a mere 0.13 seconds and shooting with an imperceptible 45-millisecond shutter release lag time. The D300 is capable of shooting at a rapid six frames per second and can go as fast as eight frames per second when using the optional MB-D10 multi-power battery pack. In continuous bursts, the D300 can shoot up to 100 shots at full 12.3-megapixel resolution. (NORMAL-LARGE image setting, using a SanDisk Extreme IV 1GB CompactFlash card.)&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		The D300 incorporates a range of innovative technologies and features that will significantly improve the accuracy, control, and performance photographers can get from their equipment. Its new Scene Recognition System advances the use of Nikon&amp;#39;s acclaimed 1,005-segment sensor to recognize colors and light patterns that help the camera determine the subject and the type of scene being photographed before a picture is taken. This information is used to improve the accuracy of autofocus, autoexposure, and auto white balance functions in the D300. For example, the camera can track moving subjects better and by identifying them, it can also automatically select focus points faster and with greater accuracy. It can also analyze highlights and more accurately determine exposure, as well as infer light sources to deliver more accurate white balance detection.&lt;/div&gt;\r\n&lt;/div&gt;\r\n&lt;!-- cpt_container_end --&gt;', '', '', '', 'Nikon D300', '', ''),
 (49, 1, 'Samsung Galaxy Tab 10.1', '&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1, is the world&amp;rsquo;s thinnest tablet, measuring 8.6 mm thickness, running with Android 3.0 Honeycomb OS on a 1GHz dual-core Tegra 2 processor, similar to its younger brother Samsung Galaxy Tab 8.9.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 gives pure Android 3.0 experience, adding its new TouchWiz UX or TouchWiz 4.0 &amp;ndash; includes a live panel, which lets you to customize with different content, such as your pictures, bookmarks, and social feeds, sporting a 10.1 inches WXGA capacitive touch screen with 1280 x 800 pixels of resolution, equipped with 3 megapixel rear camera with LED flash and a 2 megapixel front camera, HSPA+ connectivity up to 21Mbps, 720p HD video recording capability, 1080p HD playback, DLNA support, Bluetooth 2.1, USB 2.0, gyroscope, Wi-Fi 802.11 a/b/g/n, micro-SD slot, 3.5mm headphone jack, and SIM slot, including the Samsung Stick &amp;ndash; a Bluetooth microphone that can be carried in a pocket like a pen and sound dock with powered subwoofer.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 will come in 16GB / 32GB / 64GB verities and pre-loaded with Social Hub, Reader&amp;rsquo;s Hub, Music Hub and Samsung Mini Apps Tray &amp;ndash; which gives you access to more commonly used apps to help ease multitasking and it is capable of Adobe Flash Player 10.2, powered by 6860mAh battery that gives you 10hours of video-playback time.&amp;nbsp;&amp;auml;&amp;ouml;&lt;/p&gt;\r\n', '', '', '', 'Samsung Galaxy Tab 10.1', '', ''),
 (35, 2, 'Product 8', '&lt;p&gt;\r\n	Product 8&lt;/p&gt;\r\n', '', '', '', 'Product 8', '', ''),
@@ -4425,7 +4459,6 @@ INSERT INTO `tgm_product_description` (`product_id`, `language_id`, `name`, `des
 (41, 2, 'iMac', '&lt;div&gt;Just when you thought iMac had everything, now there´s even more. More powerful Intel Core 2 Duo processors. And more memory standard. Combine this with Mac OS X Leopard and iLife ´08, and it´s more all-in-one than ever. iMac packs amazing performance into a stunningly slim space.&lt;/div&gt;\r\n', '', '', '', 'iMac', '', ''),
 (33, 2, 'Samsung SyncMaster 941BW', '&lt;div&gt;\r\n	Imagine the advantages of going big without slowing down. The big 19&amp;quot; 941BW monitor combines wide aspect ratio with fast pixel response time, for bigger images, more room to work and crisp motion. In addition, the exclusive MagicBright 2, MagicColor and MagicTune technologies help deliver the ideal image in every situation, while sleek, narrow bezels and adjustable stands deliver style just the way you want it. With the Samsung 941BW widescreen analog/digital LCD monitor, it&amp;#39;s not hard to imagine.&lt;/div&gt;\r\n', '', '', '', 'Samsung SyncMaster 941BW', '', ''),
 (34, 2, 'iPod Shuffle', '&lt;div&gt;\r\n	&lt;strong&gt;Born to be worn.&lt;/strong&gt;\r\n	&lt;p&gt;\r\n		Clip on the worlds most wearable music player and take up to 240 songs with you anywhere. Choose from five colors including four new hues to make your musical fashion statement.&lt;/p&gt;\r\n	&lt;p&gt;\r\n		&lt;strong&gt;Random meets rhythm.&lt;/strong&gt;&lt;/p&gt;\r\n	&lt;p&gt;\r\n		With iTunes autofill, iPod shuffle can deliver a new musical experience every time you sync. For more randomness, you can shuffle songs during playback with the slide of a switch.&lt;/p&gt;\r\n	&lt;strong&gt;Everything is easy.&lt;/strong&gt;\r\n	&lt;p&gt;\r\n		Charge and sync with the included USB dock. Operate the iPod shuffle controls with one hand. Enjoy up to 12 hours straight of skip-free music playback.&lt;/p&gt;\r\n&lt;/div&gt;\r\n', '', '', '', 'iPod Shuffle', '', ''),
-(43, 2, 'MacBook', '&lt;div&gt;\r\n&lt;p&gt;&lt;b&gt;Intel Core 2 Duo processor&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;Powered by an Intel Core 2 Duo processor at speeds up to 2.16GHz, the new MacBook is the fastest ever.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;1GB memory, larger hard drives&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;The new MacBook now comes with 1GB of memory standard and larger hard drives for the entire line perfect for running more of your favorite applications and storing growing media collections.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Sleek, 1.08-inch-thin design&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;MacBook makes it easy to hit the road thanks to its tough polycarbonate case, built-in wireless technologies, and innovative MagSafe Power Adapter that releases automatically if someone accidentally trips on the cord.&lt;/p&gt;\r\n\r\n&lt;p&gt;&lt;b&gt;Built-in iSight camera&lt;/b&gt;&lt;/p&gt;\r\n\r\n&lt;p&gt;Right out of the box, you can have a video chat with friends or family,2 record a video at your desk, or take fun pictures with Photo Booth&lt;/p&gt;\r\n&lt;/div&gt;\r\n', '', '&lt;p&gt;Tai nghe&lt;/p&gt;\r\n', '', 'MacBook', '', ''),
 (31, 2, 'Nikon D300', '&lt;div class=&quot;cpt_product_description &quot;&gt;\r\n	&lt;div&gt;\r\n		Engineered with pro-level features and performance, the 12.3-effective-megapixel D300 combines brand new technologies with advanced features inherited from Nikon&amp;#39;s newly announced D3 professional digital SLR camera to offer serious photographers remarkable performance combined with agility.&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		Similar to the D3, the D300 features Nikon&amp;#39;s exclusive EXPEED Image Processing System that is central to driving the speed and processing power needed for many of the camera&amp;#39;s new features. The D300 features a new 51-point autofocus system with Nikon&amp;#39;s 3D Focus Tracking feature and two new LiveView shooting modes that allow users to frame a photograph using the camera&amp;#39;s high-resolution LCD monitor. The D300 shares a similar Scene Recognition System as is found in the D3; it promises to greatly enhance the accuracy of autofocus, autoexposure, and auto white balance by recognizing the subject or scene being photographed and applying this information to the calculations for the three functions.&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		The D300 reacts with lightning speed, powering up in a mere 0.13 seconds and shooting with an imperceptible 45-millisecond shutter release lag time. The D300 is capable of shooting at a rapid six frames per second and can go as fast as eight frames per second when using the optional MB-D10 multi-power battery pack. In continuous bursts, the D300 can shoot up to 100 shots at full 12.3-megapixel resolution. (NORMAL-LARGE image setting, using a SanDisk Extreme IV 1GB CompactFlash card.)&lt;br /&gt;\r\n		&lt;br /&gt;\r\n		The D300 incorporates a range of innovative technologies and features that will significantly improve the accuracy, control, and performance photographers can get from their equipment. Its new Scene Recognition System advances the use of Nikon&amp;#39;s acclaimed 1,005-segment sensor to recognize colors and light patterns that help the camera determine the subject and the type of scene being photographed before a picture is taken. This information is used to improve the accuracy of autofocus, autoexposure, and auto white balance functions in the D300. For example, the camera can track moving subjects better and by identifying them, it can also automatically select focus points faster and with greater accuracy. It can also analyze highlights and more accurately determine exposure, as well as infer light sources to deliver more accurate white balance detection.&lt;/div&gt;\r\n&lt;/div&gt;\r\n&lt;!-- cpt_container_end --&gt;', '', '', '', 'Nikon D300', '', ''),
 (49, 2, 'Samsung Galaxy Tab 10.1', '&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1, is the world&amp;rsquo;s thinnest tablet, measuring 8.6 mm thickness, running with Android 3.0 Honeycomb OS on a 1GHz dual-core Tegra 2 processor, similar to its younger brother Samsung Galaxy Tab 8.9.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 gives pure Android 3.0 experience, adding its new TouchWiz UX or TouchWiz 4.0 &amp;ndash; includes a live panel, which lets you to customize with different content, such as your pictures, bookmarks, and social feeds, sporting a 10.1 inches WXGA capacitive touch screen with 1280 x 800 pixels of resolution, equipped with 3 megapixel rear camera with LED flash and a 2 megapixel front camera, HSPA+ connectivity up to 21Mbps, 720p HD video recording capability, 1080p HD playback, DLNA support, Bluetooth 2.1, USB 2.0, gyroscope, Wi-Fi 802.11 a/b/g/n, micro-SD slot, 3.5mm headphone jack, and SIM slot, including the Samsung Stick &amp;ndash; a Bluetooth microphone that can be carried in a pocket like a pen and sound dock with powered subwoofer.&lt;/p&gt;\r\n&lt;p&gt;\r\n	Samsung Galaxy Tab 10.1 will come in 16GB / 32GB / 64GB verities and pre-loaded with Social Hub, Reader&amp;rsquo;s Hub, Music Hub and Samsung Mini Apps Tray &amp;ndash; which gives you access to more commonly used apps to help ease multitasking and it is capable of Adobe Flash Player 10.2, powered by 6860mAh battery that gives you 10hours of video-playback time.&amp;nbsp;&amp;auml;&amp;ouml;&lt;/p&gt;\r\n', '', '', '', 'Samsung Galaxy Tab 10.1', '', ''),
 (30, 2, 'Canon EOS 5D', '&lt;p&gt;Canon''s press material for the EOS 5D states that it ''defines (a) new D-SLR category'', while we''re not typically too concerned with marketing talk this particular statement is clearly pretty accurate. The EOS 5D is unlike any previous digital SLR in that it combines a full-frame (35 mm sized) high resolution sensor (12.8 megapixels) with a relatively compact body (slightly larger than the EOS 20D, although in your hand it feels noticeably ''chunkier''). The EOS 5D is aimed to slot in between the EOS 20D and the EOS-1D professional digital SLR''s, an important difference when compared to the latter is that the EOS 5D doesn''t have any environmental seals. While Canon don''t specifically refer to the EOS 5D as a ''professional'' digital SLR it will have obvious appeal to professionals who want a high quality digital SLR in a body lighter than the EOS-1D. It will also no doubt appeal to current EOS 20D owners (although lets hope they''ve not bought too many EF-S lenses...) äë&lt;/p&gt;\r\n', '', '', '', 'sdf', '', ''),
@@ -4452,8 +4485,7 @@ INSERT INTO `tgm_product_description` (`product_id`, `language_id`, `name`, `des
 (62, 1, 'Iphone', '', '', '', '', 'Iphone', '', ''),
 (62, 2, 'HP LP3123', '&lt;p&gt;Stop your co-workers in their tracks with the stunning new 30-inch diagonal HP LP3065 Flat Panel Monitor. This flagship monitor features best-in-class performance and presentation features on a huge wide-aspect screen while letting you work as comfortably as possible - you might even forget you''re at the office&lt;/p&gt;\r\n', '', '', '', 'HP LP3123', '', ''),
 (63, 1, 'Iphone', '', '', '', '', 'Iphone', '', ''),
-(63, 2, 'HP LP3123', '&lt;p&gt;Stop your co-workers in their tracks with the stunning new 30-inch diagonal HP LP3065 Flat Panel Monitor. This flagship monitor features best-in-class performance and presentation features on a huge wide-aspect screen while letting you work as comfortably as possible - you might even forget you''re at the office&lt;/p&gt;\r\n', '', '', '', 'HP LP3123', '', ''),
-(42, 1, 'Iphone', '', '', '', '', 'Iphone', '', '');
+(63, 2, 'HP LP3123', '&lt;p&gt;Stop your co-workers in their tracks with the stunning new 30-inch diagonal HP LP3065 Flat Panel Monitor. This flagship monitor features best-in-class performance and presentation features on a huge wide-aspect screen while letting you work as comfortably as possible - you might even forget you''re at the office&lt;/p&gt;\r\n', '', '', '', 'HP LP3123', '', '');
 
 -- --------------------------------------------------------
 
@@ -4472,16 +4504,16 @@ CREATE TABLE IF NOT EXISTS `tgm_product_discount` (
   `date_end` date NOT NULL DEFAULT '0000-00-00',
   PRIMARY KEY (`product_discount_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=558 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=561 ;
 
 --
 -- Dumping data for table `tgm_product_discount`
 --
 
 INSERT INTO `tgm_product_discount` (`product_discount_id`, `product_id`, `customer_group_id`, `quantity`, `priority`, `price`, `date_start`, `date_end`) VALUES
-(557, 42, 1, 30, 1, '66.0000', '0000-00-00', '0000-00-00'),
-(556, 42, 1, 20, 1, '77.0000', '0000-00-00', '0000-00-00'),
-(555, 42, 1, 10, 1, '88.0000', '0000-00-00', '0000-00-00');
+(560, 42, 1, 30, 1, '66.0000', '0000-00-00', '0000-00-00'),
+(559, 42, 1, 20, 1, '77.0000', '0000-00-00', '0000-00-00'),
+(558, 42, 1, 10, 1, '88.0000', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -4508,7 +4540,7 @@ CREATE TABLE IF NOT EXISTS `tgm_product_image` (
   `sort_order` int(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_image_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2916 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2925 ;
 
 --
 -- Dumping data for table `tgm_product_image`
@@ -4527,8 +4559,8 @@ INSERT INTO `tgm_product_image` (`product_image_id`, `product_id`, `image`, `sor
 (2011, 32, 'catalog/demo/ipod_touch_7.jpg', 0),
 (2010, 32, 'catalog/demo/ipod_touch_6.jpg', 0),
 (2009, 32, 'catalog/demo/ipod_touch_5.jpg', 0),
-(2910, 43, 'catalog/demo/macbook_3.jpg', 0),
-(2909, 43, 'catalog/demo/macbook_2.jpg', 0),
+(2924, 43, 'catalog/demo/macbook_5.jpg', 0),
+(2923, 43, 'catalog/demo/macbook_4.jpg', 0),
 (2562, 44, 'catalog/demo/macbook_air_3.jpg', 0),
 (2561, 44, 'catalog/demo/macbook_air_2.jpg', 0),
 (1977, 45, 'catalog/demo/macbook_pro_2.jpg', 0),
@@ -4556,8 +4588,8 @@ INSERT INTO `tgm_product_image` (`product_image_id`, `product_id`, `image`, `sor
 (2008, 32, 'catalog/demo/ipod_touch_2.jpg', 0),
 (2007, 32, 'catalog/demo/ipod_touch_3.jpg', 0),
 (2006, 32, 'catalog/demo/ipod_touch_4.jpg', 0),
-(2908, 43, 'catalog/demo/macbook_4.jpg', 0),
-(2907, 43, 'catalog/demo/macbook_5.jpg', 0),
+(2922, 43, 'catalog/demo/macbook_2.jpg', 0),
+(2921, 43, 'catalog/demo/macbook_3.jpg', 0),
 (2560, 44, 'catalog/demo/macbook_air_4.jpg', 0),
 (1975, 45, 'catalog/demo/macbook_pro_4.jpg', 0),
 (1984, 31, 'catalog/demo/nikon_d300_4.jpg', 0),
@@ -4571,11 +4603,11 @@ INSERT INTO `tgm_product_image` (`product_image_id`, `product_id`, `image`, `sor
 (2324, 49, 'catalog/demo/samsung_tab_4.jpg', 0),
 (2323, 49, 'catalog/demo/samsung_tab_3.jpg', 0),
 (2322, 49, 'catalog/demo/samsung_tab_2.jpg', 0),
-(2901, 42, 'catalog/demo/canon_eos_5d_1.jpg', 0),
-(2900, 42, 'catalog/demo/compaq_presario.jpg', 0),
-(2899, 42, 'catalog/demo/hp_1.jpg', 0),
-(2898, 42, 'catalog/demo/canon_logo.jpg', 0),
-(2897, 42, 'catalog/demo/canon_eos_5d_2.jpg', 0),
+(2920, 42, 'catalog/demo/canon_eos_5d_2.jpg', 0),
+(2919, 42, 'catalog/demo/canon_logo.jpg', 0),
+(2918, 42, 'catalog/demo/hp_1.jpg', 0),
+(2917, 42, 'catalog/demo/compaq_presario.jpg', 0),
+(2916, 42, 'catalog/demo/canon_eos_5d_1.jpg', 0),
 (2695, 52, 'catalog/demo/hp_2.jpg', 0),
 (2694, 52, 'catalog/demo/hp_3.jpg', 0),
 (2697, 53, 'catalog/demo/hp_2.jpg', 0),
@@ -4645,17 +4677,17 @@ CREATE TABLE IF NOT EXISTS `tgm_product_option_value` (
   `weight` decimal(15,8) NOT NULL,
   `weight_prefix` varchar(1) NOT NULL,
   PRIMARY KEY (`product_option_value_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
 
 --
 -- Dumping data for table `tgm_product_option_value`
 --
 
 INSERT INTO `tgm_product_option_value` (`product_option_value_id`, `product_option_id`, `product_id`, `option_id`, `option_value_id`, `quantity`, `text`, `subtract`, `price`, `price_prefix`, `points`, `points_prefix`, `weight`, `weight_prefix`) VALUES
+(40, 0, 42, 1, 49, 1, 'Tặng sạc', 0, '0.0000', '+', 0, '+', '0.00000000', '+'),
 (26, 0, 41, 1, 49, 3, '', 1, '0.0000', '+', 0, '+', '0.00000000', '+'),
 (38, 0, 40, 1, 49, 1, 'Tặng máy mài vỏ xe', 0, '0.0000', '+', 0, '+', '0.00000000', '+'),
-(32, 0, 42, 1, 49, 1, 'Tặng tai nghe', 0, '0.0000', '+', 0, '+', '0.00000000', '+'),
-(33, 0, 42, 1, 49, 1, 'Tặng sạc', 0, '0.0000', '+', 0, '+', '0.00000000', '+'),
+(39, 0, 42, 1, 49, 1, 'Tặng tai nghe', 0, '0.0000', '+', 0, '+', '0.00000000', '+'),
 (37, 0, 40, 1, 49, 1, 'Tặng hộp keo và miếng vá Tech 2 way của USA ', 0, '0.0000', '+', 0, '+', '0.00000000', '+');
 
 -- --------------------------------------------------------
@@ -4710,17 +4742,17 @@ CREATE TABLE IF NOT EXISTS `tgm_product_reward` (
   `customer_group_id` int(11) NOT NULL DEFAULT '0',
   `points` int(8) NOT NULL DEFAULT '0',
   PRIMARY KEY (`product_reward_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=628 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=630 ;
 
 --
 -- Dumping data for table `tgm_product_reward`
 --
 
 INSERT INTO `tgm_product_reward` (`product_reward_id`, `product_id`, `customer_group_id`, `points`) VALUES
-(626, 42, 1, 100),
+(628, 42, 1, 100),
 (594, 47, 1, 300),
 (379, 28, 1, 400),
-(627, 43, 1, 600),
+(629, 43, 1, 600),
 (339, 29, 1, 0),
 (343, 48, 1, 0),
 (600, 53, 1, 300),
@@ -4763,14 +4795,14 @@ CREATE TABLE IF NOT EXISTS `tgm_product_special` (
   `date_end` date NOT NULL DEFAULT '0000-00-00',
   PRIMARY KEY (`product_special_id`),
   KEY `product_id` (`product_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=608 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=609 ;
 
 --
 -- Dumping data for table `tgm_product_special`
 --
 
 INSERT INTO `tgm_product_special` (`product_special_id`, `product_id`, `customer_group_id`, `priority`, `price`, `date_start`, `date_end`) VALUES
-(605, 42, 1, 1, '90', '2016-08-15', '2016-08-15'),
+(608, 42, 1, 1, '90', '2016-08-15', '2016-08-31'),
 (461, 30, 1, 2, '80', '2016-08-15', '2016-08-15'),
 (552, 52, 1, 0, '90', '0000-00-00', '0000-00-00'),
 (539, 47, 1, 0, '90', '0000-00-00', '0000-00-00'),
@@ -4786,6 +4818,26 @@ INSERT INTO `tgm_product_special` (`product_special_id`, `product_id`, `customer
 (562, 55, 1, 0, '90', '0000-00-00', '0000-00-00'),
 (561, 54, 1, 0, '90', '0000-00-00', '0000-00-00'),
 (553, 53, 1, 0, '90', '0000-00-00', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tgm_product_to_article`
+--
+
+CREATE TABLE IF NOT EXISTS `tgm_product_to_article` (
+  `product_id` int(11) NOT NULL,
+  `article_id` int(11) NOT NULL,
+  PRIMARY KEY (`product_id`,`article_id`),
+  KEY `category_id` (`article_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tgm_product_to_article`
+--
+
+INSERT INTO `tgm_product_to_article` (`product_id`, `article_id`) VALUES
+(42, 2);
 
 -- --------------------------------------------------------
 
@@ -5169,25 +5221,24 @@ CREATE TABLE IF NOT EXISTS `tgm_setting` (
   `value` text NOT NULL,
   `serialized` tinyint(1) NOT NULL,
   PRIMARY KEY (`setting_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1791 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3076 ;
 
 --
 -- Dumping data for table `tgm_setting`
 --
 
 INSERT INTO `tgm_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `serialized`) VALUES
-(1, 0, 'shipping', 'shipping_sort_order', '3', 0),
+(2091, 0, 'shipping', 'shipping_sort_order', '3', 0),
 (2, 0, 'sub_total', 'sub_total_sort_order', '1', 0),
 (3, 0, 'sub_total', 'sub_total_status', '1', 0),
-(4, 0, 'tax', 'tax_status', '1', 0),
 (5, 0, 'total', 'total_sort_order', '9', 0),
 (6, 0, 'total', 'total_status', '1', 0),
-(7, 0, 'tax', 'tax_sort_order', '5', 0),
+(2092, 0, 'tax', 'tax_status', '1', 0),
 (8, 0, 'free_checkout', 'free_checkout_sort_order', '1', 0),
 (1492, 0, 'cod', 'cod_sort_order', '', 0),
 (1491, 0, 'cod', 'cod_status', '1', 0),
-(14, 0, 'shipping', 'shipping_status', '1', 0),
-(15, 0, 'shipping', 'shipping_estimator', '1', 0),
+(2090, 0, 'shipping', 'shipping_status', '1', 0),
+(2089, 0, 'shipping', 'shipping_estimator', '1', 0),
 (27, 0, 'coupon', 'coupon_sort_order', '4', 0),
 (28, 0, 'coupon', 'coupon_status', '1', 0),
 (1790, 0, 'flat', 'flat_sort_order', '1', 0),
@@ -5202,27 +5253,29 @@ INSERT INTO `tgm_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `se
 (146, 0, 'category', 'category_status', '1', 0),
 (158, 0, 'account', 'account_status', '1', 0),
 (159, 0, 'affiliate', 'affiliate_status', '1', 0),
-(1785, 0, 'cat', 'cat_status', '1', 0),
+(2947, 0, 'config', 'config_error_display', '1', 0),
+(2948, 0, 'config', 'config_error_log', '1', 0),
+(2949, 0, 'config', 'config_error_filename', 'error.log', 0),
 (1346, 0, 'live_search', 'live_search_show_price', '1', 0),
 (1345, 0, 'live_search', 'live_search_show_image', '1', 0),
-(1783, 0, 'config', 'config_error_filename', 'error.log', 0),
-(1780, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
-(1781, 0, 'config', 'config_error_display', '1', 0),
-(1782, 0, 'config', 'config_error_log', '1', 0),
+(2093, 0, 'tax', 'tax_sort_order', '5', 0),
+(2284, 0, 'news_category', 'news_category_status', '1', 0),
+(3073, 0, 'news', 'news_image_article_height', '200', 0),
 (94, 0, 'voucher', 'voucher_sort_order', '8', 0),
 (95, 0, 'voucher', 'voucher_status', '1', 0),
 (103, 0, 'free_checkout', 'free_checkout_status', '1', 0),
 (104, 0, 'free_checkout', 'free_checkout_order_status_id', '1', 0),
-(1784, 0, 'cat', 'cat_count', '1', 0),
-(1773, 0, 'config', 'config_compression', '0', 0),
-(1774, 0, 'config', 'config_secure', '0', 0),
-(1775, 0, 'config', 'config_password', '1', 0),
-(1776, 0, 'config', 'config_shared', '0', 0),
-(1777, 0, 'config', 'config_encryption', 'k4GkgHw5euyKhWduzyRsTdWf4sjFM1lWSA30wZbOlGcl8O5QnAtASJxWrpbEp0IKnvn8q9QX57kUqA1li4mR9eeRrqEhof1Ulrjyc0Pr7MiUnFtihM1fpFwRNzJ9cDSkrFNJZIqsNLE78zzzhfv1qNdHld1SFa2uMq1aBa3047wjbUwj2ouCCtzdy7OE0i42XI8oUdPwlsNdA3SlCZAWI8sb6jO19ck4rpAAdA7vEZlEQ8J7EJS0M1E7zKyAV7yGn9YV71HEL3gWtuHk9kWR76C9cTnQ11PaeFdDEOYVDdpklfInjCcWojsIKRQ4GPuWTN1pwSUVrIV3gOVlvxoRekCvjAkeUlKyr4iVdD8IC1qEz0bidA4Pz5n9hWWcuA1bF2dYumXGgpPau7L2TVz7pJqmBoJ5Z0tZ1gcEScaVwvG3jniLtEZFHyRD8PfJPoaLorcZdzJ03Ml7rZJBNX2URtiqthtIMJFkRlpw32EBDgxuiqMHr3a6KHMXisoERCSFZYLbXU8u3epeMOAJQnsMIyjynpPmkvRIci5kQZV5jp5wvQbFLooRlNfvYQhvFNrqt9ktAmzrgQ4Rr4KSHgtA6PVvm3CWKxWhRPMltiUlAi6YSYpWk8CxGZhMyrOlY0zQaxvuo5vDRG6uwg4c55t3Tyffc6S3piZvtuWPtucyPYcXOEeGnu569SrfpZ4urpH7UKXc6gVPf9E8xmlCVmG1S92e8IQtVYLb1kTMwiwnb4Ie2K92mkMuj7AE1Po1AEv7vpEghKG1MPilMadMk4lDSMrNXIjLOvJsT9AcATpFSA2nP4LMWeailcVO9hhzmw2sVLOiMlVpVPOAyOGC6vN7sruL0MWqNLp56juJm0l5bPpP8tBeirhyZmoKRaytqKA46H28ikEGinJOQyLFqf8Cixr1Zs3ps19NQTm0IF2im4XgsY5lMVe81KpIGJNLJIQkiNcJmC9wfOZL0gqONG9w21EadEQ6f5kZX5BYEOhEd8hiqcElHjRD2mYF310WDF7k', 0),
-(1778, 0, 'config', 'config_file_max_size', '300000', 0),
-(1779, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
-(1772, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai''hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
-(1771, 0, 'config', 'config_seo_url', '1', 0),
+(2939, 0, 'config', 'config_compression', '0', 0),
+(2940, 0, 'config', 'config_secure', '0', 0),
+(2941, 0, 'config', 'config_password', '1', 0),
+(2934, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
+(2935, 0, 'config', 'config_mail_alert', '', 0),
+(2936, 0, 'config', 'config_maintenance', '0', 0),
+(2937, 0, 'config', 'config_seo_url', '1', 0),
+(2938, 0, 'config', 'config_robots', 'abot\r\ndbot\r\nebot\r\nhbot\r\nkbot\r\nlbot\r\nmbot\r\nnbot\r\nobot\r\npbot\r\nrbot\r\nsbot\r\ntbot\r\nvbot\r\nybot\r\nzbot\r\nbot.\r\nbot/\r\n_bot\r\n.bot\r\n/bot\r\n-bot\r\n:bot\r\n(bot\r\ncrawl\r\nslurp\r\nspider\r\nseek\r\naccoona\r\nacoon\r\nadressendeutschland\r\nah-ha.com\r\nahoy\r\naltavista\r\nananzi\r\nanthill\r\nappie\r\narachnophilia\r\narale\r\naraneo\r\naranha\r\narchitext\r\naretha\r\narks\r\nasterias\r\natlocal\r\natn\r\natomz\r\naugurfind\r\nbackrub\r\nbannana_bot\r\nbaypup\r\nbdfetch\r\nbig brother\r\nbiglotron\r\nbjaaland\r\nblackwidow\r\nblaiz\r\nblog\r\nblo.\r\nbloodhound\r\nboitho\r\nbooch\r\nbradley\r\nbutterfly\r\ncalif\r\ncassandra\r\nccubee\r\ncfetch\r\ncharlotte\r\nchurl\r\ncienciaficcion\r\ncmc\r\ncollective\r\ncomagent\r\ncombine\r\ncomputingsite\r\ncsci\r\ncurl\r\ncusco\r\ndaumoa\r\ndeepindex\r\ndelorie\r\ndepspid\r\ndeweb\r\ndie blinde kuh\r\ndigger\r\nditto\r\ndmoz\r\ndocomo\r\ndownload express\r\ndtaagent\r\ndwcp\r\nebiness\r\nebingbong\r\ne-collector\r\nejupiter\r\nemacs-w3 search engine\r\nesther\r\nevliya celebi\r\nezresult\r\nfalcon\r\nfelix ide\r\nferret\r\nfetchrover\r\nfido\r\nfindlinks\r\nfireball\r\nfish search\r\nfouineur\r\nfunnelweb\r\ngazz\r\ngcreep\r\ngenieknows\r\ngetterroboplus\r\ngeturl\r\nglx\r\ngoforit\r\ngolem\r\ngrabber\r\ngrapnel\r\ngralon\r\ngriffon\r\ngromit\r\ngrub\r\ngulliver\r\nhamahakki\r\nharvest\r\nhavindex\r\nhelix\r\nheritrix\r\nhku www octopus\r\nhomerweb\r\nhtdig\r\nhtml index\r\nhtml_analyzer\r\nhtmlgobble\r\nhubater\r\nhyper-decontextualizer\r\nia_archiver\r\nibm_planetwide\r\nichiro\r\niconsurf\r\niltrovatore\r\nimage.kapsi.net\r\nimagelock\r\nincywincy\r\nindexer\r\ninfobee\r\ninformant\r\ningrid\r\ninktomisearch.com\r\ninspector web\r\nintelliagent\r\ninternet shinchakubin\r\nip3000\r\niron33\r\nisraeli-search\r\nivia\r\njack\r\njakarta\r\njavabee\r\njetbot\r\njumpstation\r\nkatipo\r\nkdd-explorer\r\nkilroy\r\nknowledge\r\nkototoi\r\nkretrieve\r\nlabelgrabber\r\nlachesis\r\nlarbin\r\nlegs\r\nlibwww\r\nlinkalarm\r\nlink validator\r\nlinkscan\r\nlockon\r\nlwp\r\nlycos\r\nmagpie\r\nmantraagent\r\nmapoftheinternet\r\nmarvin/\r\nmattie\r\nmediafox\r\nmediapartners\r\nmercator\r\nmerzscope\r\nmicrosoft url control\r\nminirank\r\nmiva\r\nmj12\r\nmnogosearch\r\nmoget\r\nmonster\r\nmoose\r\nmotor\r\nmultitext\r\nmuncher\r\nmuscatferret\r\nmwd.search\r\nmyweb\r\nnajdi\r\nnameprotect\r\nnationaldirectory\r\nnazilla\r\nncsa beta\r\nnec-meshexplorer\r\nnederland.zoek\r\nnetcarta webmap engine\r\nnetmechanic\r\nnetresearchserver\r\nnetscoop\r\nnewscan-online\r\nnhse\r\nnokia6682/\r\nnomad\r\nnoyona\r\nnutch\r\nnzexplorer\r\nobjectssearch\r\noccam\r\nomni\r\nopen text\r\nopenfind\r\nopenintelligencedata\r\norb search\r\nosis-project\r\npack rat\r\npageboy\r\npagebull\r\npage_verifier\r\npanscient\r\nparasite\r\npartnersite\r\npatric\r\npear.\r\npegasus\r\nperegrinator\r\npgp key agent\r\nphantom\r\nphpdig\r\npicosearch\r\npiltdownman\r\npimptrain\r\npinpoint\r\npioneer\r\npiranha\r\nplumtreewebaccessor\r\npogodak\r\npoirot\r\npompos\r\npoppelsdorf\r\npoppi\r\npopular iconoclast\r\npsycheclone\r\npublisher\r\npython\r\nrambler\r\nraven search\r\nroach\r\nroad runner\r\nroadhouse\r\nrobbie\r\nrobofox\r\nrobozilla\r\nrules\r\nsalty\r\nsbider\r\nscooter\r\nscoutjet\r\nscrubby\r\nsearch.\r\nsearchprocess\r\nsemanticdiscovery\r\nsenrigan\r\nsg-scout\r\nshai''hulud\r\nshark\r\nshopwiki\r\nsidewinder\r\nsift\r\nsilk\r\nsimmany\r\nsite searcher\r\nsite valet\r\nsitetech-rover\r\nskymob.com\r\nsleek\r\nsmartwit\r\nsna-\r\nsnappy\r\nsnooper\r\nsohu\r\nspeedfind\r\nsphere\r\nsphider\r\nspinner\r\nspyder\r\nsteeler/\r\nsuke\r\nsuntek\r\nsupersnooper\r\nsurfnomore\r\nsven\r\nsygol\r\nszukacz\r\ntach black widow\r\ntarantula\r\ntempleton\r\n/teoma\r\nt-h-u-n-d-e-r-s-t-o-n-e\r\ntheophrastus\r\ntitan\r\ntitin\r\ntkwww\r\ntoutatis\r\nt-rex\r\ntutorgig\r\ntwiceler\r\ntwisted\r\nucsd\r\nudmsearch\r\nurl check\r\nupdated\r\nvagabondo\r\nvalkyrie\r\nverticrawl\r\nvictoria\r\nvision-search\r\nvolcano\r\nvoyager/\r\nvoyager-hc\r\nw3c_validator\r\nw3m2\r\nw3mir\r\nwalker\r\nwallpaper\r\nwanderer\r\nwauuu\r\nwavefire\r\nweb core\r\nweb hopper\r\nweb wombat\r\nwebbandit\r\nwebcatcher\r\nwebcopy\r\nwebfoot\r\nweblayers\r\nweblinker\r\nweblog monitor\r\nwebmirror\r\nwebmonkey\r\nwebquest\r\nwebreaper\r\nwebsitepulse\r\nwebsnarf\r\nwebstolperer\r\nwebvac\r\nwebwalk\r\nwebwatch\r\nwebwombat\r\nwebzinger\r\nwhizbang\r\nwhowhere\r\nwild ferret\r\nworldlight\r\nwwwc\r\nwwwster\r\nxenu\r\nxget\r\nxift\r\nxirq\r\nyandex\r\nyanga\r\nyeti\r\nyodao\r\nzao\r\nzippp\r\nzyborg', 0),
+(2945, 0, 'config', 'config_file_ext_allowed', 'zip\r\ntxt\r\npng\r\njpe\r\njpeg\r\njpg\r\ngif\r\nbmp\r\nico\r\ntiff\r\ntif\r\nsvg\r\nsvgz\r\nzip\r\nrar\r\nmsi\r\ncab\r\nmp3\r\nqt\r\nmov\r\npdf\r\npsd\r\nai\r\neps\r\nps\r\ndoc', 0),
+(2946, 0, 'config', 'config_file_mime_allowed', 'text/plain\r\nimage/png\r\nimage/jpeg\r\nimage/gif\r\nimage/bmp\r\nimage/tiff\r\nimage/svg+xml\r\napplication/zip\r\n&quot;application/zip&quot;\r\napplication/x-zip\r\n&quot;application/x-zip&quot;\r\napplication/x-zip-compressed\r\n&quot;application/x-zip-compressed&quot;\r\napplication/rar\r\n&quot;application/rar&quot;\r\napplication/x-rar\r\n&quot;application/x-rar&quot;\r\napplication/x-rar-compressed\r\n&quot;application/x-rar-compressed&quot;\r\napplication/octet-stream\r\n&quot;application/octet-stream&quot;\r\naudio/mpeg\r\nvideo/quicktime\r\napplication/pdf', 0),
+(2944, 0, 'config', 'config_file_max_size', '300000', 0),
 (290, 0, 'theme_default', 'theme_default_product_limit', '15', 0),
 (291, 0, 'theme_default', 'theme_default_product_description_length', '100', 0),
 (292, 0, 'theme_default', 'theme_default_image_thumb_width', '228', 0),
@@ -5247,84 +5300,80 @@ INSERT INTO `tgm_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `se
 (311, 0, 'theme_default', 'theme_default_image_location_width', '268', 0),
 (312, 0, 'theme_default', 'theme_default_directory', 'default', 0),
 (313, 0, 'theme_default', 'theme_default_status', '1', 0),
-(1770, 0, 'config', 'config_maintenance', '0', 0),
-(1769, 0, 'config', 'config_mail_alert', '', 0),
-(1768, 0, 'config', 'config_mail_smtp_timeout', '5', 0),
-(1767, 0, 'config', 'config_mail_smtp_port', '25', 0),
-(1766, 0, 'config', 'config_mail_smtp_password', '', 0),
-(1765, 0, 'config', 'config_mail_smtp_username', '', 0),
-(1764, 0, 'config', 'config_mail_smtp_hostname', '', 0),
-(1763, 0, 'config', 'config_mail_parameter', '', 0),
-(1762, 0, 'config', 'config_mail_protocol', 'mail', 0),
-(1761, 0, 'config', 'config_ftp_status', '0', 0),
-(1760, 0, 'config', 'config_ftp_root', '', 0),
-(1759, 0, 'config', 'config_ftp_password', '', 0),
-(1758, 0, 'config', 'config_ftp_username', '', 0),
-(1757, 0, 'config', 'config_ftp_port', '21', 0),
-(1756, 0, 'config', 'config_ftp_hostname', 'localhost', 0),
-(1754, 0, 'config', 'config_logo', 'catalog/logo.jpg', 0),
-(1755, 0, 'config', 'config_icon', 'catalog/cart.png', 0),
-(1753, 0, 'config', 'config_captcha_page', '["review","return","contact"]', 1),
-(1752, 0, 'config', 'config_captcha', '', 0),
-(1751, 0, 'config', 'config_return_status_id', '2', 0),
-(1750, 0, 'config', 'config_return_id', '0', 0),
-(1749, 0, 'config', 'config_affiliate_mail', '0', 0),
-(1748, 0, 'config', 'config_affiliate_id', '4', 0),
-(1747, 0, 'config', 'config_affiliate_commission', '5', 0),
-(1746, 0, 'config', 'config_affiliate_auto', '0', 0),
-(1745, 0, 'config', 'config_affiliate_approval', '0', 0),
-(1744, 0, 'config', 'config_stock_checkout', '0', 0),
-(1743, 0, 'config', 'config_stock_warning', '0', 0),
-(1742, 0, 'config', 'config_stock_display', '0', 0),
-(1741, 0, 'config', 'config_api_id', '1', 0),
-(1740, 0, 'config', 'config_order_mail', '0', 0),
-(1739, 0, 'config', 'config_fraud_status_id', '7', 0),
-(1738, 0, 'config', 'config_complete_status', '["3","5"]', 1),
-(1737, 0, 'config', 'config_processing_status', '["1","3","5","2","12"]', 1),
-(1736, 0, 'config', 'config_order_status_id', '1', 0),
-(1735, 0, 'config', 'config_checkout_id', '5', 0),
-(1734, 0, 'config', 'config_checkout_guest', '1', 0),
-(1733, 0, 'config', 'config_cart_weight', '1', 0),
-(1732, 0, 'config', 'config_invoice_prefix', 'INV-2013-00', 0),
-(1731, 0, 'config', 'config_account_mail', '0', 0),
-(1730, 0, 'config', 'config_account_id', '3', 0),
-(1729, 0, 'config', 'config_login_attempts', '5', 0),
-(1728, 0, 'config', 'config_customer_price', '0', 0),
-(1727, 0, 'config', 'config_customer_group_display', '["1"]', 1),
-(1726, 0, 'config', 'config_customer_group_id', '1', 0),
-(1725, 0, 'config', 'config_customer_online', '0', 0),
-(1724, 0, 'config', 'config_tax_customer', 'shipping', 0),
-(1723, 0, 'config', 'config_tax_default', 'shipping', 0),
-(1722, 0, 'config', 'config_tax', '1', 0),
-(1721, 0, 'config', 'config_voucher_max', '1000', 0),
-(1720, 0, 'config', 'config_voucher_min', '1', 0),
-(1719, 0, 'config', 'config_review_mail', '0', 0),
-(1718, 0, 'config', 'config_review_guest', '1', 0),
-(1717, 0, 'config', 'config_review_status', '1', 0),
-(1716, 0, 'config', 'config_limit_admin', '20', 0),
-(1715, 0, 'config', 'config_product_count', '1', 0),
-(1714, 0, 'config', 'config_weight_class_id', '1', 0),
-(1713, 0, 'config', 'config_length_class_id', '1', 0),
-(1712, 0, 'config', 'config_currency_auto', '1', 0),
-(1710, 0, 'config', 'config_admin_language', 'vi-vn', 0),
-(1711, 0, 'config', 'config_currency', 'VND', 0),
-(1709, 0, 'config', 'config_language', 'vi-vn', 0),
-(1708, 0, 'config', 'config_zone_id', '', 0),
-(1707, 0, 'config', 'config_country_id', '230', 0),
-(1706, 0, 'config', 'config_comment', '', 0),
-(1705, 0, 'config', 'config_open', '', 0),
-(1704, 0, 'config', 'config_image', '', 0),
-(1703, 0, 'config', 'config_fax', '', 0),
-(1702, 0, 'config', 'config_google', 'http://google.com', 0),
-(1701, 0, 'config', 'config_facebook', 'http://facebook.com', 0),
-(1700, 0, 'config', 'config_hotline', '12344512', 0),
-(1698, 0, 'config', 'config_email', 'hotro@tgmss.com', 0),
-(1699, 0, 'config', 'config_telephone', '123456789', 0),
-(1697, 0, 'config', 'config_geocode', '', 0),
-(1696, 0, 'config', 'config_address', '143 Bình Lợi ( Nơ Trang Long nối dài), P13, Q. Bình Thạnh, TP Hồ Chí Minh', 0),
-(1695, 0, 'config', 'config_owner', 'Công ty TNHH Công Nghiệp và Thương Mại Nam Việt', 0),
-(1694, 0, 'config', 'config_name', 'SPRO.VN', 0),
-(1693, 0, 'config', 'config_layout_id', '4', 0),
+(2942, 0, 'config', 'config_shared', '0', 0),
+(2943, 0, 'config', 'config_encryption', 'k4GkgHw5euyKhWduzyRsTdWf4sjFM1lWSA30wZbOlGcl8O5QnAtASJxWrpbEp0IKnvn8q9QX57kUqA1li4mR9eeRrqEhof1Ulrjyc0Pr7MiUnFtihM1fpFwRNzJ9cDSkrFNJZIqsNLE78zzzhfv1qNdHld1SFa2uMq1aBa3047wjbUwj2ouCCtzdy7OE0i42XI8oUdPwlsNdA3SlCZAWI8sb6jO19ck4rpAAdA7vEZlEQ8J7EJS0M1E7zKyAV7yGn9YV71HEL3gWtuHk9kWR76C9cTnQ11PaeFdDEOYVDdpklfInjCcWojsIKRQ4GPuWTN1pwSUVrIV3gOVlvxoRekCvjAkeUlKyr4iVdD8IC1qEz0bidA4Pz5n9hWWcuA1bF2dYumXGgpPau7L2TVz7pJqmBoJ5Z0tZ1gcEScaVwvG3jniLtEZFHyRD8PfJPoaLorcZdzJ03Ml7rZJBNX2URtiqthtIMJFkRlpw32EBDgxuiqMHr3a6KHMXisoERCSFZYLbXU8u3epeMOAJQnsMIyjynpPmkvRIci5kQZV5jp5wvQbFLooRlNfvYQhvFNrqt9ktAmzrgQ4Rr4KSHgtA6PVvm3CWKxWhRPMltiUlAi6YSYpWk8CxGZhMyrOlY0zQaxvuo5vDRG6uwg4c55t3Tyffc6S3piZvtuWPtucyPYcXOEeGnu569SrfpZ4urpH7UKXc6gVPf9E8xmlCVmG1S92e8IQtVYLb1kTMwiwnb4Ie2K92mkMuj7AE1Po1AEv7vpEghKG1MPilMadMk4lDSMrNXIjLOvJsT9AcATpFSA2nP4LMWeailcVO9hhzmw2sVLOiMlVpVPOAyOGC6vN7sruL0MWqNLp56juJm0l5bPpP8tBeirhyZmoKRaytqKA46H28ikEGinJOQyLFqf8Cixr1Zs3ps19NQTm0IF2im4XgsY5lMVe81KpIGJNLJIQkiNcJmC9wfOZL0gqONG9w21EadEQ6f5kZX5BYEOhEd8hiqcElHjRD2mYF310WDF7k', 0),
+(2933, 0, 'config', 'config_mail_smtp_port', '25', 0),
+(2932, 0, 'config', 'config_mail_smtp_password', '', 0),
+(2931, 0, 'config', 'config_mail_smtp_username', '', 0),
+(2930, 0, 'config', 'config_mail_smtp_hostname', '', 0),
+(2929, 0, 'config', 'config_mail_parameter', '', 0),
+(2928, 0, 'config', 'config_mail_protocol', 'mail', 0),
+(2925, 0, 'config', 'config_ftp_password', '', 0),
+(2927, 0, 'config', 'config_ftp_status', '0', 0),
+(2926, 0, 'config', 'config_ftp_root', '', 0),
+(2924, 0, 'config', 'config_ftp_username', '', 0),
+(2923, 0, 'config', 'config_ftp_port', '21', 0),
+(2922, 0, 'config', 'config_ftp_hostname', 'localhost', 0),
+(2921, 0, 'config', 'config_icon', 'catalog/cart.png', 0),
+(2920, 0, 'config', 'config_logo', 'catalog/logo.jpg', 0),
+(2919, 0, 'config', 'config_captcha_page', '["review","return","contact"]', 1),
+(2918, 0, 'config', 'config_captcha', '', 0),
+(2917, 0, 'config', 'config_return_status_id', '2', 0),
+(2916, 0, 'config', 'config_return_id', '0', 0),
+(2915, 0, 'config', 'config_affiliate_mail', '0', 0),
+(2914, 0, 'config', 'config_affiliate_id', '4', 0),
+(2913, 0, 'config', 'config_affiliate_commission', '5', 0),
+(2912, 0, 'config', 'config_affiliate_auto', '0', 0),
+(2911, 0, 'config', 'config_affiliate_approval', '0', 0),
+(2910, 0, 'config', 'config_stock_checkout', '0', 0),
+(2909, 0, 'config', 'config_stock_warning', '1', 0),
+(2908, 0, 'config', 'config_stock_display', '0', 0),
+(2907, 0, 'config', 'config_api_id', '1', 0),
+(2906, 0, 'config', 'config_order_mail', '0', 0),
+(2905, 0, 'config', 'config_fraud_status_id', '7', 0),
+(2901, 0, 'config', 'config_checkout_id', '0', 0),
+(2902, 0, 'config', 'config_order_status_id', '1', 0),
+(2903, 0, 'config', 'config_processing_status', '["1","3","5","2","12"]', 1),
+(2904, 0, 'config', 'config_complete_status', '["3","5"]', 1),
+(2900, 0, 'config', 'config_checkout_guest', '1', 0),
+(2899, 0, 'config', 'config_cart_weight', '1', 0),
+(2898, 0, 'config', 'config_invoice_prefix', 'INV-2013-00', 0),
+(2897, 0, 'config', 'config_account_mail', '0', 0),
+(2896, 0, 'config', 'config_account_id', '3', 0),
+(2895, 0, 'config', 'config_login_attempts', '5', 0),
+(2894, 0, 'config', 'config_customer_price', '0', 0),
+(2893, 0, 'config', 'config_customer_group_display', '["1"]', 1),
+(2892, 0, 'config', 'config_customer_group_id', '1', 0),
+(2891, 0, 'config', 'config_customer_online', '0', 0),
+(2890, 0, 'config', 'config_tax_customer', 'shipping', 0),
+(2889, 0, 'config', 'config_tax_default', 'shipping', 0),
+(2888, 0, 'config', 'config_tax', '1', 0),
+(2887, 0, 'config', 'config_voucher_max', '1000', 0),
+(2886, 0, 'config', 'config_voucher_min', '1', 0),
+(2885, 0, 'config', 'config_review_mail', '0', 0),
+(2884, 0, 'config', 'config_review_guest', '1', 0),
+(2883, 0, 'config', 'config_review_status', '1', 0),
+(2882, 0, 'config', 'config_limit_admin', '20', 0),
+(2881, 0, 'config', 'config_product_count', '1', 0),
+(2880, 0, 'config', 'config_weight_class_id', '1', 0),
+(2879, 0, 'config', 'config_length_class_id', '1', 0),
+(2878, 0, 'config', 'config_currency_auto', '1', 0),
+(2877, 0, 'config', 'config_currency', 'VND', 0),
+(2876, 0, 'config', 'config_admin_language', 'vi-vn', 0),
+(2875, 0, 'config', 'config_language', 'vi-vn', 0),
+(2874, 0, 'config', 'config_zone_id', '', 0),
+(2873, 0, 'config', 'config_country_id', '230', 0),
+(2872, 0, 'config', 'config_comment', '', 0),
+(2871, 0, 'config', 'config_open', '', 0),
+(2870, 0, 'config', 'config_image', '', 0),
+(2869, 0, 'config', 'config_fax', '', 0),
+(2868, 0, 'config', 'config_google', 'http://google.com', 0),
+(2867, 0, 'config', 'config_facebook', 'http://facebook.com', 0),
+(2866, 0, 'config', 'config_hotline', '12344512', 0),
+(2865, 0, 'config', 'config_telephone', '123456789', 0),
+(2864, 0, 'config', 'config_email', 'hotro@tgmss.com', 0),
+(2863, 0, 'config', 'config_geocode', '', 0),
+(2862, 0, 'config', 'config_address', '143 Bình Lợi ( Nơ Trang Long nối dài), P13, Q. Bình Thạnh, TP Hồ Chí Minh', 0),
 (1347, 0, 'live_search', 'live_search_show_description', '0', 0),
 (1348, 0, 'live_search', 'live_search_limit', '10', 0),
 (1349, 0, 'live_search', 'live_search_image_width', '50', 0),
@@ -5332,10 +5381,8 @@ INSERT INTO `tgm_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `se
 (1351, 0, 'live_search', 'live_search_title_length', '70', 0),
 (1352, 0, 'live_search', 'live_search_description_length', '70', 0),
 (1353, 0, 'live_search', 'live_search_ajax_status', '1', 0),
-(1359, 0, 'free', 'free_total', '', 0),
-(1360, 0, 'free', 'free_geo_zone_id', '0', 0),
-(1361, 0, 'free', 'free_status', '1', 0),
-(1362, 0, 'free', 'free_sort_order', '', 0),
+(1797, 0, 'free', 'free_status', '1', 0),
+(1796, 0, 'free', 'free_geo_zone_id', '0', 0),
 (1490, 0, 'cod', 'cod_geo_zone_id', '0', 0),
 (1489, 0, 'cod', 'cod_order_status_id', '1', 0),
 (1488, 0, 'cod', 'cod_total', '0.01', 0),
@@ -5348,30 +5395,34 @@ INSERT INTO `tgm_setting` (`setting_id`, `store_id`, `code`, `key`, `value`, `se
 (1385, 0, 'motobike', 'motobike_geo_zone_id', '0', 0),
 (1386, 0, 'motobike', 'motobike_status', '1', 0),
 (1387, 0, 'motobike', 'motobike_sort_order', '', 0),
-(1692, 0, 'config', 'config_theme', 'theme_default', 0),
-(1691, 0, 'config', 'config_meta_keyword', '', 0),
+(2861, 0, 'config', 'config_owner', 'Công ty TNHH Công Nghiệp và Thương Mại Nam Việt', 0),
+(2860, 0, 'config', 'config_name', 'SPRO.VN', 0),
 (1493, 0, 'oto', 'oto_geo_zone_id', '0', 0),
 (1494, 0, 'oto', 'oto_status', '1', 0),
 (1495, 0, 'oto', 'oto_sort_order', '', 0),
 (1496, 0, 'chanhxe', 'chanhxe_geo_zone_id', '0', 0),
 (1497, 0, 'chanhxe', 'chanhxe_status', '1', 0),
 (1498, 0, 'chanhxe', 'chanhxe_sort_order', '', 0),
-(1690, 0, 'config', 'config_meta_description', 'My Store', 0),
-(1689, 0, 'config', 'config_meta_title', 'SPRO.VN', 0),
-(1103, 0, 'news', 'news_catalog_limit', '15', 0),
-(1104, 0, 'news', 'news_show_author', '1', 0),
-(1105, 0, 'news', 'news_show_viewed', '1', 0),
-(1106, 0, 'news', 'news_show_date_added', '1', 0),
-(1107, 0, 'news', 'news_show_date_modified', '1', 0),
-(1108, 0, 'news', 'news_review_status', '1', 0),
-(1109, 0, 'news', 'news_image_category_width', '150', 0),
-(1110, 0, 'news', 'news_image_category_height', '150', 0),
-(1111, 0, 'news', 'news_image_thumb_width', '150', 0),
-(1112, 0, 'news', 'news_image_thumb_height', '150', 0),
-(1113, 0, 'news', 'news_image_article_width', '150', 0),
-(1114, 0, 'news', 'news_image_article_height', '150', 0),
-(1115, 0, 'news', 'news_image_related_width', '150', 0),
-(1116, 0, 'news', 'news_image_related_height', '150', 0);
+(2859, 0, 'config', 'config_layout_id', '4', 0),
+(2857, 0, 'config', 'config_meta_keyword', '', 0),
+(3075, 0, 'news', 'news_image_related_height', '150', 0),
+(3072, 0, 'news', 'news_image_article_width', '200', 0),
+(3071, 0, 'news', 'news_image_thumb_height', '150', 0),
+(3070, 0, 'news', 'news_image_thumb_width', '150', 0),
+(3069, 0, 'news', 'news_image_category_height', '200', 0),
+(3067, 0, 'news', 'news_review_status', '1', 0),
+(3068, 0, 'news', 'news_image_category_width', '200', 0),
+(3066, 0, 'news', 'news_show_date_modified', '1', 0),
+(3065, 0, 'news', 'news_show_date_added', '1', 0),
+(3064, 0, 'news', 'news_show_viewed', '1', 0),
+(1798, 0, 'free', 'free_sort_order', '', 0),
+(1795, 0, 'free', 'free_total', '', 0),
+(2858, 0, 'config', 'config_theme', 'theme_default', 0),
+(2856, 0, 'config', 'config_meta_description', 'My Store', 0),
+(2855, 0, 'config', 'config_meta_title', 'SPRO.VN', 0),
+(3074, 0, 'news', 'news_image_related_width', '150', 0),
+(3062, 0, 'news', 'news_catalog_limit', '15', 0),
+(3063, 0, 'news', 'news_show_author', '1', 0);
 
 -- --------------------------------------------------------
 
@@ -5489,7 +5540,7 @@ CREATE TABLE IF NOT EXISTS `tgm_tax_rate` (
 --
 
 INSERT INTO `tgm_tax_rate` (`tax_rate_id`, `geo_zone_id`, `name`, `rate`, `type`, `date_added`, `date_modified`) VALUES
-(86, 5, 'VAT (20%)', '20.0000', 'P', '2011-03-09 21:17:10', '2016-08-04 11:10:11'),
+(86, 5, 'VAT (20%)', '20.0000', 'P', '2011-03-09 21:17:10', '2016-08-30 10:05:38'),
 (87, 3, 'Eco Tax (-2.00)', '2.0000', 'F', '2011-09-21 21:49:23', '2011-09-23 00:40:19');
 
 -- --------------------------------------------------------
@@ -5574,7 +5625,7 @@ CREATE TABLE IF NOT EXISTS `tgm_url_alias` (
   PRIMARY KEY (`url_alias_id`),
   KEY `query` (`query`),
   KEY `keyword` (`keyword`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=990 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1015 ;
 
 --
 -- Dumping data for table `tgm_url_alias`
@@ -5587,7 +5638,7 @@ INSERT INTO `tgm_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (835, 'category_id=27', 'mac'),
 (943, 'manufacturer_id=8', 'apple'),
 (772, 'information_id=4', 'about_us'),
-(984, 'product_id=42', 'test'),
+(1012, 'product_id=42', 'test'),
 (789, 'category_id=34', 'mp3-players'),
 (781, 'category_id=36', 'test2'),
 (774, 'category_id=18', 'laptop-notebook'),
@@ -5626,7 +5677,7 @@ INSERT INTO `tgm_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (878, 'product_id=30', 'canon-eos-5d'),
 (909, 'product_id=47', 'hp-lp3065'),
 (811, 'product_id=28', 'htc-touch-hd'),
-(988, 'product_id=43', 'macbook'),
+(1014, 'product_id=43', 'macbook'),
 (897, 'product_id=44', 'macbook-air'),
 (814, 'product_id=45', 'macbook-pro'),
 (816, 'product_id=31', 'nikon-d300'),
@@ -5651,10 +5702,12 @@ INSERT INTO `tgm_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (844, 'category_id=59', 'testw'),
 (958, 'information_id=7', 'huong-dan-mua-hang'),
 (929, 'product_id=52', 'hp-lp3123'),
-(947, 'cat_id=2', 'new2'),
-(945, 'cat_id=1', 'news'),
-(946, 'news_id=1', 'test-tin-tuc'),
-(959, 'information_id=8', 'cach-thuc-thanh-toan');
+(1003, 'news_category_id=2', 'tin-khuyen-mai'),
+(1004, 'news_category_id=3', 'tin-tuc-su-kien'),
+(959, 'information_id=8', 'cach-thuc-thanh-toan'),
+(992, 'news_category_id=1', 'tin-tuc'),
+(1009, 'article_id=1', 'test-tin-tuc'),
+(1013, 'article_id=2', 'kinh-nghiem-chon-may-rua-xe-tot-nhat');
 
 -- --------------------------------------------------------
 
@@ -5705,7 +5758,7 @@ CREATE TABLE IF NOT EXISTS `tgm_user_group` (
 --
 
 INSERT INTO `tgm_user_group` (`user_group_id`, `name`, `permission`) VALUES
-(1, 'Administrator', '{"access":["analytics\\/google_analytics","captcha\\/basic_captcha","captcha\\/google_captcha","catalog\\/access_group","catalog\\/attribute","catalog\\/attribute_group","catalog\\/bao_gia","catalog\\/category","catalog\\/download","catalog\\/filter","catalog\\/information","catalog\\/manufacturer","catalog\\/option","catalog\\/product","catalog\\/recurring","catalog\\/review","common\\/column_left","common\\/filemanager","common\\/menu","common\\/profile","common\\/stats","content\\/cat","content\\/comment","content\\/news","customer\\/custom_field","customer\\/customer","customer\\/customer_group","dashboard\\/details_product","dashboard\\/review_product","dashboard\\/review_store","design\\/banner","design\\/language","design\\/layout","design\\/theme","event\\/theme","extension\\/analytics","extension\\/captcha","extension\\/feed","extension\\/fraud","extension\\/installer","extension\\/modification","extension\\/module","extension\\/openbay","extension\\/payment","extension\\/shipping","extension\\/theme","extension\\/total","feed\\/google_base","feed\\/google_sitemap","feed\\/openbaypro","fraud\\/fraudlabspro","fraud\\/ip","fraud\\/maxmind","localisation\\/country","localisation\\/currency","localisation\\/geo_zone","localisation\\/language","localisation\\/length_class","localisation\\/location","localisation\\/order_status","localisation\\/return_action","localisation\\/return_reason","localisation\\/return_status","localisation\\/stock_status","localisation\\/tax_class","localisation\\/tax_rate","localisation\\/weight_class","localisation\\/zone","marketing\\/affiliate","marketing\\/contact","marketing\\/coupon","marketing\\/marketing","module\\/account","module\\/affiliate","module\\/amazon_login","module\\/amazon_pay","module\\/banner","module\\/banner_ads","module\\/bestseller","module\\/carousel","module\\/cat","module\\/category","module\\/ebay_listing","module\\/featured","module\\/featuredCategory","module\\/filter","module\\/google_hangouts","module\\/html","module\\/information","module\\/latest","module\\/latest_by_category","module\\/laybuy_layout","module\\/live_search","module\\/news_by_category","module\\/news_carousel","module\\/news_category","module\\/newsfeatured","module\\/newslatest","module\\/popup","module\\/pp_button","module\\/pp_login","module\\/sagepay_direct_cards","module\\/sagepay_server_cards","module\\/slideshow","module\\/special","module\\/store","module\\/storereview","news\\/article","news\\/category","news\\/pro","news\\/review","news\\/setting","openbay\\/amazon","openbay\\/amazon_listing","openbay\\/amazon_product","openbay\\/amazonus","openbay\\/amazonus_listing","openbay\\/amazonus_product","openbay\\/ebay","openbay\\/ebay_profile","openbay\\/ebay_template","openbay\\/etsy","openbay\\/etsy_product","openbay\\/etsy_shipping","openbay\\/etsy_shop","openbay\\/fba","payment\\/amazon_login_pay","payment\\/authorizenet_aim","payment\\/authorizenet_sim","payment\\/bank_transfer","payment\\/bluepay_hosted","payment\\/bluepay_redirect","payment\\/cardinity","payment\\/cheque","payment\\/cod","payment\\/eway","payment\\/firstdata","payment\\/firstdata_remote","payment\\/free_checkout","payment\\/g2apay","payment\\/globalpay","payment\\/globalpay_remote","payment\\/klarna_account","payment\\/klarna_invoice","payment\\/laybuy","payment\\/liqpay","payment\\/nochex","payment\\/paymate","payment\\/paypoint","payment\\/payza","payment\\/perpetual_payments","payment\\/pp_express","payment\\/pp_payflow","payment\\/pp_payflow_iframe","payment\\/pp_pro","payment\\/pp_pro_iframe","payment\\/pp_standard","payment\\/realex","payment\\/realex_remote","payment\\/sagepay_direct","payment\\/sagepay_server","payment\\/sagepay_us","payment\\/securetrading_pp","payment\\/securetrading_ws","payment\\/skrill","payment\\/twocheckout","payment\\/web_payment_software","payment\\/worldpay","report\\/affiliate","report\\/affiliate_activity","report\\/affiliate_login","report\\/customer_activity","report\\/customer_credit","report\\/customer_login","report\\/customer_online","report\\/customer_order","report\\/customer_reward","report\\/marketing","report\\/product_purchased","report\\/product_viewed","report\\/sale_coupon","report\\/sale_order","report\\/sale_return","report\\/sale_shipping","report\\/sale_tax","review\\/store_review","sale\\/order","sale\\/recurring","sale\\/return","sale\\/voucher","sale\\/voucher_theme","setting\\/setting","setting\\/store","shipping\\/auspost","shipping\\/chanhxe","shipping\\/citylink","shipping\\/fedex","shipping\\/flat","shipping\\/free","shipping\\/item","shipping\\/motobike","shipping\\/oto","shipping\\/parcelforce_48","shipping\\/pickup","shipping\\/royal_mail","shipping\\/ups","shipping\\/usps","shipping\\/weight","startup\\/error","startup\\/event","startup\\/login","startup\\/permission","startup\\/router","startup\\/sass","startup\\/startup","theme\\/theme_default","tool\\/backup","tool\\/error_log","tool\\/export_import","tool\\/upload","total\\/coupon","total\\/credit","total\\/handling","total\\/klarna_fee","total\\/low_order_fee","total\\/reward","total\\/shipping","total\\/sub_total","total\\/tax","total\\/total","total\\/voucher","transport\\/cost","user\\/api","user\\/user","user\\/user_permission"],"modify":["analytics\\/google_analytics","captcha\\/basic_captcha","captcha\\/google_captcha","catalog\\/access_group","catalog\\/attribute","catalog\\/attribute_group","catalog\\/bao_gia","catalog\\/category","catalog\\/download","catalog\\/filter","catalog\\/information","catalog\\/manufacturer","catalog\\/option","catalog\\/product","catalog\\/recurring","catalog\\/review","common\\/column_left","common\\/filemanager","common\\/menu","common\\/profile","common\\/stats","content\\/cat","content\\/comment","content\\/news","customer\\/custom_field","customer\\/customer","customer\\/customer_group","dashboard\\/details_product","dashboard\\/review_product","dashboard\\/review_store","design\\/banner","design\\/language","design\\/layout","design\\/theme","event\\/theme","extension\\/analytics","extension\\/captcha","extension\\/feed","extension\\/fraud","extension\\/installer","extension\\/modification","extension\\/module","extension\\/openbay","extension\\/payment","extension\\/shipping","extension\\/theme","extension\\/total","feed\\/google_base","feed\\/google_sitemap","feed\\/openbaypro","fraud\\/fraudlabspro","fraud\\/ip","fraud\\/maxmind","localisation\\/country","localisation\\/currency","localisation\\/geo_zone","localisation\\/language","localisation\\/length_class","localisation\\/location","localisation\\/order_status","localisation\\/return_action","localisation\\/return_reason","localisation\\/return_status","localisation\\/stock_status","localisation\\/tax_class","localisation\\/tax_rate","localisation\\/weight_class","localisation\\/zone","marketing\\/affiliate","marketing\\/contact","marketing\\/coupon","marketing\\/marketing","module\\/account","module\\/affiliate","module\\/amazon_login","module\\/amazon_pay","module\\/banner","module\\/banner_ads","module\\/bestseller","module\\/carousel","module\\/cat","module\\/category","module\\/ebay_listing","module\\/featured","module\\/featuredCategory","module\\/filter","module\\/google_hangouts","module\\/html","module\\/information","module\\/latest","module\\/latest_by_category","module\\/laybuy_layout","module\\/live_search","module\\/news_by_category","module\\/news_carousel","module\\/news_category","module\\/newsfeatured","module\\/newslatest","module\\/popup","module\\/pp_button","module\\/pp_login","module\\/sagepay_direct_cards","module\\/sagepay_server_cards","module\\/slideshow","module\\/special","module\\/store","module\\/storereview","news\\/article","news\\/category","news\\/pro","news\\/review","news\\/setting","openbay\\/amazon","openbay\\/amazon_listing","openbay\\/amazon_product","openbay\\/amazonus","openbay\\/amazonus_listing","openbay\\/amazonus_product","openbay\\/ebay","openbay\\/ebay_profile","openbay\\/ebay_template","openbay\\/etsy","openbay\\/etsy_product","openbay\\/etsy_shipping","openbay\\/etsy_shop","openbay\\/fba","payment\\/amazon_login_pay","payment\\/authorizenet_aim","payment\\/authorizenet_sim","payment\\/bank_transfer","payment\\/bluepay_hosted","payment\\/bluepay_redirect","payment\\/cardinity","payment\\/cheque","payment\\/cod","payment\\/eway","payment\\/firstdata","payment\\/firstdata_remote","payment\\/free_checkout","payment\\/g2apay","payment\\/globalpay","payment\\/globalpay_remote","payment\\/klarna_account","payment\\/klarna_invoice","payment\\/laybuy","payment\\/liqpay","payment\\/nochex","payment\\/paymate","payment\\/paypoint","payment\\/payza","payment\\/perpetual_payments","payment\\/pp_express","payment\\/pp_payflow","payment\\/pp_payflow_iframe","payment\\/pp_pro","payment\\/pp_pro_iframe","payment\\/pp_standard","payment\\/realex","payment\\/realex_remote","payment\\/sagepay_direct","payment\\/sagepay_server","payment\\/sagepay_us","payment\\/securetrading_pp","payment\\/securetrading_ws","payment\\/skrill","payment\\/twocheckout","payment\\/web_payment_software","payment\\/worldpay","report\\/affiliate","report\\/affiliate_activity","report\\/affiliate_login","report\\/customer_activity","report\\/customer_credit","report\\/customer_login","report\\/customer_online","report\\/customer_order","report\\/customer_reward","report\\/marketing","report\\/product_purchased","report\\/product_viewed","report\\/sale_coupon","report\\/sale_order","report\\/sale_return","report\\/sale_shipping","report\\/sale_tax","review\\/store_review","sale\\/order","sale\\/recurring","sale\\/return","sale\\/voucher","sale\\/voucher_theme","setting\\/setting","setting\\/store","shipping\\/auspost","shipping\\/chanhxe","shipping\\/citylink","shipping\\/fedex","shipping\\/flat","shipping\\/free","shipping\\/item","shipping\\/motobike","shipping\\/oto","shipping\\/parcelforce_48","shipping\\/pickup","shipping\\/royal_mail","shipping\\/ups","shipping\\/usps","shipping\\/weight","startup\\/error","startup\\/event","startup\\/login","startup\\/permission","startup\\/router","startup\\/sass","startup\\/startup","theme\\/theme_default","tool\\/backup","tool\\/error_log","tool\\/export_import","tool\\/upload","total\\/coupon","total\\/credit","total\\/handling","total\\/klarna_fee","total\\/low_order_fee","total\\/reward","total\\/shipping","total\\/sub_total","total\\/tax","total\\/total","total\\/voucher","transport\\/cost","user\\/api","user\\/user","user\\/user_permission"]}'),
+(1, 'Administrator', '{"access":["analytics\\/google_analytics","captcha\\/basic_captcha","captcha\\/google_captcha","catalog\\/access_group","catalog\\/attribute","catalog\\/attribute_group","catalog\\/bao_gia","catalog\\/category","catalog\\/download","catalog\\/filter","catalog\\/information","catalog\\/manufacturer","catalog\\/option","catalog\\/product","catalog\\/recurring","catalog\\/review","common\\/column_left","common\\/filemanager","common\\/menu","common\\/profile","common\\/stats","content\\/cat","content\\/comment","content\\/news","customer\\/custom_field","customer\\/customer","customer\\/customer_group","dashboard\\/details_product","dashboard\\/review_product","dashboard\\/review_store","design\\/banner","design\\/language","design\\/layout","design\\/theme","event\\/theme","extension\\/analytics","extension\\/captcha","extension\\/feed","extension\\/fraud","extension\\/installer","extension\\/modification","extension\\/module","extension\\/openbay","extension\\/payment","extension\\/shipping","extension\\/theme","extension\\/total","feed\\/google_base","feed\\/google_sitemap","feed\\/openbaypro","fraud\\/fraudlabspro","fraud\\/ip","fraud\\/maxmind","localisation\\/country","localisation\\/currency","localisation\\/geo_zone","localisation\\/language","localisation\\/length_class","localisation\\/location","localisation\\/order_status","localisation\\/return_action","localisation\\/return_reason","localisation\\/return_status","localisation\\/stock_status","localisation\\/tax_class","localisation\\/tax_rate","localisation\\/weight_class","localisation\\/zone","marketing\\/affiliate","marketing\\/contact","marketing\\/coupon","marketing\\/marketing","module\\/account","module\\/affiliate","module\\/amazon_login","module\\/amazon_pay","module\\/banner","module\\/banner_ads","module\\/bestseller","module\\/carousel","module\\/cat","module\\/category","module\\/ebay_listing","module\\/featured","module\\/featuredCategory","module\\/filter","module\\/google_hangouts","module\\/html","module\\/information","module\\/latest","module\\/latest_by_category","module\\/laybuy_layout","module\\/live_search","module\\/news_by_category","module\\/news_carousel","module\\/news_category","module\\/newsfeatured","module\\/newslatest","module\\/popup","module\\/pp_button","module\\/pp_login","module\\/sagepay_direct_cards","module\\/sagepay_server_cards","module\\/slideshow","module\\/special","module\\/store","module\\/storereview","news\\/article","news\\/category","news\\/pro","news\\/review","news\\/setting","openbay\\/amazon","openbay\\/amazon_listing","openbay\\/amazon_product","openbay\\/amazonus","openbay\\/amazonus_listing","openbay\\/amazonus_product","openbay\\/ebay","openbay\\/ebay_profile","openbay\\/ebay_template","openbay\\/etsy","openbay\\/etsy_product","openbay\\/etsy_shipping","openbay\\/etsy_shop","openbay\\/fba","payment\\/amazon_login_pay","payment\\/authorizenet_aim","payment\\/authorizenet_sim","payment\\/bank_transfer","payment\\/bluepay_hosted","payment\\/bluepay_redirect","payment\\/cardinity","payment\\/cheque","payment\\/cod","payment\\/eway","payment\\/firstdata","payment\\/firstdata_remote","payment\\/free_checkout","payment\\/g2apay","payment\\/globalpay","payment\\/globalpay_remote","payment\\/klarna_account","payment\\/klarna_invoice","payment\\/laybuy","payment\\/liqpay","payment\\/nochex","payment\\/paymate","payment\\/paypoint","payment\\/payza","payment\\/perpetual_payments","payment\\/pp_express","payment\\/pp_payflow","payment\\/pp_payflow_iframe","payment\\/pp_pro","payment\\/pp_pro_iframe","payment\\/pp_standard","payment\\/realex","payment\\/realex_remote","payment\\/sagepay_direct","payment\\/sagepay_server","payment\\/sagepay_us","payment\\/securetrading_pp","payment\\/securetrading_ws","payment\\/skrill","payment\\/twocheckout","payment\\/web_payment_software","payment\\/worldpay","report\\/affiliate","report\\/affiliate_activity","report\\/affiliate_login","report\\/customer_activity","report\\/customer_credit","report\\/customer_login","report\\/customer_online","report\\/customer_order","report\\/customer_reward","report\\/marketing","report\\/product_purchased","report\\/product_viewed","report\\/sale_coupon","report\\/sale_order","report\\/sale_return","report\\/sale_shipping","report\\/sale_tax","review\\/store_review","sale\\/order","sale\\/recurring","sale\\/return","sale\\/voucher","sale\\/voucher_theme","setting\\/setting","setting\\/store","shipping\\/auspost","shipping\\/chanhxe","shipping\\/citylink","shipping\\/fedex","shipping\\/flat","shipping\\/free","shipping\\/item","shipping\\/motobike","shipping\\/oto","shipping\\/parcelforce_48","shipping\\/pickup","shipping\\/royal_mail","shipping\\/ups","shipping\\/usps","shipping\\/weight","startup\\/error","startup\\/event","startup\\/login","startup\\/permission","startup\\/router","startup\\/sass","startup\\/startup","theme\\/theme_default","tool\\/backup","tool\\/error_log","tool\\/export_import","tool\\/upload","total\\/coupon","total\\/credit","total\\/handling","total\\/klarna_fee","total\\/low_order_fee","total\\/reward","total\\/shipping","total\\/sub_total","total\\/tax","total\\/total","total\\/voucher","transport\\/cost","user\\/api","user\\/user","user\\/user_permission","module\\/news_category","module\\/news_by_category","module\\/news_carousel"],"modify":["analytics\\/google_analytics","captcha\\/basic_captcha","captcha\\/google_captcha","catalog\\/access_group","catalog\\/attribute","catalog\\/attribute_group","catalog\\/bao_gia","catalog\\/category","catalog\\/download","catalog\\/filter","catalog\\/information","catalog\\/manufacturer","catalog\\/option","catalog\\/product","catalog\\/recurring","catalog\\/review","common\\/column_left","common\\/filemanager","common\\/menu","common\\/profile","common\\/stats","content\\/cat","content\\/comment","content\\/news","customer\\/custom_field","customer\\/customer","customer\\/customer_group","dashboard\\/details_product","dashboard\\/review_product","dashboard\\/review_store","design\\/banner","design\\/language","design\\/layout","design\\/theme","event\\/theme","extension\\/analytics","extension\\/captcha","extension\\/feed","extension\\/fraud","extension\\/installer","extension\\/modification","extension\\/module","extension\\/openbay","extension\\/payment","extension\\/shipping","extension\\/theme","extension\\/total","feed\\/google_base","feed\\/google_sitemap","feed\\/openbaypro","fraud\\/fraudlabspro","fraud\\/ip","fraud\\/maxmind","localisation\\/country","localisation\\/currency","localisation\\/geo_zone","localisation\\/language","localisation\\/length_class","localisation\\/location","localisation\\/order_status","localisation\\/return_action","localisation\\/return_reason","localisation\\/return_status","localisation\\/stock_status","localisation\\/tax_class","localisation\\/tax_rate","localisation\\/weight_class","localisation\\/zone","marketing\\/affiliate","marketing\\/contact","marketing\\/coupon","marketing\\/marketing","module\\/account","module\\/affiliate","module\\/amazon_login","module\\/amazon_pay","module\\/banner","module\\/banner_ads","module\\/bestseller","module\\/carousel","module\\/cat","module\\/category","module\\/ebay_listing","module\\/featured","module\\/featuredCategory","module\\/filter","module\\/google_hangouts","module\\/html","module\\/information","module\\/latest","module\\/latest_by_category","module\\/laybuy_layout","module\\/live_search","module\\/news_by_category","module\\/news_carousel","module\\/news_category","module\\/newsfeatured","module\\/newslatest","module\\/popup","module\\/pp_button","module\\/pp_login","module\\/sagepay_direct_cards","module\\/sagepay_server_cards","module\\/slideshow","module\\/special","module\\/store","module\\/storereview","news\\/article","news\\/category","news\\/pro","news\\/review","news\\/setting","openbay\\/amazon","openbay\\/amazon_listing","openbay\\/amazon_product","openbay\\/amazonus","openbay\\/amazonus_listing","openbay\\/amazonus_product","openbay\\/ebay","openbay\\/ebay_profile","openbay\\/ebay_template","openbay\\/etsy","openbay\\/etsy_product","openbay\\/etsy_shipping","openbay\\/etsy_shop","openbay\\/fba","payment\\/amazon_login_pay","payment\\/authorizenet_aim","payment\\/authorizenet_sim","payment\\/bank_transfer","payment\\/bluepay_hosted","payment\\/bluepay_redirect","payment\\/cardinity","payment\\/cheque","payment\\/cod","payment\\/eway","payment\\/firstdata","payment\\/firstdata_remote","payment\\/free_checkout","payment\\/g2apay","payment\\/globalpay","payment\\/globalpay_remote","payment\\/klarna_account","payment\\/klarna_invoice","payment\\/laybuy","payment\\/liqpay","payment\\/nochex","payment\\/paymate","payment\\/paypoint","payment\\/payza","payment\\/perpetual_payments","payment\\/pp_express","payment\\/pp_payflow","payment\\/pp_payflow_iframe","payment\\/pp_pro","payment\\/pp_pro_iframe","payment\\/pp_standard","payment\\/realex","payment\\/realex_remote","payment\\/sagepay_direct","payment\\/sagepay_server","payment\\/sagepay_us","payment\\/securetrading_pp","payment\\/securetrading_ws","payment\\/skrill","payment\\/twocheckout","payment\\/web_payment_software","payment\\/worldpay","report\\/affiliate","report\\/affiliate_activity","report\\/affiliate_login","report\\/customer_activity","report\\/customer_credit","report\\/customer_login","report\\/customer_online","report\\/customer_order","report\\/customer_reward","report\\/marketing","report\\/product_purchased","report\\/product_viewed","report\\/sale_coupon","report\\/sale_order","report\\/sale_return","report\\/sale_shipping","report\\/sale_tax","review\\/store_review","sale\\/order","sale\\/recurring","sale\\/return","sale\\/voucher","sale\\/voucher_theme","setting\\/setting","setting\\/store","shipping\\/auspost","shipping\\/chanhxe","shipping\\/citylink","shipping\\/fedex","shipping\\/flat","shipping\\/free","shipping\\/item","shipping\\/motobike","shipping\\/oto","shipping\\/parcelforce_48","shipping\\/pickup","shipping\\/royal_mail","shipping\\/ups","shipping\\/usps","shipping\\/weight","startup\\/error","startup\\/event","startup\\/login","startup\\/permission","startup\\/router","startup\\/sass","startup\\/startup","theme\\/theme_default","tool\\/backup","tool\\/error_log","tool\\/export_import","tool\\/upload","total\\/coupon","total\\/credit","total\\/handling","total\\/klarna_fee","total\\/low_order_fee","total\\/reward","total\\/shipping","total\\/sub_total","total\\/tax","total\\/total","total\\/voucher","transport\\/cost","user\\/api","user\\/user","user\\/user_permission","module\\/news_category","module\\/news_by_category","module\\/news_carousel"]}'),
 (10, 'Demonstration', '');
 
 -- --------------------------------------------------------

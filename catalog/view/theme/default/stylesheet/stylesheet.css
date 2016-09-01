@@ -1739,10 +1739,10 @@ ul.boxcategory li ul li a:hover {
 	overflow: hidden;
 }
 /* fitermanufacturer */
-.itemfiltertypes #filtermanufacturer {
+.itemfiltertypes .filter {
 	overflow: hidden;
 }
-#filtermanufacturer label {
+.filter label {
 	width: 100%;
 	vertical-align: middle;
 	padding-top: 5px;
@@ -1751,14 +1751,14 @@ ul.boxcategory li ul li a:hover {
 	cursor: pointer;
 	transition: all .5s ease-in-out;
 }
-#filtermanufacturer label input {
+.filter label input {
 	vertical-align: middle;
 	margin: 0 5px 0 0;
 }
-#filtermanufacturer label span {
+.filter label span {
 	float: right;
 }
-#filtermanufacturer label:hover {
+.filter label:hover {
 	color: #ff5111;
 }
 /* filterprice */
@@ -4343,7 +4343,7 @@ a.btncngh-f:hover {
 	color: #999;
 }
 
-.wrap-article h1.block{
+.wrap-article h1.block, .wrap-search h1.block{
 	font-size: 20px!important;
 }
 
@@ -4514,4 +4514,8 @@ a{
 .wrap-map{
 	padding: 35px 0px;
 	text-align: right;
+}
+
+.wrap-search .boxfilter-category{
+	border-top: none;
 }

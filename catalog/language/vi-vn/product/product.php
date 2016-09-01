@@ -18,7 +18,7 @@ $_['text_login']                              = 'Bạn hãy <a href="%s">đăng 
 $_['text_no_reviews']   = 'Không có đánh giá cho sản phẩm này.';
 $_['text_note']         = '<span style="color: #FF0000;">Lưu ý:</span> không hỗ trợ HTML!';
 $_['text_success']      = 'Cám ơn bạn đã đánh giá. Đánh giá đã được gửi đến quản trị trước khi được chấp nhận.';
-$_['text_success']      = 'Gửi yêu cầu thành công. Chúng tôi sẽ liên hệ với bạn ngay khi có hàng.';
+$_['text_order_success']      = 'Gửi yêu cầu thành công. Chúng tôi sẽ liên hệ với bạn ngay khi có hàng.';
 $_['text_related']      = 'Sản phẩm tương tự';
 $_['text_tags']         = 'Tag:';
 $_['text_error']        = 'Không có sản phẩm!';
