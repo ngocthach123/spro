@@ -61,9 +61,11 @@
                                 <div class="form-group">
                                     <span><?php echo $entry_van_chuyen; ?></span>
                                     <select name="van_chuyen" class="">
-                                        <option value="1" <?php echo $van_chuyen == 1 ? 'selected' : '';?>>Xe máy</option>
-                                        <option value="2" <?php echo $van_chuyen == 2 ? 'selected' : '';?>>Oto</option>
+                                        <option value="1" <?php echo $van_chuyen == 1 ? 'selected' : '';?>>Xe công ty</option>
+                                        <option value="2" <?php echo $van_chuyen == 2 ? 'selected' : '';?>>Xe khách</option>
                                         <option value="3" <?php echo $van_chuyen == 3 ? 'selected' : '';?>>Chành xe</option>
+                                        <option value="4" <?php echo $van_chuyen == 4 ? 'selected' : '';?>>Giao hàng tiêu chuẩn</option>
+                                        <option value="5" <?php echo $van_chuyen == 5 ? 'selected' : '';?>>Giao hàng nhanh</option>
                                     </select>
                                 </div>
                                 <div class="form-group">

@@ -85,10 +85,14 @@ class ControllerNewsCategory extends Controller {
 
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
 			foreach ($this->request->post['selected'] as $category_id) {
-				$this->model_news_category->deleteCategory($category_id);
+				if($category_id !=1){
+					$this->model_news_category->deleteCategory($category_id);
+				}
 			}
 
-			$this->session->data['success'] = $this->language->get('text_success');
+			if(!isset($this->error['warning']) || $this->error['warning'] == ''){
+				$this->session->data['success'] = $this->language->get('text_success');
+			}
 
 			$url = '';
 

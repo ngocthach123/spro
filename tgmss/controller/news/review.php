@@ -246,6 +246,7 @@ class ControllerNewsReview extends Controller {
 
 		$data['add'] = $this->url->link('news/review/add', 'token=' . $this->session->data['token'] . $url, 'SSL');
 		$data['delete'] = $this->url->link('news/review/delete', 'token=' . $this->session->data['token'] . $url, 'SSL');
+		$data['approve'] = $this->url->link('news/review/approve', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		$data['reviews'] = array();
 
@@ -271,6 +272,7 @@ class ControllerNewsReview extends Controller {
 				'author'     => $result['author'],
 				'rating'     => $result['rating'],
 				'status'     => ($result['status']) ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
+				'stt' => $result['status'],
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'edit'       => $this->url->link('news/review/edit', 'token=' . $this->session->data['token'] . '&review_id=' . $result['review_id'] . $url, 'SSL')
 			);
@@ -391,6 +393,15 @@ class ControllerNewsReview extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('news/review_list.tpl', $data));
+	}
+
+	public function approve(){
+		if(isset($this->request->post['review_id']) && isset($this->request->post['stt'])){
+
+			$this->load->model('news/review');
+
+			$this->model_news_review->approve($this->request->post['review_id'], $this->request->post['stt']);
+		}
 	}
 
 	protected function getForm() {

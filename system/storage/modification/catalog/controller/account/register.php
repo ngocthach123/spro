@@ -20,7 +20,6 @@ class ControllerAccountRegister extends Controller {
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$data_post = $this->request->post;
 			$data_post['telephone'] = '';
-			var_dump($data_post); exit();
 
 			$customer_id = $this->model_account_customer->addCustomer($data_post);
 

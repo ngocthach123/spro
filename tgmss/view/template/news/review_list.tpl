@@ -118,7 +118,16 @@
                   <td class="text-right"><?php echo $review['rating']; ?></td>
                   <td class="text-left"><?php echo $review['status']; ?></td>
                   <td class="text-left"><?php echo $review['date_added']; ?></td>
-                  <td class="text-right"><a href="<?php echo $review['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
+                  <td class="text-right">
+                    <?php if($review['stt']): ?>
+                      <a rw-id="<?php echo $review['review_id']; ?>" id="hide" stt="1" data-toggle="tooltip" title="Duyệt" class="btn btn-default allow hidden"<i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
+                      <a rw-id="<?php echo $review['review_id']; ?>"  id="show" stt="0" data-toggle="tooltip" title="Bỏ duyệt" class="btn btn-danger allow"><i class="fa fa-minus-square-o" aria-hidden="true"></i></a>
+                    <?php else: ?>
+                      <a rw-id="<?php echo $review['review_id']; ?>" id="show" stt="1" data-toggle="tooltip" title="Duyệt" class="btn btn-default allow"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
+                      <a rw-id="<?php echo $review['review_id']; ?>" id="hide" stt="0" data-toggle="tooltip" title="Bỏ duyệt" class="btn btn-danger allow hidden"><i class="fa fa-minus-square-o" aria-hidden="true"></i></a>
+                    <?php endif;?>
+                    <a href="<?php echo $review['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                  </td>
                 </tr>
                 <?php } ?>
                 <?php } else { ?>
@@ -137,6 +146,33 @@
       </div>
     </div>
   </div>
+
+  <script>
+    $(".allow").click(function(){
+
+      $.ajax({
+        url: '<?php echo html_entity_decode($approve);?>',
+        type: 'post',
+        dataType: 'html',
+        data: {
+          review_id: $(this).attr('rw-id'),
+          stt: $(this).attr('stt'),
+        },
+        success: function(result){
+
+        }
+      });
+
+      if($(this).attr('id') == 'show'){
+        $(this).addClass('hidden');
+        $('#hide').removeClass('hidden');
+      }else {
+        $(this).addClass('hidden');
+        $('#show').removeClass('hidden');
+      }
+    });
+  </script>
+
   <script type="text/javascript"><!--
 $('#button-filter').on('click', function() {
   url = 'index.php?route=catalog/review&token=<?php echo $token; ?>';

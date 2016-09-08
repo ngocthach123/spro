@@ -1,10 +1,10 @@
 <?php
 // Heading
-$_['heading_title']    = 'Vận chuyển xe máy';
+$_['heading_title']    = 'Vận chuyển bằng xe công ty';
 
 // Text 
 $_['text_shipping']    = 'Shipping';
-$_['text_success']     = 'Thành Công: Bạn đã thay đổi vận chuyển bằng xe máy!';
+$_['text_success']     = 'Thành Công: Bạn đã thay đổi vận chuyển bằng xe công ty!';
 $_['text_edit']        = 'Sửa vận chuyển xe máy';
 
 // Entry
@@ -17,5 +17,5 @@ $_['entry_sort_order'] = 'Sắp xếp đơn hàng:';
 $_['help_total']       = 'Sub-Total amount needed before the free shipping module becomes available.';
 
 // Error
-$_['error_permission'] = 'Cảnh báo: Bạn không có quyền chỉnh sửa free shipping!';
+$_['error_permission'] = 'Cảnh báo: Bạn không có quyền chỉnh sửa Vận chuyển bằng xe công ty!';
 ?>

@@ -3,12 +3,14 @@
 <div class="slidebanner-home">
   <div class="container">
     <div class="row">
-      <div class="col-md-14 col-sm-3 hidden-xs pdslidebanner">&nbsp;</div>
-      <div class="col-md-13 col-sm-9 col-xs-12 pdslidebanner bgslidebanner pdleftslidebanner">
-        <?php echo $content_top;?>
-      </div>
-      <div class="col-md-3 col-sm-3 col-xs-12 pdslidebanner bgslidebanner">
-        <?php echo $col_right;?>
+      <div class="wrap-head-slide">
+        <div class="col-md-14 col-sm-3 hidden-xs pdslidebanner">&nbsp;</div>
+        <div class="col-md-13 col-sm-9 col-xs-12 pdslidebanner bgslidebanner pdleftslidebanner">
+          <?php echo $content_top;?>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12 pdslidebanner bgslidebanner">
+          <?php echo $col_right;?>
+        </div>
       </div>
     </div>
   </div>

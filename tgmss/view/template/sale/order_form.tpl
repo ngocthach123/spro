@@ -22,8 +22,8 @@
             <li class="disabled active"><a href="#tab-customer" data-toggle="tab">1. <?php echo $tab_customer; ?></a></li>
             <li class="disabled"><a href="#tab-cart" data-toggle="tab">2. <?php echo $tab_product; ?></a></li>
             <li class="disabled"><a href="#tab-payment" data-toggle="tab">3. <?php echo $tab_payment; ?></a></li>
-            <li class="disabled"><a href="#tab-shipping" data-toggle="tab">4. <?php echo $tab_shipping; ?></a></li>
-            <li class="disabled"><a href="#tab-total" data-toggle="tab">5. <?php echo $tab_total; ?></a></li>
+           <!-- <li class="disabled"><a href="#tab-shipping" data-toggle="tab">4. <?php echo $tab_shipping; ?></a></li>-->
+            <li class="disabled"><a href="#tab-total" data-toggle="tab">4. <?php echo $tab_total; ?></a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-customer">
@@ -437,7 +437,7 @@
                   <input type="text" name="address_1" value="<?php echo $payment_address_1; ?>" id="input-payment-address-1" class="form-control" />
                 </div>
               </div>
-              <div class="form-group required hidden">
+              <div class="form-group required">
                 <label class="col-sm-2 control-label" for="input-payment-city"><?php echo $entry_city; ?></label>
                 <div class="col-sm-10">
                   <input type="text" name="city" value="<?php echo $payment_city; ?>" id="input-payment-city" class="form-control" />
@@ -447,6 +447,13 @@
                 <label class="col-sm-2 control-label" for="input-payment-postcode"><?php echo $entry_postcode; ?></label>
                 <div class="col-sm-10">
                   <input type="text" name="postcode" value="<?php echo $payment_postcode; ?>" id="input-payment-postcode" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group required">
+                <label class="col-sm-2 control-label" for="input-payment-zone"><?php echo $entry_zone; ?></label>
+                <div class="col-sm-10">
+                  <select name="zone_id" id="input-payment-zone" class="form-control">
+                  </select>
                 </div>
               </div>
               <div class="form-group required">
@@ -464,13 +471,7 @@
                   </select>
                 </div>
               </div>
-              <div class="form-group required">
-                <label class="col-sm-2 control-label" for="input-payment-zone"><?php echo $entry_zone; ?></label>
-                <div class="col-sm-10">
-                  <select name="zone_id" id="input-payment-zone" class="form-control">
-                  </select>
-                </div>
-              </div>
+
               <?php foreach ($custom_fields as $custom_field) { ?>
               <?php if ($custom_field['location'] == 'address') { ?>
               <?php if ($custom_field['type'] == 'select') { ?>
@@ -930,7 +931,7 @@
               </fieldset>
               <div class="row">
                 <div class="col-sm-6 text-left">
-                  <button type="button" onclick="$('select[name=\'shipping_method\']').prop('disabled') ? $('a[href=\'#tab-payment\']').tab('show') : $('a[href=\'#tab-shipping\']').tab('show');" class="btn btn-default"><i class="fa fa-arrow-left"></i> <?php echo $button_back; ?></button>
+                  <button type="button" onclick="$('a[href=\'#tab-payment\']').tab('show');" class="btn btn-default"><i class="fa fa-arrow-left"></i> <?php echo $button_back; ?></button>
                 </div>
                 <div class="col-sm-6 text-right">
                   <button type="button" id="button-refresh" data-toggle="tooltip" title="<?php echo $button_refresh; ?>" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-warning"><i class="fa fa-refresh"></i></button>

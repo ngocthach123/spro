@@ -168,47 +168,49 @@ class ControllerModuleCategory extends Controller {
 			$categories = $this->model_catalog_category->getCategories(0);
 
 			foreach ($categories as $category) {
-				$children_data = array();
+				if ($category['category_id'] != '291') { //291 hang thanh ly
+					$children_data = array();
 
-				$children = $this->model_catalog_category->getCategories($category['category_id']);
+					$children = $this->model_catalog_category->getCategories($category['category_id']);
 
-				foreach($children as $child) {
+					foreach ($children as $child) {
 
-					//--cap 3
-					$children_data_2 = array();
-					$children_2 = $this->model_catalog_category->getCategories($child['category_id']);
+						//--cap 3
+						$children_data_2 = array();
+						$children_2 = $this->model_catalog_category->getCategories($child['category_id']);
 
-					foreach($children_2 as $child_2) {
-						$filter_data_2 = array('filter_category_id' => $child_2['category_id'], 'filter_sub_category' => true);
-						$children_data_2[] = array(
-							'category_id' => $child_2['category_id'],
-							'name' => $child_2['name'],
-							'href' => $this->url->link('product/category', 'path=' . $child['category_id'] . '_' . $child_2['category_id']),
+						foreach ($children_2 as $child_2) {
+							$filter_data_2 = array('filter_category_id' => $child_2['category_id'], 'filter_sub_category' => true);
+							$children_data_2[] = array(
+								'category_id' => $child_2['category_id'],
+								'name' => $child_2['name'],
+								'href' => $this->url->link('product/category', 'path=' . $child['category_id'] . '_' . $child_2['category_id']),
+							);
+						}
+						//--cap 3
+
+						$filter_data = array('filter_category_id' => $child['category_id'], 'filter_sub_category' => true);
+
+						$children_data[] = array(
+							'category_id' => $child['category_id'],
+							'name' => $child['name'],
+							'href' => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id']),
+							'children' => $children_data_2,
 						);
 					}
-					//--cap 3
 
-					$filter_data = array('filter_category_id' => $child['category_id'], 'filter_sub_category' => true);
+					$filter_data = array(
+						'filter_category_id' => $category['category_id'],
+						'filter_sub_category' => true
+					);
 
-					$children_data[] = array(
-						'category_id' => $child['category_id'],
-						'name' => $child['name'],
-						'href' => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id']),
-						'children'    => $children_data_2,
+					$data['categories'][] = array(
+						'category_id' => $category['category_id'],
+						'name' => $category['name'],
+						'children' => $children_data,
+						'href' => $this->url->link('product/category', 'path=' . $category['category_id'])
 					);
 				}
-
-				$filter_data = array(
-					'filter_category_id'  => $category['category_id'],
-					'filter_sub_category' => true
-				);
-
-				$data['categories'][] = array(
-					'category_id' => $category['category_id'],
-					'name'        => $category['name'],
-					'children'    => $children_data,
-					'href'        => $this->url->link('product/category', 'path=' . $category['category_id'])
-				);
 			}
 
 		}

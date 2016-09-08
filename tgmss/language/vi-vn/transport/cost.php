@@ -35,9 +35,11 @@ $_['entry_hang'] = 'Hãng vận chuyển';
 
 $_['loai_hang_1'] = 'Thường';
 $_['loai_hang_2'] = 'Đặc biệt';
-$_['van_chuyen_1'] = 'Xe máy';
-$_['van_chuyen_2'] = 'Oto';
+$_['van_chuyen_1'] = 'Xe công ty';
+$_['van_chuyen_2'] = 'Xe khách';
 $_['van_chuyen_3'] = 'Chành xe';
+$_['van_chuyen_4'] = 'Giao hàng tiêu chuẩn';
+$_['van_chuyen_5'] = 'Giao hàng nhanh';
 $_['hang_van_chuyen_1'] = 'Thường';
 
 // Error

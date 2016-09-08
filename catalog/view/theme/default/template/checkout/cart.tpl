@@ -228,7 +228,8 @@
           dataType: 'html',
           data: {
             distance: distance,
-            view_cart: 1
+            view_cart: 1,
+            zone_id:  $("select[name='zone']").val()
           },
           success: function (html) {
             $('#shipping_cost').html(html);

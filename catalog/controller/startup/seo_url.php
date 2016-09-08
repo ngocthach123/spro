@@ -81,6 +81,10 @@ class ControllerStartupSeoUrl extends Controller {
 				}
 			}
 
+			if($this->request->get['route'] == 'error/not_found' && count($parts) == 2){
+				$this->request->get['route'] = $parts[0].'/'.$parts[1];
+			}
+
 			if (isset($this->request->get['route'])) {
 				return new Action($this->request->get['route']);
 			}
@@ -106,6 +110,31 @@ class ControllerStartupSeoUrl extends Controller {
 
 						unset($data[$key]);
 					}
+				}elseif($data['route'] == 'checkout/cart'){
+					$url .= '/checkout/cart';
+
+					unset($data[$key]);
+
+				} elseif($data['route'] == 'account/login'){
+					$url .= '/account/login';
+
+					unset($data[$key]);
+
+				}elseif($data['route'] == 'account/register'){
+					$url .= '/account/register';
+
+					unset($data[$key]);
+
+				} elseif($data['route'] == 'information/contact'){
+					$url .= '/information/contact';
+
+					unset($data[$key]);
+
+				} elseif($data['route'] == 'account/order'){
+					$url .= '/account/order';
+
+					unset($data[$key]);
+
 				} elseif ($key == 'news_path') {
 					$categories = explode('_', $value);
 					
@@ -157,6 +186,10 @@ class ControllerStartupSeoUrl extends Controller {
 
 			return $url_info['scheme'] . '://' . $url_info['host'] . (isset($url_info['port']) ? ':' . $url_info['port'] : '') . str_replace('/index.php', '', $url_info['path']) . $url . $query;
 		} else {
+			if(strpos($link,'index.php?route=common/home')){
+				$link = str_replace('index.php?route=common/home','',$link);
+			}
+
 			return $link;
 		}
 	}

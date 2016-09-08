@@ -10,7 +10,7 @@ $_['text_no_reviews']   = 'Không có bình luận nào cho bài viết này.';
 $_['text_on']           = ' on ';
 $_['text_note']         = '<span style="color: #FF0000;">Note:</span> HTML is not translated!';
 $_['text_share']        = 'Share';
-$_['text_success']      = 'Cám ơn bạn đã đánh giá. Đánh giá đã được gửi đến quản trị trước khi được chấp nhận.';
+$_['text_success']      = 'Cám ơn bạn đã nhận xét. Nhận xét đã được gửi đến quản trị trước khi được chấp nhận.';
 $_['text_wait']         = 'Please Wait!';
 $_['text_tags']         = 'Tags:';
 $_['text_error']        = 'Không tìm thấy bài viết!';
@@ -34,8 +34,8 @@ $_['tab_review']        = 'Reviews (%s)';
 $_['tab_related']       = 'Related Articles'; 
 
 // Error
-$_['error_name']        = 'Lỗi: Tên đánh giá phải từ 3 đến 25 kí tự!';
-$_['error_text']        = 'Lỗi: Đánh giá phải từ 3 đến 1000 kí tự!';
+$_['error_name']        = 'Lỗi: Tên nhận xét phải từ 3 đến 25 kí tự!';
+$_['error_text']        = 'Lỗi: Nhận xét phải từ 4 đến 1000 kí tự!';
 $_['error_rating']      = 'Lỗi: Vui lòng mức bình chọn!';
 $_['error_captcha']     = 'Warning: Verification code does not match the image!';
 ?>

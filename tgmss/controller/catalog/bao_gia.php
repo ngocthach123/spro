@@ -39,6 +39,8 @@ class ControllerCatalogBaoGia extends Controller
 
             $products = $this->model_catalog_bao_gia->getProductReports($this->request->get['report_id']);
 
+            $data['products'] = array();
+
             foreach ($products as $product) {
                 $product_info = $this->model_catalog_product->getProduct($product['product_id']);
                 $price = $product_info['special'] ? $product_info['special'] : $product_info['price'];
@@ -121,11 +123,14 @@ class ControllerCatalogBaoGia extends Controller
 
 
                 //set gia tri cho cac cot du lieu
+                $wizard = new PHPExcel_Helper_HTML;
                 $i = 2;
                 foreach ($data['products'] as $row) {
+                    $richText = $wizard->toRichTextObject('<?xml encoding="UTF-8">'. $row['name'].' <br>'.$row['specs']);
+
                     $objPHPExcel->setActiveSheetIndex(0)
                         ->setCellValue('A' . $i, $i)
-                        ->setCellValue('B' . $i, $row['specs'])
+                        ->setCellValue('B' . $i, $richText)
                         ->setCellValue('C' . $i, $row['quantity'])
                         ->setCellValue('D' . $i, $row['price'])
                         ->setCellValue('E' . $i, $row['sub_total']);

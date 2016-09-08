@@ -1,6 +1,7 @@
 <?php echo $header; ?><?php echo $column_left; ?>
 <div id="content">
 	<script type="text/javascript" src="view/javascript/ckeditor/ckeditor.js"></script>
+
   <div class="page-header">
     <div class="container-fluid">
       <div class="pull-right">

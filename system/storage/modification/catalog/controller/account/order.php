@@ -1,22 +1,22 @@
 <?php
 class ControllerAccountOrder extends Controller {
 	public function index() {
-		if (!$this->customer->isLogged()) {
-			$this->session->data['redirect'] = $this->url->link('account/order', '', true);
-
-			$this->response->redirect($this->url->link('account/login', '', true));
-		}
+//		if (!$this->customer->isLogged()) {
+//			$this->session->data['redirect'] = $this->url->link('account/order', '', true);
+//
+//			$this->response->redirect($this->url->link('account/login', '', true));
+//		}
 
 		$this->load->language('account/order');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-		
+
 		$url = '';
 
 		if (isset($this->request->get['page'])) {
 			$url .= '&page=' . $this->request->get['page'];
 		}
-		
+
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
@@ -28,7 +28,7 @@ class ControllerAccountOrder extends Controller {
 			'text' => $this->language->get('text_account'),
 			'href' => $this->url->link('account/account', '', true)
 		);
-		
+
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('account/order', $url, true)
@@ -93,11 +93,17 @@ class ControllerAccountOrder extends Controller {
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
-foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load->controller('common/positions', $key);}
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-		$this->response->setOutput($this->load->view('account/order_list', $data));
+		if (!$this->customer->isLogged()) {
+
+			$data['entry_order_id'] = $this->language->get('entry_order_id');
+
+			$this->response->setOutput($this->load->view('account/order_guest', $data));
+		}else{
+			$this->response->setOutput($this->load->view('account/order_list', $data));
+		}
 	}
 
 	public function info() {
@@ -109,15 +115,18 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 			$order_id = 0;
 		}
 
-		if (!$this->customer->isLogged()) {
+		if (!$this->customer->isLogged() && !isset($this->request->get['ajax_request'])) {
 			$this->session->data['redirect'] = $this->url->link('account/order/info', 'order_id=' . $order_id, true);
 
 			$this->response->redirect($this->url->link('account/login', '', true));
 		}
 
 		$this->load->model('account/order');
-
-		$order_info = $this->model_account_order->getOrder($order_id);
+		if(isset($this->request->get['ajax_request'])){
+			$order_info = $this->model_account_order->getOrder($order_id, 1);
+		}else{
+			$order_info = $this->model_account_order->getOrder($order_id);
+		}
 
 		if ($order_info) {
 			$this->document->setTitle($this->language->get('text_order'));
@@ -168,7 +177,6 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 			$data['column_model'] = $this->language->get('column_model');
 			$data['column_quantity'] = $this->language->get('column_quantity');
 			$data['column_price'] = $this->language->get('column_price');
-			$data['column_access'] = $this->language->get('column_access');
 			$data['column_total'] = $this->language->get('column_total');
 			$data['column_action'] = $this->language->get('column_action');
 			$data['column_date_added'] = $this->language->get('column_date_added');
@@ -308,23 +316,6 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 					);
 				}
 
-				//Phu kien
-				$products_access = $this->model_account_order->getOrderAccessories($this->request->get['order_id'], $product['order_product_id']);
-
-				$access_total =0;
-				$accessories = array();
-				foreach ($products_access as $pro_access) {
-					$accessories[] = array(
-						'access_id' => $pro_access['product_access_id'],
-						'name'       => $pro_access['name'],
-						'price'       => $pro_access['price'],
-					);
-
-					$access_total+=$pro_access['price_origin'];
-				}
-
-				$product['total']+=$access_total* $product['quantity'];
-
 				$product_info = $this->model_catalog_product->getProduct($product['product_id']);
 
 				if ($product_info) {
@@ -337,8 +328,6 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 					'name'     => $product['name'],
 					'model'    => $product['model'],
 					'option'   => $option_data,
-					'accessories'	=> $accessories,
-					'access_total' => $access_total,
 					'quantity' => $product['quantity'],
 					'price'    => $this->currency->format($product['price'] + ($this->config->get('config_tax') ? $product['tax'] : 0), $order_info['currency_code'], $order_info['currency_value']),
 					'total'    => $this->currency->format($product['total'] + ($this->config->get('config_tax') ? ($product['tax'] * $product['quantity']) : 0), $order_info['currency_code'], $order_info['currency_value']),
@@ -392,11 +381,15 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 			$data['column_right'] = $this->load->controller('common/column_right');
 			$data['content_top'] = $this->load->controller('common/content_top');
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
-foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load->controller('common/positions', $key);}
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
-			$this->response->setOutput($this->load->view('account/order_info', $data));
+			if (!$this->customer->isLogged()) {
+				$this->response->setOutput($this->load->view('account/order_info_guest', $data));
+			} else{
+				$this->response->setOutput($this->load->view('account/order_info', $data));
+			}
+
 		} else {
 			$this->document->setTitle($this->language->get('text_order'));
 
@@ -434,11 +427,14 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 			$data['column_right'] = $this->load->controller('common/column_right');
 			$data['content_top'] = $this->load->controller('common/content_top');
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
-foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load->controller('common/positions', $key);}
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
-			$this->response->setOutput($this->load->view('error/not_found', $data));
+			if (!$this->customer->isLogged() && !isset($this->request->get['ajax_request'])) {
+				$this->response->setOutput($this->load->view('error/not_found', $data));
+			}else{
+				$this->response->setOutput($this->load->view('error/not_found_ajax', $data));
+			}
 		}
 	}
 

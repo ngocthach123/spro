@@ -19,6 +19,8 @@ $_['text_success']          = 'Bạn đã thêm thành công các sản phẩm <
 $_['text_empty']            = 'Bạn chưa có đơn hàng nào!';
 $_['text_error']            = 'Đơn hàng bạn yêu cầu không có!';
 
+$_['entry_order_id']         = 'Mã đơn hàng:';
+
 // Column
 $_['column_order_id']       = 'Mã ID đơn hàng';
 $_['column_customer']       = 'Khách hàng';

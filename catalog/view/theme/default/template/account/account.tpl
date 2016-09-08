@@ -16,37 +16,90 @@
     <?php } else { ?>
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
-    <div id="content" class="<?php echo $class; ?> well"><?php echo $content_top; ?>
-      <h2><?php echo $text_my_account; ?></h2>
-      <ul class="list-unstyled">
-        <li><a href="<?php echo $edit; ?>"><?php echo $text_edit; ?></a></li>
-        <li><a href="<?php echo $password; ?>"><?php echo $text_password; ?></a></li>
-        <li><a href="<?php echo $address; ?>"><?php echo $text_address; ?></a></li>
-        <li><a href="<?php echo $wishlist; ?>"><?php echo $text_wishlist; ?></a></li>
-      </ul>
-      <?php if ($credit_cards) { ?>
-      <h2><?php echo $text_credit_card; ?></h2>
-      <ul class="list-unstyled">
-        <?php foreach ($credit_cards as $credit_card) { ?>
-        <li><a href="<?php echo $credit_card['href']; ?>"><?php echo $credit_card['name']; ?></a></li>
-        <?php } ?>
-      </ul>
-      <?php } ?>
-      <h2><?php echo $text_my_orders; ?></h2>
-      <ul class="list-unstyled">
-        <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
-        <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
-        <?php if ($reward) { ?>
-        <li><a href="<?php echo $reward; ?>"><?php echo $text_reward; ?></a></li>
-        <?php } ?>
-        <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li>
-        <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
-        <li><a href="<?php echo $recurring; ?>"><?php echo $text_recurring; ?></a></li>
-      </ul>
-      <h2><?php echo $text_my_newsletter; ?></h2>
-      <ul class="list-unstyled">
-        <li><a href="<?php echo $newsletter; ?>"><?php echo $text_newsletter; ?></a></li>
-      </ul>
+    <div id="content" class="<?php echo $class; ?> index-customer"><?php echo $content_top; ?>
+
+      <h2>Bảng thông tin của tôi</h2>
+      <div class="col-sm-6">
+        <span class="title">Thông tin tài khoản</span>
+        <a href="<?php echo $edit;?>" class="pull-right">Chỉnh sửa ></a>
+        <table class="customer-info" cellpadding="10" cellspacing="10">
+          <tr>
+            <td>Họ và tên:</td>
+            <td><?php echo $firstname;?></td>
+          </tr>
+          <tr>
+            <td> Email:</td>
+            <td><?php echo $email;?></td>
+          </tr>
+          <tr>
+            <td> SDT:</td>
+            <td><?php echo $telephone;?></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class=" col-sm-12">
+        <div class="wrap-title">
+          <span class="title">Các đơn hàng vừa đặt</span>
+        </div>
+        <?php if($orders): ?>
+          <table class="table table-bordered table-hover">
+          <thead>
+          <tr>
+            <td class="text-right">Mã đơn hàng</td>
+            <td class="text-left">Khách hàng</td>
+            <td class="text-right">Số sản phẩm</td>
+            <td class="text-left">Tình trạng</td>
+            <td class="text-right">Tổng cộng</td>
+            <td class="text-left">Ngày tạo</td>
+            <td></td>
+          </tr>
+          </thead>
+          <tbody>
+          <?php foreach ($orders as $order) { ?>
+          <tr>
+            <td class="text-right">#<?php echo $order['order_id']; ?></td>
+            <td class="text-left"><?php echo $order['name']; ?></td>
+            <td class="text-right"><?php echo $order['products']; ?></td>
+            <td class="text-left"><?php echo $order['status']; ?></td>
+            <td class="text-right"><?php echo $order['total']; ?></td>
+            <td class="text-left"><?php echo $order['date_added']; ?></td>
+            <td class="text-right"><a href="<?php echo $order['view']; ?>" data-toggle="tooltip" title="Xem" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
+          </tr>
+          <?php } ?>
+          </tbody>
+        </table>
+        <?php else:?>
+          <p>Bạn chưa có đơn hàng nào.</p>
+        <?php endif;?>
+      </div>
+
+      <div class="col-sm-11">
+        <div class="wrap-title">
+          <span class="title">Sổ địa chỉ</span>
+          <a href="<?php echo $address;?>" class="pull-right">Xem tất cả ></a>
+        </div>
+        <?php if($addresses): ?>
+          <?php foreach ($addresses as $result) { ?>
+            <div class="col-sm-6">
+              <div class="block-address">
+                <?php if($result['default']): ?>
+                  <span class="pull-right text-green">Mặc định</span>
+                <?php endif;?>
+                <span>Địa chỉ: </span>
+                <span><?php echo $result['address']; ?></span> <br/>
+                <span>Điện thoại: </span>
+                <span><?php echo $result['telephone']; ?></span><br/>
+                <a class="btn btn-default" href="<?php echo $result['update']; ?>">Sửa</a>
+                <a class="btn btn-danger" href="<?php echo $result['delete']; ?>">Xóa</a>
+              </div>
+            </div>
+          <?php } ?>
+        <?php else:?>
+          <p>Bạn chưa có sổ địa chỉ nào.</p>
+        <?php endif;?>
+      </div>
+
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>
 </div>

@@ -60,6 +60,12 @@ $(document).ready(function() {
 			url += '&search=' + encodeURIComponent(value);
 		}
 
+		var cat = $('header input[id=\'cat_id\']').val();
+
+		if (value) {
+			url += '&category_id=' + encodeURIComponent(cat);
+		}
+
 		location = url;
 	});
 

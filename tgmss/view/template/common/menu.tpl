@@ -1,6 +1,6 @@
 <ul id="menu">
   <?php foreach ($stores as $store) { ?>
-  <li><a href="<?php echo $store['href']; ?>" target="_blank"><i class="fa fa-dashboard fa-fw"></i> <span>Xem cửa hàng</span></a></li>
+  <li><a href="<?php echo $store['href']; ?>" target="_blank"><i class="fa fa-dashboard fa-fw"></i> <span>Xem website</span></a></li>
   <?php } ?>
   <li id="catalog"><a class="parent"><i class="fa fa-pie-chart fa-fw"></i> <span><?php echo $text_catalog; ?></span></a>
     <ul class="collapse">
@@ -10,16 +10,18 @@
       <li><a href="<?php echo $virtual_product; ?>"><?php echo $text_virtual_product; ?></a></li>
       <li><a href="<?php echo $option; ?>"><?php echo $text_option; ?></a></li>
       <li><a href="<?php echo $access_group; ?>"><?php echo $text_access_group; ?></a></li>
-      <li><a href="<?php echo $price_report; ?>"><?php echo $text_price_report; ?></a></li>
       <li><a href="<?php echo $manufacturer; ?>"><?php echo $text_manufacturer; ?></a></li>
-      <li><a class="parent"><span><?php echo $text_review; ?></span></a>
-        <ul>
-          <li><a href="<?php echo $review; ?>"><?php echo $text_product_review; ?></a></li>
-          <li><a href="<?php echo $href_store_review; ?>"><?php echo $text_store_review; ?></a></li>
-        </ul>
-      </li>
       <!-- end review store -->
       <li><a href="<?php echo $information; ?>"><?php echo $text_information; ?></a></li>
+    </ul>
+  </li>
+
+  <li><a href="<?php echo $price_report; ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <?php echo $text_price_report; ?></a></li>
+
+  <li><a class="parent"><i class="fa fa-envelope" aria-hidden="true"></i> <span><?php echo $text_review; ?></span></a>
+    <ul class="collapse">
+      <li><a href="<?php echo $review; ?>"><?php echo $text_product_review; ?></a></li>
+      <li><a href="<?php echo $href_store_review; ?>"><?php echo $text_store_review; ?></a></li>
     </ul>
   </li>
 
@@ -42,7 +44,7 @@
   <li id="extension"><a class="parent"><i class="fa fa-puzzle-piece fa-fw"></i> <span><?php echo $text_extension; ?></span></a>
     <ul class="collapse">
       <li><a href="<?php echo $installer; ?>"><?php echo $text_installer; ?></a></li>
-      <li><a href="<?php echo $modification; ?>"><?php echo $text_modification; ?></a></li>
+      <li class="hidden"><a href="<?php echo $modification; ?>"><?php echo $text_modification; ?></a></li>
       <li><a href="<?php echo $module; ?>"><?php echo $text_module; ?></a></li>
       <li><a href="<?php echo $theme; ?>"><?php echo $text_theme; ?></a></li>
       <li><a href="<?php echo $payment; ?>"><?php echo $text_payment; ?></a></li>

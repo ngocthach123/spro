@@ -68,10 +68,10 @@
     </div>
   </div><!-- end boxcol-left -->
 
-<?php else:?>
+<?php else:?> <!-- trang chu -->
 
 <div id="mainmenucate-top">
-  <ul>
+  <ul class="sub-1">
     <!-- menu cấp 1 -->
     <?php foreach ($categories as $category): ?>
       <li>
@@ -79,15 +79,15 @@
         <i class="fa fa-bullseye"></i>&nbsp;<?php echo $category['name']; ?> <i class="fa fa-chevron-right"></i>
       </a>
         <?php if ($category['children']): ?>
-          <ul>
+          <ul class="sub-2">
             <!-- menu cấp 2 -->
             <?php foreach ($category['children'] as $child): ?>
-              <li><a href="<?php echo $child['href']; ?>" class="<?php echo $child['category_id'] == $child_id ? 'active' : ''; ?>"><i class="fa fa-bullseye"></i>&nbsp; <?php echo $child['name']; ?></a>
+              <li><a href="<?php echo $child['href']; ?>" class="<?php echo $child['category_id'] == $child_id ? 'active' : ''; ?>"><b><?php echo $child['name']; ?></b></a>
                 <?php if ($child['children']): ?>
                   <ul>
                     <!-- menu cấp 3 -->
                     <?php foreach ($child['children'] as $child_2): ?>
-                    <li><a href="<?php echo $child_2['href']; ?>"><i class="fa fa-bullseye"></i>&nbsp;<?php echo $child_2['name']; ?></a></li>
+                    <li><a href="<?php echo $child_2['href']; ?>"><?php echo $child_2['name']; ?></a></li>
                     <?php endforeach;?>
                     <!-- menu cấp 3 -->
                   </ul>
@@ -107,6 +107,10 @@
   if($("body").hasClass('common-home') || $("body").attr('class') == ''){
     $("#mainmenucate-top").css({"opacity":"1","visibility": "visible", "top": "100%"});
   }
+
+  $(document).ready(function() {
+    $('#mainmenucate-top li ul.sub-2').css('min-height', $('#mainmenucate-top').innerHeight() +2);
+  });
 </script>
 
 <?php endif;?>

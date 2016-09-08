@@ -1,11 +1,11 @@
 <?php
 class ControllerAccountOrder extends Controller {
 	public function index() {
-		if (!$this->customer->isLogged()) {
-			$this->session->data['redirect'] = $this->url->link('account/order', '', true);
-
-			$this->response->redirect($this->url->link('account/login', '', true));
-		}
+//		if (!$this->customer->isLogged()) {
+//			$this->session->data['redirect'] = $this->url->link('account/order', '', true);
+//
+//			$this->response->redirect($this->url->link('account/login', '', true));
+//		}
 
 		$this->load->language('account/order');
 
@@ -96,7 +96,11 @@ class ControllerAccountOrder extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-		$this->response->setOutput($this->load->view('account/order_list', $data));
+		if (!$this->customer->isLogged()) {
+			$this->response->setOutput($this->load->view('account/ordert_guest', $data));
+		}else{
+			$this->response->setOutput($this->load->view('account/order_list', $data));
+		}
 	}
 
 	public function info() {
@@ -108,7 +112,7 @@ class ControllerAccountOrder extends Controller {
 			$order_id = 0;
 		}
 
-		if (!$this->customer->isLogged()) {
+		if (!$this->customer->isLogged() && !isset($this->request->get['ajax_request'])) {
 			$this->session->data['redirect'] = $this->url->link('account/order/info', 'order_id=' . $order_id, true);
 
 			$this->response->redirect($this->url->link('account/login', '', true));
@@ -374,7 +378,12 @@ class ControllerAccountOrder extends Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
-			$this->response->setOutput($this->load->view('account/order_info', $data));
+			if (!$this->customer->isLogged()) {
+				$this->response->setOutput($this->load->view('account/order_info_guest', $data));
+			} else{
+				$this->response->setOutput($this->load->view('account/order_info', $data));
+			}
+
 		} else {
 			$this->document->setTitle($this->language->get('text_order'));
 

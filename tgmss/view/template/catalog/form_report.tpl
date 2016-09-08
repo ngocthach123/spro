@@ -77,8 +77,8 @@
         <?php $i = 1; foreach($products as $product):?>
             <tr>
                 <td height="35" align="center" width="20"><?php echo $i;?></td>
-                <td width="200"><?php echo $product['specs'];?></td>
-                <td align="center"><?php echo $product['quantity'];?></td>
+                <td width="200"><?php echo $product['name'];?> <br/> <?php echo $product['specs'];?></td>
+                <td align="center" width="20"><?php echo $product['quantity'];?></td>
                 <td><?php echo $product['price'];?></td>
                 <td><?php echo $product['sub_total'];?></td>
                 <td><img src="<?php echo $product['image'];?>"/></td>

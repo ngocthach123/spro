@@ -69,6 +69,100 @@ class ControllerAccountAccount extends Controller {
 				);
 			}
 		}
+
+		$customer_info = array();
+		if ($this->request->server['REQUEST_METHOD'] != 'POST') {
+			$this->load->model('account/customer');
+			$customer_info = $this->model_account_customer->getCustomer($this->customer->getId());
+		}
+
+		if(!empty($customer_info)){
+			$data['firstname'] = $customer_info['firstname'];
+			$data['email'] = $customer_info['email'];
+			$data['telephone'] = $customer_info['telephone'];
+		}else{
+			$data['firstname'] ='';
+			$data['email'] = '';
+			$data['telephone'] = '';
+		}
+
+		$this->load->model('account/order');
+
+		$data['orders'] = array();
+
+		$results = $this->model_account_order->getOrders(0,3);
+
+		foreach ($results as $result) {
+			$product_total = $this->model_account_order->getTotalOrderProductsByOrderId($result['order_id']);
+			$voucher_total = $this->model_account_order->getTotalOrderVouchersByOrderId($result['order_id']);
+
+			$data['orders'][] = array(
+				'order_id'   => $result['order_id'],
+				'name'       => $result['firstname'] . ' ' . $result['lastname'],
+				'status'     => $result['status'],
+				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
+				'products'   => ($product_total + $voucher_total),
+				'total'      => $this->currency->format($result['total'], $result['currency_code'], $result['currency_value']),
+				'view'       => $this->url->link('account/order/info', 'order_id=' . $result['order_id'], true),
+			);
+		}
+
+		$this->load->model('account/address');
+
+		$data['addresses'] = array();
+
+		$results = $this->model_account_address->getAddresses();
+
+		foreach ($results as $result) {
+			if ($result['address_format']) {
+				$format = $result['address_format'];
+			} else {
+				$format = '{firstname} {lastname}' . "\n" . '{company}' . '{address_1}' . ", " . '{address_2}' . ", " . '{city} {postcode}' . ", " . '{zone}' . ", " . '{country}';
+			}
+
+			$find = array(
+				'{firstname}',
+				'{lastname}',
+				'{company}',
+				'{address_1}',
+				'{address_2}',
+				'{city}',
+				'{postcode}',
+				'{zone}',
+				'{zone_code}',
+				'{country}'
+			);
+
+			$replace = array(
+				'firstname' => $result['firstname'],
+				'lastname'  => $result['lastname'],
+				'company'   => $result['company'],
+				'address_1' => $result['address_1'],
+				'address_2' => $result['address_2'],
+				'city'      => $result['city'],
+				'postcode'  => $result['postcode'],
+				'zone'      => $result['zone'],
+				'zone_code' => $result['zone_code'],
+				'country'   => $result['country']
+			);
+
+			$data['addresses'][] = array(
+				'address_id' => $result['address_id'],
+				'telephone' => $result['telephone'],
+				'address'    => str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format)))),
+				'update'     => $this->url->link('account/address/edit', 'address_id=' . $result['address_id'], true),
+				'delete'     => $this->url->link('account/address/delete', 'address_id=' . $result['address_id'], true),
+				'default' =>  $this->customer->getAddressId() == $result['address_id'] ? 1 : 0
+			);
+
+			if($this->customer->getAddressId() == $result['address_id']){
+				$index = count($data['addresses']) -1;
+				$temp = $data['addresses'][0];
+				$data['addresses'][0] = $data['addresses'][$index];
+				$data['addresses'][$index]= $temp;
+			}
+		}
+
 		
 		$data['wishlist'] = $this->url->link('account/wishlist');
 		$data['order'] = $this->url->link('account/order', '', true);

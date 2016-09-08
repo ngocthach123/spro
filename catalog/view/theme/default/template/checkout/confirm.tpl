@@ -7,7 +7,7 @@
         <span>Cảm ơn bạn!</span><br> Đơn hàng của bạn đang được xử lý
       </div>
       <div class="nddiachigiaohang">
-        Mã đơn hàng của bạn là: <span></span><br>
+        Mã đơn hàng của bạn là: <span> <?php echo $order_id;?></span><br>
         Bạn sẽ nhận được email xác nhận đơn hàng với thông tin chi tiết và mã theo dõi đơn hàng.<br><br>
         <b>Địa chỉ giao hàng của bạn là:</b><br>
        <?php echo $firstname;?><br>
@@ -15,8 +15,8 @@
       </div>
 
       <?php echo $payment; ?>
-
     </div>
+    <a href="index.php?route=common/home" class="btn-orange"> Tiếp tục</a>
   </div>
   <div class="right-dathangstepthree">
     <div class="btomtatdonhang">

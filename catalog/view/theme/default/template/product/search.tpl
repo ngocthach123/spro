@@ -116,11 +116,11 @@
                     <?php } else { ?>
                     <div class="productprice wbp">
                       <span class="productsell"><?php echo $product['price']; ?></span>
-                      <span class="productsale">&nbsp;</span>
+                      <span class="">&nbsp;</span>
                     </div>
                     <?php } ?>
                   </div>
-                  <div class="boxreview-product">
+                  <div class="boxreview-product hidden">
                     ( 19 nhận xét )
                   </div>
                 </div>

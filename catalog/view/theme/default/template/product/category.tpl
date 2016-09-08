@@ -83,11 +83,11 @@
                     <?php } else { ?>
                       <div class="productprice wbp">
                         <span class="productsell"><?php echo $product['price']; ?></span>
-                        <span class="productsale">&nbsp;</span>
+                        <span class="">&nbsp;</span>
                       </div>
                     <?php } ?>
                   </div>
-                  <div class="boxreview-product">
+                  <div class="boxreview-product hidden">
                     ( 19 nhận xét )
                   </div>
                 </div>
@@ -108,60 +108,6 @@
     <div class="descriptioncategory">
       <?php echo $description;?>
     </div>
-    <!-- inforcategory -->
-    <div class="inforcategory">
-      <h4>Máy nén khí dùng phun sơn cần những loại nào?</h4>
-      <ul>
-        <li><a href="#">Máy nén khí phun sơn loại di động</a></li>
-        <li><a href="#">Máy nén khí dùng phun pu, xưởng gỗ, cửa sắt</a></li>
-      </ul>
-      <p>
-      <h4>Hướng dẫn sử dụng máy nén khí piston</h4>
-      <ul>
-        <li><a href="#">Sử dụng máy nén khí piston Jaguar 2hp</a></li>
-        <li><a href="#">Cách sử dụng máy nén khí mini có dầu</a></li>
-        <li><a href="#">Sử dụng máy nén khí đúng cách</a></li>
-        <li><a href="#">Dùng máy nén khí có dòng điện 1 pha</a></li>
-      </ul>
-    </div>
-    <!-- newsrelated-category -->
-    <div class="newsrelated-category">
-      <h3>Tin tức liên quan</h3>
-      <div class="itemnews">
-        <div class="namenews">
-          <a href="#">Hướng dẫn các bước bảo dưỡng máy rửa xe cao áp cơ bản</a>
-        </div>
-        <div class="datednews">
-          Hôm nay, 9:30 am
-        </div>
-        <div class="contentnews">
-          Bảo dưỡng định kỳ cho máy rửa xe là việc hết sức cần thiết, bảo dưỡng thay dầu máy giúp máy hoạt động tốt hơn và tăng tuổi thọ cho máy
-        </div>
-      </div>
-      <div class="itemnews">
-        <div class="namenews">
-          <a href="#">Hướng dẫn các bước bảo dưỡng máy rửa xe cao áp cơ bản</a>
-        </div>
-        <div class="datednews">
-          Hôm nay, 9:30 am
-        </div>
-        <div class="contentnews">
-          Bảo dưỡng định kỳ cho máy rửa xe là việc hết sức cần thiết, bảo dưỡng thay dầu máy giúp máy hoạt động tốt hơn và tăng tuổi thọ cho máy
-        </div>
-      </div>
-      <div class="itemnews">
-        <div class="namenews">
-          <a href="#">Hướng dẫn các bước bảo dưỡng máy rửa xe cao áp cơ bản</a>
-        </div>
-        <div class="datednews">
-          Hôm nay, 9:30 am
-        </div>
-        <div class="contentnews">
-          Bảo dưỡng định kỳ cho máy rửa xe là việc hết sức cần thiết, bảo dưỡng thay dầu máy giúp máy hoạt động tốt hơn và tăng tuổi thọ cho máy
-        </div>
-      </div>
-    </div>
-    <!-- end newsrelated-category -->
   </div>
 </div>
 <?php echo $footer; ?>

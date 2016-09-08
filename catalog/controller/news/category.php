@@ -222,7 +222,6 @@ class ControllerNewsCategory extends Controller {
 					'thumb'   	 => $this->model_tool_image->resize($result['image'], $this->config->get('news_image_related_width'), $this->config->get('news_image_related_height')),
 					'name'    	 => $result['name'],
 					'short_description' => $result['short_description'],
-					'rating'     => $rating,
 					'reviews'    => sprintf($this->language->get('text_reviews'), (int)$result['reviews']),
 					'href'    	 => $this->url->link('news/article', 'article_id=' . $result['article_id'])
 				);

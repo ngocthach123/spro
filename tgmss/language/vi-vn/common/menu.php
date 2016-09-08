@@ -108,4 +108,4 @@ $_['text_transport']                  = 'Giá vận chuyển';
 
 $_['text_virtual_product'] = 'Sản phẩm ảo';
 $_['text_product_sale'] = 'Sản phẩm khuyến mãi';
-$_['text_price_report'] = 'Báo giá';
+$_['text_price_report'] = 'Lập báo giá';

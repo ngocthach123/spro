@@ -48,7 +48,7 @@ class ModelNewsArticle extends Model {
 
 		$sql = "SELECT p.article_id, (SELECT AVG(rating) AS total FROM " . DB_PREFIX . "news_review r1 WHERE r1.article_id = p.article_id AND r1.status = '1' GROUP BY r1.article_id) AS rating"; 
 
-		if (!empty($data['filter_category_id'])) {
+		if (!empty($data['filter_category_id']) && $data['filter_category_id'] != '1') {
 			if (!empty($data['filter_sub_category'])) {
 				$sql .= " FROM " . DB_PREFIX . "news_category_path cp LEFT JOIN " . DB_PREFIX . "news_articles_to_category p2c ON (cp.category_id = p2c.category_id)";			
 			} else {
@@ -63,7 +63,7 @@ class ModelNewsArticle extends Model {
 
 		$sql .= " LEFT JOIN " . DB_PREFIX . "news_articles_description pd ON (p.article_id = pd.article_id) LEFT JOIN " . DB_PREFIX . "news_articles_to_store p2s ON (p.article_id = p2s.article_id) WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.status = '1' AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "'";
 
-		if (!empty($data['filter_category_id'])) {
+		if (!empty($data['filter_category_id']) && $data['filter_category_id'] != '1') {
 			if (!empty($data['filter_sub_category'])) {
 				$sql .= " AND cp.path_id = '" . (int)$data['filter_category_id'] . "'";	
 			} else {

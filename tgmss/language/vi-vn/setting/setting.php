@@ -3,7 +3,7 @@
 $_['heading_title']            = 'Thiết lập';
 
 // Text
-$_['text_stores']                     = 'Cửa hàng';
+$_['text_stores']                     = 'Thông tin doanh nghiệp';
 $_['text_success']             = 'Hoàn tất: Bạn đã thay đổi các thiết lập!';
 $_['text_edit']                        = 'Thiết lập hệ thống';
 $_['text_product']                 = 'Sản phẩm';

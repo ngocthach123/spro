@@ -33,13 +33,18 @@
           <div class="row">
               <div class="well">
                   <form action="<?php echo $list_action;?>" method="post" id="form-excel" enctype="multipart/form-data">
-                  <div class="form-group">
-                      <div class="btn btn-primary fileUpload">
-                          <span>Nhập số lượng tồn</span>
-                          <input type="file" name="file_ton_kho" class="upload"/>
+                   <div class="col-md-5">
+                      <div class="form-group">
+                          <div class="btn btn-primary fileUpload">
+                              <span>Nhập số lượng tồn</span>
+                              <input type="file" name="file_ton_kho" class="upload"/>
+                          </div>
+                          <a class="btn btn-default" id="btn-export">Xuất sản phẩm</a>
+
+                          <button class="btn btn-success" style="margin-left: 45px" type="submit">Lưu</button>
                       </div>
-                  </div>
-                      <button class="btn btn-default pull-right" style="margin-right: 45px" type="submit">Lưu</button>
+
+                   </div>
                       <div style="clear: both"></div>
                   </form>
               </div>
@@ -215,6 +220,14 @@
       </div>
     </div>
   </div>
+
+    <script>
+        $('#btn-export').click(function(){
+            $('#form-product').attr('action','<?php echo html_entity_decode($export);?>');
+            $('#form-product').submit();
+        });
+    </script>
+
     <script>
         $(".nav-plus").click(function(e){
             e.preventDefault();

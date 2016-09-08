@@ -815,8 +815,8 @@ span.top-iconuser .fa-user {
 }
 /*menu cap 1*/
 #mainmenucate-top ul li {
-	position: relative;
-	padding: 11px 15px;
+	/*position: relative;*/
+	padding: 7px 15px;
 	transition: all 0.5s ease;
 }
 #mainmenucate-top ul li:hover {
@@ -828,16 +828,15 @@ span.top-iconuser .fa-user {
 }
 #mainmenucate-top ul li a {
 	text-decoration: none;
-	font-size: 14px;
+	font-size: 13px;
 	color: #868686;
 }
 #mainmenucate-top ul li a .fa-bullseye {
 	color: #ffa950;
 }
 #mainmenucate-top ul li a .fa-chevron-right {
-    position: absolute;
-    right: 9px;
-    top: 16px;
+	padding-top: 5px;
+	float: right;
 	font-size: 10px;
 }
 /*menu cap 2*/
@@ -864,17 +863,18 @@ span.top-iconuser .fa-user {
 	background: #fff;
 }
 #mainmenucate-top ul li ul li a{
-	font-size: 14px;
+	font-size: 13px;
 	color: #868686 !important;
 	display: block;
-	padding: 10px 15px;
+	padding: 8px 15px;
+	padding-bottom: 0px;
 }
 #mainmenucate-top ul li ul li a .fa-bullseye {
 	color: #ffa950;
 }
 #mainmenucate-top ul > li > ul > li > a:hover, #mainmenucate-top ul > li > ul  > li:hover > a i {
-	background: #ff5111;
-	color: #fff !important;
+	background: #fff;
+	color: #ff5111 !important;
 }
 /*menu cap 3*/
 #mainmenucate-top ul li ul li ul {
@@ -885,14 +885,14 @@ span.top-iconuser .fa-user {
 	width: auto;
 }
 #mainmenucate-top ul li ul li ul li a{
-	font-size: 14px;
+	font-size: 13px;
 	color: #868686 !important;
 	display: block;
-	padding: 10px 15px 10px 25px;
+	padding: 8px 15px 1px 25px;
 }
 #mainmenucate-top ul li ul li ul li:hover a, #mainmenucate-top ul li ul li ul li:hover a i {
-	background: #ff5111;
-	color: #fff !important;
+	background: #fff;
+	color: #ff5111 !important;
 }
 /*slidebanner*/
 .slidebanner-home {
@@ -941,7 +941,7 @@ div.itemimage + div {
 .itemimage img {
 	transition: all .5s ease; 
 	width: 100%;
-	height: 139px;
+	height: 147px;
 }
 .itemimage:hover img { 
 	transform: scale(1.1); 
@@ -1362,12 +1362,13 @@ div.itemimage + div {
     color: #000;
     font-size: 15px;
 	margin-bottom: 10px;
+	min-height: 63px;
 }
 .wrapbox-product .contentbox-product .boxname-product a {
 	text-align: center;
     line-height: 21px;
     color: #000;
-    font-size: 15px;
+    font-size: 14px;
 }
 .wrapbox-product .contentbox-product:hover .boxname-product a{
     color: #ff5011;
@@ -3930,6 +3931,7 @@ a.btncngh-f:hover {
 	color: #000;
 	font-size: 14px;
 	line-height: 20px;
+	margin-bottom: 10px;
 }
 .bdathangthanhcong .nddiachigiaohang span {
 	color: #ff5111;
@@ -4151,11 +4153,11 @@ a.btncngh-f:hover {
 }
 .btintuc .itemstintuc {
 	float: left;
-	width: 23%;
+	width: 31%;
 	margin-right: 2%;
 	margin-bottom: 2%;
 }
-.btintuc .itemstintuc:nth-child(4n+0) {
+.btintuc .itemstintuc:nth-child(3n+0) {
 	margin-right: 0;
 }
 .btintuc .itemstintuc .img-itemstintuc {
@@ -4191,7 +4193,7 @@ a.btncngh-f:hover {
 	border-bottom: 1px solid #cbcbcb;
 	text-align: center;
 	margin-bottom: 7px;
-	min-height: 65px;
+	min-height: 90px;
 }
 .btintuc .itemstintuc .tit-itemstintuc a {
 	font-size: 13px;
@@ -4461,6 +4463,7 @@ li.cat-item-1 a{
 .ads{
 	position: fixed;
 	z-index: 999;
+	clear: both;
 }
 
 .ads .banner-close{
@@ -4518,4 +4521,84 @@ a{
 
 .wrap-search .boxfilter-category{
 	border-top: none;
+}
+
+.wrap-search .boxfilter-category .sortanddisplay{
+	margin-bottom: 15px;
+}
+
+#inputtop-search span{
+	cursor: pointer;
+}
+
+#inputtop-search ul li a:hover{
+	background-color: #cccccc!important;
+	background-image: none;
+}
+
+.wrap-head-slide{
+	display: flex;
+	border-bottom: 1px solid #cccccc;
+	margin: 0px 15px;
+	background-color: #ffffff;
+}
+
+/*account*/
+.index-customer{
+	border: 1px solid #c2c2c2;
+	box-shadow: 0 0 3px 3px #f3f3f3;
+}
+.index-customer h2
+{
+	margin: 12px 0px;
+}
+.index-customer .title{
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.index-customer .wrap-title{
+	margin: 10px 0px;
+}
+
+.customer-info{
+	border: 1px solid #cccccc;
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.customer-info td{
+	padding: 3px;
+}
+
+.customer-info tr td:first-child{
+	width: 25%;
+}
+
+.index-customer .block-address{
+	border: 1px dashed #c2c2c2;
+	padding: 7px;
+	margin-left: -15px;
+	margin-top: 10px;
+}
+
+.index-customer .text-green{
+	color: green;
+}
+
+.wrap-banner img{
+	width: 100%;
+}
+
+.block-banner{
+	margin: 15px 0px;
+}
+
+.block-banner:first-child{
+	padding-left: 0px;
+}
+
+.block-banner:last-child{
+	padding-right: 0px;
 }

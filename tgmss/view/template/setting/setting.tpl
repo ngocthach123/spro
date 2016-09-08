@@ -31,14 +31,14 @@
       <div class="panel-body">
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-setting" class="form-horizontal">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
             <li><a href="#tab-store" data-toggle="tab"><?php echo $tab_store; ?></a></li>
+            <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
             <li class=""><a href="#tab-local" data-toggle="tab"><?php echo $tab_local; ?></a></li>
-            <li><a href="#tab-option" data-toggle="tab"><?php echo $tab_option; ?></a></li>
-            <li><a href="#tab-image" data-toggle="tab"><?php echo $tab_image; ?></a></li>
+            <li class="hidden"><a href="#tab-option" data-toggle="tab"><?php echo $tab_option; ?></a></li>
+            <li class="hidden"><a href="#tab-image" data-toggle="tab"><?php echo $tab_image; ?></a></li>
             <li class="hidden"><a href="#tab-ftp" data-toggle="tab"><?php echo $tab_ftp; ?></a></li>
             <li><a href="#tab-mail" data-toggle="tab"><?php echo $tab_mail; ?></a></li>
-            <li><a href="#tab-server" data-toggle="tab"><?php echo $tab_server; ?></a></li>
+            <li class="hidden"><a href="#tab-server" data-toggle="tab"><?php echo $tab_server; ?></a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="tab-general">
@@ -173,6 +173,18 @@
                 <label class="col-sm-2 control-label" for="input-image"><?php echo $entry_image; ?></label>
                 <div class="col-sm-10"><a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img src="<?php echo $thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
                   <input type="hidden" name="config_image" value="<?php echo $config_image; ?>" id="input-image" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-logo"><?php echo $entry_logo; ?></label>
+                <div class="col-sm-10"><a href="" id="thumb-logo" data-toggle="image" class="img-thumbnail"><img src="<?php echo $logo; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+                  <input type="hidden" name="config_logo" value="<?php echo $config_logo; ?>" id="input-logo" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-icon"><span data-toggle="tooltip" title="<?php echo $help_icon; ?>"><?php echo $entry_icon; ?></span></label>
+                <div class="col-sm-10"><a href="" id="thumb-icon" data-toggle="image" class="img-thumbnail"><img src="<?php echo $icon; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+                  <input type="hidden" name="config_icon" value="<?php echo $config_icon; ?>" id="input-icon" />
                 </div>
               </div>
               <div class="form-group">
@@ -324,7 +336,7 @@
                 </div>
               </div>
             </div>
-            <div class="tab-pane" id="tab-option">
+            <div class="tab-pane hidden" id="tab-option">
               <fieldset>
                 <legend><?php echo $text_product; ?></legend>
                 <div class="form-group">
@@ -1064,19 +1076,8 @@
                 </div>
               </fieldset>
             </div>
-            <div class="tab-pane" id="tab-image">
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-logo"><?php echo $entry_logo; ?></label>
-                <div class="col-sm-10"><a href="" id="thumb-logo" data-toggle="image" class="img-thumbnail"><img src="<?php echo $logo; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
-                  <input type="hidden" name="config_logo" value="<?php echo $config_logo; ?>" id="input-logo" />
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-icon"><span data-toggle="tooltip" title="<?php echo $help_icon; ?>"><?php echo $entry_icon; ?></span></label>
-                <div class="col-sm-10"><a href="" id="thumb-icon" data-toggle="image" class="img-thumbnail"><img src="<?php echo $icon; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
-                  <input type="hidden" name="config_icon" value="<?php echo $config_icon; ?>" id="input-icon" />
-                </div>
-              </div>
+            <div class="tab-pane hidden" id="tab-image">
+
             </div>
             <div class="tab-pane hidden" id="tab-ftp">
               <div class="form-group">
@@ -1206,7 +1207,7 @@
                 </div>
               </div>
             </div>
-            <div class="tab-pane" id="tab-server">
+            <div class="tab-pane hidden" id="tab-server">
               <fieldset>
                 <legend><?php echo $text_general; ?></legend>
                 <div class="form-group">

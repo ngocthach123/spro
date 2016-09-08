@@ -246,6 +246,7 @@ class ControllerCatalogReview extends Controller {
 
 		$data['add'] = $this->url->link('catalog/review/add', 'token=' . $this->session->data['token'] . $url, true);
 		$data['delete'] = $this->url->link('catalog/review/delete', 'token=' . $this->session->data['token'] . $url, true);
+		$data['approve'] = $this->url->link('catalog/review/approve', 'token=' . $this->session->data['token'] . $url, 'SSL');
 
 		$data['reviews'] = array();
 
@@ -271,6 +272,7 @@ class ControllerCatalogReview extends Controller {
 				'author'     => $result['author'],
 				'rating'     => $result['rating'],
 				'status'     => ($result['status']) ? $this->language->get('text_enabled') : $this->language->get('text_disabled'),
+				'stt' => $result['status'],
 				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
 				'edit'       => $this->url->link('catalog/review/edit', 'token=' . $this->session->data['token'] . '&review_id=' . $result['review_id'] . $url, true)
 			);
@@ -391,6 +393,15 @@ class ControllerCatalogReview extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 
 		$this->response->setOutput($this->load->view('catalog/review_list', $data));
+	}
+
+	public function approve(){
+		if(isset($this->request->post['review_id']) && isset($this->request->post['stt'])){
+
+			$this->load->model('catalog/review');
+
+			$this->model_catalog_review->approve($this->request->post['review_id'], $this->request->post['stt']);
+		}
 	}
 
 	protected function getForm() {

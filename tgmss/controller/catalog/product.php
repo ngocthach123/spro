@@ -636,6 +636,8 @@ class ControllerCatalogProduct extends Controller {
 		$data['copy'] = $this->url->link('catalog/product/copy', 'token=' . $this->session->data['token'] . $url, true);
 		$data['delete'] = $this->url->link('catalog/product/delete', 'token=' . $this->session->data['token'] . $url, true);
 
+		$data['export'] = $this->url->link('catalog/product/exportForm', 'token=' . $this->session->data['token'] . $url, true);
+
 		$data['list_action'] = $this->url->link('catalog/product/updateByExcel', 'token=' . $this->session->data['token'] . $url, true);
 
 		//-----------------------------------------------------------------
@@ -1900,10 +1902,6 @@ class ControllerCatalogProduct extends Controller {
 			if ((utf8_strlen($value['name']) < 3) || (utf8_strlen($value['name']) > 255)) {
 				$this->error['name'][$language_id] = $this->language->get('error_name');
 			}
-
-			if ((utf8_strlen($value['meta_title']) < 3) || (utf8_strlen($value['meta_title']) > 255)) {
-				$this->error['meta_title'][$language_id] = $this->language->get('error_meta_title');
-			}
 		}
 
 		if ((utf8_strlen($this->request->post['model']) < 1) || (utf8_strlen($this->request->post['model']) > 64)) {
@@ -2071,7 +2069,7 @@ class ControllerCatalogProduct extends Controller {
 				$arraydata = array();
 				$col_name = array('model','name','quantity');
 				for ($row = 2; $row <= $highestRow; ++$row) {
-					for ($col = 0; $col < $highestColumnIndex; ++$col) {
+					for ($col = 0; $col < 3; ++$col) {
 						$value = $objWorksheet->getCellByColumnAndRow($col, $row)->getValue();
 						$arraydata[$row - 2][$col_name[$col]] = $value;
 					}
@@ -2094,6 +2092,54 @@ class ControllerCatalogProduct extends Controller {
 
 
 		$this->getList();
+	}
+
+	public function exportForm(){
+		require_once 'phpexcel/PHPExcel.php';
+
+		$objPHPExcel = new PHPExcel();
+
+		$objPHPExcel->getActiveSheet()->getStyle('A1:E1')->getFont()->setBold(true);
+
+		foreach(range('A','C') as $columnID) { //chinh do rong column
+			$objPHPExcel->getActiveSheet()->getColumnDimension($columnID)
+				->setAutoSize(true);
+		}
+
+		$objPHPExcel->getActiveSheet()->getRowDimension('1')->setRowHeight(30);
+		$objPHPExcel->getActiveSheet()->getStyle('A1:C1')->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+
+		$objPHPExcel->setActiveSheetIndex(0)
+			->setCellValue('A1', 'Mã sản phẩm')
+			->setCellValue('B1', 'Tên')
+			->setCellValue('C1', 'Số lượng');
+
+		if(isset($this->request->post['selected'])){
+			$this->load->model('catalog/product');
+			//set gia tri cho cac cot du lieu
+			$i = 2;
+			foreach ($this->request->post['selected'] as $product_id) {
+				$product = $this->model_catalog_product->getProductQuantity($product_id);
+
+				$objPHPExcel->setActiveSheetIndex(0)
+					->setCellValue('A' . $i, $product['model'])
+					->setCellValue('B' . $i, $product['name'])
+					->setCellValue('C' . $i, $product['quantity']);
+				$i++;
+			}
+		}
+
+		//ghi du lieu vao file,định dạng file excel 2007
+		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+		//		$full_path = 'data.xlsx';//duong dan file
+		//		$objWriter->save($full_path);
+		// We'll be outputting an excel file
+		header('Content-type: application/vnd.ms-excel');
+		// It will be called file.xls
+		header('Content-Disposition: attachment; filename="CapNhatSanPham.xlsx"');
+		// Write file to the browser
+		$objWriter->save('php://output');
+
 	}
 
 	protected function validateFormExcel() {

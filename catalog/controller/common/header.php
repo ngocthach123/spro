@@ -96,7 +96,8 @@ class ControllerCommonHeader extends Controller {
 		$data['hotline'] = $this->config->get('config_hotline');
 		$data['email'] = $this->config->get('config_email');
 		$data['news'] = $this->url->link('news/category', 'news_path=1');
-		$data['news_sale'] = $this->url->link('news/category', 'news_path=1_2');
+		$data['news_sale'] = $this->url->link('news/category', 'news_path=1_15');
+		$data['thanh_ly'] = $this->url->link('product/category', 'path=' . 291);
 
 		// Menu
 		$this->load->model('catalog/category');

@@ -96,7 +96,7 @@
                 <form id="form-review">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title modaldanhgia" id="myModalLabel">Chúng tôi muốn nhận được những đánh giá khách quan của bạn</h4>
+                    <h4 class="modal-title modaldanhgia" id="myModalLabel">Chúng tôi muốn nhận được những nhận xét khách quan của bạn</h4>
                   </div>
                   <div class="modal-body">
                     <div class="well well-sm modaltensanpham"><?php echo $heading_title; ?></div>
@@ -110,7 +110,7 @@
                     </div>
                     <div class="boxthongtindanhgia">
                       <div class="thongtindanhgia-left">
-                        Nội dung đánh giá của bạn:
+                        Nội dung nhận xét của bạn:
                       </div>
                       <div class="thongtindanhgia-right">
                         <textarea name="text" cols="25" rows="4" id="input-review" class="form-control"></textarea>

@@ -12,6 +12,10 @@ class ModelNewsReview extends Model {
 		$this->cache->delete('article');
 	}
 
+	public function approve($review_id, $status){
+		$this->db->query("UPDATE " . DB_PREFIX . "news_review SET status = '" . $status. "' WHERE review_id ='".$review_id."'");
+	}
+
 	public function deleteReview($review_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "news_review WHERE review_id = '" . (int)$review_id . "'");
 

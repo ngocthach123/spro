@@ -9,6 +9,8 @@ class ControllerCheckoutShippingMethod extends Controller {
 			$bike_cost = 0;
 			$car_cost = 0;
 			$bus_cost = 0; //chanh xe
+			$gh_tieu_chuan = 0;
+			$gh_nhanh = 0;
 
 			if (isset($this->request->get['distance'])){
 				$this->load->model('transport/cost');
@@ -23,22 +25,32 @@ class ControllerCheckoutShippingMethod extends Controller {
 
 						if(count($transports)){
 							foreach($transports as $transport){
-								if($transport['van_chuyen'] == 1){//xe may
+								if($transport['van_chuyen'] == 1){//xe cong ty
 									$bike_cost += $transport['gia_van_chuyen']*$data['distance'];
 								}
 
-								if($transport['van_chuyen'] == 2){//oto
+								if($transport['van_chuyen'] == 2){//xe khach
 									$car_cost += $transport['gia_van_chuyen']*$data['distance'];
 								}
 
 								if($transport['van_chuyen'] == 3){//chanh xe
 									$bus_cost += $transport['gia_van_chuyen']*$data['distance'];
 								}
+
+								if($transport['van_chuyen'] == 4){//gh tieu chuan
+									$gh_tieu_chuan += $transport['gia_van_chuyen']*$data['distance'];
+								}
+
+								if($transport['van_chuyen'] == 5){//gh nhanh
+									$gh_nhanh += $transport['gia_van_chuyen']*$data['distance'];
+								}
 							}
 						}else{
 							$bike_cost = 0;
 							$car_cost = 0;
 							$bus_cost = 0; //chanh xe
+							$gh_tieu_chuan = 0;
+							$gh_nhanh = 0;
 							break;
 						}
 
@@ -56,7 +68,28 @@ class ControllerCheckoutShippingMethod extends Controller {
 
 			$results = $this->model_extension_extension->getExtensions('shipping');
 
-			foreach ($results as $result) {
+			$results_filter = $results;
+
+			if(isset($this->request->get['zone_id'])){
+				$results_filter = array();
+				$zone_id = $this->request->get['zone_id'];
+
+				if($zone_id == 4389){ //HCM
+					foreach ($results as $result) {
+						if($result['code'] == 'gh_tieu_chuan' || $result['code'] == 'gh_nhanh'){
+							$results_filter[] = $result;
+						}
+					}
+				}else{
+					foreach ($results as $result) {
+						if($result['code'] != 'gh_tieu_chuan' && $result['code'] != 'gh_nhanh'){
+							$results_filter[] = $result;
+						}
+					}
+				}
+			}
+
+			foreach ($results_filter as $result) {
 
 				if ($this->config->get($result['code'] . '_status')) {
 					$this->load->model('shipping/' . $result['code']);
@@ -91,6 +124,24 @@ class ControllerCheckoutShippingMethod extends Controller {
 							$quote['quote']['chanhxe']['text'] = $this->currency->format($bus_cost, $this->session->data['currency']);
 						}else{
 							$quote['quote']['chanhxe']['text'] = 'Liên hệ';
+						}
+					}
+
+					if($quote['code'] == 'gh_tieu_chuan'){
+						if($bus_cost) {
+							$quote['quote']['gh_tieu_chuan']['cost'] = $gh_tieu_chuan;
+							$quote['quote']['gh_tieu_chuan']['text'] = $this->currency->format($gh_tieu_chuan, $this->session->data['currency']);
+						}else{
+							$quote['quote']['gh_tieu_chuan']['text'] = 'Liên hệ';
+						}
+					}
+
+					if($quote['code'] == 'gh_nhanh'){
+						if($bus_cost) {
+							$quote['quote']['gh_nhanh']['cost'] = $gh_nhanh;
+							$quote['quote']['gh_nhanh']['text'] = $this->currency->format($gh_nhanh, $this->session->data['currency']);
+						}else{
+							$quote['quote']['gh_nhanh']['text'] = 'Liên hệ';
 						}
 					}
 
@@ -219,6 +270,8 @@ class ControllerCheckoutShippingMethod extends Controller {
 		$bike_cost = 0;
 		$car_cost = 0;
 		$bus_cost = 0; //chanh xe
+		$gh_tieu_chuan = 0;
+		$gh_nhanh = 0;
 
 		if (isset($this->request->post['distance'])){
 			$this->load->model('transport/cost');
@@ -230,19 +283,34 @@ class ControllerCheckoutShippingMethod extends Controller {
 				$product = $this->model_catalog_product->getProduct($this->request->post['product_id']);
 
 				$transports = $this->model_transport_cost->getCost($product);
+				if(count($transports)){
+					foreach($transports as $transport){
+						if($transport['van_chuyen'] == 1){//xe cong ty
+							$bike_cost += $transport['gia_van_chuyen']*$data['distance'];
+						}
 
-				foreach($transports as $transport){
-					if($transport['van_chuyen'] == 1){//xe may
-						$bike_cost += $transport['gia_van_chuyen']*$data['distance'];
-					}
+						if($transport['van_chuyen'] == 2){//xa khach
+							$car_cost += $transport['gia_van_chuyen']*$data['distance'];
+						}
 
-					if($transport['van_chuyen'] == 2){//oto
-						$car_cost += $transport['gia_van_chuyen']*$data['distance'];
-					}
+						if($transport['van_chuyen'] == 3){//chanh xe
+							$bus_cost += $transport['gia_van_chuyen']*$data['distance'];
+						}
 
-					if($transport['van_chuyen'] == 3){//chanh xe
-						$bus_cost += $transport['gia_van_chuyen']*$data['distance'];
+						if($transport['van_chuyen'] == 4){//gh tieu chuan
+							$gh_tieu_chuan += $transport['gia_van_chuyen']*$data['distance'];
+						}
+
+						if($transport['van_chuyen'] == 5){//gh nhanh
+							$gh_nhanh += $transport['gia_van_chuyen']*$data['distance'];
+						}
 					}
+				}else{
+					$bike_cost = 0;
+					$car_cost = 0;
+					$bus_cost = 0; //chanh xe
+					$gh_tieu_chuan = 0;
+					$gh_nhanh = 0;
 				}
 			}
 		}else{
@@ -257,7 +325,28 @@ class ControllerCheckoutShippingMethod extends Controller {
 
 		$results = $this->model_extension_extension->getExtensions('shipping');
 
-		foreach ($results as $result) {
+		$results_filter = $results;
+
+		if(isset($this->request->post['zone_id'])){
+			$results_filter = array();
+			$zone_id = $this->request->post['zone_id'];
+
+			if($zone_id == 4389){ //HCM
+				foreach ($results as $result) {
+					if($result['code'] == 'gh_tieu_chuan' || $result['code'] == 'gh_nhanh'){
+						$results_filter[] = $result;
+					}
+				}
+			}else{
+				foreach ($results as $result) {
+					if($result['code'] != 'gh_tieu_chuan' && $result['code'] != 'gh_nhanh'){
+						$results_filter[] = $result;
+					}
+				}
+			}
+		}
+
+		foreach ($results_filter as $result) {
 
 			if ($this->config->get($result['code'] . '_status')) {
 				$this->load->model('shipping/' . $result['code']);
@@ -288,6 +377,24 @@ class ControllerCheckoutShippingMethod extends Controller {
 						$quote['quote']['chanhxe']['text'] = $this->currency->format($bus_cost, $this->session->data['currency']);
 					}else{
 						$quote['quote']['chanhxe']['text'] = 'Liên hệ';
+					}
+				}
+
+				if($quote['code'] == 'gh_tieu_chuan'){
+					if($bus_cost) {
+						$quote['quote']['gh_tieu_chuan']['cost'] = $gh_tieu_chuan;
+						$quote['quote']['gh_tieu_chuan']['text'] = $this->currency->format($gh_tieu_chuan, $this->session->data['currency']);
+					}else{
+						$quote['quote']['gh_tieu_chuan']['text'] = 'Liên hệ';
+					}
+				}
+
+				if($quote['code'] == 'gh_nhanh'){
+					if($bus_cost) {
+						$quote['quote']['gh_nhanh']['cost'] = $gh_nhanh;
+						$quote['quote']['gh_nhanh']['text'] = $this->currency->format($gh_nhanh, $this->session->data['currency']);
+					}else{
+						$quote['quote']['gh_nhanh']['text'] = 'Liên hệ';
 					}
 				}
 

@@ -999,7 +999,8 @@ $(document).ready(function() {
           dataType: 'html',
           data: {
             distance: distance,
-            product_id: $("input[name='product_id']").val()
+            product_id: $("input[name='product_id']").val(),
+            zone_id:  $("select[name='zone']").val()
           },
           success: function (html) {
             $('#shipping_cost').html(html);

@@ -193,7 +193,7 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 		$fb = new Facebook\Facebook ([
 			'app_id' => '172511026503810',
 			'app_secret' => '09b56bc9415f10630a34d2b671ee0de0',
-			'default_graph_version' => 'v2.2',
+			'default_graph_version' => 'v2.7',
 		]);
 
 		$helper = $fb->getRedirectLoginHelper();
@@ -212,7 +212,7 @@ foreach (unserialize(positions) as $key => $position){$data[$key] = $this->load-
 
 		if (! isset($accessToken)) {
 			$permissions = array('public_profile','email'); // Optional permissions
-			$loginUrl = $helper->getLoginUrl('http://spro.gg/index.php?route=account/login/facebookLogin', $permissions);
+			$loginUrl = $helper->getLoginUrl(HTTPS_SERVER.'index.php?route=account/login/facebookLogin', $permissions);
 			header("Location: ".$loginUrl);
 			exit;
 		}

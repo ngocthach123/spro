@@ -6,5 +6,7 @@
 	<br>
 	<?php echo $text_footer; ?>
 </footer>
+<script type="text/javascript" src="../catalog/view/javascript/jquery/backtotop/backtotop.js"></script>
+<a href="#0" class="cd-top"><i class="fa fa-arrow-up"></i></a>
 </div>
 </body></html>
