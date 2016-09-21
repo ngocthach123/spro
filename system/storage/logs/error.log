@@ -4956,3 +4956,184 @@
 2016-09-08 9:25:59 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\system\storage\modification\system\engine\loader.php on line 45
 2016-09-08 9:34:15 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\system\storage\modification\system\engine\loader.php on line 45
 2016-09-08 9:34:15 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\system\storage\modification\system\engine\loader.php on line 45
+2016-09-08 10:15:04 - PHP Notice:  Undefined index: payment_method in E:\Work2\spro\catalog\controller\payment\cod.php on line 14
+2016-09-08 10:16:59 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
+2016-09-08 10:17:35 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
+2016-09-08 10:18:42 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
+2016-09-08 10:24:07 - PHP Notice:  Undefined index: payment_method in E:\Work2\spro\catalog\controller\payment\cod.php on line 14
+2016-09-08 10:25:19 - PHP Notice:  Undefined index: payment_method in E:\Work2\spro\catalog\controller\payment\cod.php on line 14
+2016-09-08 12:30:51 - PHP Notice:  Undefined variable: sorts in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 58
+2016-09-08 12:30:51 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 58
+2016-09-08 12:30:51 - PHP Notice:  Undefined variable: limits in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 70
+2016-09-08 12:30:51 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 70
+2016-09-08 12:31:14 - PHP Notice:  Undefined variable: sorts in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 58
+2016-09-08 12:31:14 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 58
+2016-09-08 12:31:14 - PHP Notice:  Undefined variable: limits in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 70
+2016-09-08 12:31:14 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 70
+2016-09-08 12:31:45 - PHP Notice:  Undefined variable: sorts in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 58
+2016-09-08 12:31:45 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 58
+2016-09-08 12:31:45 - PHP Notice:  Undefined variable: limits in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 70
+2016-09-08 12:31:45 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 70
+2016-09-08 12:37:46 - PHP Notice:  Undefined variable: sorts in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 58
+2016-09-08 12:37:46 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 58
+2016-09-08 12:37:46 - PHP Notice:  Undefined variable: limits in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 70
+2016-09-08 12:37:46 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\search.tpl on line 70
+2016-09-09 3:45:14 - PHP Notice:  Undefined variable: entry_thumb in E:\Work2\spro\tgmss\view\template\catalog\category_form.tpl on line 151
+2016-09-09 3:45:14 - PHP Notice:  Undefined variable: small_thumb in E:\Work2\spro\tgmss\view\template\catalog\category_form.tpl on line 152
+2016-09-09 3:45:14 - PHP Notice:  Undefined variable: thumbnail in E:\Work2\spro\tgmss\view\template\catalog\category_form.tpl on line 153
+2016-09-09 3:47:02 - PHP Notice:  Undefined index: thumbnail in E:\Work2\spro\tgmss\controller\catalog\category.php on line 483
+2016-09-09 3:47:02 - PHP Notice:  Undefined index: thumbnail in E:\Work2\spro\tgmss\controller\catalog\category.php on line 492
+2016-09-09 3:47:02 - PHP Notice:  Undefined variable: entry_thumb in E:\Work2\spro\tgmss\view\template\catalog\category_form.tpl on line 151
+2016-09-09 3:47:53 - PHP Notice:  Undefined index: thumbnail in E:\Work2\spro\tgmss\controller\catalog\category.php on line 484
+2016-09-09 3:47:53 - PHP Notice:  Undefined index: thumbnail in E:\Work2\spro\tgmss\controller\catalog\category.php on line 493
+2016-09-09 3:50:54 - PHP Notice:  Undefined index: thumbnail in E:\Work2\spro\tgmss\controller\catalog\category.php on line 493
+2016-09-09 5:26:26 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 388
+2016-09-09 5:38:22 - PHP Notice:  Undefined index: banner in E:\Work2\spro\tgmss\controller\catalog\category.php on line 501
+2016-09-09 5:38:22 - PHP Notice:  Undefined index: banner in E:\Work2\spro\tgmss\controller\catalog\category.php on line 508
+2016-09-09 6:06:17 - PHP Notice:  Undefined index: banner in E:\Work2\spro\catalog\view\theme\default\template\module\category.tpl on line 111
+2016-09-09 6:06:17 - PHP Notice:  Undefined index: banner in E:\Work2\spro\catalog\view\theme\default\template\module\category.tpl on line 111
+2016-09-09 6:06:17 - PHP Notice:  Undefined index: banner in E:\Work2\spro\catalog\view\theme\default\template\module\category.tpl on line 111
+2016-09-09 6:06:17 - PHP Notice:  Undefined index: banner in E:\Work2\spro\catalog\view\theme\default\template\module\category.tpl on line 111
+2016-09-09 6:06:17 - PHP Notice:  Undefined index: banner in E:\Work2\spro\catalog\view\theme\default\template\module\category.tpl on line 111
+2016-09-09 6:06:17 - PHP Notice:  Undefined index: banner in E:\Work2\spro\catalog\view\theme\default\template\module\category.tpl on line 111
+2016-09-09 6:06:17 - PHP Notice:  Undefined index: banner in E:\Work2\spro\catalog\view\theme\default\template\module\category.tpl on line 111
+2016-09-09 6:06:17 - PHP Notice:  Undefined index: banner in E:\Work2\spro\catalog\view\theme\default\template\module\category.tpl on line 111
+2016-09-09 6:06:17 - PHP Notice:  Undefined index: banner in E:\Work2\spro\catalog\view\theme\default\template\module\category.tpl on line 111
+2016-09-09 6:06:17 - PHP Notice:  Undefined index: banner in E:\Work2\spro\catalog\view\theme\default\template\module\category.tpl on line 111
+2016-09-09 6:06:17 - PHP Notice:  Undefined index: banner in E:\Work2\spro\catalog\view\theme\default\template\module\category.tpl on line 111
+2016-09-09 6:29:58 - PHP Notice:  Undefined index: link_banner in E:\Work2\spro\catalog\view\theme\default\template\module\category.tpl on line 113
+2016-09-09 9:01:14 - PHP Notice:  Undefined variable: token in E:\Work2\spro\tgmss\view\template\catalog\category_list.tpl on line 90
+2016-09-09 9:01:14 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\tgmss\view\template\catalog\category_list.tpl on line 95
+2016-09-09 9:01:14 - PHP Notice:  Undefined variable: token in E:\Work2\spro\tgmss\view\template\catalog\category_list.tpl on line 108
+2016-09-09 9:01:40 - PHP Notice:  Undefined variable: token in E:\Work2\spro\tgmss\view\template\catalog\category_list.tpl on line 90
+2016-09-09 9:01:40 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\tgmss\view\template\catalog\category_list.tpl on line 95
+2016-09-09 9:01:40 - PHP Notice:  Undefined variable: token in E:\Work2\spro\tgmss\view\template\catalog\category_list.tpl on line 108
+2016-09-09 9:02:24 - PHP Notice:  Undefined variable: token in E:\Work2\spro\tgmss\view\template\catalog\category_list.tpl on line 90
+2016-09-09 9:02:24 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\tgmss\view\template\catalog\category_list.tpl on line 95
+2016-09-09 9:02:24 - PHP Notice:  Undefined variable: token in E:\Work2\spro\tgmss\view\template\catalog\category_list.tpl on line 108
+2016-09-09 9:03:09 - PHP Notice:  Undefined variable: text_none in E:\Work2\spro\tgmss\view\template\catalog\category_list.tpl on line 95
+2016-09-09 9:13:54 - PHP Notice:  Undefined variable: newssubscribe in E:\Work2\spro\tgmss\view\template\common\menu.tpl on line 119
+2016-09-09 9:13:54 - PHP Notice:  Undefined variable: text_newssubscribe in E:\Work2\spro\tgmss\view\template\common\menu.tpl on line 119
+2016-09-09 9:16:55 - PHP Notice:  Error: Could not load template E:\Work2\spro/tgmss/view/template/module/newslettersubscribe.tpl! in E:\Work2\spro\system\storage\modification\system\library\template\basic.php on line 26
+2016-09-09 9:39:18 - PHP Notice:  Undefined variable: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 140
+2016-09-09 9:39:18 - PHP Notice:  Undefined variable: soldout in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 155
+2016-09-09 9:39:18 - PHP Notice:  Undefined variable: cs_van_chuyen in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 163
+2016-09-09 9:39:18 - PHP Notice:  Undefined variable: short_description in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 167
+2016-09-09 9:39:18 - PHP Notice:  Undefined offset: 0 in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 171
+2016-09-09 9:39:18 - PHP Notice:  Undefined variable: bonus_description in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 171
+2016-09-09 9:39:18 - PHP Notice:  Undefined variable: stock_status_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 234
+2016-09-09 9:39:18 - PHP Notice:  Undefined variable: accessories in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 326
+2016-09-09 9:39:18 - PHP Notice:  Undefined variable: hd_mua_hang in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 395
+2016-09-09 9:39:18 - PHP Notice:  Undefined variable: cach_thuc_tt in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 404
+2016-09-09 9:39:18 - PHP Notice:  Undefined variable: cs_van_chuyen in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 413
+2016-09-09 9:39:18 - PHP Notice:  Undefined variable: specs_description in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 438
+2016-09-09 9:39:18 - PHP Notice:  Undefined variable: articles in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 443
+2016-09-09 9:39:18 - PHP Notice:  Undefined variable: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 535
+2016-09-09 9:39:18 - PHP Notice:  Undefined variable: ratings in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 538
+2016-09-09 9:39:18 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 538
+2016-09-09 9:39:18 - PHP Notice:  Undefined variable: store_address in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 971
+2016-09-09 9:39:18 - PHP Notice:  Undefined variable: action_baogia in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 1027
+2016-09-09 9:39:41 - PHP Notice:  Undefined variable: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 140
+2016-09-09 9:39:41 - PHP Notice:  Undefined variable: soldout in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 155
+2016-09-09 9:39:41 - PHP Notice:  Undefined variable: cs_van_chuyen in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 163
+2016-09-09 9:39:41 - PHP Notice:  Undefined variable: short_description in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 167
+2016-09-09 9:39:41 - PHP Notice:  Undefined offset: 0 in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 171
+2016-09-09 9:39:41 - PHP Notice:  Undefined variable: bonus_description in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 171
+2016-09-09 9:39:41 - PHP Notice:  Undefined variable: stock_status_id in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 234
+2016-09-09 9:39:41 - PHP Notice:  Undefined variable: accessories in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 326
+2016-09-09 9:39:41 - PHP Notice:  Undefined variable: hd_mua_hang in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 395
+2016-09-09 9:39:41 - PHP Notice:  Undefined variable: cach_thuc_tt in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 404
+2016-09-09 9:39:41 - PHP Notice:  Undefined variable: cs_van_chuyen in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 413
+2016-09-09 9:39:41 - PHP Notice:  Undefined variable: specs_description in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 438
+2016-09-09 9:39:41 - PHP Notice:  Undefined variable: articles in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 443
+2016-09-09 9:39:41 - PHP Notice:  Undefined variable: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 535
+2016-09-09 9:39:41 - PHP Notice:  Undefined variable: ratings in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 538
+2016-09-09 9:39:41 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 538
+2016-09-09 9:39:41 - PHP Notice:  Undefined variable: store_address in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 971
+2016-09-09 9:39:41 - PHP Notice:  Undefined variable: action_baogia in E:\Work2\spro\catalog\view\theme\default\template\product\product.tpl on line 1027
+2016-09-09 10:04:40 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
+2016-09-09 10:07:47 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
+2016-09-09 11:54:12 - PHP Notice:  Undefined variable: column_access in E:\Work2\spro\catalog\view\theme\default\template\account\order_info.tpl on line 75
+2016-09-09 11:54:12 - PHP Notice:  Undefined index: accessories in E:\Work2\spro\catalog\view\theme\default\template\account\order_info.tpl on line 88
+2016-09-09 11:54:12 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\catalog\view\theme\default\template\account\order_info.tpl on line 88
+2016-09-09 11:54:12 - PHP Notice:  Undefined index: access_total in E:\Work2\spro\catalog\view\theme\default\template\account\order_info.tpl on line 99
+2016-09-09 11:54:51 - PHP Notice:  Undefined variable: column_access in E:\Work2\spro\catalog\view\theme\default\template\account\order_info.tpl on line 75
+2016-09-09 11:54:51 - PHP Notice:  Undefined index: access_total in E:\Work2\spro\catalog\view\theme\default\template\account\order_info.tpl on line 94
+2016-09-13 4:19:29 - PHP Notice:  Undefined variable: sort_date_added in E:\Work2\spro\tgmss\view\template\news\article_list.tpl on line 107
+2016-09-13 4:19:29 - PHP Notice:  Undefined variable: sort_date_modified in E:\Work2\spro\tgmss\view\template\news\article_list.tpl on line 112
+2016-09-13 4:31:49 - PHP Notice:  Undefined index: date_added in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 122
+2016-09-13 4:31:49 - PHP Notice:  Undefined index: date_added in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 122
+2016-09-13 5:46:10 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
+2016-09-13 6:01:35 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 388
+2016-09-13 6:03:36 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 388
+2016-09-13 6:04:50 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 388
+2016-09-13 6:04:50 - PHP Notice:  Undefined variable: entry_price_special in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 914
+2016-09-13 6:05:00 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 388
+2016-09-13 6:05:00 - PHP Notice:  Undefined variable: entry_price_special in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 914
+2016-09-13 6:05:23 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 388
+2016-09-13 6:05:23 - PHP Notice:  Undefined variable: entry_price_special in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 914
+2016-09-13 6:05:23 - PHP Notice:  Undefined variable: entry_price_special in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 967
+2016-09-13 6:06:06 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 388
+2016-09-13 6:06:06 - PHP Notice:  Undefined variable: entry_price_special in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 914
+2016-09-13 6:06:06 - PHP Notice:  Undefined variable: entry_price_special in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 967
+2016-09-13 6:06:46 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 388
+2016-09-13 6:07:31 - PHP Notice:  Undefined variable: virtual_id in E:\Work2\spro\tgmss\view\template\catalog\product_form.tpl on line 388
+2016-09-13 6:07:57 - PHP Notice:  Undefined index: virtual in E:\Work2\spro\tgmss\model\catalog\product.php on line 153
+2016-09-13 6:20:52 - PHP Notice:  Undefined index: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 231
+2016-09-13 6:20:52 - PHP Notice:  Undefined index: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 231
+2016-09-13 6:20:52 - PHP Notice:  Undefined index: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 231
+2016-09-13 6:20:52 - PHP Notice:  Undefined index: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 231
+2016-09-13 6:20:52 - PHP Notice:  Undefined index: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 231
+2016-09-13 6:20:52 - PHP Notice:  Undefined index: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 231
+2016-09-13 6:20:52 - PHP Notice:  Undefined index: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 231
+2016-09-13 6:20:52 - PHP Notice:  Undefined index: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 231
+2016-09-13 6:20:52 - PHP Notice:  Undefined index: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 231
+2016-09-13 6:20:52 - PHP Notice:  Undefined index: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 231
+2016-09-13 6:20:52 - PHP Notice:  Undefined index: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 231
+2016-09-13 6:20:52 - PHP Notice:  Undefined index: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 231
+2016-09-13 6:20:52 - PHP Notice:  Undefined index: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 231
+2016-09-13 6:20:52 - PHP Notice:  Undefined index: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 231
+2016-09-13 6:20:52 - PHP Notice:  Undefined index: count_reviews in E:\Work2\spro\catalog\view\theme\default\template\product\category.tpl on line 231
+2016-09-14 12:13:58 - PHP Warning:  mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in E:\Work2\spro\system\library\mail.php on line 158
+2016-09-20 10:11:27 - PHP Notice:  Undefined variable: help_product in E:\Work2\spro\tgmss\view\template\module\latest_by_category.tpl on line 45
+2016-09-20 10:11:27 - PHP Notice:  Undefined variable: entry_product in E:\Work2\spro\tgmss\view\template\module\latest_by_category.tpl on line 45
+2016-09-20 10:11:27 - PHP Notice:  Undefined variable: entry_product in E:\Work2\spro\tgmss\view\template\module\latest_by_category.tpl on line 47
+2016-09-20 10:11:27 - PHP Notice:  Undefined variable: products in E:\Work2\spro\tgmss\view\template\module\latest_by_category.tpl on line 49
+2016-09-20 10:11:27 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\tgmss\view\template\module\latest_by_category.tpl on line 49
+2016-09-20 10:12:27 - PHP Notice:  Undefined variable: help_product in E:\Work2\spro\tgmss\view\template\module\latest_by_category.tpl on line 45
+2016-09-20 10:12:27 - PHP Notice:  Undefined variable: products in E:\Work2\spro\tgmss\view\template\module\latest_by_category.tpl on line 49
+2016-09-20 10:12:27 - PHP Warning:  Invalid argument supplied for foreach() in E:\Work2\spro\tgmss\view\template\module\latest_by_category.tpl on line 49
+2016-09-20 10:12:57 - PHP Notice:  Undefined variable: help_product in E:\Work2\spro\tgmss\view\template\module\latest_by_category.tpl on line 45
+2016-09-20 10:13:16 - PHP Notice:  Undefined variable: help_product in E:\Work2\spro\tgmss\view\template\module\latest_by_category.tpl on line 45
+2016-09-20 10:15:57 - PHP Notice:  Undefined variable: help_product in E:\Work2\spro\tgmss\view\template\module\latest_by_category.tpl on line 45
+2016-09-20 10:19:43 - PHP Notice:  Undefined variable: help_product in E:\Work2\spro\tgmss\view\template\module\latest_by_category.tpl on line 45
+2016-09-20 10:20:04 - PHP Notice:  Undefined variable: help_product in E:\Work2\spro\tgmss\view\template\module\latest_by_category.tpl on line 45
+2016-09-20 10:22:55 - PHP Notice:  Undefined variable: help_product in E:\Work2\spro\tgmss\view\template\module\latest_by_category.tpl on line 45
+2016-09-20 10:38:43 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:43 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:43 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:43 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:43 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:51 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:51 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:51 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:51 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:51 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:54 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:54 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:54 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:54 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:54 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:57 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:57 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:57 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:57 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 10:38:57 - PHP Notice:  Undefined index: special in E:\Work2\spro\tgmss\controller\catalog\product.php on line 2030
+2016-09-20 12:13:08 - PHP Notice:  Undefined index: banner_id in E:\Work2\spro\tgmss\controller\module\latest_by_category.php on line 196
+2016-09-20 12:14:32 - PHP Notice:  Undefined index: banner_id in E:\Work2\spro\tgmss\controller\module\latest_by_category.php on line 196
+2016-09-20 12:46:00 - PHP Notice:  Undefined variable: entry_banner in E:\Work2\spro\tgmss\view\template\module\latest.tpl on line 62
+2016-09-20 12:58:05 - PHP Notice:  Undefined variable: entry_banner in E:\Work2\spro\tgmss\view\template\module\latest.tpl on line 62
+2016-09-20 12:58:06 - PHP Notice:  Undefined variable: entry_banner in E:\Work2\spro\tgmss\view\template\module\latest.tpl on line 62
+2016-09-20 13:04:07 - PHP Notice:  Undefined index: banner_id in E:\Work2\spro\tgmss\controller\module\latest.php on line 137
+2016-09-20 13:04:07 - PHP Notice:  Undefined index: bannerwidth in E:\Work2\spro\tgmss\controller\module\latest.php on line 149
+2016-09-20 13:04:07 - PHP Notice:  Undefined index: bannerheight in E:\Work2\spro\tgmss\controller\module\latest.php on line 157

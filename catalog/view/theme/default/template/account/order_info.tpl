@@ -24,7 +24,7 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
-      <h2><?php echo $heading_title; ?></h2>
+      <h1 class="block title"><?php echo $heading_title; ?></h1>
       <table class="table table-bordered table-hover">
         <thead>
           <tr>
@@ -72,7 +72,6 @@
               <td class="text-left"><?php echo $column_name; ?></td>
               <td class="text-left"><?php echo $column_model; ?></td>
               <td class="text-right"><?php echo $column_quantity; ?></td>
-              <td class="text-right"><?php echo $column_access; ?></td>
               <td class="text-right"><?php echo $column_price; ?></td>
               <td class="text-right"><?php echo $column_total; ?></td>
               <?php if ($products) { ?>
@@ -85,18 +84,12 @@
             <tr>
               <td class="text-left"><?php echo $product['name']; ?>
 
-                <?php foreach ($product['accessories'] as $access) { ?>
-                <br />
-                &nbsp;<small> <?php echo $access['name']; ?>: <?php echo $access['price']; ?></small>
-                <?php } ?>
-
                 <?php foreach ($product['option'] as $option) { ?>
                 <br />
                 &nbsp;<small> - <?php echo $option['name']; ?>: <?php echo $option['value']; ?></small>
                 <?php } ?></td>
               <td class="text-left"><?php echo $product['model']; ?></td>
               <td class="text-right"><?php echo $product['quantity']; ?></td>
-              <td class="text-right"><?php echo $product['access_total']; ?></td>
               <td class="text-right"><?php echo $product['price']; ?></td>
               <td class="text-right"><?php echo $product['total']; ?></td>
               <td class="text-right" style="white-space: nowrap;"><?php if ($product['reorder']) { ?>
@@ -174,7 +167,7 @@
       </table>
       <?php } ?>
       <div class="buttons clearfix">
-        <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn btn-primary"><?php echo $button_continue; ?></a></div>
+        <div class="pull-right"><a href="<?php echo $continue; ?>" class="btn-orange"><?php echo $button_continue; ?></a></div>
       </div>
       <?php echo $content_bottom; ?></div>
     <?php echo $column_right; ?></div>

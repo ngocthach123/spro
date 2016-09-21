@@ -16,7 +16,7 @@
 
       <?php echo $payment; ?>
     </div>
-    <a href="index.php?route=common/home" class="btn-orange"> Tiếp tục</a>
+    <a href="" class="btn-orange"> Tiếp tục</a>
   </div>
   <div class="right-dathangstepthree">
     <div class="btomtatdonhang">

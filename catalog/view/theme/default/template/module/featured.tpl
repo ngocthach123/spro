@@ -19,7 +19,7 @@
         <?php if ($product['price']): ?>
           <div class="boxprice-product">
             <?php if (!$product['special']): ?>
-              <div class="productprice">
+              <div class="productprice box-max">
                 <span class="productsell"><?php echo $product['price']; ?></span>
               </div>
             <?php else:?>
@@ -34,8 +34,18 @@
           </div>
         <?php endif;?>
         <div class="boxreview-product">
-          ( 19 nhận xét )
+          <img src="image/rating_star.png"/>(<?php echo $product['count_reviews']; ?> nhận xét)
         </div>
+        <?php if($product['coupon']):?>
+          <div class="boxvouchers-product">
+            <div class="codevouchers">
+              Nhập mã <b><?php echo $product['coupon']['code'];?></b>
+            </div>
+            <div class="pricevouchers">
+              Chỉ còn<br> <?php echo $product['coupon']['price'];?>
+            </div>
+          </div>
+        <?php endif;?>
       </div>
     </div>
     <?php endforeach;?>

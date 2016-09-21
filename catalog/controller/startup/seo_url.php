@@ -135,6 +135,11 @@ class ControllerStartupSeoUrl extends Controller {
 
 					unset($data[$key]);
 
+				} elseif($data['route'] == 'checkout/checkout'){
+					$url .= '/checkout/checkout';
+
+					unset($data[$key]);
+
 				} elseif ($key == 'news_path') {
 					$categories = explode('_', $value);
 					

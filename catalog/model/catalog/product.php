@@ -336,6 +336,24 @@ class ModelCatalogProduct extends Model {
 		return $product_data;
 	}
 
+	public function getBestSellerProductsByCategory($category_id, $limit) {
+		$product_data = $this->cache->get('product.bestseller.cat.'. (int)$category_id . '.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . $this->config->get('config_customer_group_id') . '.' . (int)$limit);
+
+		if (!$product_data) {
+			$product_data = array();
+
+			$query = $this->db->query("SELECT op.product_id, SUM(op.quantity) AS total FROM " . DB_PREFIX . "order_product op LEFT JOIN `" . DB_PREFIX . "order` o ON (op.order_id = o.order_id) LEFT JOIN `" . DB_PREFIX . "product` p ON (op.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) LEFT JOIN ". DB_PREFIX . "product_to_category p2c ON (p2c.product_id=p.product_id) WHERE o.order_status_id > '0' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' AND p2c.category_id = '".(int)$category_id."' GROUP BY op.product_id ORDER BY total DESC LIMIT " . (int)$limit);
+
+			foreach ($query->rows as $result) {
+				$product_data[$result['product_id']] = $this->getProduct($result['product_id']);
+			}
+
+			$this->cache->set('product.bestseller.cat.' . (int)$category_id . '.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . $this->config->get('config_customer_group_id') . '.' . (int)$limit, $product_data);
+		}
+
+		return $product_data;
+	}
+
 	public function getProductAttributes($product_id) {
 		$product_attribute_group_data = array();
 
@@ -416,6 +434,12 @@ class ModelCatalogProduct extends Model {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "product_discount WHERE product_id = '" . (int)$product_id . "' AND customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND quantity > 1 AND ((date_start = '0000-00-00' OR date_start < NOW()) AND (date_end = '0000-00-00' OR date_end > NOW())) ORDER BY quantity ASC, priority ASC, price ASC");
 
 		return $query->rows;
+	}
+
+	public function getProductCoupon($product_id) {
+		$query = $this->db->query("SELECT c.type, c.discount, c.code FROM " . DB_PREFIX . "coupon_product cp JOIN ".DB_PREFIX."coupon c ON cp.coupon_id=c.coupon_id WHERE cp.product_id = '" . (int)$product_id . "' AND c.uses_customer > 0 AND c.status = 1 AND ((c.date_start = '0000-00-00' OR c.date_start < NOW()) AND (c.date_end = '0000-00-00' OR c.date_end > NOW())) ORDER BY c.discount DESC LIMIT 0,1");
+
+		return $query->row;
 	}
 
 	public function getProductImages($product_id) {

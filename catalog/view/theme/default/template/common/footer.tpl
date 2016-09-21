@@ -37,20 +37,17 @@
         </div>
       </div>
       <div class="col-md-3 col-sm-3 col-xs-12">
-        <h5>Chứng nhận</h5>
-        <div class="col-md-6 col-sm-6 col-xs-6"><img src="image/dathongbao.png"></div><div class="col-md-6 col-sm-6 col-xs-6"><img src="image/norton.png"/></div>
-        <h5>Dịch vụ giao hàng</h5>
-        <img src="image/shippingfooter.jpg"/>
+        <?php echo $header_top;?>
       </div>
     </div>
     <div class="row">
       <div class="col-md-3 col-sm-3 col-xs-12 socialfooter">
         <a href="<?php echo $link_facebook;?>"><i class="fa fa-facebook"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-dribbble"></i></a>
+        <a href=""><i class="fa fa-twitter"></i></a>
+        <a href=""><i class="fa fa-dribbble"></i></a>
         <a href="<?php echo $link_google;?>"><i class="fa fa-google-plus"></i></a>
-        <a href="#"><i class="fa fa-skype"></i></a>
-        <a href="#"><i class="fa fa-youtube"></i></a>
+        <a href=""><i class="fa fa-skype"></i></a>
+        <a href=""><i class="fa fa-youtube"></i></a>
       </div>
       <div class="col-md-9 col-sm-9 col-xs-12">
 
@@ -78,7 +75,8 @@
           Developed By TGMSS.COM
         </div>
         <div class="col-md-4 col-sm-4 col-xs-12">
-          <img src="image/paymentcompany.png"/>
+          <?php echo $content_bottom_2; ?>
+          <?php echo $tab_1; ?>
         </div>
       </div>
     </div>

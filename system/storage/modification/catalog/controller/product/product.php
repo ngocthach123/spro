@@ -390,7 +390,7 @@ class ControllerProductProduct extends Controller {
 
 				$access_price = $this->tax->calculate($product_id['access_price'] ? ($access_info['special'] ? $access_info['special'] : $access_info['price']) :$access_info['price'] , $access_info['tax_class_id'], $this->config->get('config_tax'));
 
-				if($access_info['special'] || $product_id['access_price']){
+				if(($access_info['special'] || $product_id['access_price']) && $access_price){
 					$access_special_cal = $this->tax->calculate($product_id['access_price'] ? $product_id['access_price']: $access_info['special'], $access_info['tax_class_id'], $this->config->get('config_tax'));
 					$access_special = $this->currency->format($this->tax->calculate($product_id['access_price'] ? $product_id['access_price']: $access_info['special'], $access_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 
@@ -582,6 +582,7 @@ class ControllerProductProduct extends Controller {
 					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $rating,
+					'count_reviews' => $result['reviews'],
 					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
 				);
 			}

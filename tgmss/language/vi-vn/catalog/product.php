@@ -3,6 +3,8 @@
 $_['heading_title']          = 'Sản phẩm';
 $_['heading_title_special']  = 'Sản phẩm khuyến mãi';
 
+$_['tab_general']          = 'Thông tin sản phẩm';
+
 // Text  
 $_['text_success']      = 'Thành công:Sản phẩm đã được thay đổi!';
 $_['text_list_success']      = 'Thành công: %d Sản phẩm đã được thay đổi!';

@@ -59,6 +59,33 @@
             </div>
           </div>
           <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-banner"><?php echo $entry_banner; ?></label>
+            <div class="col-sm-10">
+              <select name="banner_id" id="input-banner" class="form-control">
+                <option value="0">--Không--</option>
+                <?php foreach ($banners as $banner) { ?>
+                <?php if ($banner['banner_id'] == $banner_id) { ?>
+                <option value="<?php echo $banner['banner_id']; ?>" selected="selected"><?php echo $banner['name']; ?></option>
+                <?php } else { ?>
+                <option value="<?php echo $banner['banner_id']; ?>"><?php echo $banner['name']; ?></option>
+                <?php } ?>
+                <?php } ?>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-width">Chiều rộng banner</label>
+            <div class="col-sm-10">
+              <input type="text" name="bannerwidth" value="<?php echo $bannerwidth; ?>" placeholder="Chiều rộng banner" id="input-width" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-height">Chiều cao banner</label>
+            <div class="col-sm-10">
+              <input type="text" name="bannerheight" value="<?php echo $bannerheight; ?>" placeholder="Chiều cao banner" id="input-height" class="form-control" />
+            </div>
+          </div>
+          <div class="form-group">
             <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>
             <div class="col-sm-10">
               <select name="status" id="input-status" class="form-control">

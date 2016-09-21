@@ -12,6 +12,17 @@
       <a class="btn nextlatest"><i class="fa fa-chevron-right"></i></a>
     </div>
     <div id="owl-demolatest" class="owl-carousel owl-theme">
+      <?php foreach ($banners as $banner) { ?>
+      <div class="item wrapbox-product wrap-banner">
+          <div class="boximage-product">
+            <?php if ($banner['link']) { ?>
+            <a href="<?php echo $banner['link']; ?>"><img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>"/></a>
+            <?php } else { ?>
+            <a><img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>" /></a>
+            <?php } ?>
+          </div>
+      </div>
+      <?php }?>
       <?php foreach ($products as $product): ?>
         <div class="item wrapbox-product">
         <div class="contentbox-product">
@@ -30,7 +41,7 @@
           <?php if ($product['price']): ?>
           <div class="boxprice-product">
             <?php if (!$product['special']): ?>
-            <div class="productprice">
+            <div class="productprice box-max">
               <span class="productsell"><?php echo $product['price']; ?></span>
             </div>
             <?php else:?>
@@ -45,8 +56,18 @@
           </div>
           <?php endif;?>
           <div class="boxreview-product">
-            ( 19 nhận xét )
+            <img src="image/rating_star.png"/>(<?php echo $product['count_reviews']; ?> nhận xét)
           </div>
+          <?php if($product['coupon']):?>
+          <div class="boxvouchers-product">
+            <div class="codevouchers">
+              Nhập mã <b><?php echo $product['coupon']['code'];?></b>
+            </div>
+            <div class="pricevouchers">
+              Chỉ còn<br> <?php echo $product['coupon']['price'];?>
+            </div>
+          </div>
+          <?php endif;?>
         </div>
       </div>
       <?php endforeach;?>

@@ -117,7 +117,10 @@ class ControllerCommonMenu extends Controller {
 		$data['text_virtual_product'] = $this->language->get('text_virtual_product');
 		$data['text_product_sale'] = $this->language->get('text_product_sale');
 		$data['text_price_report'] = $this->language->get('text_price_report');
-
+		//Newsletter Subscribers
+		$data['text_newssubscribe'] = $this->language->get('text_newssubscribe');
+		//Newsletter Subscribers
+		
 		$this->load->language('news/category');
 		$data['category_heading_title'] = $this->language->get('heading_title');
 		$this->load->language('news/article');
@@ -214,7 +217,11 @@ class ControllerCommonMenu extends Controller {
 		$data['recurring'] = $this->url->link('catalog/recurring', 'token=' . $this->session->data['token'], true);
 		$data['order_recurring'] = $this->url->link('sale/recurring', 'token=' . $this->session->data['token'], true);
 		$data['transport'] = $this->url->link('transport/cost', 'token=' . $this->session->data['token'], true);
-
+		
+		//Newsletter Subscribers
+		$data['newssubscribe'] = $this->url->link('marketing/newssubscribers', 'token=' . $this->session->data['token'], true); 						
+		//Newsletter Subscribers
+		
 		$data['openbay_show_menu'] = $this->config->get('openbaypro_menu');
 		$data['openbay_link_extension'] = $this->url->link('extension/openbay', 'token=' . $this->session->data['token'], true);
 		$data['openbay_link_orders'] = $this->url->link('extension/openbay/orderlist', 'token=' . $this->session->data['token'], true);

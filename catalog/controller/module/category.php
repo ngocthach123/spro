@@ -29,6 +29,8 @@ class ControllerModuleCategory extends Controller {
 
 		$this->load->model('catalog/product');
 
+		$this->load->model('tool/image');
+
 		$data['categories'] = array();
 
 		if($data['category_id'] && isset($this->request->get['route']) && $this->request->get['route']!='common/header'){
@@ -208,6 +210,9 @@ class ControllerModuleCategory extends Controller {
 						'category_id' => $category['category_id'],
 						'name' => $category['name'],
 						'children' => $children_data,
+						'thumb' => $this->model_tool_image->resize($category['thumb'],22,22),
+						'banner' => $this->model_tool_image->resize($category['banner'], 290, 450),
+						'link_banner' => $category['link_banner'],
 						'href' => $this->url->link('product/category', 'path=' . $category['category_id'])
 					);
 				}

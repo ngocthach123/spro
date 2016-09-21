@@ -56,30 +56,4 @@
 <!-- danh mục nổi bật -->
   <?php echo $content_bottom_2;?>
 <!-- end danh mục nổi bật -->
-<div class="wrapinformation-home">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-15 col-sm-15 col-xs-15 information-home">
-        <p><img src="image/numberone.png"/></p>
-        <p class="txtinformation-home">Chất lượng tuyệt vời<br>Hậu mãi chu đáo</p>
-      </div>
-      <div class="col-lg-15 col-sm-15 col-xs-15 information-home">
-        <p><img src="image/24h7.png"/></p>
-        <p class="txtinformation-home">Dịch vụ chăm sóc khách hàng online<br>Từ 8h - 17h ( Thứ 2 - Thứ 6 )<br>và 8h - 12h ( Thứ 7 )</p>
-      </div>
-      <div class="col-lg-15 col-sm-15 col-xs-15 information-home">
-        <p><img src="image/shipping.png"/></p>
-        <p class="txtinformation-home">Giao hàng tận nơi<br>Nhanh chóng - Thuận tiện<br>lắp đặt tận nhà</p>
-      </div>
-      <div class="col-lg-15 col-sm-15 col-xs-15 information-home">
-        <p><img src="image/return.png"/></p>
-        <p class="txtinformation-home">Đổi trả dễ dàng,<br> nhanh chóng</p>
-      </div>
-      <div class="col-lg-15 col-sm-15 col-xs-15 information-home">
-        <p><img src="image/dollar.png"/></p>
-        <p class="txtinformation-home">Thanh toán <br>dễ dàng, bảo mật cao</p>
-      </div>
-    </div>
-  </div>
-</div>
 <?php echo $footer; ?>

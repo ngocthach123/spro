@@ -22,6 +22,13 @@ function getURLVar(key) {
 	}
 }
 
+function getURLSEO() {
+	var value = [];
+
+	var query = String(window.location.pathname);
+	return query;
+}
+
 $(document).ready(function() {
 	// Highlight any found errors
 	$('.text-danger').each(function() {
@@ -62,9 +69,7 @@ $(document).ready(function() {
 
 		var cat = $('header input[id=\'cat_id\']').val();
 
-		if (value) {
-			url += '&category_id=' + encodeURIComponent(cat);
-		}
+		url += '&category_id=' + encodeURIComponent(cat);
 
 		location = url;
 	});
@@ -224,7 +229,7 @@ var cart = {
 					$('#cart > button').html('<span id="cart-total"><i class="fa fa-shopping-cart"></i> ' + json['total'] + '</span>');
 				}, 100);
 
-				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
+				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout' || getURLSEO() == '/checkout/cart') {
 					location = 'index.php?route=checkout/cart';
 				} else {
 					$('#cart > ul').load('index.php?route=common/cart/info ul li');
@@ -260,7 +265,7 @@ var voucher = {
 				}, 100);
 
 				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
-					location = 'index.php?route=checkout/cart';
+					location.href = 'index.php?route=checkout/cart';
 				} else {
 					$('#cart > ul').load('index.php?route=common/cart/info ul li');
 				}

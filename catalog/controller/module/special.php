@@ -39,6 +39,7 @@ class ControllerModuleSpecial extends Controller {
 					$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
 				} else {
 					$price = false;
+					$price_cal = 0;
 				}
 
 				if ((float)$result['special']) {
@@ -66,6 +67,18 @@ class ControllerModuleSpecial extends Controller {
 					$rating = false;
 				}
 
+				$coupon = $this->model_catalog_product->getProductCoupon($result['product_id']);
+
+				if($coupon){
+					if($coupon['type'] == 'P' && $coupon['discount']){
+						$coupon['price'] = $price_cal - ($price_cal * ($coupon['discount']/100));
+						$coupon['price'] = $this->currency->format($coupon['price'], $this->session->data['currency']);
+					}else{
+						$coupon['price'] = $price_cal- $coupon['discount'];
+						$coupon['price'] = $this->currency->format($coupon['price'], $this->session->data['currency']);
+					}
+				}
+
 				$data['products'][] = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
@@ -74,6 +87,8 @@ class ControllerModuleSpecial extends Controller {
 					'price'       => $price,
 					'special'     => $special,
 					'specialper'     => $specialper,
+					'coupon' => $coupon ? $coupon : 0,
+					'count_reviews' => $result['reviews'],
 					'tax'         => $tax,
 					'rating'      => $rating,
 					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])

@@ -978,6 +978,7 @@ class ControllerCatalogProduct extends Controller {
 		$data['entry_text'] = $this->language->get('entry_text');
 		$data['entry_stock_status'] = $this->language->get('entry_stock_status');
 		$data['entry_price'] = $this->language->get('entry_price');
+		$data['entry_price_special'] = $this->language->get('entry_price_special');
 		$data['entry_cost'] = $this->language->get('entry_cost');
 		$data['entry_tax_class'] = $this->language->get('entry_tax_class');
 		$data['entry_points'] = $this->language->get('entry_points');
@@ -1976,6 +1977,10 @@ class ControllerCatalogProduct extends Controller {
 				'start'        => 0,
 				'limit'        => $limit
 			);
+
+			if (isset($this->request->get['cat_id']) && $this->request->get['cat_id']) {
+				$filter_data['cat_id'] = $this->request->get['cat_id'];
+			}
 
 			$results = $this->model_catalog_product->getProducts($filter_data);
 

@@ -28,7 +28,7 @@
 <?php  elseif($banner_name == 'Banner Bottom 1 3'): ?>
     <div class="wrap-banner">
     <?php foreach ($banners as $banner) { ?>
-        <div class="col-md-4 block-banner">
+        <div class="col-md-4 block-banner boximage-left">
             <?php if ($banner['link']) { ?>
             <a href="<?php echo $banner['link']; ?>"><img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>"/></a>
             <?php } else { ?>
@@ -42,7 +42,7 @@
 
     <div class="wrap-banner">
         <?php foreach ($banners as $banner) { ?>
-        <div class="col-md-12 block-banner">
+        <div class="col-md-12 block-banner boximage-left">
             <?php if ($banner['link']) { ?>
             <a href="<?php echo $banner['link']; ?>"><img src="<?php echo $banner['image']; ?>" alt="<?php echo $banner['title']; ?>"/></a>
             <?php } else { ?>

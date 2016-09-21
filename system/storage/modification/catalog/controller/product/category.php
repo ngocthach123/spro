@@ -188,6 +188,182 @@ class ControllerProductCategory extends Controller {
 				);
 			}
 
+			$data['articles'] = array();
+
+			$results = $this->model_catalog_category->getArticleRelated($category_id);
+
+			foreach ($results as $result) {
+				$data['articles'][]=array(
+					'article_id' => $result['article_id'],
+					'name' =>$result['name'],
+					'short_desc' => $result['short_description'],
+					'date' => date('d-m-Y h:i:s', strtotime($result['date_added'])),
+					'href'        => $this->url->link('news/article', '&article_id=' . $result['article_id'])
+				);
+			}
+
+			//========lasted product
+			$data['products_lasted'] = array();
+
+			$filter_data = array(
+				'sort' 				 	=> 'p.date_added',
+				'filter_category_id'	=> $category_id,
+				'order' 				=> 'DESC',
+				'start' 				=> 0,
+				'limit' 				=> 6
+			);
+
+			$results_lasted = $this->model_catalog_product->getProducts($filter_data);
+
+			if ($results_lasted) {
+				foreach ($results_lasted as $result) {
+					if ($result['image']) {
+						$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+					} else {
+						$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+					}
+
+					if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
+						$price_cal = $this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax'));
+						$price = $this->currency->format($price_cal, $this->session->data['currency']);
+					} else {
+						$price = false;
+						$price_cal = 0;
+					}
+
+					if ((float)$result['special']) {
+						$special_cal = $this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax'));
+						$special = $this->currency->format($special_cal, $this->session->data['currency']);
+
+						if ($price_cal) {
+							$specialper = (($price_cal - $special_cal) / $price_cal) * 100;
+							$specialper = ceil($specialper);
+						}
+
+					} else {
+						$special = false;
+						$specialper = false;
+					}
+
+					if ($this->config->get('config_tax')) {
+						$tax = $this->currency->format((float)$result['special'] ? $result['special'] : $result['price'], $this->session->data['currency']);
+					} else {
+						$tax = false;
+					}
+
+					if ($this->config->get('config_review_status')) {
+						$rating = $result['rating'];
+					} else {
+						$rating = false;
+					}
+
+					$coupon = $this->model_catalog_product->getProductCoupon($result['product_id']);
+
+					if ($coupon) {
+						if ($coupon['type'] == 'P' && $coupon['discount']) {
+							$coupon['price'] = $price_cal - ($price_cal * ($coupon['discount'] / 100));
+							$coupon['price'] = $this->currency->format($coupon['price'], $this->session->data['currency']);
+						} else {
+							$coupon['price'] = $price_cal - $coupon['discount'];
+							$coupon['price'] = $this->currency->format($coupon['price'], $this->session->data['currency']);
+						}
+					}
+
+					$data['products_lasted'][] = array(
+						'product_id' => $result['product_id'],
+						'thumb' => $image,
+						'name' => $result['name'],
+						'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..',
+						'price' => $price,
+						'specialper' => $specialper,
+						'special' => $special,
+						'tax' => $tax,
+						'coupon' => $coupon ? $coupon : 0,
+						'count_reviews' => $result['reviews'],
+						'rating' => $rating,
+						'href' => $this->url->link('product/product', 'product_id=' . $result['product_id']),
+					);
+				}
+			}
+			//========end lasted product
+
+			//========bestseller product
+			$data['products_seller'] = array();
+
+			$results_seller = $this->model_catalog_product->getBestSellerProductsByCategory($category_id, 6);
+
+			if ($results_seller) {
+				foreach ($results_seller as $result) {
+					if ($result['image']) {
+						$image = $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+					} else {
+						$image = $this->model_tool_image->resize('placeholder.png', $this->config->get($this->config->get('config_theme') . '_image_product_width'), $this->config->get($this->config->get('config_theme') . '_image_product_height'));
+					}
+
+					if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
+						$price_cal = $this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax'));
+						$price = $this->currency->format($price_cal, $this->session->data['currency']);
+					} else {
+						$price = false;
+						$price_cal = 0;
+					}
+
+					if ((float)$result['special']) {
+						$special_cal = $this->tax->calculate($result['special'], $result['tax_class_id'], $this->config->get('config_tax'));
+						$special = $this->currency->format($special_cal, $this->session->data['currency']);
+
+						if ($price_cal) {
+							$specialper = (($price_cal - $special_cal) / $price_cal) * 100;
+							$specialper = ceil($specialper);
+						}
+
+					} else {
+						$special = false;
+						$specialper = false;
+					}
+
+					if ($this->config->get('config_tax')) {
+						$tax = $this->currency->format((float)$result['special'] ? $result['special'] : $result['price'], $this->session->data['currency']);
+					} else {
+						$tax = false;
+					}
+
+					if ($this->config->get('config_review_status')) {
+						$rating = $result['rating'];
+					} else {
+						$rating = false;
+					}
+
+					$coupon = $this->model_catalog_product->getProductCoupon($result['product_id']);
+
+					if ($coupon) {
+						if ($coupon['type'] == 'P' && $coupon['discount']) {
+							$coupon['price'] = $price_cal - ($price_cal * ($coupon['discount'] / 100));
+							$coupon['price'] = $this->currency->format($coupon['price'], $this->session->data['currency']);
+						} else {
+							$coupon['price'] = $price_cal - $coupon['discount'];
+							$coupon['price'] = $this->currency->format($coupon['price'], $this->session->data['currency']);
+						}
+					}
+
+					$data['products_seller'][] = array(
+						'product_id' => $result['product_id'],
+						'thumb' => $image,
+						'name' => $result['name'],
+						'description' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')) . '..',
+						'price' => $price,
+						'specialper' => $specialper,
+						'special' => $special,
+						'tax' => $tax,
+						'coupon' => $coupon ? $coupon : 0,
+						'count_reviews' => $result['reviews'],
+						'rating' => $rating,
+						'href' => $this->url->link('product/product', 'product_id=' . $result['product_id']),
+					);
+				}
+			}
+			//========end bestseller product
+
 			$data['products'] = array();
 
 			$filter_data = array(
@@ -258,6 +434,7 @@ class ControllerProductCategory extends Controller {
 					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $result['rating'],
+					'count_reviews' => $result['reviews'],
 					'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
 				);
 			}

@@ -39,6 +39,7 @@ class ControllerModuleFeatured extends Controller {
 						$price = $this->currency->format($price_cal, $this->session->data['currency']);
 					} else {
 						$price = false;
+						$price_cal = 0;
 					}
 
 					if ((float)$product_info['special']) {
@@ -66,6 +67,18 @@ class ControllerModuleFeatured extends Controller {
 						$rating = false;
 					}
 
+					$coupon = $this->model_catalog_product->getProductCoupon($product_info['product_id']);
+
+					if($coupon){
+						if($coupon['type'] == 'P' && $coupon['discount']){
+							$coupon['price'] = $price_cal - ($price_cal * ($coupon['discount']/100));
+							$coupon['price'] = $this->currency->format($coupon['price'], $this->session->data['currency']);
+						}else{
+							$coupon['price'] = $price_cal- $coupon['discount'];
+							$coupon['price'] = $this->currency->format($coupon['price'], $this->session->data['currency']);
+						}
+					}
+
 					$data['products'][] = array(
 						'product_id'  => $product_info['product_id'],
 						'thumb'       => $image,
@@ -74,6 +87,8 @@ class ControllerModuleFeatured extends Controller {
 						'price'       => $price,
 						'special'     => $special,
 						'specialper'     => $specialper,
+						'coupon' => $coupon ? $coupon : 0,
+						'count_reviews' => $product_info['reviews'],
 						'tax'         => $tax,
 						'rating'      => $rating,
 						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])

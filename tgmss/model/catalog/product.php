@@ -429,7 +429,7 @@ class ModelCatalogProduct extends Model {
 			if(isset($data['child_id']) && $data['child_id']!=0) {
 				$sql = "SELECT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id)," . DB_PREFIX . "product_to_category p2c," . DB_PREFIX . "category_path cp WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.product_id = p2c.product_id AND p2c.category_id = cp.category_id AND cp.path_id = '" . (int)$data['child_id'] . "'";
 			}else{
-				$sql = "SELECT * FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id)," . DB_PREFIX . "product_to_category p2c WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.product_id = p2c.product_id AND p2c.category_id = '" . (int)$data['cat_id'] . "'";
+				$sql = "SELECT *,(SELECT price FROM " . DB_PREFIX . "product_special ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special FROM " . DB_PREFIX . "product p LEFT JOIN " . DB_PREFIX . "product_description pd ON (p.product_id = pd.product_id)," . DB_PREFIX . "product_to_category p2c WHERE pd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND p.product_id = p2c.product_id AND p2c.category_id = '" . (int)$data['cat_id'] . "'";
 			}
 
 		}else {

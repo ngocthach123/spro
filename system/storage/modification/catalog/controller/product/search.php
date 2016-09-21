@@ -118,6 +118,15 @@ class ControllerProductSearch extends Controller {
 			$url .= '&limit=' . $this->request->get['limit'];
 		}
 
+		if($search == ''){
+			if($category_id){
+				$this->response->redirect($this->url->link('product/category', 'path=' . $category_id));
+			}else{
+				$this->response->redirect($this->url->link('common/home'));
+			}
+
+		}
+
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('product/search', $url)

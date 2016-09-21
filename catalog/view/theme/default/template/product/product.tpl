@@ -500,7 +500,7 @@
                       <?php endif;?>
                     </div>
                     <div class="boxreview-product">
-                      ( 19 nhận xét )
+                      <img src="image/rating_star.png"/>(<?php echo $product['count_reviews']; ?> nhận xét)
                     </div>
                   </div>
                 </div>
@@ -708,7 +708,7 @@ $('#button-cart').on('click', function() {
 
 				$('#shoppingcart span.top-quantity').html(json['total_origin']);
 
-                location = "index.php?route=checkout/cart";
+                location = "checkout/cart";
 
 				$('html, body').animate({ scrollTop: 0 }, 'slow');
 

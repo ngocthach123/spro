@@ -115,6 +115,9 @@
         </ul>
       </li>
 	  <li><a href="<?php echo $coupon; ?>"><?php echo $text_coupon; ?></a></li>
+	  <!--        //Newsletter Subscribers-->
+	  <li><a href="<?php echo $newssubscribe; ?>"><?php echo $text_newssubscribe; ?></a></li>
+	  <!--        //Newsletter Subscribers-->  
       <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
       <li><a class="parent"><?php echo $text_paypal ?></a>
         <ul class="collapse">

@@ -12,6 +12,7 @@ $_['entry_limit']         = 'Hạn chế:';
 $_['entry_width']      = 'Chiều rộng';
 $_['entry_height']     = 'Chiều cao';
 $_['entry_status']        = 'Trạng thái:';
+$_['entry_banner']        = 'Banner:';
 
 // Error
 $_['error_permission']    = 'Cảnh báo: Bạn không được phép sửa đổi mô-đun Sản phẩm Mới nhất!';

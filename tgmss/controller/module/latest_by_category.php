@@ -32,10 +32,12 @@ class ControllerModuleLatestByCategory extends Controller {
 		
 		$data['entry_name'] = $this->language->get('entry_name');
 		$data['entry_category'] = $this->language->get('entry_category');
+		$data['entry_product'] = $this->language->get('entry_product');
 		$data['entry_limit'] = $this->language->get('entry_limit');
 		$data['entry_width'] = $this->language->get('entry_width');
 		$data['entry_height'] = $this->language->get('entry_height');
 		$data['entry_status'] = $this->language->get('entry_status');
+		$data['entry_banner'] = $this->language->get('entry_banner');
 
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
@@ -165,6 +167,40 @@ class ControllerModuleLatestByCategory extends Controller {
 		} else {
 			$data['status'] = '';
 		}
+
+		$this->load->model('catalog/product');
+		$data['products'] = array();
+
+		if (!empty($this->request->post['product'])) {
+			$products = $this->request->post['product'];
+		} elseif (!empty($module_info['product'])) {
+			$products = $module_info['product'];
+		} else {
+			$products = array();
+		}
+
+		foreach ($products as $product_id) {
+			$product_info = $this->model_catalog_product->getProduct($product_id);
+
+			if ($product_info) {
+				$data['products'][] = array(
+					'product_id' => $product_info['product_id'],
+					'name'       => $product_info['name']
+				);
+			}
+		}
+
+		if (isset($this->request->post['banner_id'])) {
+			$data['banner_id'] = $this->request->post['banner_id'];
+		} elseif (!empty($module_info)) {
+			$data['banner_id'] = $module_info['banner_id'];
+		} else {
+			$data['banner_id'] = '';
+		}
+
+		$this->load->model('design/banner');
+
+		$data['banners'] = $this->model_design_banner->getBanners();
 		
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');

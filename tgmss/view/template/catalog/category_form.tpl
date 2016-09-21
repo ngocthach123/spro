@@ -148,6 +148,37 @@
                 </div>
               </div>
               <div class="form-group">
+                <label class="col-sm-2 control-label"><?php echo $entry_thumb; ?></label>
+                <div class="col-sm-10"><a href="" id="thumbnail" data-toggle="image" class="img-thumbnail"><img src="<?php echo $small_thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+                  <input type="hidden" name="thumbnail" value="<?php echo $thumbnail; ?>" id="input-thumb" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label"><?php echo $entry_banner; ?></label>
+                <div class="col-sm-10"><a href="" id="banner" data-toggle="image" class="img-thumbnail"><img src="<?php echo $banner_thumb; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /></a>
+                  <input type="hidden" name="banner" value="<?php echo $banner; ?>" id="input-banner" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-link"><span data-toggle="tooltip" title="<?php echo $entry_link; ?>"><?php echo $entry_link; ?></span></label>
+                <div class="col-sm-10">
+                  <input type="text" name="link_banner" value="<?php echo $link_banner; ?>" placeholder="<?php echo $entry_link; ?>" id="input-link" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-article-related"><?php echo $entry_article_related; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="article" value="" placeholder="<?php echo $entry_article_related; ?>" id="input-article-related" class="form-control" />
+                  <div id="article-related" class="well well-sm" style="height: 150px; overflow: auto;">
+                    <?php foreach ($article_relateds as $article_related) { ?>
+                    <div id="article-related<?php echo $article_related['article_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $article_related['name']; ?>
+                      <input type="hidden" name="article_related[]" value="<?php echo $article_related['article_id']; ?>" />
+                    </div>
+                    <?php } ?>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-top"><span data-toggle="tooltip" title="<?php echo $help_top; ?>"><?php echo $entry_top; ?></span></label>
                 <div class="col-sm-10">
                   <div class="checkbox">
@@ -255,6 +286,36 @@
   }
 </script>
 <script type="text/javascript"><!--
+
+  // Article Related
+  $('input[name=\'article\']').autocomplete({
+    'source': function(request, response) {
+      $.ajax({
+        url: 'index.php?route=news/article/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+        dataType: 'json',
+        success: function(json) {
+          response($.map(json, function(item) {
+            return {
+              label: item['name'],
+              value: item['article_id']
+            }
+          }));
+        }
+      });
+    },
+    'select': function(item) {
+      $('input[name=\'related\']').val('');
+
+      $('#article-related' + item['value']).remove();
+
+      $('#article-related').append('<div id="article-related' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="article_related[]" value="' + item['value'] + '" /></div>');
+    }
+  });
+
+  $('#article-related').delegate('.fa-minus-circle', 'click', function() {
+    $(this).parent().remove();
+  });
+
 $('input[name=\'path\']').autocomplete({
 	'source': function(request, response) {
 		$.ajax({

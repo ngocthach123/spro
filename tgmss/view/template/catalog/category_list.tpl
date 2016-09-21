@@ -28,6 +28,9 @@
       <div class="panel-heading hidden">
         <h3 class="panel-title"><i class="fa fa-list"></i> <?php echo $text_list; ?></h3>
       </div>
+      <div class="panel-heading">
+       <input type="text" name="path" value="" placeholder="Tìm.." id="input-parent" class="form-control" />
+      </div>
       <div class="panel-body">
         <form action="<?php echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-category">
           <div class="table-responsive">
@@ -79,4 +82,32 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript"><!--
+  $('input[name=\'path\']').autocomplete({
+    'source': function(request, response) {
+      $.ajax({
+        url: 'index.php?route=catalog/category/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+        dataType: 'json',
+        success: function(json) {
+          json.unshift({
+            category_id: 0,
+            name: '--Không--'
+          });
+
+          response($.map(json, function(item) {
+            return {
+              label: item['name'],
+              value: item['category_id']
+            }
+          }));
+        }
+      });
+    },
+    'select': function(item) {
+      location.href = 'index.php?route=catalog/category/edit&token=<?php echo $token; ?>&category_id='+item['value'];
+    }
+  });
+  //--></script>
+
 <?php echo $footer; ?>

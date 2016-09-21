@@ -414,6 +414,7 @@ $('#btn-confirm').click(function(e){
                             $(element).parent().after('<div class="text-danger">' + json['error'][i] + '</div>');
                         } else {
                             $(element).before('<div class="text-danger">' + json['error'][i] + '</div>');
+                            $(element).addClass('hasError');
                         }
                     }
 

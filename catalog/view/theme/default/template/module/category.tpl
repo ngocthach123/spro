@@ -75,11 +75,13 @@
     <!-- menu cấp 1 -->
     <?php foreach ($categories as $category): ?>
       <li>
+        <i class="cat-ic" <?php echo "style='background:url(\"".$category['thumb']."\") no-repeat 50% 50%'"; ?> ></i>
       <a href="<?php echo $category['href']; ?>" class="<?php echo $category['category_id'] == $category_id ? 'active': ''; ?>">
-        <i class="fa fa-bullseye"></i>&nbsp;<?php echo $category['name']; ?> <i class="fa fa-chevron-right"></i>
+        &nbsp;<?php echo $category['name']; ?> <i class="fa fa-chevron-right"></i>
       </a>
-        <?php if ($category['children']): ?>
+        <?php if ($category['children']): $i = 1;?>
           <ul class="sub-2">
+            <div class="col-md-4">
             <!-- menu cấp 2 -->
             <?php foreach ($category['children'] as $child): ?>
               <li><a href="<?php echo $child['href']; ?>" class="<?php echo $child['category_id'] == $child_id ? 'active' : ''; ?>"><b><?php echo $child['name']; ?></b></a>
@@ -88,13 +90,30 @@
                     <!-- menu cấp 3 -->
                     <?php foreach ($child['children'] as $child_2): ?>
                     <li><a href="<?php echo $child_2['href']; ?>"><?php echo $child_2['name']; ?></a></li>
-                    <?php endforeach;?>
+
+                    <?php if ($i == 14): ?>
+                      </ul></li></div> <div class="col-md-4"><li><ul>
+                    <?php endif;?>
+
+                    <?php $i++; endforeach;?>
                     <!-- menu cấp 3 -->
                   </ul>
                 <?php endif;?>
               </li>
-            <?php endforeach;?>
+
+              <?php if ($i == 14 || $i == 28): ?>
+                </div><div class="col-md-4">
+              <?php endif;?>
+
+            <?php $i++; endforeach;?>
             <!-- end menu cấp 2 -->
+            </div>
+
+            <?php if($i<28 && $category['banner'] != '') : ?>
+              <div class="col-md-4 pull-right">
+                <a href="<?php echo $category['link_banner']; ?>"><img src="<?php echo $category['banner']; ?>" class="img-responsive"></a>
+              </div>
+            <?php endif;?>
           </ul>
       <?php endif;?>
     </li>

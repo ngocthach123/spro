@@ -1,12 +1,20 @@
 <?php
 class ModelCatalogCategory extends Model {
 	public function addCategory($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "category SET parent_id = '" . (int)$data['parent_id'] . "', `top` = '" . (isset($data['top']) ? (int)$data['top'] : 0) . "', `column` = '" . (int)$data['column'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW(), date_added = NOW()");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "category SET parent_id = '" . (int)$data['parent_id'] . "', `top` = '" . (isset($data['top']) ? (int)$data['top'] : 0). "', `link_banner` = '" .  $this->db->escape($data['link_banner']) . "', `column` = '" . (int)$data['column'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW(), date_added = NOW()");
 
 		$category_id = $this->db->getLastId();
 
 		if (isset($data['image'])) {
 			$this->db->query("UPDATE " . DB_PREFIX . "category SET image = '" . $this->db->escape($data['image']) . "' WHERE category_id = '" . (int)$category_id . "'");
+		}
+
+		if (isset($data['thumbnail'])) {
+			$this->db->query("UPDATE " . DB_PREFIX . "category SET thumb = '" . $this->db->escape($data['thumbnail']) . "' WHERE category_id = '" . (int)$category_id . "'");
+		}
+
+		if (isset($data['banner'])) {
+			$this->db->query("UPDATE " . DB_PREFIX . "category SET banner = '" . $this->db->escape($data['banner']) . "' WHERE category_id = '" . (int)$category_id . "'");
 		}
 
 		foreach ($data['category_description'] as $language_id => $value) {
@@ -49,16 +57,30 @@ class ModelCatalogCategory extends Model {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'category_id=" . (int)$category_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
 		}
 
+		if (isset($data['article_related'])) {
+			foreach ($data['article_related'] as $article_id) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "category_to_article SET category_id = '" . (int)$category_id . "', article_id = '" . (int)$article_id . "'");
+			}
+		}
+
 		$this->cache->delete('category');
 
 		return $category_id;
 	}
 
 	public function editCategory($category_id, $data) {
-		$this->db->query("UPDATE " . DB_PREFIX . "category SET parent_id = '" . (int)$data['parent_id'] . "', `top` = '" . (isset($data['top']) ? (int)$data['top'] : 0) . "', `column` = '" . (int)$data['column'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW() WHERE category_id = '" . (int)$category_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "category SET parent_id = '" . (int)$data['parent_id'] . "', `top` = '" . (isset($data['top']) ? (int)$data['top'] : 0). "', `link_banner` = '" .  $this->db->escape($data['link_banner']) . "', `column` = '" . (int)$data['column'] . "', sort_order = '" . (int)$data['sort_order'] . "', status = '" . (int)$data['status'] . "', date_modified = NOW() WHERE category_id = '" . (int)$category_id . "'");
 
 		if (isset($data['image'])) {
 			$this->db->query("UPDATE " . DB_PREFIX . "category SET image = '" . $this->db->escape($data['image']) . "' WHERE category_id = '" . (int)$category_id . "'");
+		}
+
+		if (isset($data['thumbnail'])) {
+			$this->db->query("UPDATE " . DB_PREFIX . "category SET thumb = '" . $this->db->escape($data['thumbnail']) . "' WHERE category_id = '" . (int)$category_id . "'");
+		}
+
+		if (isset($data['banner'])) {
+			$this->db->query("UPDATE " . DB_PREFIX . "category SET banner = '" . $this->db->escape($data['banner']) . "' WHERE category_id = '" . (int)$category_id . "'");
 		}
 
 		$this->db->query("DELETE FROM " . DB_PREFIX . "category_description WHERE category_id = '" . (int)$category_id . "'");
@@ -146,6 +168,13 @@ class ModelCatalogCategory extends Model {
 
 		if ($data['keyword']) {
 			$this->db->query("INSERT INTO " . DB_PREFIX . "url_alias SET query = 'category_id=" . (int)$category_id . "', keyword = '" . $this->db->escape($data['keyword']) . "'");
+		}
+
+		$this->db->query("DELETE FROM " . DB_PREFIX . "category_to_article WHERE category_id = '" . (int)$category_id . "'");
+		if (isset($data['article_related'])) {
+			foreach ($data['article_related'] as $article_id) {
+				$this->db->query("INSERT INTO " . DB_PREFIX . "category_to_article SET category_id = '" . (int)$category_id . "', article_id = '" . (int)$article_id . "'");
+			}
 		}
 
 		$this->cache->delete('category');
@@ -315,5 +344,17 @@ class ModelCatalogCategory extends Model {
 		$query = $this->db->query("SELECT COUNT(*) AS total FROM " . DB_PREFIX . "category_to_layout WHERE layout_id = '" . (int)$layout_id . "'");
 
 		return $query->row['total'];
-	}	
+	}
+
+	public function getArticleRelated($category_id) {
+		$product_related_data = array();
+
+		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category_to_article WHERE category_id = '" . (int)$category_id . "'");
+
+		foreach ($query->rows as $result) {
+			$product_related_data[] = $result['article_id'];
+		}
+
+		return $product_related_data;
+	}
 }

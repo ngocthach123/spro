@@ -177,6 +177,8 @@ class ControllerCatalogCategory extends Controller {
 		$data['delete'] = $this->url->link('catalog/category/delete', 'token=' . $this->session->data['token'] . $url, true);
 		$data['repair'] = $this->url->link('catalog/category/repair', 'token=' . $this->session->data['token'] . $url, true);
 
+		$data['token'] = $this->session->data['token'];
+
 		$data['categories'] = array();
 
 		$filter_data = array(
@@ -302,15 +304,19 @@ class ControllerCatalogCategory extends Controller {
 		$data['entry_meta_description'] = $this->language->get('entry_meta_description');
 		$data['entry_meta_keyword'] = $this->language->get('entry_meta_keyword');
 		$data['entry_keyword'] = $this->language->get('entry_keyword');
+		$data['entry_link'] = $this->language->get('entry_link');
 		$data['entry_parent'] = $this->language->get('entry_parent');
 		$data['entry_filter'] = $this->language->get('entry_filter');
 		$data['entry_store'] = $this->language->get('entry_store');
 		$data['entry_image'] = $this->language->get('entry_image');
+		$data['entry_thumb'] = $this->language->get('entry_thumb');
+		$data['entry_banner'] = $this->language->get('entry_banner');
 		$data['entry_top'] = $this->language->get('entry_top');
 		$data['entry_column'] = $this->language->get('entry_column');
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
 		$data['entry_status'] = $this->language->get('entry_status');
 		$data['entry_layout'] = $this->language->get('entry_layout');
+		$data['entry_article_related'] = $this->language->get('entry_article_related');
 
 		$data['help_filter'] = $this->language->get('help_filter');
 		$data['help_keyword'] = $this->language->get('help_keyword');
@@ -392,6 +398,29 @@ class ControllerCatalogCategory extends Controller {
 
 		$data['languages'] = $this->model_localisation_language->getLanguages();
 
+		if (isset($this->request->post['article_related'])) {
+			$articles = $this->request->post['article_related'];
+		} elseif (isset($this->request->get['category_id'])) {
+			$articles = $this->model_catalog_category->getArticleRelated($this->request->get['category_id']);
+		} else {
+			$articles = array();
+		}
+
+		$data['article_relateds'] = array();
+
+		$this->load->model('news/article');
+
+		foreach ($articles as $article_id) {
+			$related_info = $this->model_news_article->getArticle($article_id);
+
+			if ($related_info) {
+				$data['article_relateds'][] = array(
+					'article_id' => $related_info['article_id'],
+					'name'       => $related_info['name']
+				);
+			}
+		}
+
 		if (isset($this->request->post['category_description'])) {
 			$data['category_description'] = $this->request->post['category_description'];
 		} elseif (isset($this->request->get['category_id'])) {
@@ -459,6 +488,15 @@ class ControllerCatalogCategory extends Controller {
 			$data['keyword'] = '';
 		}
 
+		if (isset($this->request->post['link_banner'])) {
+			$data['link_banner'] = $this->request->post['link_banner'];
+		} elseif (!empty($category_info)) {
+			$data['link_banner'] = $category_info['link_banner'];
+		} else {
+			$data['link_banner'] = '';
+		}
+
+
 		if (isset($this->request->post['image'])) {
 			$data['image'] = $this->request->post['image'];
 		} elseif (!empty($category_info)) {
@@ -476,6 +514,39 @@ class ControllerCatalogCategory extends Controller {
 		} else {
 			$data['thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 		}
+
+		if (isset($this->request->post['thumbnail'])) {
+			$data['thumbnail'] = $this->request->post['thumbnail'];
+		} elseif (!empty($category_info)) {
+			$data['thumbnail'] = $category_info['thumb'];
+		} else {
+			$data['thumbnail'] = '';
+		}
+
+		if (isset($this->request->post['thumbnail']) && is_file(DIR_IMAGE . $this->request->post['thumbnail'])) {
+			$data['small_thumb'] = $this->model_tool_image->resize($this->request->post['thumbnail'], 100, 100);
+		} elseif (!empty($category_info) && is_file(DIR_IMAGE . $category_info['thumb'])) {
+			$data['small_thumb'] = $this->model_tool_image->resize($category_info['thumb'], 100, 100);
+		} else {
+			$data['small_thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+		}
+
+		if (isset($this->request->post['banner'])) {
+			$data['banner'] = $this->request->post['banner'];
+		} elseif (!empty($category_info)) {
+			$data['banner'] = $category_info['banner'];
+		} else {
+			$data['banner'] = '';
+		}
+
+		if (isset($this->request->post['banner']) && is_file(DIR_IMAGE . $this->request->post['banner'])) {
+			$data['banner_thumb'] = $this->model_tool_image->resize($this->request->post['banner'], 100, 100);
+		} elseif (!empty($category_info) && is_file(DIR_IMAGE . $category_info['banner'])) {
+			$data['banner_thumb'] = $this->model_tool_image->resize($category_info['banner'], 100, 100);
+		} else {
+			$data['banner_thumb'] = $this->model_tool_image->resize('no_image.png', 100, 100);
+		}
+
 
 		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
 

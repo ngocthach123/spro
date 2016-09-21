@@ -21,15 +21,19 @@ $_['entry_meta_title'] 	     = 'Tiêu đề Meta Tag';
 $_['entry_meta_keyword']     = 'Từ khóa:';
 $_['entry_meta_description'] = 'Mô tả từ khóa:';
 $_['entry_keyword']          = 'Liên kết thân thiện';
+$_['entry_link']          = 'Liên kết banner';
 $_['entry_parent']           = 'Danh mục gốc:';
 $_['entry_filter']           = 'Lọc:';
 $_['entry_store']            = 'Cửa hàng:';
 $_['entry_image']            = 'Hình ảnh:';
+$_['entry_thumb']            = 'Hình nhỏ danh mục:';
+$_['entry_banner']            = 'Menu Banner:';
 $_['entry_top']              = 'Menu trên:';
 $_['entry_column']           = 'Cột:';
 $_['entry_sort_order']       = 'Thứ tự:';
 $_['entry_status']           = 'Trạng thái:';
 $_['entry_layout']           = 'Bố cục:';
+$_['entry_article_related']          = 'Tin tức liên quan';
 
 
 // Help

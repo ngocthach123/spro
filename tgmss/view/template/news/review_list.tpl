@@ -120,7 +120,7 @@
                   <td class="text-left"><?php echo $review['date_added']; ?></td>
                   <td class="text-right">
                     <?php if($review['stt']): ?>
-                      <a rw-id="<?php echo $review['review_id']; ?>" id="hide" stt="1" data-toggle="tooltip" title="Duyệt" class="btn btn-default allow hidden"<i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
+                      <a rw-id="<?php echo $review['review_id']; ?>" id="hide" stt="1" data-toggle="tooltip" title="Duyệt" class="btn btn-default allow hidden"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>
                       <a rw-id="<?php echo $review['review_id']; ?>"  id="show" stt="0" data-toggle="tooltip" title="Bỏ duyệt" class="btn btn-danger allow"><i class="fa fa-minus-square-o" aria-hidden="true"></i></a>
                     <?php else: ?>
                       <a rw-id="<?php echo $review['review_id']; ?>" id="show" stt="1" data-toggle="tooltip" title="Duyệt" class="btn btn-default allow"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a>

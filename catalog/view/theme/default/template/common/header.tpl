@@ -154,12 +154,28 @@
 <!-- information top -->
 <nav id="top">
   <div class="container">
-    <div class="nav pull-left">
-      <ul id="top-support" class="list-inline">
-        <li><a href="#"><i class="fa fa-phone-square"></i></a> <span class="hidden-xs hidden-sm hidden-md">Điện thoại: <?php echo $phone; ?></span></li>
-        <li><a href="#"><i class="fa fa-envelope"></i></a> <span class="hidden-xs hidden-sm hidden-md"> Email: <?php echo $email; ?></span></li>
-      </ul>
-    </div>
+	<div class="nav pull-left bscrolinfo">
+		<div id="scrollinfor" class="owl-carousel" style="opacity: 1;">
+			<?php for($i = 1;$i < 4;$i++) { ?>
+			<div class="item">
+				<li><a href="#"><i class="fa fa-phone-square"></i></a> <span class="hidden-xs hidden-sm hidden-md">Điện thoại: <?php echo $phone; ?></span>
+					&nbsp;&nbsp;
+					<a href="#"><i class="fa fa-envelope"></i></a> <span class="hidden-xs hidden-sm hidden-md"> Email: <?php echo $email; ?></span>
+				</li>
+			</div>
+			<?php } ?>
+		</div>
+		<script type="text/javascript"><!--
+		$('#scrollinfor').owlCarousel({
+			autoPlay: true,
+			navigation : false,
+			pagination: false,
+			slideSpeed : 300,
+			paginationSpeed : 400,
+			singleItem: true
+		});
+		--></script>
+	</div>
     <div id="top-links" class="nav pull-right">
       <ul class="list-inline">
         <li class="dropdown top-account"><span class="top-iconuser"><i class="fa fa-user"></i></span> <a href="#" title="Tài khoản" class="dropdown-toggle" data-toggle="dropdown"><span class="hidden-xs hidden-sm hidden-md"><?php echo $logged ? $customer_name : 'Đăng nhập tài khoản' ?></span> <span class="caret"></span></a>
@@ -174,7 +190,7 @@
             <?php } ?>
           </ul>
         </li>
-        <li><a href="<?php echo $order; ?>" title="Kiểm tra đơn hàng"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">Kiểm tra đơn hàng</span></a></li>
+        <li><a href="<?php echo $order; ?>" title="Kiểm tra đơn hàng" class="wrap-ic"><i class="ic-order"></i> <span class="hidden-xs">Kiểm tra đơn hàng</span></a></li>
       </ul>
     </div>
   </div>
@@ -193,15 +209,15 @@
           <?php } ?>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 searchbar">
         <?php echo $search; ?>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-3 top-info">
         <div class="row">
-          <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="col-md-6 col-sm-6 col-xs-12 wrap-ic-cart">
             <?php echo $cart; ?>
           </div>
-          <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="col-md-6 col-sm-6 col-xs-12 wrap-hot-line">
             <div id="hotline">Hotline<br><span><?php echo $hotline;?></span></div>
           </div>
         </div>

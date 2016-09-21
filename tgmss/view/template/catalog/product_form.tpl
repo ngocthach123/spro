@@ -911,7 +911,7 @@
                       <td class="text-left"><?php echo $entry_customer_group; ?></td>
                       <td class="text-right"><?php echo $entry_quantity; ?></td>
                       <td class="text-right"><?php echo $entry_priority; ?></td>
-                      <td class="text-right"><?php echo $entry_price; ?></td>
+                      <td class="text-right"><?php echo $entry_price_special; ?></td>
                       <td class="text-left"><?php echo $entry_date_start; ?></td>
                       <td class="text-left"><?php echo $entry_date_end; ?></td>
                       <td></td>
@@ -964,7 +964,7 @@
                     <tr>
                       <td class="text-left"><?php echo $entry_customer_group; ?></td>
                       <td class="text-right"><?php echo $entry_priority; ?></td>
-                      <td class="text-right"><?php echo $entry_price; ?></td>
+                      <td class="text-right"><?php echo $entry_price_special; ?></td>
                       <td class="text-left"><?php echo $entry_date_start; ?></td>
                       <td class="text-left"><?php echo $entry_date_end; ?></td>
                       <td></td>
@@ -1667,7 +1667,7 @@ function addSpecial() {
     <?php } ?>
     html += '  </select></td>';
     html += '  <td class="text-right"><input type="text" name="product_special[' + special_row + '][priority]" value="" placeholder="<?php echo $entry_priority; ?>" class="form-control" /></td>';
-	html += '  <td class="text-right"><input type="text" name="product_special[' + special_row + '][price]" value="" placeholder="<?php echo $entry_price; ?>" class="form-control" /></td>';
+	html += '  <td class="text-right"><input type="text" name="product_special[' + special_row + '][price]" value="" placeholder="<?php echo $entry_price_special; ?>" class="form-control" /></td>';
     html += '  <td class="text-left" style="width: 20%;"><div class="input-group date"><input type="text" name="product_special[' + special_row + '][date_start]" value="" placeholder="<?php echo $entry_date_start; ?>" data-date-format="YYYY-MM-DD" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></td>';
 	html += '  <td class="text-left" style="width: 20%;"><div class="input-group date"><input type="text" name="product_special[' + special_row + '][date_end]" value="" placeholder="<?php echo $entry_date_end; ?>" data-date-format="YYYY-MM-DD" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button></span></div></td>';
 	html += '  <td class="text-left"><button type="button" onclick="$(\'#special-row' + special_row + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
